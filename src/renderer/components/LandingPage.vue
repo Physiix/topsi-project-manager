@@ -1,18 +1,21 @@
 <template>
 	<div>
-		<v-container>
+		<Drawer />
+		<v-content class="px-4">
 			<Projects />
-		</v-container>
+		</v-content>
 	</div>
 
 </template>
 
 <script>
+import Drawer from './drawer/Drawer.vue'
 import Projects from './projects/Projects.vue'
 export default {
 	name: 'landing-page',
 	components: {
-		Projects
+		Projects,
+		Drawer
 	},
 	methods: {
 	}
