@@ -29,8 +29,11 @@ export default {
 
 	},
 	methods: {
+		/**
+		 * Set the current project Id as the opened project.
+		 */
 		OpenProject() {
-			console.log("Project");
+			this.$store.commit('OpenProject', this.project.id);
 		}
 	},
 }

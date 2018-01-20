@@ -15,7 +15,9 @@ const state = {
 }
 
 const getters = {
-
+	GetProjectById(state) {
+		return (id) => state.projects.filter(project => project.id == id)[0];
+	}
 }
 
 const mutations = {
