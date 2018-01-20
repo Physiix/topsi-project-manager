@@ -2,10 +2,10 @@
 	<div>
 		<v-card class="ma-2 project_card elevation-3" @click.native="OpenProject">
 			<v-card-title>
-				Lorem ipsum
+				{{project.title}}
 			</v-card-title>
 			<v-card-text>
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?
+				{{project.description}}
 			</v-card-text>
 		</v-card>
 	</div>
@@ -31,6 +31,10 @@ export default {
 	methods: {
 		OpenProject() {
 			console.log("Project");
+			this.$store.commit('CreateProject', {
+				title: 'Test',
+				description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?'
+			})
 		}
 	},
 }

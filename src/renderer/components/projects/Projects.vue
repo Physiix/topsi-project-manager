@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<v-layout row wrap>
-			<v-flex xs3 v-for="i in 10" :key="i">
-				<Project :project="{}" />
+			<v-flex xs3 v-for="(project, i) in projects" :key="i">
+				<Project :project="project" />
 			</v-flex>
 		</v-layout>
 	</div>
@@ -15,16 +15,10 @@ export default {
 	components: {
 		Project
 	},
-	props: {
-
-	},
-	data() {
-		return {
-
-		}
-	},
 	computed: {
-
+		projects() {
+			return this.$store.state.ProjectsStore.projects;
+		}
 	},
 	methods: {
 
