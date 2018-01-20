@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-card class="ma-2 project_card elevation-3">
+		<v-card class="ma-2 project_card elevation-3" @click.native="OpenProject">
 			<v-card-title>
 				Lorem ipsum
 			</v-card-title>
@@ -29,7 +29,9 @@ export default {
 
 	},
 	methods: {
-
+		OpenProject() {
+			console.log("Project");
+		}
 	},
 }
 </script>

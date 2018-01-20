@@ -1,5 +1,20 @@
 import lowdb from 'lowdb'
-const db = new lowdb('db.json');
+import path from 'path'
+import fs from 'fs'
+// Adapter
+const FileSync = require('lowdb/adapters/FileSync');
+
+// Paths
+const dataPath = path.join(path.resolve('.'), 'data');
+const dbFilePath = path.join(dataPath, 'database.json');
+
+// Make sure the 'data' folder exists
+if (!fs.existsSync(dataPath))
+	fs.mkdirSync(dataPath);
+
+const adapter = new FileSync(dbFilePath);
+const db = new lowdb(adapter);
+
 
 //Class containing all kind of helper functions to access
 //write and alter the local database.
