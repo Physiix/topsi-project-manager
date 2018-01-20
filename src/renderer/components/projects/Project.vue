@@ -31,10 +31,6 @@ export default {
 	methods: {
 		OpenProject() {
 			console.log("Project");
-			this.$store.commit('CreateProject', {
-				title: 'Test',
-				description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?'
-			})
 		}
 	},
 }

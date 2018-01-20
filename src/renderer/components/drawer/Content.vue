@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-list dense class="pt-0">
-			<v-list-tile v-for="item in items" :key="item.title" @click="Handle(item)">
+			<v-list-tile v-for="item in items" :key="item.title" @click="item.action()">
 				<v-list-tile-action>
 					<v-icon>{{ item.icon }}</v-icon>
 				</v-list-tile-action>
@@ -27,7 +27,8 @@ export default {
 			items: [
 				{
 					title: 'Create new project',
-					icon: 'add'
+					icon: 'add',
+					action: () => this.$store.commit('CreateProjDialog')
 				},
 				{
 					title: 'Sync Database',
