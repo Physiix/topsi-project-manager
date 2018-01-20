@@ -1,15 +1,19 @@
 <template>
 	<div>
-		<v-btn fab small right bottom fixed color="blue darken-2" dark>
-			<v-icon fa>add</v-icon>
-		</v-btn>
+		<v-container>
+			<Projects />
+		</v-container>
 	</div>
+
 </template>
 
 <script>
+import Projects from './projects/Projects.vue'
 export default {
 	name: 'landing-page',
-	components: {},
+	components: {
+		Projects
+	},
 	methods: {
 	}
 }

@@ -17,4 +17,19 @@ export default {
 <style>
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons';
   /* CSS */
+body::-webkit-scrollbar {
+	/* display: none; */
+}
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: #ddd;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #666;
+}
 </style>
