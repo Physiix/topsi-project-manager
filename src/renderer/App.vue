@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<v-app dark>
+		<v-app :dark="darkMode">
 			<router-view></router-view>
 		</v-app>
 	</div>
@@ -10,7 +10,12 @@
 require('../../node_modules/vuetify/dist/vuetify.min.css');
 require('../../node_modules/font-awesome/css/font-awesome.min.css')
 export default {
-	name: 'project_manager'
+	name: 'project_manager',
+	computed: {
+		darkMode() {
+			return this.$store.state.AppStore.darkMode;
+		}
+	}
 }
 </script>
 

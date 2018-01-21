@@ -1,3 +1,7 @@
+import {
+	dbUtils
+} from '../../../core/database'
+
 const state = {
 	// Contains all the flags about dialogs.
 	dialogs: {
@@ -9,7 +13,10 @@ const state = {
 	openedProjectId: -1,
 
 	// Width of the main drawer
-	drawerWidth: 200
+	drawerWidth: 200,
+
+	// Whether dark mode is enabled or not.
+	darkMode: dbUtils.GetValue('dark_mode', true)
 }
 
 const mutations = {
@@ -23,6 +30,10 @@ const mutations = {
 
 	OpenProject(state, id) {
 		state.openedProjectId = id;
+	},
+
+	SetDarkMode(state) {
+		return value => dbUtils.SetValue('dark_mode', value);
 	}
 }
 

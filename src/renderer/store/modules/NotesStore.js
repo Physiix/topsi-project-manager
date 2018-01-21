@@ -5,7 +5,7 @@ import {
 class Note {
 	constructor(project_id, title, description, category) {
 		this.id = -1;
-		this.project_id;
+		this.project_id = project_id;
 		this.title = title;
 		this.description = description;
 		this.category = category;

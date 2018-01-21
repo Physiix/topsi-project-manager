@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-toolbar flat>
-			<v-list>
+			<v-list dark>
 				<v-list-tile @click="DisplayProjects">
 					<v-list-tile-title class="subheading">
 						Project Manager

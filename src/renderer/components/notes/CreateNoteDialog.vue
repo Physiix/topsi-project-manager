@@ -6,6 +6,7 @@
 				<v-container>
 					<v-text-field label="Title" v-model="title"></v-text-field>
 					<v-text-field label="Description" v-model="description"></v-text-field>
+					<v-select auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 				</v-container>
 				<v-card-actions>
 					<v-spacer></v-spacer>
@@ -28,8 +29,14 @@ export default {
 	},
 	data() {
 		return {
-			title: '',
-			description: ''
+			title: null,
+			description: null,
+			category: { text: 'TODO', tag: 'todo' },
+			items: [
+				{ text: 'TODO', tag: 'todo' },
+				{ text: 'In Progress', tag: 'in_progress' },
+				{ text: 'Done', tag: 'done' },
+			]
 		}
 	},
 	computed: {
@@ -45,7 +52,18 @@ export default {
 	},
 	methods: {
 		CreateNote() {
+			const project_id = this.$store.state.AppStore.openedProjectId;
+			this.$store.commit('CreateNote', {
+				project_id: project_id,
+				title: this.title,
+				description: this.description,
+				category: this.category.tag
+			});
 
+			// Cleaning up
+			this.category = { text: 'TODO', tag: 'todo' };
+			this.title = this.description = null;
+			this.createNote = false;
 		}
 	},
 }

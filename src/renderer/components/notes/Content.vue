@@ -29,12 +29,11 @@ export default {
 	},
 	computed: {
 		title() {
-			console.log(this.tag == 'todo' ? 'TODO' : this.tag == 'in_progress' ? 'In Progress' : 'Done');
 			return this.tag == 'todo' ? 'TODO' : this.tag == 'in_progress' ? 'In Progress' : 'Done';
 		},
 
 		notes() {
-			return this.$store.getters.GetNotesById(this.$store.state.AppStore.openedProjectId);
+			return this.$store.getters.GetNotesById(this.$store.state.AppStore.openedProjectId).filter(note => note.category == this.tag);
 		}
 	},
 	methods: {

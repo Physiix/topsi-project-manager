@@ -46,5 +46,37 @@
       "title": "Tes",
       "description": "test"
     }
-  ]
+  ],
+  "notes_id": 4,
+  "notes": [
+    {
+      "id": 0,
+      "project_id": 0,
+      "title": "sdf",
+      "description": "sdf",
+      "category": "todo"
+    },
+    {
+      "id": 1,
+      "project_id": 0,
+      "title": "test",
+      "description": "tse",
+      "category": "done"
+    },
+    {
+      "id": 2,
+      "project_id": 0,
+      "title": "sdfsd",
+      "description": "fsd",
+      "category": "in_progress"
+    },
+    {
+      "id": 3,
+      "project_id": 0,
+      "title": "sdfsd",
+      "description": "sdf",
+      "category": "in_progress"
+    }
+  ],
+  "dark_mode": true
 }
