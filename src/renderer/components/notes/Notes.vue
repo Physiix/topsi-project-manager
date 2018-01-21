@@ -1,9 +1,25 @@
 <template>
-	<v-container>
-		{{project.title}}
-	</v-container>
+	<div id="notes_container">
+		<div id="left_container" class="primary">
+			<v-toolbar fixed></v-toolbar>
+			<v-card v-for="i in 20" :key="i" class="ma-3">
+				<v-card-text>test</v-card-text>
+			</v-card>
+		</div>
+		<div id="center_container" class="red">
+			<v-card v-for="i in 20" :key="i" class="ma-3">
+				<v-card-text>test</v-card-text>
+			</v-card>
+		</div>
+		<div id="right_container" class="yellow">
+			<v-card v-for="i in 20" :key="i" class="ma-3">
+				<v-card-text>test</v-card-text>
+			</v-card>
+		</div>
+	</div>
 </template>
 <script>
+import PaneManager from '../../../../libs/panes/out/Pane'
 
 export default {
 	name: 'Notes',
@@ -21,17 +37,36 @@ export default {
 	computed: {
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
-			const project = this.$store.getters.GetProjectById(id);
-			console.log(project);
-			return project;
+			return this.$store.getters.GetProjectById(id);
 		}
 	},
 	methods: {
 
 	},
+
+	mounted() {
+		const container = PaneManager.createPaneFromId('notes_container', 1);
+
+		const left_container = PaneManager.createPaneFromId('left_container', 1);
+		const center_container = PaneManager.createPaneFromId('center_container', 1);
+		const right_container = PaneManager.createPaneFromId('right_container', 1);
+
+		container.addView('left_view', 0.333);
+		container.addView('center_view', 0.333);
+		container.addView('right_view', 0.3333);
+
+		container.attach(left_container, 'left_view');
+		container.attach(center_container, 'center_view');
+		container.attach(right_container, 'right_view');
+
+		const drawerWidth = 200;
+		const widthOffset = drawerWidth + 4; // Drawer Width + Scrollbar width
+
+		container.render(drawerWidth, 0, window.innerWidth - widthOffset, window.innerHeight);
+		window.addEventListener('resize', () => container.render(drawerWidth, 0, window.innerWidth - widthOffset, window.innerHeight));
+	}
 }
 </script>
 
-<style scoped>
-
+<style >
 </style>

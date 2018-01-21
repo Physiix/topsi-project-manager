@@ -2,8 +2,8 @@
 	<div>
 		<Drawer />
 		<v-content class="px-4">
-			<Projects v-if="displayProjects" />
-			<Notes v-else/>
+			<Projects v-show="displayProjects" />
+			<Notes v-show="!displayProjects" />
 		</v-content>
 	</div>
 
