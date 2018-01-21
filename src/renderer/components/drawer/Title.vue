@@ -2,7 +2,7 @@
 	<div>
 		<v-toolbar flat color="secondary">
 			<v-list>
-				<v-list-tile>
+				<v-list-tile @click="DisplayProjects">
 					<v-list-tile-title class="title">
 						Project Manager
 					</v-list-tile-title>
@@ -15,22 +15,10 @@
 
 export default {
 	name: 'Title',
-	components: {
-
-	},
-	props: {
-
-	},
-	data() {
-		return {
-
-		}
-	},
-	computed: {
-
-	},
 	methods: {
-
+		DisplayProjects() {
+			this.$store.commit('OpenProject', -1);
+		}
 	},
 }
 </script>

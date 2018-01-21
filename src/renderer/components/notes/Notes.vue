@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<v-container>
 		{{project.title}}
-	</div>
+	</v-container>
 </template>
 <script>
 
