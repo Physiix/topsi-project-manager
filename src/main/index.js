@@ -3,6 +3,10 @@ import {
 	BrowserWindow
 } from 'electron'
 
+import {
+	dbUtils
+} from '../core/database'
+
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -21,15 +25,21 @@ function createWindow() {
 	 * Initial window options
 	 */
 	mainWindow = new BrowserWindow({
-		height: 563,
+		width: dbUtils.GetValue('window_width', 800),
+		height: dbUtils.GetValue('window_height', 600),
 		useContentSize: true,
-		width: 1000,
 	})
 
 	// Disable the default menu
 	mainWindow.setMenu(null);
 
 	mainWindow.loadURL(winURL)
+
+	mainWindow.on('resize', () => {
+		const rect = mainWindow.getBounds();
+		dbUtils.SetValue('window_width', rect.width);
+		dbUtils.SetValue('window_height', rect.height);
+	})
 
 	mainWindow.on('closed', () => {
 		mainWindow = null

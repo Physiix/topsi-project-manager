@@ -85,5 +85,7 @@
       "category": "todo"
     }
   ],
-  "dark_mode": true
+  "dark_mode": true,
+  "window_width": 1219,
+  "window_height": 801
 }
