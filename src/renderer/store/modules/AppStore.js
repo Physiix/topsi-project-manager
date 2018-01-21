@@ -5,7 +5,10 @@ const state = {
 	},
 
 	// ID of the currently opened project.
-	openedProjectId: -1
+	openedProjectId: -1,
+
+	// Width of the main drawer
+	drawerWidth: 200
 }
 
 const mutations = {

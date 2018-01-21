@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-navigation-drawer fixed app permanent width="200">
+		<v-navigation-drawer fixed app permanent :width="drawerWidth">
 			<Title />
 			<v-divider></v-divider>
 			<Content />
@@ -17,19 +17,10 @@ export default {
 		Title,
 		Content
 	},
-	props: {
-
-	},
-	data() {
-		return {
-
-		}
-	},
 	computed: {
-
-	},
-	methods: {
-
+		drawerWidth() {
+			return this.$store.state.AppStore.drawerWidth;
+		}
 	},
 }
 </script>

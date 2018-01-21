@@ -1,30 +1,24 @@
 <template>
 	<div id="notes_container">
-		<div id="left_container" class="primary">
-			<v-toolbar fixed></v-toolbar>
-			<v-card v-for="i in 20" :key="i" class="ma-3">
-				<v-card-text>test</v-card-text>
-			</v-card>
+		<div id="left_container">
+			<Content tag="todo" />
 		</div>
-		<div id="center_container" class="red">
-			<v-card v-for="i in 20" :key="i" class="ma-3">
-				<v-card-text>test</v-card-text>
-			</v-card>
+		<div id="center_container">
+			<Content tag="in_progress" />
 		</div>
-		<div id="right_container" class="yellow">
-			<v-card v-for="i in 20" :key="i" class="ma-3">
-				<v-card-text>test</v-card-text>
-			</v-card>
+		<div id="right_container">
+			<Content tag="done" />
 		</div>
 	</div>
 </template>
 <script>
+import Content from './Content.vue'
 import PaneManager from '../../../../libs/panes/out/Pane'
 
 export default {
 	name: 'Notes',
 	components: {
-
+		Content
 	},
 	props: {
 
@@ -59,7 +53,7 @@ export default {
 		container.attach(center_container, 'center_view');
 		container.attach(right_container, 'right_view');
 
-		const drawerWidth = 200;
+		const drawerWidth = this.$store.state.AppStore.drawerWidth;
 		const widthOffset = drawerWidth + 4; // Drawer Width + Scrollbar width
 
 		container.render(drawerWidth, 0, window.innerWidth - widthOffset, window.innerHeight);
