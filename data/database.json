@@ -47,7 +47,7 @@
       "description": "test"
     }
   ],
-  "notes_id": 4,
+  "notes_id": 5,
   "notes": [
     {
       "id": 0,
@@ -76,6 +76,13 @@
       "title": "sdfsd",
       "description": "sdf",
       "category": "in_progress"
+    },
+    {
+      "id": 4,
+      "project_id": 0,
+      "title": "adsdasd",
+      "description": "lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk ",
+      "category": "todo"
     }
   ],
   "dark_mode": true

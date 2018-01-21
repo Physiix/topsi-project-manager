@@ -5,7 +5,7 @@
 				<v-card-title>New Project</v-card-title>
 				<v-container>
 					<v-text-field label="Title" v-model="title"></v-text-field>
-					<v-text-field label="Description" v-model="description"></v-text-field>
+					<v-text-field label="Description" v-model="description" multi-line></v-text-field>
 				</v-container>
 				<v-card-actions>
 					<v-spacer></v-spacer>

@@ -6,18 +6,19 @@
 					{{title}}
 				</v-toolbar-title>
 			</v-toolbar>
-			<v-card v-for="(note, index) in notes" :key="index" class="ma-3">
-				<v-card-text>{{note.title}}</v-card-text>
-			</v-card>
+			<div v-for="(note, index) in notes" :key="index">
+				<Note :note="note" />
+			</div>
 		</main>
 	</div>
 </template>
 <script>
+import Note from './Note.vue'
 
 export default {
 	name: 'Content',
 	components: {
-
+		Note
 	},
 	props: {
 		tag: String
