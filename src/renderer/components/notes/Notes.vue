@@ -1,30 +1,38 @@
 <template>
-	<div id="notes_container">
-		<div id="left_container">
-			<Content tag="todo" />
-		</div>
-		<div id="center_container">
-			<Content tag="in_progress" />
-		</div>
-		<div id="right_container">
-			<Content tag="done" />
+	<div>
+		<CreateNoteDialog />
+		<AddNoteButton />
+		<div id="notes_container">
+			<div id="left_container">
+				<Content tag="todo" />
+			</div>
+			<div id="center_container">
+				<Content tag="in_progress" />
+			</div>
+			<div id="right_container">
+				<Content tag="done" />
+			</div>
 		</div>
 	</div>
 </template>
 <script>
+import AddNoteButton from './AddNoteButton.vue'
+import CreateNoteDialog from './CreateNoteDialog.vue'
 import Content from './Content.vue'
 import PaneManager from '../../../../libs/panes/out/Pane'
 
 export default {
 	name: 'Notes',
 	components: {
+		CreateNoteDialog,
+		AddNoteButton,
 		Content
 	},
 	computed: {
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
 			return this.$store.getters.GetProjectById(id);
-		}
+		},
 	},
 	methods: {
 
