@@ -1,0 +1,3 @@
+[submodule "libs/panes"]
+	path = libs/panes
+	url = https://github.com/Physiix/panes.git
