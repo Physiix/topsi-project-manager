@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<v-toolbar flat color="secondary">
+		<v-toolbar flat>
 			<v-list>
 				<v-list-tile @click="DisplayProjects">
-					<v-list-tile-title class="title">
+					<v-list-tile-title class="subheading">
 						Project Manager
 					</v-list-tile-title>
 				</v-list-tile>

@@ -20,14 +20,6 @@ export default {
 	components: {
 		Content
 	},
-	props: {
-
-	},
-	data() {
-		return {
-
-		}
-	},
 	computed: {
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
