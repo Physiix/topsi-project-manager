@@ -6,7 +6,8 @@ const state = {
 	// Contains all the flags about dialogs.
 	dialogs: {
 		createProject: false,
-		createNote: false
+		createNote: false,
+		showSettings: false
 	},
 
 	// ID of the currently opened project.
@@ -16,7 +17,7 @@ const state = {
 	drawerWidth: 200,
 
 	// Whether dark mode is enabled or not.
-	darkMode: dbUtils.GetValue('dark_mode', true)
+	darkMode: dbUtils.GetValue('dark_mode', true),
 }
 
 const mutations = {
@@ -32,8 +33,13 @@ const mutations = {
 		state.openedProjectId = id;
 	},
 
-	SetDarkMode(state) {
-		return value => dbUtils.SetValue('dark_mode', value);
+	SetDarkMode(state, value) {
+		state.darkMode = value;
+		dbUtils.SetValue('dark_mode', value);
+	},
+
+	ShowSettings(state, value) {
+		state.dialogs.showSettings = !state.dialogs.showSettings;
 	}
 }
 

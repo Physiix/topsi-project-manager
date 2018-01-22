@@ -20,7 +20,7 @@ export default {
 	computed: {
 		drawerWidth() {
 			return this.$store.state.AppStore.drawerWidth;
-		}
+		},
 	},
 }
 </script>

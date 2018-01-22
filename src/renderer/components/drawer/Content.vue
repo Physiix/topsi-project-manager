@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<Settings />
 		<v-list dense class="pt-0">
 			<v-list-tile v-for="item in items" :key="item.title" @click="item.action()">
 				<v-list-tile-action>
@@ -13,11 +14,12 @@
 	</div>
 </template>
 <script>
+import Settings from './Settings.vue'
 
 export default {
 	name: 'Content',
 	components: {
-
+		Settings
 	},
 	props: {
 
@@ -37,7 +39,8 @@ export default {
 
 				{
 					title: 'Settings',
-					icon: 'settings'
+					icon: 'settings',
+					action: () => this.$store.commit('ShowSettings', true)
 				},
 			]
 		}
