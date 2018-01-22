@@ -54,12 +54,12 @@ class Git {
 			github.gists.get({
 				id: this.userInfo.gist_id
 			}).then(gist => {
-				// Update the content of the file.
+				// Update the content of the gist.
 				github.gists.edit({
 					id: this.userInfo.gist_id,
 					filename: name,
 					content: content
-				})
+				}).then(() => resolve()).catch(error => reject(error));
 			}).catch((error) => {
 				// Create Gist since it doesn't exist
 				github.gists.create({
@@ -68,11 +68,8 @@ class Git {
 					files: {
 						name: content
 					}
-				})
+				}).then(() => resolve()).catch(error => reject(error));
 			});
-
-			// Saving the content to gist.
-
 		});
 	}
 
@@ -81,7 +78,11 @@ class Git {
 	 * @param {*String} name Name of the gist to load.
 	 */
 	LoadGist(name) {
-
+		return new Promise((resolve, reject) => {
+			github.gists.get(this.userInfo.gist_id).then(gist => {
+				console.log('error');
+			}).catch(error => reject(error));
+		})
 	}
 
 	/**
