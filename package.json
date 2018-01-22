@@ -51,8 +51,10 @@
     }
   },
   "dependencies": {
+    "@types/github": "^7.1.0",
     "axios": "^0.16.1",
     "font-awesome": "^4.7.0",
+    "github": "^13.1.0",
     "lowdb": "^1.0.0",
     "path": "^0.12.7",
     "vue": "^2.3.3",
