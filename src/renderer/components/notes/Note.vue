@@ -21,7 +21,8 @@ export default {
 				this.$store.commit('SetMenuData', {
 					show: true,
 					x: e.clientX,
-					y: e.clientY
+					y: e.clientY,
+					note: this.note
 				})
 			})
 		}

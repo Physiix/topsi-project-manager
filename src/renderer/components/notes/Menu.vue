@@ -2,7 +2,7 @@
 	<div>
 		<v-menu offset-y v-model="showMenu" absolute :position-x="x" :position-y="y">
 			<v-list>
-				<v-list-tile v-for="item in items" :key="item.title" @click="">
+				<v-list-tile v-for="item in items" :key="item.title" @click="item.action()">
 					<v-list-tile-title>{{ item.title }}</v-list-tile-title>
 				</v-list-tile>
 			</v-list>
@@ -13,16 +13,13 @@
 
 export default {
 	name: 'Menu',
-	components: {
-
-	},
-	props: {
-
-	},
 	data() {
 		return {
 			items: [
-				{ title: 'Edit' },
+				{
+					title: 'Edit',
+					action: () => this.$store.commit('EditNote')
+				},
 				{ title: 'Archieve' },
 				{ title: 'Remove' },
 			]
@@ -31,7 +28,7 @@ export default {
 	computed: {
 		showMenu: {
 			get() {
-				return this.$store.state.AppStore.menu.show;
+				return this.$store.state.NotesStore.menu.show;
 			},
 
 			set(value) {
@@ -41,7 +38,7 @@ export default {
 
 		x: {
 			get() {
-				return this.$store.state.AppStore.menu.x;
+				return this.$store.state.NotesStore.menu.x;
 			},
 
 			set(value) {
@@ -51,16 +48,13 @@ export default {
 
 		y: {
 			get() {
-				return this.$store.state.AppStore.menu.y;
+				return this.$store.state.NotesStore.menu.y;
 			},
 
 			set(value) {
 				this.$store.commit('SetMenuY', value);
 			}
 		},
-	},
-	methods: {
-
 	},
 }
 </script>

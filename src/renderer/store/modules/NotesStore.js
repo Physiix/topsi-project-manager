@@ -14,7 +14,16 @@ class Note {
 }
 
 const state = {
-	notes: dbUtils.GetAll('notes', 'id')
+	// Contains all the notes.
+	notes: dbUtils.GetAll('notes', 'id'),
+
+	// Flag to show or hide a menu for items
+	menu: {
+		show: false,
+		x: 0,
+		y: 0,
+		note: null
+	}
 }
 
 const getters = {
@@ -44,6 +53,30 @@ const mutations = {
 
 		// Update the state
 		state.notes = dbUtils.GetAll('notes', 'id');
+	},
+
+	SetShowMenu(state, value) {
+		state.menu.show = value;
+	},
+
+	SetMenuX(state, value) {
+		state.menu.x = value;
+	},
+
+	SetMenuY(state, value) {
+		state.menu.y = value;
+	},
+
+	SetMenuData(state, data) {
+		state.menu.show = data.show;
+		state.menu.x = data.x;
+		state.menu.y = data.y;
+		state.menu.note = data.note;
+	},
+
+	EditNote(state) {
+		const note = state.menu.note;
+		console.log(note.title)
 	}
 }
 
