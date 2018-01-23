@@ -34,9 +34,9 @@ export default {
 				},
 				{
 					title: 'Sync Database',
-					icon: 'sync'
+					icon: 'sync',
+					action: () => this.$store.dispatch('SyncGist')
 				},
-
 				{
 					title: 'Settings',
 					icon: 'settings',

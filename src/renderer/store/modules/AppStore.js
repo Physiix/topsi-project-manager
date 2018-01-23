@@ -1,6 +1,9 @@
 import {
 	dbUtils
 } from '../../../core/database'
+import {
+	git
+} from '../../../core/git';
 
 const state = {
 	// Contains all the flags about dialogs.
@@ -18,6 +21,9 @@ const state = {
 
 	// Whether dark mode is enabled or not.
 	darkMode: dbUtils.GetValue('dark_mode', true),
+
+	// Information about the github profile
+	gitUserInfo: dbUtils.GetValue('git_user_info', {})
 }
 
 const mutations = {
@@ -49,8 +55,35 @@ const getters = {
 	}
 }
 
+const actions = {
+	/**
+	 * Sync the content of the database with the upstream gist file.
+	 * @param {*Context} context Store context.
+	 */
+	SyncGist(context) {
+		return new Promise((resolve, reject) => {
+			// Check if the user data are valid
+			if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')
+				return reject('Invalid git user data.');
+
+			// Authenticate the user to github.
+			git.Authenticate({
+				username: context.state.gitUserInfo.username,
+				repository_token: context.state.gitUserInfo.repository_token,
+				gist_id: dbUtils.GetValue('gist_id', '')
+			});
+
+			// Save the database data in the repository.
+			git.SaveGist('database.json', 'test Updated').then(result => {
+				dbUtils.SetValue('gist_id', result.data.id);
+			})
+		});
+	}
+}
+
 export default {
 	state,
 	getters,
-	mutations
+	mutations,
+	actions
 }

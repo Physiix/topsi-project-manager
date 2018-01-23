@@ -1,9 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import Github from "github";
-import {
-	dbUtils
-} from './database'
 
 const github = new Github();
 
@@ -12,13 +9,6 @@ class GitUserInfo {
 		this.username = ''
 		this.repository_token = ''
 		this.gist_id = ''
-	}
-
-	/**
-	 * Check if the User information are valid.
-	 */
-	IsValid() {
-		return this.username != '' && this.repository_token != '' && this.gist_id != '';
 	}
 }
 
@@ -56,19 +46,25 @@ class Git {
 			}).then(gist => {
 				// Update the content of the gist.
 				github.gists.edit({
+					description: '',
+					files: {
+						name: {
+							content: content
+						}
+					},
 					id: this.userInfo.gist_id,
-					filename: name,
-					content: content
-				}).then(() => resolve()).catch(error => reject(error));
+				}).then((result) => resolve(result)).catch(error => reject(error));
 			}).catch((error) => {
 				// Create Gist since it doesn't exist
 				github.gists.create({
 					public: false,
 					description: '',
 					files: {
-						name: content
+						name: {
+							content: content
+						}
 					}
-				}).then(() => resolve()).catch(error => reject(error));
+				}).then(result => resolve(result)).catch(error => reject(error));
 			});
 		});
 	}
@@ -86,11 +82,18 @@ class Git {
 	}
 
 	/**
+	 * Check if the User information are valid.
+	 */
+	IsValid(info) {
+		return info.username != null && info.username != '' && info.repository_token != null && info.repository_token != '';
+	}
+
+	/**
 	 * Authenticate the user to github.
 	 * @param {*GitUserInfo} GitInfo Information about the user.
 	 */
 	Authenticate(info) {
-		if (!info.IsValid())
+		if (!this.IsValid(info))
 			throw new Error("Invalid User Git Info.");
 
 		this.userInfo = info;
@@ -109,3 +112,5 @@ class Git {
 		}
 	}
 }
+
+export const git = new Git();
