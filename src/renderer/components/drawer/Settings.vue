@@ -1,36 +1,42 @@
 <template>
 	<div>
-		<v-dialog v-model="showSettings" max-width="300">
-			<v-card>
-				<v-card-text>Settings</v-card-text>
-				<v-container>
-					<v-checkbox label="Dark Mode" v-model="darkMode"></v-checkbox>
-				</v-container>
-			</v-card>
+		<v-dialog v-model="showSettings" max-width="500">
+			<v-tabs fixed centered>
+				<v-tabs-bar class="secondary" dark>
+					<v-tabs-slider class="secondary"></v-tabs-slider>
+					<v-tabs-item v-for="(tab, index) in tabs" :key="index" :href="'#tab-' + index">
+						{{ tab }}
+					</v-tabs-item>
+				</v-tabs-bar>
+				<v-tabs-items>
+					<v-tabs-content v-for="(tab, index) in tabs" :key="index" :id="'tab-' + index">
+						<GeneralSettings v-if="tab == 'General'" class="item" />
+						<GitSettings v-if="tab == 'Git'" class="item" />
+					</v-tabs-content>
+				</v-tabs-items>
+			</v-tabs>
 		</v-dialog>
 	</div>
 </template>
 <script>
+import GeneralSettings from './GeneralSettings.vue'
+import GitSettings from './GitSettings.vue'
 
 export default {
 	name: 'Settings',
 	components: {
-
+		GeneralSettings,
+		GitSettings
 	},
-	props: {
-
+	data() {
+		return {
+			tabs: [
+				'General',
+				'Git'
+			]
+		}
 	},
 	computed: {
-		darkMode: {
-			set(value) {
-				this.$store.commit('SetDarkMode', value);
-			},
-
-			get() {
-				return this.$store.state.AppStore.darkMode;
-			}
-		},
-
 		showSettings: {
 			set(value) {
 				this.$store.commit('ShowSettings', value);
@@ -48,5 +54,7 @@ export default {
 </script>
 
 <style scoped>
-
+.item{
+	 min-height:300px;
+}
 </style>

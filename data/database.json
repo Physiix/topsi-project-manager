@@ -85,8 +85,11 @@
       "category": "todo"
     }
   ],
-  "dark_mode": true,
+  "dark_mode": false,
   "window_width": 1158,
   "window_height": 794,
-  "git_user_info": {}
+  "git_user_info": {
+    "username": "Physiix",
+    "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3"
+  }
 }

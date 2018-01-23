@@ -2,7 +2,8 @@ import {
 	dbUtils
 } from '../../../core/database'
 import {
-	git
+	git,
+	GitUserInfo
 } from '../../../core/git';
 
 const state = {
@@ -23,7 +24,7 @@ const state = {
 	darkMode: dbUtils.GetValue('dark_mode', true),
 
 	// Information about the github profile
-	gitUserInfo: dbUtils.GetValue('git_user_info', {})
+	gitUserInfo: dbUtils.GetValue('git_user_info', new GitUserInfo())
 }
 
 const mutations = {
@@ -46,6 +47,21 @@ const mutations = {
 
 	ShowSettings(state, value) {
 		state.dialogs.showSettings = !state.dialogs.showSettings;
+	},
+
+	SetUsername(state, username) {
+		state.gitUserInfo.username = username;
+		dbUtils.SetValue('git_user_info', state.gitUserInfo);
+	},
+
+	SetToken(state, token) {
+		state.gitUserInfo.repository_token = token;
+		dbUtils.SetValue('git_user_info', state.gitUserInfo);
+	},
+
+	SetGistId(state, gistId) {
+		state.gitUserInfo.gist_id = gistId;
+		dbUtils.SetValue('git_user_info', state.gitUserInfo);
 	}
 }
 
@@ -57,10 +73,10 @@ const getters = {
 
 const actions = {
 	/**
-	 * Sync the content of the database with the upstream gist file.
+	 * Upload the content of the database with the upstream gist file.
 	 * @param {*Context} context Store context.
 	 */
-	SyncGist(context) {
+	UploadGist(context) {
 		return new Promise((resolve, reject) => {
 			// Check if the user data are valid
 			if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')

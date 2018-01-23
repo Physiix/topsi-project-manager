@@ -4,7 +4,7 @@ import Github from "github";
 
 const github = new Github();
 
-class GitUserInfo {
+export class GitUserInfo {
 	constructor() {
 		this.username = ''
 		this.repository_token = ''
