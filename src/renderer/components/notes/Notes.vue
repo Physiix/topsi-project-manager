@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<CreateNoteDialog />
+		<Menu />
 		<div id="notes_container">
 			<div id="left_container">
 				<Content tag="todo" />
@@ -15,6 +16,7 @@
 	</div>
 </template>
 <script>
+import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from './CreateNoteDialog.vue'
 import Content from './Content.vue'
@@ -24,6 +26,7 @@ export default {
 	name: 'Notes',
 	components: {
 		CreateNoteDialog,
+		Menu,
 		Content
 	},
 	computed: {
@@ -32,10 +35,6 @@ export default {
 			return this.$store.getters.GetProjectById(id);
 		},
 	},
-	methods: {
-
-	},
-
 	mounted() {
 		const container = PaneManager.createPaneFromId('notes_container', 1);
 

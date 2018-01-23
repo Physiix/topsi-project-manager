@@ -24,7 +24,14 @@ const state = {
 	darkMode: dbUtils.GetValue('dark_mode', true),
 
 	// Information about the github profile
-	gitUserInfo: dbUtils.GetValue('git_user_info', new GitUserInfo())
+	gitUserInfo: dbUtils.GetValue('git_user_info', new GitUserInfo()),
+
+	// Flag to show or hide a menu for items
+	menu: {
+		show: false,
+		x: 0,
+		y: 0
+	}
 }
 
 const mutations = {
@@ -47,6 +54,24 @@ const mutations = {
 
 	ShowSettings(state, value) {
 		state.dialogs.showSettings = !state.dialogs.showSettings;
+	},
+
+	SetShowMenu(state, value) {
+		state.menu.show = value;
+	},
+
+	SetMenuX(state, value) {
+		state.menu.x = value;
+	},
+
+	SetMenuY(state, value) {
+		state.menu.y = value;
+	},
+
+	SetMenuData(state, data) {
+		state.menu.show = data.show;
+		state.menu.x = data.x;
+		state.menu.y = data.y;
 	},
 
 	SetUsername(state, username) {

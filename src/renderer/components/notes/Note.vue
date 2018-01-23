@@ -1,13 +1,7 @@
 <template>
 	<div>
-		<v-card class="ma-2">
-			<!-- <v-layout>
-				<v-spacer></v-spacer>
-				<v-btn class="color_btn red lighten-1 elevation-0"></v-btn>
-				<v-btn class="color_btn blue elevation-0"></v-btn>
-				<v-btn class="color_btn green elevation-0"></v-btn>
-			</v-layout> -->
-			<v-card-title>{{note.title}}</v-card-title>
+		<v-card class="ma-2" :class="note.color" @contextmenu="show">
+			<v-card-title class="py-2">{{note.title}}</v-card-title>
 			<v-divider></v-divider>
 			<v-card-text>{{note.description}}</v-card-text>
 		</v-card>
@@ -17,21 +11,20 @@
 
 export default {
 	name: 'Note',
-	components: {
-
-	},
 	props: {
 		note: Object
 	},
-	data() {
-		return {
-
-		}
-	},
-	computed: {
-	},
 	methods: {
-
+		show(e) {
+			e.preventDefault()
+			this.$nextTick(() => {
+				this.$store.commit('SetMenuData', {
+					show: true,
+					x: e.clientX,
+					y: e.clientY
+				})
+			})
+		}
 	},
 }
 </script>
