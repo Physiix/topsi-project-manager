@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@types/github": "^7.1.0",
+    "@types/vue": "^2.0.0",
     "axios": "^0.16.1",
     "font-awesome": "^4.7.0",
     "github": "^13.1.0",

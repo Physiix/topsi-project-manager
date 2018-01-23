@@ -18,7 +18,7 @@ export default {
 			items: [
 				{
 					title: 'Edit',
-					action: () => this.$store.commit('EditNote')
+					action: () => this.$store.commit('UpdateNoteDialog')
 				},
 				{ title: 'Archieve' },
 				{ title: 'Remove' },

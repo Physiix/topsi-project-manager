@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<CreateNoteDialog />
+		<UpdateNoteDialog />
 		<Menu />
 		<div id="notes_container">
 			<div id="left_container">
@@ -19,6 +20,7 @@
 import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from './CreateNoteDialog.vue'
+import UpdateNoteDialog from './UpdateNoteDialog.vue'
 import Content from './Content.vue'
 import PaneManager from '../../../../libs/panes/out/Pane'
 
@@ -26,6 +28,7 @@ export default {
 	name: 'Notes',
 	components: {
 		CreateNoteDialog,
+		UpdateNoteDialog,
 		Menu,
 		Content
 	},

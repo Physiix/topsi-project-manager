@@ -11,7 +11,8 @@ const state = {
 	dialogs: {
 		createProject: false,
 		createNote: false,
-		showSettings: false
+		showSettings: false,
+		updateNote: false
 	},
 
 	// ID of the currently opened project.
@@ -34,6 +35,10 @@ const mutations = {
 
 	CreateNoteDialog(state) {
 		state.dialogs.createNote = !state.dialogs.createNote;
+	},
+
+	UpdateNoteDialog(state) {
+		state.dialogs.updateNote = !state.dialogs.updateNote;
 	},
 
 	OpenProject(state, id) {

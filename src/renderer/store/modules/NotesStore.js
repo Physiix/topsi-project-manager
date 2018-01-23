@@ -72,11 +72,6 @@ const mutations = {
 		state.menu.x = data.x;
 		state.menu.y = data.y;
 		state.menu.note = data.note;
-	},
-
-	EditNote(state) {
-		const note = state.menu.note;
-		console.log(note.title)
 	}
 }
 
