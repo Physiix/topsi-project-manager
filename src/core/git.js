@@ -74,12 +74,15 @@ class Git {
 
 	/**
 	 * Load the content of a gist from remote.
-	 * @param {*String} name Name of the gist to load.
+	 * The Gist must already have been set and used to retrive
+	 * the data from remote.
 	 */
-	LoadGist(name) {
+	LoadGist() {
 		return new Promise((resolve, reject) => {
-			github.gists.get(this.userInfo.gist_id).then(gist => {
-				console.log('error');
+			github.gists.get({
+				id: this.userInfo.gist_id
+			}).then(gist => {
+				resolve(gist);
 			}).catch(error => reject(error));
 		})
 	}
@@ -98,10 +101,6 @@ class Git {
 	Authenticate(info) {
 		if (!this.IsValid(info))
 			throw new Error("Invalid User Git Info.");
-
-		// Check if already authenticated.
-		if (this.authenticated)
-			return;
 
 		// This will be set to false if the authentication fails.
 		this.userInfo = info;

@@ -60,6 +60,7 @@ const mutations = {
 	},
 
 	SetGistId(state, gistId) {
+		console.log('setting gist', gistId);
 		state.gitUserInfo.gist_id = gistId;
 		dbUtils.SetValue('git_user_info', state.gitUserInfo);
 	}
@@ -99,6 +100,34 @@ const actions = {
 				throw error;
 			});
 		});
+	},
+
+	DownloadGist(context) {
+		return new Promise((resolve, reject) => {
+			// Check if the user data are valid
+			if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')
+				return reject('Invalid git user data.');
+
+			// Authenticate the user to github.
+			git.Authenticate({
+				username: context.state.gitUserInfo.username,
+				repository_token: context.state.gitUserInfo.repository_token,
+				gist_id: context.state.gitUserInfo.gist_id
+			});
+
+			// Load the settings from the remote gist.
+			git.LoadGist().then(gist => {
+				require('fs').writeFile(dbUtils.GetPath(), gist.data.files['database.json'].content, (error) => {
+					if (error) reject(error);
+					else {
+						require('electron').remote.getCurrentWindow().webContents.reloadIgnoringCache();
+						resolve(gist.data);
+					}
+				})
+			}).catch(error => {
+				reject(error);
+			})
+		})
 	}
 }
 

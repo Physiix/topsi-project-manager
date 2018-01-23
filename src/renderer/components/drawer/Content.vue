@@ -40,7 +40,7 @@ export default {
 				{
 					title: 'Download Database',
 					icon: 'cloud_download',
-					action: () => this.$store.dispatch('UploadGist')
+					action: () => this.$store.dispatch('DownloadGist')
 				},
 				{
 					title: 'Settings',
