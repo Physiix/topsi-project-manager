@@ -40,15 +40,18 @@ class Git {
 			if (!this.authenticated)
 				return reject(Error("Git user must authenticated before Saving database in gist"));
 
+			// Simple description for the project.
+			const description = 'Project Manager database.';
+
 			// Check if the gist exists.
 			github.gists.get({
 				id: this.userInfo.gist_id
 			}).then(gist => {
 				// Update the content of the gist.
 				github.gists.edit({
-					description: '',
+					description: description,
 					files: {
-						name: {
+						'database.json': {
 							content: content
 						}
 					},
@@ -58,9 +61,9 @@ class Git {
 				// Create Gist since it doesn't exist
 				github.gists.create({
 					public: false,
-					description: '',
+					description: description,
 					files: {
-						name: {
+						'database.json': {
 							content: content
 						}
 					}
@@ -96,8 +99,12 @@ class Git {
 		if (!this.IsValid(info))
 			throw new Error("Invalid User Git Info.");
 
-		this.userInfo = info;
+		// Check if already authenticated.
+		if (this.authenticated)
+			return;
+
 		// This will be set to false if the authentication fails.
+		this.userInfo = info;
 		this.authenticated = true;
 
 		// Connecting to the github service

@@ -1,5 +1,5 @@
 {
-  "projects_id": 9,
+  "projects_id": 11,
   "projects": [
     {
       "id": 0,
@@ -45,6 +45,16 @@
       "id": 8,
       "title": "Tes",
       "description": "test"
+    },
+    {
+      "id": 9,
+      "title": "test",
+      "description": "test"
+    },
+    {
+      "id": 10,
+      "title": "test",
+      "description": "test"
     }
   ],
   "notes_id": 5,
@@ -85,11 +95,12 @@
       "category": "todo"
     }
   ],
-  "dark_mode": false,
-  "window_width": 1158,
-  "window_height": 794,
+  "dark_mode": true,
+  "window_width": 1370,
+  "window_height": 819,
   "git_user_info": {
     "username": "Physiix",
-    "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3"
+    "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3",
+    "gist_id": "0dc7ecfa52b0b178dda568a0ff16a00a"
   }
 }

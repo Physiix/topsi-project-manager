@@ -18,7 +18,7 @@ const state = {
 	openedProjectId: -1,
 
 	// Width of the main drawer
-	drawerWidth: 200,
+	drawerWidth: 210,
 
 	// Whether dark mode is enabled or not.
 	darkMode: dbUtils.GetValue('dark_mode', true),
@@ -86,13 +86,18 @@ const actions = {
 			git.Authenticate({
 				username: context.state.gitUserInfo.username,
 				repository_token: context.state.gitUserInfo.repository_token,
-				gist_id: dbUtils.GetValue('gist_id', '')
+				gist_id: context.state.gitUserInfo.gist_id
 			});
 
+			// Retrieve data from the database.
+			const data = JSON.stringify(dbUtils.context);
+
 			// Save the database data in the repository.
-			git.SaveGist('database.json', 'test Updated').then(result => {
-				dbUtils.SetValue('gist_id', result.data.id);
-			})
+			git.SaveGist('database.json', data).then(result => {
+				context.commit('SetGistId', result.data.id);
+			}).catch(error => {
+				throw error;
+			});
 		});
 	}
 }

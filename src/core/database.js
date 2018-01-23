@@ -15,11 +15,12 @@ if (!fs.existsSync(dataPath))
 const adapter = new FileSync(dbFilePath);
 const db = new lowdb(adapter);
 
-
 //Class containing all kind of helper functions to access
 //write and alter the local database.
 class DBUtils {
-	constructor() {}
+	constructor() {
+		this.context = db;
+	}
 
 	/**
 	 * Set a value in the Database.
@@ -27,7 +28,7 @@ class DBUtils {
 	 * @param {*any} value Value of the value to set.
 	 */
 	SetValue(key, value) {
-		db.set(key, value).write();
+		this.context.set(key, value).write();
 	}
 
 	/**
@@ -45,7 +46,7 @@ class DBUtils {
 	//@param key Key of the value to fetch.
 	//@param defaultValue [optional] Default value to set if the value is not found.
 	GetValue(key, defaultValue = '') {
-		let value = db.get(key).value();
+		let value = this.context.get(key).value();
 		if (value == null) {
 			this.SetValue(key, defaultValue);
 			return this.GetValue(key, defaultValue);
@@ -58,11 +59,11 @@ class DBUtils {
 	//@object Object to store.
 	Write(table, object) {
 		// Create table if not set
-		if (db.get(table).value() == null)
+		if (this.context.get(table).value() == null)
 			this.SetValue(table, []);
 
 		// Writing the object
-		db.get(table).push(object).write();
+		this.context.get(table).push(object).write();
 	}
 
 	/**
@@ -71,14 +72,14 @@ class DBUtils {
 	 * @param {*object} condition Condition to test each entry with before deleting.
 	 */
 	Remove(table, condition) {
-		db.get(table).remove(condition).write();
+		this.context.get(table).remove(condition).write();
 	}
 
 	//Get all the entries from a table.
 	//@param table Table to retrieve the entries from.
 	//@orderBy [optional] Member data to order the list with.
 	GetAll(table, orderBy = null, filters = null) {
-		let result = db.get(table);
+		let result = this.context.get(table);
 
 		// Order the result if specified
 		if (orderBy != null)
@@ -96,7 +97,7 @@ class DBUtils {
 	// @param table Table to retrieve the data from.
 	// @param id Id of the entry to retrieve.
 	GetById(table, id) {
-		return db.get(table).filter({
+		return this.context.get(table).filter({
 			id: id
 		}).first().value();
 	}
@@ -105,7 +106,7 @@ class DBUtils {
 	// @param table Table to retrieve the data from.
 	// @param filter Object filtering the query.
 	GetBy(table, filter) {
-		return db.get(table).filter(filter).first().value();
+		return this.context.get(table).filter(filter).first().value();
 	}
 
 	/**
@@ -115,7 +116,15 @@ class DBUtils {
 	 * @param {*object} data Contains the new data to store within the object.
 	 */
 	Update(table, key, data) {
-		db.get(table).find(key).assign(data).write();
+		this.context.get(table).find(key).assign(data).write();
+	}
+
+	/**
+	 * Retrieve the absolute path of the file storing the database.
+	 * @return {*string} Path to the database.
+	 */
+	GetPath() {
+		return dbFilePath;
 	}
 }
 

@@ -33,9 +33,14 @@ export default {
 					action: () => this.$store.commit('CreateProjDialog')
 				},
 				{
-					title: 'Sync Database',
+					title: 'Upload Database',
 					icon: 'sync',
-					action: () => this.$store.dispatch('SyncGist')
+					action: () => this.$store.dispatch('UploadGist')
+				},
+				{
+					title: 'Download Database',
+					icon: 'cloud_download',
+					action: () => this.$store.dispatch('UploadGist')
 				},
 				{
 					title: 'Settings',
@@ -43,14 +48,6 @@ export default {
 					action: () => this.$store.commit('ShowSettings', true)
 				},
 			]
-		}
-	},
-	computed: {
-
-	},
-	methods: {
-		Handle(item) {
-			console.log(item.title);
 		}
 	},
 }
