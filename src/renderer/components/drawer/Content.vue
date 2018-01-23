@@ -24,17 +24,7 @@ export default {
 	},
 	data() {
 		return {
-			items: [
-				{
-					icon: 'add',
-					title: 'New Note',
-					action: () => this.$store.commit('CreateNoteDialog')
-				},
-				{
-					icon: 'edit',
-					title: 'Edit Mode'
-				}
-			]
+
 		}
 	},
 	computed: {
