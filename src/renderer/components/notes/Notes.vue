@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<CreateNoteDialog />
-		<AddNoteButton />
 		<div id="notes_container">
 			<div id="left_container">
 				<Content tag="todo" />
@@ -25,7 +24,6 @@ export default {
 	name: 'Notes',
 	components: {
 		CreateNoteDialog,
-		AddNoteButton,
 		Content
 	},
 	computed: {
