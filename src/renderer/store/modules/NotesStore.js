@@ -35,7 +35,7 @@ const getters = {
 const mutations = {
 	/**
 	 * This function checks if the note's data in param is valid
-	 * and add store it in the database. 
+	 * and store it in the database. 
 	 * @param {*State} state NotesStore state.
 	 * @param {*Note} data Contains the note's project id, title, description and category.
 	 */
@@ -55,6 +55,23 @@ const mutations = {
 		state.notes = dbUtils.GetAll('notes', 'id');
 	},
 
+	/**
+	 * This function checks if the note's data in param is valid
+	 * and update it in the database. 
+	 * @param {*State} state NotesStore state.
+	 * @param {*Note} data Contains the note's project id, title, description and category.
+	 */
+	UpdateNote(state, data) {
+		// Make sure the note's data is valid.
+		if (data.id == null || data.project_id == null || data.title == null || data.description == null || data.category == null)
+			throw new Error("Cannot update a note with invalid data ", data);
+
+		// Create the new note to store.
+		dbUtils.Update('notes', data.id, data);
+
+		// Update the state
+		state.notes = dbUtils.GetAll('notes', 'id');
+	},
 	SetShowMenu(state, value) {
 		state.menu.show = value;
 	},

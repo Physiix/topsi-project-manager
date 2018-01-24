@@ -31,16 +31,11 @@
 
 export default {
 	name: 'UpdateNoteDialog',
-	components: {
-
-	},
-	props: {
-
-	},
 	data() {
 		return {
 			title: null,
 			description: null,
+			id: null,
 			category: { text: 'TODO', tag: 'todo' },
 			items: [
 				{ text: 'TODO', tag: 'todo' },
@@ -75,6 +70,7 @@ export default {
 			const project_id = this.$store.state.AppStore.openedProjectId;
 			this.$store.commit('UpdateNote', {
 				project_id: project_id,
+				id: this.id,
 				title: this.title,
 				description: this.description,
 				category: this.category.tag,
@@ -93,6 +89,7 @@ export default {
 		// Make sure the edited note isn't invalid.
 		if (data == null) return;
 
+		this.id = data.id;
 		this.title = data.title;
 		this.description = data.description;
 		this.currentColor = data.color;
