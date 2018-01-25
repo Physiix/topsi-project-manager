@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<CreateNoteDialog />
-		<UpdateNoteDialog />
+		<CreateNoteDialog v-if="createDialog" />
+		<UpdateNoteDialog v-if="updateDialog" />
 		<Menu />
 		<div id="notes_container">
 			<div id="left_container">
@@ -37,6 +37,14 @@ export default {
 			const id = this.$store.state.AppStore.openedProjectId;
 			return this.$store.getters.GetProjectById(id);
 		},
+
+		createDialog() {
+			return this.$store.state.AppStore.dialogs.createNote
+		},
+
+		updateDialog() {
+			return this.$store.state.AppStore.dialogs.updateNote
+		}
 	},
 	mounted() {
 		const container = PaneManager.createPaneFromId('notes_container', 1);

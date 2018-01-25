@@ -57,30 +57,66 @@
       "description": "test"
     }
   ],
-  "notes_id": 11,
+  "notes_id": 15,
   "notes": [
     {
       "id": 9,
       "project_id": 0,
       "title": "tes",
       "description": "tsetsts",
-      "category": "todo",
+      "category": "done",
       "color": "primary white--text",
-      "timestamp": 1516914905386
+      "timestamp": 1516917306084
     },
     {
       "id": 10,
       "project_id": 0,
       "title": "sdf",
       "description": "sdfsdfsd",
-      "category": "in_progress",
+      "category": "done",
       "color": "secondary white--text",
-      "timestamp": 1516914899042
+      "timestamp": 1516917305615
+    },
+    {
+      "id": 11,
+      "project_id": 0,
+      "title": "tes",
+      "description": "tset",
+      "category": "done",
+      "color": "red white--text",
+      "timestamp": 1516917297388
+    },
+    {
+      "id": 12,
+      "project_id": 0,
+      "title": "test",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
+      "category": "todo",
+      "color": "",
+      "timestamp": 1516917344168
+    },
+    {
+      "id": 13,
+      "project_id": 0,
+      "title": "test",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
+      "category": "todo",
+      "color": "secondary white--text",
+      "timestamp": 1516917354586
+    },
+    {
+      "id": 14,
+      "project_id": 0,
+      "title": "test",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
+      "category": "todo",
+      "color": "primary white--text",
+      "timestamp": 1516917362133
     }
   ],
-  "dark_mode": true,
-  "window_width": 1370,
-  "window_height": 826,
+  "dark_mode": false,
+  "window_width": 1078,
+  "window_height": 815,
   "git_user_info": {
     "username": "Physiix",
     "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3",
