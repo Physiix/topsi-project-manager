@@ -15,7 +15,7 @@ class Note {
 
 const state = {
 	// Contains all the notes.
-	notes: dbUtils.GetAll('notes', 'id'),
+	notes: dbUtils.GetAll('notes', 'timestamp'),
 
 	// Flag to show or hide a menu for items
 	menu: {
@@ -70,7 +70,7 @@ const mutations = {
 		dbUtils.Update('notes', data.id, data);
 
 		// Update the state
-		state.notes = dbUtils.GetAll('notes', 'id');
+		state.notes = dbUtils.GetAll('notes', 'timestamp');
 	},
 
 	/**
@@ -89,7 +89,7 @@ const mutations = {
 		});
 
 		// Update the notes
-		state.notes = dbUtils.GetAll('notes', 'id');
+		state.notes = dbUtils.GetAll('notes', 'timestamp');
 	},
 
 	/**
@@ -111,7 +111,7 @@ const mutations = {
 		});
 
 		// Update the notes.
-		state.notes = dbUtils.GetAll('notes', 'id');
+		state.notes = dbUtils.GetAll('notes', 'timestamp');
 	},
 
 	/**
@@ -133,7 +133,7 @@ const mutations = {
 		});
 
 		// Update the notes.
-		state.notes = dbUtils.GetAll('notes', 'id');
+		state.notes = dbUtils.GetAll('notes', 'timestamp');
 	},
 
 	SetShowMenu(state, value) {

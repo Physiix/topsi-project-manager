@@ -62,6 +62,9 @@ class DBUtils {
 		if (this.context.get(table).value() == null)
 			this.SetValue(table, []);
 
+		// Adding timestamp.
+		object.timestamp = Date.now();
+
 		// Writing the object
 		this.context.get(table).push(object).write();
 	}
@@ -116,6 +119,10 @@ class DBUtils {
 	 * @param {*object} data Contains the new data to store within the object.
 	 */
 	Update(table, key, data) {
+		// Adding timestamp.
+		data.timestamp = Date.now();
+
+		// Updating the data
 		this.context.get(table).find(key).assign(data).write();
 	}
 

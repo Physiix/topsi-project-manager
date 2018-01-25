@@ -57,37 +57,25 @@
       "description": "test"
     }
   ],
-  "notes_id": 6,
+  "notes_id": 11,
   "notes": [
     {
-      "id": 0,
+      "id": 9,
+      "project_id": 0,
+      "title": "tes",
+      "description": "tsetsts",
+      "category": "todo",
+      "color": "primary white--text",
+      "timestamp": 1516914905386
+    },
+    {
+      "id": 10,
       "project_id": 0,
       "title": "sdf",
-      "description": "sdf",
-      "category": "todo",
-      "color": "primary white--text"
-    },
-    {
-      "id": 2,
-      "project_id": 0,
-      "title": "sdfsd",
-      "description": "fsd",
-      "category": "in_progress"
-    },
-    {
-      "id": 3,
-      "project_id": 0,
-      "title": "sdfsd",
-      "description": "sdf",
-      "category": "in_progress"
-    },
-    {
-      "id": 5,
-      "project_id": 0,
-      "title": "test",
-      "description": "test",
-      "category": "done",
-      "color": ""
+      "description": "sdfsdfsd",
+      "category": "in_progress",
+      "color": "secondary white--text",
+      "timestamp": 1516914899042
     }
   ],
   "dark_mode": true,
