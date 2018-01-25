@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<v-card class="ma-2" :class="note.color" @contextmenu="show">
-			<v-card-title class="py-2">{{note.title}}</v-card-title>
+			<v-card-title class="py-2">{{note.title}}
+			</v-card-title>
 			<v-divider></v-divider>
 			<v-card-text>{{note.description}}</v-card-text>
 		</v-card>

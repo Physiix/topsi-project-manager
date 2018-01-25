@@ -64,14 +64,8 @@
       "project_id": 0,
       "title": "sdf",
       "description": "sdf",
-      "category": "todo"
-    },
-    {
-      "id": 1,
-      "project_id": 0,
-      "title": "test",
-      "description": "tse",
-      "category": "done"
+      "category": "todo",
+      "color": "primary white--text"
     },
     {
       "id": 2,
@@ -86,18 +80,11 @@
       "title": "sdfsd",
       "description": "sdf",
       "category": "in_progress"
-    },
-    {
-      "id": 4,
-      "project_id": 0,
-      "title": "adsdasd",
-      "description": "lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk lorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjklorem dsfjk ",
-      "category": "todo"
     }
   ],
   "dark_mode": true,
-  "window_width": 1204,
-  "window_height": 801,
+  "window_width": 1370,
+  "window_height": 826,
   "git_user_info": {
     "username": "Physiix",
     "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3",

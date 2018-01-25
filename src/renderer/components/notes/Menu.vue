@@ -21,7 +21,10 @@ export default {
 					action: () => this.$store.commit('UpdateNoteDialog')
 				},
 				{ title: 'Archieve' },
-				{ title: 'Remove' },
+				{
+					title: 'Remove',
+					action: () => this.$store.commit('RemoveNote')
+				},
 			]
 		}
 	},

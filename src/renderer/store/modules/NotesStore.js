@@ -72,6 +72,26 @@ const mutations = {
 		// Update the state
 		state.notes = dbUtils.GetAll('notes', 'id');
 	},
+
+	/**
+	 * This function simply remove the note from the database.
+	 * @param {*State} state NotesStore state.
+	 * @param {*number} id Id of the note to remove.
+	 */
+	RemoveNote(state, id) {
+		// Check if the id is valid.
+		if (state.menu.note == null || state.menu.note.id == null)
+			return;
+
+		// Remove the note from the database.
+		dbUtils.Remove('notes', {
+			id: state.menu.note.id
+		});
+
+		// Update the notes
+		state.notes = dbUtils.GetAll('notes');
+	},
+
 	SetShowMenu(state, value) {
 		state.menu.show = value;
 	},

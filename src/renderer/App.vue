@@ -9,6 +9,7 @@
 <script>
 require('../../node_modules/vuetify/dist/vuetify.min.css');
 require('../../node_modules/font-awesome/css/font-awesome.min.css')
+
 export default {
 	name: 'project_manager',
 	computed: {
