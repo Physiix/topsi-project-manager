@@ -57,7 +57,7 @@
       "description": "test"
     }
   ],
-  "notes_id": 5,
+  "notes_id": 6,
   "notes": [
     {
       "id": 0,
@@ -80,6 +80,14 @@
       "title": "sdfsd",
       "description": "sdf",
       "category": "in_progress"
+    },
+    {
+      "id": 5,
+      "project_id": 0,
+      "title": "test",
+      "description": "test",
+      "category": "done",
+      "color": ""
     }
   ],
   "dark_mode": true,

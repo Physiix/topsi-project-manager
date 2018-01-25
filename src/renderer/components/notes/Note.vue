@@ -1,7 +1,14 @@
 <template>
 	<div>
 		<v-card class="ma-2" :class="note.color" @contextmenu="show">
-			<v-card-title class="py-2">{{note.title}}
+			<v-card-title class="py-0 pr-0">{{note.title}}
+				<v-spacer></v-spacer>
+				<v-btn class="mx-0" flat icon small v-if="note.category == 'done' || note.category == 'in_progress'" @click="MoveLeft">
+					<v-icon class="note_icon">keyboard_arrow_left</v-icon>
+				</v-btn>
+				<v-btn class="mx-0" flat icon small v-if="note.category == 'todo' || note.category == 'in_progress'" @click="MoveRight">
+					<v-icon class="note_icon">keyboard_arrow_right</v-icon>
+				</v-btn>
 			</v-card-title>
 			<v-divider></v-divider>
 			<v-card-text>{{note.description}}</v-card-text>
@@ -26,6 +33,14 @@ export default {
 					note: this.note
 				})
 			})
+		},
+
+		MoveRight() {
+			this.$store.commit('MoveNoteRight', this.note);
+		},
+
+		MoveLeft() {
+			this.$store.commit('MoveNoteLeft', this.note);
 		}
 	},
 }

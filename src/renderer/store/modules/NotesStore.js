@@ -89,7 +89,51 @@ const mutations = {
 		});
 
 		// Update the notes
-		state.notes = dbUtils.GetAll('notes');
+		state.notes = dbUtils.GetAll('notes', 'id');
+	},
+
+	/**
+	 * Move the note to the right.
+	 * @param {*State} state NotesStore state object.
+	 * @param {*} note Note to update.
+	 */
+	MoveNoteRight(state, note) {
+		// Check if the note is valid.
+		if (note == null || note.category == '' || note.category == 'done')
+			return;
+
+		// Updating the notes
+		note.category = (note.category == 'todo') ? 'in_progress' : 'done';
+		dbUtils.Update('notes', {
+			id: note.id
+		}, {
+			category: note.category
+		});
+
+		// Update the notes.
+		state.notes = dbUtils.GetAll('notes', 'id');
+	},
+
+	/**
+	 * Move the note to the right.
+	 * @param {*State} state NotesStore state object.
+	 * @param {*} note Note to update.
+	 */
+	MoveNoteLeft(state, note) {
+		// Check if the note is valid.
+		if (note == null || note.category == '' || note.category == 'todo')
+			return;
+
+		// Updating the notes
+		note.category = (note.category == 'done') ? 'in_progress' : 'todo';
+		dbUtils.Update('notes', {
+			id: note.id
+		}, {
+			category: note.category
+		});
+
+		// Update the notes.
+		state.notes = dbUtils.GetAll('notes', 'id');
 	},
 
 	SetShowMenu(state, value) {
