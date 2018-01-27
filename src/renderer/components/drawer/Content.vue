@@ -1,10 +1,8 @@
 <template>
 	<div>
 		<Settings />
-		<v-list dense class="pt-0">
-			<ProjectSettings v-if="displayProjects" />
-			<NotesSettings v-else/>
-		</v-list>
+		<ProjectSettings v-if="displayProjects" />
+		<NotesSettings v-else/>
 	</div>
 </template>
 <script>

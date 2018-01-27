@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<v-list dense class="pt-0">
 		<v-list-tile v-for="item in items" :key="item.title" @click="item.action()">
 			<v-list-tile-action>
 				<v-icon>{{ item.icon }}</v-icon>
@@ -8,7 +8,7 @@
 				<v-list-tile-title>{{ item.title }}</v-list-tile-title>
 			</v-list-tile-content>
 		</v-list-tile>
-	</div>
+	</v-list>
 </template>
 <script>
 

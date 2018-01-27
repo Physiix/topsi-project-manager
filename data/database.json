@@ -64,9 +64,9 @@
       "project_id": 0,
       "title": "tes",
       "description": "tsetsts",
-      "category": "done",
+      "category": "todo",
       "color": "primary white--text",
-      "timestamp": 1516917306084
+      "timestamp": 1517006853023
     },
     {
       "id": 10,
@@ -75,48 +75,48 @@
       "description": "sdfsdfsd",
       "category": "done",
       "color": "secondary white--text",
-      "timestamp": 1516917305615
+      "timestamp": 1517006846394
     },
     {
       "id": 11,
       "project_id": 0,
       "title": "tes",
       "description": "tset",
-      "category": "done",
+      "category": "todo",
       "color": "red white--text",
-      "timestamp": 1516917297388
+      "timestamp": 1517006851070
     },
     {
       "id": 12,
       "project_id": 0,
       "title": "test",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
-      "category": "todo",
+      "category": "in_progress",
       "color": "",
-      "timestamp": 1516917344168
+      "timestamp": 1517006853844
     },
     {
       "id": 13,
       "project_id": 0,
       "title": "test",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
-      "category": "todo",
+      "category": "done",
       "color": "secondary white--text",
-      "timestamp": 1516917354586
+      "timestamp": 1517006847046
     },
     {
       "id": 14,
       "project_id": 0,
       "title": "test",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
-      "category": "todo",
+      "category": "done",
       "color": "primary white--text",
-      "timestamp": 1516917362133
+      "timestamp": 1517006846871
     }
   ],
-  "dark_mode": false,
-  "window_width": 1078,
-  "window_height": 815,
+  "dark_mode": true,
+  "window_width": 1292,
+  "window_height": 823,
   "git_user_info": {
     "username": "Physiix",
     "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3",
