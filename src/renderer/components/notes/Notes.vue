@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<CreateNoteDialog v-if="createDialog" />
+		<CreateTimelineDialog/>
 		<UpdateNoteDialog v-if="updateDialog" />
 		<Menu />
 		<div id="notes_container">
@@ -20,6 +21,7 @@
 import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from './CreateNoteDialog.vue'
+import CreateTimelineDialog from './CreateTimelineDialog.vue'
 import UpdateNoteDialog from './UpdateNoteDialog.vue'
 import Content from './Content.vue'
 import PaneManager from '../../../../libs/panes/out/Pane'
@@ -28,6 +30,7 @@ export default {
 	name: 'Notes',
 	components: {
 		CreateNoteDialog,
+		CreateTimelineDialog,
 		UpdateNoteDialog,
 		Menu,
 		Content

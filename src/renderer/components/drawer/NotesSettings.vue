@@ -35,6 +35,11 @@ export default {
 					action: () => this.$store.commit('CreateNoteDialog')
 				},
 				{
+					icon: 'add',
+					title: 'New Timeline',
+					action: () => this.$store.commit('CreateTimelineDialog')
+				},
+				{
 					icon: 'edit',
 					title: 'Edit Mode'
 				}

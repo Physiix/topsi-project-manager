@@ -34,7 +34,7 @@ const mutations = {
 	 */
 	CreateTimeline(state, data) {
 		// Check if the data is valid.
-		if (data.title == null || data.title == '' || data.project_id == null || data.project_id == '')
+		if (data.title == null || data.title == '' || data.project_id == null)
 			return;
 
 		// Create the new timeline object

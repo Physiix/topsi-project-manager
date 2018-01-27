@@ -11,6 +11,7 @@ const state = {
 	dialogs: {
 		createProject: false,
 		createNote: false,
+		createTimeline: false,
 		showSettings: false,
 		updateNote: false
 	},
@@ -35,6 +36,10 @@ const mutations = {
 
 	CreateNoteDialog(state) {
 		state.dialogs.createNote = !state.dialogs.createNote;
+	},
+
+	CreateTimelineDialog(state) {
+		state.dialogs.createTimeline = !state.dialogs.createTimeline;
 	},
 
 	UpdateNoteDialog(state) {
