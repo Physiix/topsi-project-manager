@@ -154,6 +154,10 @@ const mutations = {
 		state.menu.x = data.x;
 		state.menu.y = data.y;
 		state.menu.note = data.note;
+	},
+
+	UpdateNotes() {
+		state.notes = dbUtils.GetAll('notes', 'timestamp');
 	}
 }
 

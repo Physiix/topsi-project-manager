@@ -17,8 +17,11 @@ export default {
 	name: 'Title',
 	methods: {
 		DisplayProjects() {
+			this.$store.commit('SetProjectTimelineId', {
+				project_id: this.$store.state.AppStore.openedProjectId,
+				timeline_id: this.$store.state.AppStore.currentTimelineId
+			});
 			this.$store.commit('OpenProject', -1);
-			this.$store.commit('SetCurrentTimelineId', 0);
 		}
 	},
 }

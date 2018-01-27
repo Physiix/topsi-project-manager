@@ -1,162 +1,75 @@
 {
-  "projects_id": 12,
+  "dark_mode": true,
+  "git_user_info": {
+    "username": "",
+    "repository_token": "",
+    "gist_id": ""
+  },
+  "projects_id": 2,
+  "timelines_id": 4,
   "projects": [
     {
       "id": 0,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
+      "title": "tset",
+      "description": "tset",
+      "opened_timeline_id": 1,
+      "timestamp": 1517017305752
     },
     {
       "id": 1,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
-    },
-    {
-      "id": 2,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
-    },
-    {
-      "id": 3,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
-    },
-    {
-      "id": 4,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
-    },
-    {
-      "id": 5,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
-    },
-    {
-      "id": 6,
-      "title": "Test",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, enim. Quam cupiditate tempore modi soluta voluptatem nihil voluptates id debitis aperiam aspernatur, dignissimos, ducimus reprehenderit velit natus sed vitae autem?"
-    },
-    {
-      "id": 7,
       "title": "test",
-      "description": "tests"
-    },
-    {
-      "id": 8,
-      "title": "Tes",
-      "description": "test"
-    },
-    {
-      "id": 9,
-      "title": "test",
-      "description": "test"
-    },
-    {
-      "id": 10,
-      "title": "test",
-      "description": "test"
-    },
-    {
-      "id": 11,
-      "title": "fsdfsd",
-      "description": "sdfds",
-      "timestamp": 1517016023468
+      "description": "setsets",
+      "opened_timeline_id": 2,
+      "timestamp": 1517017301844
     }
   ],
-  "notes_id": 16,
-  "notes": [
-    {
-      "id": 9,
-      "project_id": 0,
-      "title": "tes",
-      "description": "tsetsts",
-      "category": "todo",
-      "color": "primary white--text",
-      "timestamp": 1517006853023
-    },
-    {
-      "id": 10,
-      "project_id": 0,
-      "title": "sdf",
-      "description": "sdfsdfsd",
-      "category": "done",
-      "color": "secondary white--text",
-      "timestamp": 1517006846394
-    },
-    {
-      "id": 11,
-      "project_id": 0,
-      "title": "tes",
-      "description": "tset",
-      "category": "todo",
-      "color": "red white--text",
-      "timestamp": 1517006851070
-    },
-    {
-      "id": 12,
-      "project_id": 0,
-      "title": "test",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
-      "category": "in_progress",
-      "color": "",
-      "timestamp": 1517006853844
-    },
-    {
-      "id": 13,
-      "project_id": 0,
-      "title": "test",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
-      "category": "done",
-      "color": "secondary white--text",
-      "timestamp": 1517006847046
-    },
-    {
-      "id": 14,
-      "project_id": 0,
-      "title": "test",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quo eos, similique in minus repellat repudiandae cupiditate deserunt maiores nobis enim. Quidem in aliquid veritatis atque voluptas? Earum, hic minima.",
-      "category": "done",
-      "color": "primary white--text",
-      "timestamp": 1517006846871
-    },
-    {
-      "id": 15,
-      "project_id": 11,
-      "title": "asdasd",
-      "description": "asdasdsa",
-      "category": "in_progress",
-      "color": "red white--text",
-      "timeline_id": 1,
-      "timestamp": 1517016036668
-    }
-  ],
-  "dark_mode": false,
-  "window_width": 1292,
-  "window_height": 823,
-  "git_user_info": {
-    "username": "Physiix",
-    "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3",
-    "gist_id": "6e5f051813291e3c00ee7219f37263d3"
-  },
-  "timelines_id": 3,
   "timelines": [
     {
       "id": 0,
-      "title": "tset",
       "project_id": 0,
-      "timestamp": 1517012728804
+      "title": "Default",
+      "timestamp": 1517016839449
     },
     {
       "id": 1,
-      "project_id": 11,
-      "title": "Default",
-      "timestamp": 1517016023469
+      "title": "test",
+      "project_id": 0,
+      "timestamp": 1517016859375
     },
     {
       "id": 2,
-      "title": "adasdasdd",
-      "project_id": 11,
-      "timestamp": 1517016032911
+      "project_id": 1,
+      "title": "Default",
+      "timestamp": 1517017263917
+    },
+    {
+      "id": 3,
+      "title": "sfdsdfsd",
+      "project_id": 1,
+      "timestamp": 1517017284873
+    }
+  ],
+  "notes_id": 2,
+  "notes": [
+    {
+      "id": 0,
+      "project_id": 0,
+      "title": "tset",
+      "description": "test",
+      "category": "in_progress",
+      "color": "red white--text",
+      "timeline_id": 1,
+      "timestamp": 1517017304756
+    },
+    {
+      "id": 1,
+      "project_id": 1,
+      "title": "tests",
+      "description": "sdfsd",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 2,
+      "timestamp": 1517017271996
     }
   ]
 }
