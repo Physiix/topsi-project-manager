@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-card class="ma-2 project_card elevation-3" @click.native="OpenProject">
+		<v-card class="ma-2 project_card elevation-3" height="100%" @click.native="OpenProject">
 			<v-card-title>
 				{{project.title}}
 			</v-card-title>

@@ -18,6 +18,7 @@ export default {
 	methods: {
 		DisplayProjects() {
 			this.$store.commit('OpenProject', -1);
+			this.$store.commit('SetCurrentTimelineId', 0);
 		}
 	},
 }

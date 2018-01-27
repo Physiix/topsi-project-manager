@@ -1,5 +1,5 @@
 {
-  "projects_id": 11,
+  "projects_id": 12,
   "projects": [
     {
       "id": 0,
@@ -55,9 +55,15 @@
       "id": 10,
       "title": "test",
       "description": "test"
+    },
+    {
+      "id": 11,
+      "title": "fsdfsd",
+      "description": "sdfds",
+      "timestamp": 1517016023468
     }
   ],
-  "notes_id": 15,
+  "notes_id": 16,
   "notes": [
     {
       "id": 9,
@@ -112,9 +118,19 @@
       "category": "done",
       "color": "primary white--text",
       "timestamp": 1517006846871
+    },
+    {
+      "id": 15,
+      "project_id": 11,
+      "title": "asdasd",
+      "description": "asdasdsa",
+      "category": "in_progress",
+      "color": "red white--text",
+      "timeline_id": 1,
+      "timestamp": 1517016036668
     }
   ],
-  "dark_mode": true,
+  "dark_mode": false,
   "window_width": 1292,
   "window_height": 823,
   "git_user_info": {
@@ -122,13 +138,25 @@
     "repository_token": "a1c03104e2c7ae0e590aef3bddd3165f7a8443e3",
     "gist_id": "6e5f051813291e3c00ee7219f37263d3"
   },
-  "timelines_id": 1,
+  "timelines_id": 3,
   "timelines": [
     {
       "id": 0,
       "title": "tset",
       "project_id": 0,
       "timestamp": 1517012728804
+    },
+    {
+      "id": 1,
+      "project_id": 11,
+      "title": "Default",
+      "timestamp": 1517016023469
+    },
+    {
+      "id": 2,
+      "title": "adasdasdd",
+      "project_id": 11,
+      "timestamp": 1517016032911
     }
   ]
 }

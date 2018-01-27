@@ -19,6 +19,9 @@ const state = {
 	// ID of the currently opened project.
 	openedProjectId: -1,
 
+	// ID of the currently opened timeline.
+	currentTimelineId: 0,
+
 	// Width of the main drawer
 	drawerWidth: 210,
 
@@ -73,6 +76,10 @@ const mutations = {
 		console.log('setting gist', gistId);
 		state.gitUserInfo.gist_id = gistId;
 		dbUtils.SetValue('git_user_info', state.gitUserInfo);
+	},
+
+	SetCurrentTimelineId(state, id) {
+		state.currentTimelineId = id;
 	}
 }
 

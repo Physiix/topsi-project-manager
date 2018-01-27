@@ -3,13 +3,14 @@ import {
 } from '../../../core/database'
 
 class Note {
-	constructor(project_id, title, description, category, color) {
+	constructor(project_id, title, description, category, color, timeline_id) {
 		this.id = -1;
 		this.project_id = project_id;
 		this.title = title;
 		this.description = description;
 		this.category = category;
 		this.color = color;
+		this.timeline_id = timeline_id;
 	}
 }
 
@@ -45,7 +46,7 @@ const mutations = {
 			throw new Error("Cannot create a note with invalid data ", data);
 
 		// Create the new note to store.
-		let note = new Note(data.project_id, data.title, data.description, data.category, data.color)
+		let note = new Note(data.project_id, data.title, data.description, data.category, data.color, data.timeline_id)
 		note.id = dbUtils.GetId('notes_id');
 
 		// Store the note in the database.

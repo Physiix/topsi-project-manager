@@ -72,13 +72,15 @@ export default {
 	},
 	methods: {
 		CreateNote() {
-			const project_id = this.$store.state.AppStore.openedProjectId;
+			const projectId = this.$store.state.AppStore.openedProjectId;
+			const timelineId = this.$store.state.AppStore.currentTimelineId;
 			this.$store.commit('CreateNote', {
-				project_id: project_id,
+				project_id: projectId,
 				title: this.title,
 				description: this.description,
 				category: this.category.tag,
-				color: this.currentColor
+				color: this.currentColor,
+				timeline_id: timelineId
 			});
 
 			// Cleaning up

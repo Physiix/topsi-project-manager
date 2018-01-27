@@ -34,7 +34,8 @@ export default {
 		},
 
 		notes() {
-			return this.$store.getters.GetNotesById(this.$store.state.AppStore.openedProjectId).filter(note => note.category == this.tag);
+			const timelineId = this.$store.state.AppStore.currentTimelineId;
+			return this.$store.getters.GetNotesById(this.$store.state.AppStore.openedProjectId).filter(note => note.timeline_id == timelineId && note.category == this.tag);
 		}
 	},
 	methods: {

@@ -21,7 +21,7 @@ const getters = {
 	 * @param id ID of the project to retrieve the timelines for.
 	 */
 	GetTimelinesByProjectId(state) {
-		return id => this.timelines.filter(timeline => timeline.project_id == id);
+		return id => state.timelines.filter(timeline => timeline.project_id == id);
 	}
 }
 
@@ -45,6 +45,10 @@ const mutations = {
 		dbUtils.Write('timelines', timeline);
 
 		// Update the timelines
+		state.timelines = dbUtils.GetAll('timelines', 'id');
+	},
+
+	UpdateTimelines(state) {
 		state.timelines = dbUtils.GetAll('timelines', 'id');
 	}
 }

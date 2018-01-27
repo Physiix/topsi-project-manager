@@ -9,19 +9,16 @@
 			</v-list-tile-content>
 		</v-list-tile>
 		<v-divider></v-divider>
-		<v-list-tile v-for="i in 20" :key="i" @click="">
-			<v-list-tile-content>
-				<v-list-tile-title>{{i}}</v-list-tile-title>
-			</v-list-tile-content>
-		</v-list-tile>
+		<Timelines />
 	</v-list>
 </template>
 <script>
+import Timelines from './Timelines.vue'
 
 export default {
 	name: 'NotesSettings',
 	components: {
-
+		Timelines
 	},
 	props: {
 
@@ -39,10 +36,6 @@ export default {
 					title: 'New Timeline',
 					action: () => this.$store.commit('CreateTimelineDialog')
 				},
-				{
-					icon: 'edit',
-					title: 'Edit Mode'
-				}
 			]
 		}
 	},

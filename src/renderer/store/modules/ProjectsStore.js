@@ -39,6 +39,13 @@ const mutations = {
 		// Store the project in the database.
 		dbUtils.Write('projects', project);
 
+		// Create first timeline.
+		dbUtils.Write('timelines', {
+			id: dbUtils.GetId('timelines_id'),
+			project_id: project.id,
+			title: 'Default'
+		});
+
 		// Update the state
 		state.projects = dbUtils.GetAll('projects', 'id');
 	}
