@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Drawer />
-		<v-content class="px-4">
+		<v-content>
 			<Projects v-if="displayProjects" />
 			<Notes v-else />
 		</v-content>

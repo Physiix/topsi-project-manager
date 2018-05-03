@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@types/github": "^7.1.0",
+    "@types/lowdb": "^1.0.1",
     "@types/vue": "^2.0.0",
     "axios": "^0.16.1",
     "font-awesome": "^4.7.0",
@@ -80,9 +81,9 @@
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^1.7.5",
+    "electron-builder": "^19.19.1",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
-    "electron-builder": "^19.19.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",

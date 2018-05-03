@@ -54,6 +54,9 @@ const mutations = {
 
 		// Update the state
 		state.notes = dbUtils.GetAll('notes', 'id');
+
+		// Save the database state.
+		dbUtils.Save();
 	},
 
 	/**

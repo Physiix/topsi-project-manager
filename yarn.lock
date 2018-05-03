@@ -32,6 +32,16 @@
   dependencies:
     github "*"
 
+"@types/lodash@*":
+  version "4.14.108"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.108.tgz#02656af3add2e5b3174f830862c47421c00ef817"
+
+"@types/lowdb@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/lowdb/-/lowdb-1.0.1.tgz#fbe7923afbd0cd686d7a095792b9859cdcfeefb1"
+  dependencies:
+    "@types/lodash" "*"
+
 "@types/node@^7.0.18":
   version "7.0.52"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.52.tgz#8990d3350375542b0c21a83cd0331e6a8fc86716"

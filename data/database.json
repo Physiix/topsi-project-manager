@@ -1,5 +1,5 @@
 {
-  "dark_mode": true,
+  "dark_mode": false,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -13,7 +13,7 @@
       "title": "tset",
       "description": "tset",
       "opened_timeline_id": 1,
-      "timestamp": 1517017305752
+      "timestamp": 1521145895463
     },
     {
       "id": 1,
@@ -56,10 +56,10 @@
       "project_id": 0,
       "title": "tset",
       "description": "test",
-      "category": "in_progress",
+      "category": "todo",
       "color": "red white--text",
       "timeline_id": 1,
-      "timestamp": 1517017304756
+      "timestamp": 1521145902175
     },
     {
       "id": 1,
@@ -71,5 +71,7 @@
       "timeline_id": 2,
       "timestamp": 1517017271996
     }
-  ]
+  ],
+  "window_width": 1311,
+  "window_height": 950
 }

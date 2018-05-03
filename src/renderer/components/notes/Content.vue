@@ -1,15 +1,17 @@
 <template>
-	<div>
-		<main>
-			<v-toolbar color="secondary" dark>
+	<div id="container">
+		<div id="top">
+			<v-toolbar color="secondary" dark class="elevation-0" dense>
 				<v-toolbar-title class="subheading" scroll-off-screen>
 					{{title}}
 				</v-toolbar-title>
 			</v-toolbar>
+		</div>
+		<div id="bottom">
 			<div v-for="(note, index) in notes" :key="index">
 				<Note :note="note" />
 			</div>
-		</main>
+		</div>
 	</div>
 </template>
 <script>
@@ -45,6 +47,25 @@ export default {
 </script>
 
 <style scoped>
+
+#container{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 48px 1fr;
+	height: 100vh;
+}
+
+#top{
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+}
+
+#bottom{
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+	overflow-y: auto;
+}
+
 #title_card{
 	border-radius: 0;
 }

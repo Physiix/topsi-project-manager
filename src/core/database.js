@@ -78,6 +78,13 @@ class DBUtils {
 		this.context.get(table).remove(condition).write();
 	}
 
+	/**
+	 * Save the state of the current database.
+	 */
+	Save() {
+		this.write();
+	}
+
 	//Get all the entries from a table.
 	//@param table Table to retrieve the entries from.
 	//@orderBy [optional] Member data to order the list with.

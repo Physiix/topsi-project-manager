@@ -50,6 +50,9 @@ const mutations = {
 
 		// Update the state
 		state.projects = dbUtils.GetAll('projects', 'id');
+
+		// Save the database state.
+		dbUtils.Save();
 	},
 
 	SetProjectTimelineId(state, data) {

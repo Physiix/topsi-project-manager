@@ -1,19 +1,17 @@
 <template>
-	<div>
+	<div id="notes_container">
 		<CreateNoteDialog v-if="createDialog" />
 		<CreateTimelineDialog/>
 		<UpdateNoteDialog v-if="updateDialog" />
-		<Menu />
-		<div id="notes_container">
-			<div id="left_container">
-				<Content tag="todo" />
-			</div>
-			<div id="center_container">
-				<Content tag="in_progress" />
-			</div>
-			<div id="right_container">
-				<Content tag="done" />
-			</div>
+		<!-- <Menu /> -->
+		<div id="left_container">
+			<Content tag="todo" />
+		</div>
+		<div id="center_container">
+			<Content tag="in_progress" />
+		</div>
+		<div id="right_container">
+			<Content tag="done" />
 		</div>
 	</div>
 </template>
@@ -24,7 +22,6 @@ import CreateNoteDialog from './CreateNoteDialog.vue'
 import CreateTimelineDialog from './CreateTimelineDialog.vue'
 import UpdateNoteDialog from './UpdateNoteDialog.vue'
 import Content from './Content.vue'
-import PaneManager from '../../../../libs/panes/out/Pane'
 
 export default {
 	name: 'Notes',
@@ -50,28 +47,44 @@ export default {
 		}
 	},
 	mounted() {
-		const container = PaneManager.createPaneFromId('notes_container', 1);
-
-		const left_container = PaneManager.createPaneFromId('left_container', 1);
-		const center_container = PaneManager.createPaneFromId('center_container', 1);
-		const right_container = PaneManager.createPaneFromId('right_container', 1);
-
-		container.addView('left_view', 0.333);
-		container.addView('center_view', 0.333);
-		container.addView('right_view', 0.3333);
-
-		container.attach(left_container, 'left_view');
-		container.attach(center_container, 'center_view');
-		container.attach(right_container, 'right_view');
+		const container = document.getElementById('notes_container');
 
 		const drawerWidth = this.$store.state.AppStore.drawerWidth;
-		const widthOffset = drawerWidth + 4; // Drawer Width + Scrollbar width
 
-		container.render(drawerWidth, 0, window.innerWidth - widthOffset, window.innerHeight);
-		window.addEventListener('resize', () => container.render(drawerWidth, 0, window.innerWidth - widthOffset, window.innerHeight));
+		container.style.width = window.innerWidth - drawerWidth + 'px';
+		container.style.height = window.innerHeight + 'px';
+		window.addEventListener('resize', () => {
+			container.style.width = window.innerWidth - drawerWidth + 'px';
+			container.style.height = window.innerHeight + 'px';
+		});
 	}
 }
 </script>
 
 <style >
+
+#notes_container{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+}
+
+#left_container{
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+	overflow-y: auto;
+}
+
+#center_container{
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+	overflow-y: auto;
+}
+
+#right_container{
+	grid-column: 3 / 4;
+	grid-row: 1 / 2;
+	overflow-y: auto;
+}
+
 </style>
