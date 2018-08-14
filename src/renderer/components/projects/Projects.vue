@@ -26,6 +26,16 @@ export default {
 	methods: {
 
 	},
+	mounted() {
+		let value = 50;
+		const id = setInterval(() => {
+			value += 8;
+			document.getElementById('container').style.setProperty('grid-template-columns',
+				+value + 'px repeat(5, 1fr)')
+			// resize();
+			if (value >= 250) clearInterval(id);
+		})
+	}
 }
 </script>
 

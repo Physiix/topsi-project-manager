@@ -7,6 +7,7 @@
 		<div id="left_container">
 			<Content tag="todo" />
 		</div>
+		<v-divider inset vertical></v-divider>
 		<div id="center_container">
 			<Content tag="in_progress" />
 		</div>
@@ -48,11 +49,20 @@ export default {
 	},
 	mounted() {
 		const container = document.getElementById('notes_container');
+
 		const resize = () => {
 			const drawerWidth = this.$store.state.AppStore.drawerWidth;
-			container.style.width = window.innerWidth - drawerWidth + 'px';
+			container.style.width = window.innerWidth - 50 + 'px';
 			container.style.height = (window.innerHeight - 30) + 'px';
 		}
+		let value = 250;
+		const id = setInterval(() => {
+			value -= 8;
+			document.getElementById('container').style.setProperty('grid-template-columns',
+				+value + 'px repeat(5, 1fr)')
+			if (value <= 50) clearInterval(id);
+		})
+
 		resize();
 		window.addEventListener('resize', resize);
 	}

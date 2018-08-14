@@ -13,14 +13,14 @@
       "title": "tset",
       "description": "tset",
       "opened_timeline_id": 1,
-      "timestamp": 1534252113020
+      "timestamp": 1534268428772
     },
     {
       "id": 1,
       "title": "test",
       "description": "setsets",
       "opened_timeline_id": 2,
-      "timestamp": 1517017301844
+      "timestamp": 1534267868949
     }
   ],
   "timelines": [
@@ -72,6 +72,6 @@
       "timestamp": 1517017271996
     }
   ],
-  "window_width": 1355,
-  "window_height": 732
+  "window_width": 1235,
+  "window_height": 783
 }

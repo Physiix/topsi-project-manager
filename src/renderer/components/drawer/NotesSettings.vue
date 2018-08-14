@@ -27,12 +27,26 @@ export default {
 		return {
 			items: [
 				{
+					icon: 'arrow_back',
+					title: '',
+					action: () => {
+						// Save the id of the opened timeline
+						this.$store.commit('SetProjectTimelineId', {
+							project_id: this.$store.state.AppStore.openedProjectId,
+							timeline_id: this.$store.state.AppStore.currentTimelineId
+						});
+
+						// Back to the main menu.
+						this.$store.commit('OpenProject', -1);
+					}
+				},
+				{
 					icon: 'add',
 					title: 'New Note',
 					action: () => this.$store.commit('CreateNoteDialog')
 				},
 				{
-					icon: 'add',
+					icon: 'timeline',
 					title: 'New Timeline',
 					action: () => this.$store.commit('CreateTimelineDialog')
 				},
