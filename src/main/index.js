@@ -28,6 +28,7 @@ function createWindow() {
 		width: dbUtils.GetValue('window_width', 800),
 		height: dbUtils.GetValue('window_height', 600),
 		useContentSize: true,
+		frame: false,
 	})
 
 	// Disable the default menu

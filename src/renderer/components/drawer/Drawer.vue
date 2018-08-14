@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<v-navigation-drawer fixed app permanent :width="drawerWidth">
-			<Title />
+		<v-navigation-drawer app permanent :width="drawerWidth">
+			<!-- <Title /> -->
 			<v-divider></v-divider>
 			<Content />
 		</v-navigation-drawer>

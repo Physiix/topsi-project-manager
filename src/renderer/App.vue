@@ -24,7 +24,7 @@ export default {
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons';
   /* CSS */
 body::-webkit-scrollbar {
-	/* display: none; */
+	display: none;
 }
 ::-webkit-scrollbar {
 	width: 5px;
