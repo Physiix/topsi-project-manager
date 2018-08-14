@@ -1,5 +1,5 @@
 <template>
-	<v-dialog v-model="createNote" max-width="300">
+	<v-dialog v-model="createNote" max-width="70%" persistent>
 		<v-card>
 			<v-card-title class="py-1" :class="currentColor">New Note
 				<v-spacer></v-spacer>
@@ -14,7 +14,14 @@
 					<v-spacer></v-spacer>
 				</v-layout>
 				<v-text-field label="Title" v-model="title"></v-text-field>
-				<v-text-field label="Description" v-model="description" multi-line></v-text-field>
+				<div>
+					<div id="toolbar">
+						<button class="ql-bold">Bold</button>
+						<button class="ql-italic">Italic</button>
+					</div>
+					<div id="editor" style="height:200px;">
+					</div>
+				</div>
 				<v-select auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 			</v-container>
 			<v-card-actions>
@@ -26,6 +33,9 @@
 	</v-dialog>
 </template>
 <script>
+
+import Quill from 'quill'
+let editor = null;
 
 export default {
 	name: 'CreateNoteDialog',
@@ -75,7 +85,7 @@ export default {
 			this.$store.commit('CreateNote', {
 				project_id: projectId,
 				title: this.title,
-				description: this.description,
+				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
 				color: this.currentColor,
 				timeline_id: timelineId
@@ -87,6 +97,21 @@ export default {
 			this.createNote = false;
 		}
 	},
+	mounted() {
+		const options = {
+			modules: {
+				toolbar: [
+					[{ header: [1, 2, false] }],
+					['bold', 'italic', 'underline'],
+					['image', 'code-block']
+				]
+			},
+			placeholder: 'Compose an epic...',
+			theme: 'snow'  // or 'bubble'
+		};
+		editor = new Quill('#editor', options);
+		console.log(editor)
+	}
 }
 </script>
 
