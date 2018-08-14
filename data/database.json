@@ -1,5 +1,5 @@
 {
-  "dark_mode": true,
+  "dark_mode": false,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -13,14 +13,14 @@
       "title": "tset",
       "description": "tset",
       "opened_timeline_id": 1,
-      "timestamp": 1534270443511
+      "timestamp": 1534272554297
     },
     {
       "id": 1,
       "title": "test",
       "description": "setsets",
       "opened_timeline_id": 2,
-      "timestamp": 1534267868949
+      "timestamp": 1534272324140
     }
   ],
   "timelines": [
@@ -49,7 +49,7 @@
       "timestamp": 1517017284873
     }
   ],
-  "notes_id": 2,
+  "notes_id": 18,
   "notes": [
     {
       "id": 0,
@@ -70,8 +70,168 @@
       "color": "primary white--text",
       "timeline_id": 2,
       "timestamp": 1517017271996
+    },
+    {
+      "id": 2,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270755343
+    },
+    {
+      "id": 3,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270755480
+    },
+    {
+      "id": 4,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270755612
+    },
+    {
+      "id": 5,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270755750
+    },
+    {
+      "id": 6,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270755878
+    },
+    {
+      "id": 7,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756026
+    },
+    {
+      "id": 8,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756169
+    },
+    {
+      "id": 9,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756303
+    },
+    {
+      "id": 10,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756454
+    },
+    {
+      "id": 11,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756597
+    },
+    {
+      "id": 12,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756732
+    },
+    {
+      "id": 13,
+      "project_id": 0,
+      "title": "fghfg",
+      "description": "hfghfg",
+      "category": "todo",
+      "color": "primary white--text",
+      "timeline_id": 1,
+      "timestamp": 1534270756868
+    },
+    {
+      "id": 14,
+      "project_id": 0,
+      "title": "cfsdfsf",
+      "description": "sdfsdfsdfds fsd ",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "timestamp": 1534272117080
+    },
+    {
+      "id": 15,
+      "project_id": 0,
+      "title": "as",
+      "description": "dasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasddasdasd",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "timestamp": 1534272272528
+    },
+    {
+      "id": 16,
+      "project_id": 0,
+      "title": "as",
+      "description": "asdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahs",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "timestamp": 1534272286087
+    },
+    {
+      "id": 17,
+      "project_id": 0,
+      "title": "as",
+      "description": "asdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahsasdsfhnsdjhkfgjsgdhjfjsda\nfsdjkflkasgfdsa\nfsajflahs",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "timestamp": 1534272289232
     }
   ],
-  "window_width": 1235,
-  "window_height": 783
+  "window_width": 1244,
+  "window_height": 748
 }

@@ -1,18 +1,18 @@
 <template>
 	<div id="titlebar">
-		<v-toolbar app :class="color" height="30" dark @mousedown="moveWindow">
+		<v-toolbar app :class="color" height="30" class="px-0" dark @mousedown="moveWindow">
 			<v-spacer></v-spacer>
 			Project Manager
 			<v-spacer></v-spacer>
 			<v-btn flat class="titlebar-btn mx-0" @click="minimize">
 				<v-icon class="pb-3">minimize</v-icon>
 			</v-btn>
-			<!-- <v-btn flat class="titlebar-btn mx-0" @click="maximise">
+			<v-btn flat class="titlebar-btn mx-0" @click="maximise">
 				<v-icon>border_outer</v-icon>
 			</v-btn>
 			<v-btn flat class="titlebar-btn mx-0" @click="close">
 				<v-icon>close</v-icon>
-			</v-btn> -->
+			</v-btn>
 		</v-toolbar>
 	</div>
 </template>
@@ -77,7 +77,7 @@ export default {
 		titlebar.style.position = 'fixed';
 		titlebar.style.left = '0';
 		titlebar.style.top = '0';
-		titlebar.style.height = '48px';
+		titlebar.style.height = '30px';
 		titlebar.style.width = window.innerWidth + 'px';
 		window.addEventListener('resize', () => { titlebar.style.width = window.innerWidth + 'px'; })
 	},
@@ -91,7 +91,9 @@ export default {
 </script>
 
 <style>
-
+.v-toolbar__content{
+	padding: 0;
+}
 .titlebar-btn{
 	min-width:35px!important;
 	max-width:35px!important;

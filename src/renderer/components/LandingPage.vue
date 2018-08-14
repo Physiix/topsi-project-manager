@@ -6,10 +6,10 @@
 		<div id="side" :class="this.$store.getters.appColor">
 			<Drawer />
 		</div>
-		<v-content id="content">
+		<div id="content">
 			<Projects v-if="displayProjects" />
 			<Notes v-else />
-		</v-content>
+		</div>
 		<!-- The titlebar needs to be on top of the other divs, so it's the last one to be rendered. -->
 		<Titlebar />
 	</div>

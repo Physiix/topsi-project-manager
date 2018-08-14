@@ -12,6 +12,7 @@
 				<Note :note="note" />
 			</div>
 		</div>
+		<div id="vline" class="grey"></div>
 	</div>
 </template>
 <script>
@@ -50,7 +51,7 @@ export default {
 
 #container{
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 1fr 1px;
 	grid-template-rows: 48px 1fr;
 	height: 100%;
 }
@@ -63,7 +64,25 @@ export default {
 #bottom{
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
-	overflow-y: auto;
+}
+
+#bottom {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	background-color: rgba(0,0,0,0);
+	-webkit-background-clip: text;
+	transition: background-color .2s;
+}
+#bottom:hover {
+	background-color: rgba(0,0,0,0.5);  
+}
+#bottom::-webkit-scrollbar-thumb {
+	background-color: inherit;
+}
+
+#vline{
+	grid-column: 2 /3;
+	grid-row: 1 /3
 }
 
 #title_card{

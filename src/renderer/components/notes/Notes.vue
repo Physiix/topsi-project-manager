@@ -1,14 +1,13 @@
 <template>
-	<div id="notes_container">
+	<div id="notes_container" style="background-color:#dedede;" class="pa-0">
 		<CreateNoteDialog v-if="createDialog" />
 		<CreateTimelineDialog/>
 		<UpdateNoteDialog v-if="updateDialog" />
 		<!-- <Menu /> -->
 		<div id="left_container">
 			<Content tag="todo" />
-			<v-divider vertical></v-divider>
 		</div>
-		<v-divider inset vertical></v-divider>
+
 		<div id="center_container">
 			<Content tag="in_progress" />
 		</div>
