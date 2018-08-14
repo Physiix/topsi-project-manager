@@ -1,6 +1,6 @@
 <template>
 	<div id="titlebar">
-		<v-toolbar app class="red darken-2" height="30" dark @mousedown="moveWindow">
+		<v-toolbar app :class="color" height="30" dark @mousedown="moveWindow">
 			<v-spacer></v-spacer>
 			Project Manager
 			<v-spacer></v-spacer>
@@ -20,12 +20,6 @@
 
 export default {
 	name: 'Titlebar',
-	components: {
-
-	},
-	props: {
-
-	},
 	data() {
 		return {
 			maximized: false,
@@ -33,7 +27,12 @@ export default {
 		}
 	},
 	computed: {
+		color() {
+			const baseColor = this.$store.getters.appColor;
+			return baseColor + ' darken-2';
+		}
 	},
+
 	methods: {
 		close() {
 			this.window.close();
@@ -81,10 +80,6 @@ export default {
 		titlebar.style.height = '48px';
 		titlebar.style.width = window.innerWidth + 'px';
 		window.addEventListener('resize', () => { titlebar.style.width = window.innerWidth + 'px'; })
-		// titlebar.addEventListener('selectstart', (event) => event.preventDefault());
-		// titlebar.addEventListener('mousedown', (event) => {
-		// 	this.startDrag();
-		// });
 	},
 
 	created() {
@@ -103,7 +98,7 @@ export default {
 }
 
 #titlebar {
-  /* -webkit-user-select: none; */
+  -webkit-user-select: none;
   -webkit-app-region: drag;
 }
 

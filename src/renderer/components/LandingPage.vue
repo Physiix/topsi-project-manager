@@ -1,10 +1,12 @@
 <template>
-	<div>
+	<div id="container">
 		<!-- <v-toolbar app class="red" style="margin-top:30px;" height="48" dark>
 			<v-toolbar-side-icon></v-toolbar-side-icon>
 		</v-toolbar> -->
-		<!-- <Drawer /> -->
-		<v-content style="margin-top:30px" class="my-5">
+		<div id="side" :class="this.$store.getters.appColor">
+			<Drawer />
+		</div>
+		<v-content id="content">
 			<Projects v-if="displayProjects" />
 			<Notes v-else />
 		</v-content>
@@ -33,12 +35,39 @@ export default {
 		}
 	},
 	methods: {
+	},
+
+	mounted() {
+		const resize = () => {
+			const container = document.getElementById('container');
+			container.style.width = window.innerWidth + 'px';
+			container.style.height = window.innerHeight + 'px';
+		}
+		resize();
+		window.addEventListener('resize', resize);
 	}
 }
 </script>
 
 <style>
-body{
-	
+
+#container{
+	display:grid;
+	grid-template-columns: 250px repeat(5, 1fr);
+	grid-template-rows: 30px repeat(5, 1fr)
 }
+
+#side{
+	grid-column: 1 / 2;
+	grid-row: 2 / 7;
+	overflow-y: auto;
+}
+
+#content{
+	grid-column: 2 / 7;
+	grid-row: 2 / 7;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
 </style>

@@ -48,15 +48,13 @@ export default {
 	},
 	mounted() {
 		const container = document.getElementById('notes_container');
-
-		const drawerWidth = this.$store.state.AppStore.drawerWidth;
-
-		container.style.width = window.innerWidth - drawerWidth + 'px';
-		container.style.height = window.innerHeight + 'px';
-		window.addEventListener('resize', () => {
+		const resize = () => {
+			const drawerWidth = this.$store.state.AppStore.drawerWidth;
 			container.style.width = window.innerWidth - drawerWidth + 'px';
-			container.style.height = window.innerHeight + 'px';
-		});
+			container.style.height = (window.innerHeight - 30) + 'px';
+		}
+		resize();
+		window.addEventListener('resize', resize);
 	}
 }
 </script>
@@ -65,7 +63,7 @@ export default {
 
 #notes_container{
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr) 5px;
 	grid-template-rows: 1fr;
 }
 

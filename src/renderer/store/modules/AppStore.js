@@ -23,10 +23,13 @@ const state = {
 	currentTimelineId: 0,
 
 	// Width of the main drawer
-	drawerWidth: 210,
+	drawerWidth: 245,
 
 	// Whether dark mode is enabled or not.
-	darkMode: dbUtils.GetValue('dark_mode', true),
+	darkMode: dbUtils.GetValue('dark_mode', false),
+
+	// Base color of the application.
+	baseColor: 'indigo',
 
 	// Information about the github profile
 	gitUserInfo: dbUtils.GetValue('git_user_info', new GitUserInfo()),
@@ -86,6 +89,10 @@ const mutations = {
 const getters = {
 	IsProjectOpened(state) {
 		return state.openedProjectId != -1;
+	},
+
+	appColor(state) {
+		return state.baseColor;
 	}
 }
 

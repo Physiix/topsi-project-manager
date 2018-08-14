@@ -1,5 +1,5 @@
 {
-  "dark_mode": false,
+  "dark_mode": true,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -72,6 +72,6 @@
       "timestamp": 1517017271996
     }
   ],
-  "window_width": 1094,
-  "window_height": 742
+  "window_width": 1355,
+  "window_height": 732
 }

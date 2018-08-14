@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<v-navigation-drawer app permanent :width="drawerWidth">
-			<!-- <Title /> -->
-			<v-divider></v-divider>
-			<Content />
-		</v-navigation-drawer>
+		<!-- <v-navigation-drawer app permanent :width="drawerWidth"> -->
+		<!-- <Title /> -->
+		<!-- <v-divider></v-divider> -->
+		<Content />
+		<!-- </v-navigation-drawer> -->
 	</div>
 </template>
 <script>

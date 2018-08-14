@@ -1,5 +1,5 @@
 <template>
-	<v-list dense class="pt-0">
+	<v-list dense class="pt-0 transparent" dark>
 		<v-list-tile v-for="item in items" :key="item.title" @click="item.action()">
 			<v-list-tile-action>
 				<v-icon>{{ item.icon }}</v-icon>
