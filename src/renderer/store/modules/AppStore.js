@@ -26,7 +26,7 @@ const state = {
 	drawerWidth: 245,
 
 	// Whether dark mode is enabled or not.
-	darkMode: dbUtils.GetValue('dark_mode', false),
+	darkMode: dbUtils.GetValue('dark_mode', true),
 
 	// Base color of the application.
 	baseColor: 'indigo',

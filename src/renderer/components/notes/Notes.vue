@@ -6,6 +6,7 @@
 		<!-- <Menu /> -->
 		<div id="left_container">
 			<Content tag="todo" />
+			<v-divider vertical></v-divider>
 		</div>
 		<v-divider inset vertical></v-divider>
 		<div id="center_container">

@@ -1,19 +1,14 @@
 <template>
 	<div>
 		<v-dialog v-model="showSettings" max-width="500">
-			<v-tabs fixed centered>
-				<v-tabs-bar class="secondary" dark>
-					<v-tabs-slider class="secondary"></v-tabs-slider>
-					<v-tabs-item v-for="(tab, index) in tabs" :key="index" :href="'#tab-' + index">
-						{{ tab }}
-					</v-tabs-item>
-				</v-tabs-bar>
-				<v-tabs-items>
-					<v-tabs-content v-for="(tab, index) in tabs" :key="index" :id="'tab-' + index">
-						<GeneralSettings v-if="tab == 'General'" class="item" />
-						<GitSettings v-if="tab == 'Git'" class="item" />
-					</v-tabs-content>
-				</v-tabs-items>
+			<v-tabs v-model="active" fixed centered dark class="secondary" dark>
+				<v-tab v-for="(tab, index) in tabs" :key="index" ripple>
+					{{tab}}
+				</v-tab>
+				<v-tab-item v-for="(tab, index) in tabs " :key="index" :id="'tab-' + index">
+					<GeneralSettings v-if="tab=='General' " class="item " />
+					<GitSettings v-if="tab=='Git' " class="item " />
+				</v-tab-item>
 			</v-tabs>
 		</v-dialog>
 	</div>
@@ -33,7 +28,8 @@ export default {
 			tabs: [
 				'General',
 				'Git'
-			]
+			],
+			active: 0
 		}
 	},
 	computed: {

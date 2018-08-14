@@ -7,12 +7,12 @@
 			<v-btn flat class="titlebar-btn mx-0" @click="minimize">
 				<v-icon class="pb-3">minimize</v-icon>
 			</v-btn>
-			<v-btn flat class="titlebar-btn mx-0" @click="maximise">
+			<!-- <v-btn flat class="titlebar-btn mx-0" @click="maximise">
 				<v-icon>border_outer</v-icon>
 			</v-btn>
 			<v-btn flat class="titlebar-btn mx-0" @click="close">
 				<v-icon>close</v-icon>
-			</v-btn>
+			</v-btn> -->
 		</v-toolbar>
 	</div>
 </template>

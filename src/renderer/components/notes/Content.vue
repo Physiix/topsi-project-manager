@@ -1,14 +1,14 @@
 <template>
 	<div id="container">
-		<div id="top">
-			<v-toolbar color="secondary" dark class="elevation-0" dense>
-				<v-toolbar-title class="subheading" scroll-off-screen>
-					{{title}}
-				</v-toolbar-title>
-			</v-toolbar>
+		<div id="top" class="pa-3 title">
+			<!-- <v-toolbar color="secondary" dark class="elevation-0" dense>
+				<v-toolbar-title class="subheading" scroll-off-screen> -->
+			{{title}}
+			<!-- </v-toolbar-title>
+			</v-toolbar> -->
 		</div>
 		<div id="bottom">
-			<div v-for="(note, index) in notes" :key="index">
+			<div v-for="(note, index) in notes" :key="index" class="px-4">
 				<Note :note="note" />
 			</div>
 		</div>
