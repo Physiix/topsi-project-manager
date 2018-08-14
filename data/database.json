@@ -13,7 +13,7 @@
       "title": "tset",
       "description": "tset",
       "opened_timeline_id": 1,
-      "timestamp": 1521145895463
+      "timestamp": 1534252113020
     },
     {
       "id": 1,
@@ -59,7 +59,7 @@
       "category": "todo",
       "color": "red white--text",
       "timeline_id": 1,
-      "timestamp": 1521145902175
+      "timestamp": 1534252111949
     },
     {
       "id": 1,
@@ -73,5 +73,5 @@
     }
   ],
   "window_width": 1311,
-  "window_height": 950
+  "window_height": 1000
 }
