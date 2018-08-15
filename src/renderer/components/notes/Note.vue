@@ -1,5 +1,5 @@
 <template>
-	<v-card id="note" class="ma-2" :class="note.color" @contextmenu="show">
+	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show">
 		<v-card-title class="py-0 pr-0">{{note.title}}
 			<v-spacer></v-spacer>
 			<v-btn class="mx-0" :dark="dark" flat icon small v-if="note.category == 'done' || note.category == 'in_progress'" @click="MoveLeft">
@@ -58,11 +58,11 @@ export default {
 	margin: 0;
 }
 
-#note{
+.note{
 	cursor: pointer;
 	transition: 0.1s;
 }
-#note:hover{
+.note:hover{
 	opacity: 0.8;
 }
 

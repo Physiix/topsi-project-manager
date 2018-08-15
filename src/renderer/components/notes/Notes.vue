@@ -5,14 +5,14 @@
 		<UpdateNoteDialog v-if="updateDialog" />
 		<!-- <Menu /> -->
 		<div id="left_container">
-			<Content tag="todo" />
+			<Content id="left_content" tag="todo" />
 		</div>
 
 		<div id="center_container">
-			<Content tag="in_progress" />
+			<Content id="center_content" tag="in_progress" />
 		</div>
 		<div id="right_container">
-			<Content tag="done" />
+			<Content id="right_content" tag="done" />
 		</div>
 	</div>
 </template>

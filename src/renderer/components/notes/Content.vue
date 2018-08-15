@@ -1,22 +1,21 @@
 <template>
-	<div id="container">
-		<div id="top" class="pa-3 title">
+	<div class="content">
+		<div class="top pa-3 title">
 			<!-- <v-toolbar color="secondary" dark class="elevation-0" dense>
 				<v-toolbar-title class="subheading" scroll-off-screen> -->
 			{{title}}
 			<!-- </v-toolbar-title>
 			</v-toolbar> -->
 		</div>
-		<div id="bottom">
-			<div v-for="(note, index) in notes" :key="index" class="px-4">
-				<Note :note="note" />
-			</div>
+		<div class="bottom" :id="id">
+			<Note v-for="(note, index) in notes" :key="index" :note="note" class="mx-4" />
 		</div>
-		<div id="vline" class="grey"></div>
+		<div class="vline grey"></div>
 	</div>
 </template>
 <script>
 import Note from './Note.vue'
+import Sortable from 'sortablejs'
 
 export default {
 	name: 'Content',
@@ -24,6 +23,7 @@ export default {
 		Note
 	},
 	props: {
+		id: String,
 		tag: String
 	},
 	data() {
@@ -44,48 +44,66 @@ export default {
 	methods: {
 
 	},
+	mounted() {
+		const element = document.getElementById(this.id);
+		const sortable = Sortable.create(element, {
+			group: {
+				name: "c",
+			},
+			onEnd: (event) => {
+				// console.log(this.id, document.getElementsByClassName('note'));
+				console.log(event)
+			},
+
+			onMove: (event) => {
+				// console.log(event.dragged)
+			}
+
+		});
+		// console.log(sortable)
+	}
 }
 </script>
 
 <style scoped>
 
-#container{
+.content{
 	display: grid;
 	grid-template-columns: 1fr 1px;
 	grid-template-rows: 48px 1fr;
 	height: 100%;
 }
 
-#top{
+.top{
 	grid-column: 1 / 2;
 	grid-row: 1 / 2;
 }
 
-#bottom{
+.bottom{
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
 }
 
-#bottom {
+.bottom {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	background-color: rgba(0,0,0,0);
 	-webkit-background-clip: text;
 	transition: background-color .2s;
 }
-#bottom:hover {
+.bottom:hover {
 	background-color: rgba(102, 102, 102, 0.5);  
 }
-#bottom::-webkit-scrollbar-thumb {
+.bottom::-webkit-scrollbar-thumb {
 	background-color: inherit;
 }
 
-#vline{
+.vline{
 	grid-column: 2 /3;
 	grid-row: 1 /3
 }
 
-#title_card{
+.title_card{
 	border-radius: 0;
 }
 </style>
