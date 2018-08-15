@@ -1,5 +1,5 @@
 {
-  "dark_mode": false,
+  "dark_mode": true,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -13,14 +13,14 @@
       "title": "tset",
       "description": "tset",
       "opened_timeline_id": 1,
-      "timestamp": 1534295970675
+      "timestamp": 1534297973264
     },
     {
       "id": 1,
       "title": "test",
       "description": "setsets",
       "opened_timeline_id": 2,
-      "timestamp": 1534272324140
+      "timestamp": 1534297956975
     }
   ],
   "timelines": [

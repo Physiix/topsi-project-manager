@@ -61,6 +61,7 @@ export default {
 	grid-column: 1 / 2;
 	grid-row: 2 / 7;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #content{
