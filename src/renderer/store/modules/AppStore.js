@@ -1,10 +1,10 @@
 import {
-	dbUtils
-} from '../../../core/database'
-import {
 	git,
 	GitUserInfo
 } from '../../../core/git';
+import {
+	App
+} from '../../../core/Application';
 
 const state = {
 	// Contains all the flags about dialogs.
@@ -26,13 +26,13 @@ const state = {
 	drawerWidth: 245,
 
 	// Whether dark mode is enabled or not.
-	darkMode: dbUtils.GetValue('dark_mode', true),
+	darkMode: App.GetAppDB().GetValue('dark_mode', true),
 
 	// Base color of the application.
-	baseColor: 'orange',
+	baseColor: 'blue',
 
 	// Information about the github profile
-	gitUserInfo: dbUtils.GetValue('git_user_info', new GitUserInfo()),
+	gitUserInfo: App.GetAppDB().GetValue('git_user_info', new GitUserInfo()),
 }
 
 const mutations = {
@@ -53,12 +53,13 @@ const mutations = {
 	},
 
 	OpenProject(state, id) {
+		// App.GetAppDB().SetValue('current_project_id', id);
 		state.openedProjectId = id;
 	},
 
 	SetDarkMode(state, value) {
 		state.darkMode = value;
-		dbUtils.SetValue('dark_mode', value);
+		App.GetDB().SetValue('dark_mode', value);
 	},
 
 	ShowSettings(state, value) {
@@ -67,18 +68,17 @@ const mutations = {
 
 	SetUsername(state, username) {
 		state.gitUserInfo.username = username;
-		dbUtils.SetValue('git_user_info', state.gitUserInfo);
+		App.GetDB().SetValue('git_user_info', state.gitUserInfo);
 	},
 
 	SetToken(state, token) {
 		state.gitUserInfo.repository_token = token;
-		dbUtils.SetValue('git_user_info', state.gitUserInfo);
+		App.GetDB().SetValue('git_user_info', state.gitUserInfo);
 	},
 
 	SetGistId(state, gistId) {
-		console.log('setting gist', gistId);
 		state.gitUserInfo.gist_id = gistId;
-		dbUtils.SetValue('git_user_info', state.gitUserInfo);
+		App.GetDB().SetValue('git_user_info', state.gitUserInfo);
 	},
 
 	SetCurrentTimelineId(state, id) {
@@ -108,54 +108,54 @@ const actions = {
 	UploadGist(context) {
 		return new Promise((resolve, reject) => {
 			// Check if the user data are valid
-			if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')
-				return reject('Invalid git user data.');
+			// if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')
+			// 	return reject('Invalid git user data.');
 
-			// Authenticate the user to github.
-			git.Authenticate({
-				username: context.state.gitUserInfo.username,
-				repository_token: context.state.gitUserInfo.repository_token,
-				gist_id: context.state.gitUserInfo.gist_id
-			});
+			// // Authenticate the user to github.
+			// git.Authenticate({
+			// 	username: context.state.gitUserInfo.username,
+			// 	repository_token: context.state.gitUserInfo.repository_token,
+			// 	gist_id: context.state.gitUserInfo.gist_id
+			// });
 
-			// Retrieve data from the database.
-			const data = JSON.stringify(dbUtils.context);
+			// // Retrieve data from the database.
+			// const data = JSON.stringify(dbUtils.context);
 
-			// Save the database data in the repository.
-			git.SaveGist('database.json', data).then(result => {
-				context.commit('SetGistId', result.data.id);
-			}).catch(error => {
-				throw error;
-			});
+			// // Save the database data in the repository.
+			// git.SaveGist('database.json', data).then(result => {
+			// 	context.commit('SetGistId', result.data.id);
+			// }).catch(error => {
+			// 	throw error;
+			// });
 		});
 	},
 
 	DownloadGist(context) {
-		return new Promise((resolve, reject) => {
-			// Check if the user data are valid
-			if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')
-				return reject('Invalid git user data.');
+		// return new Promise((resolve, reject) => {
+		// 	// Check if the user data are valid
+		// 	if (context.state.gitUserInfo.username == '' || context.state.gitUserInfo.repository_token == '')
+		// 		return reject('Invalid git user data.');
 
-			// Authenticate the user to github.
-			git.Authenticate({
-				username: context.state.gitUserInfo.username,
-				repository_token: context.state.gitUserInfo.repository_token,
-				gist_id: context.state.gitUserInfo.gist_id
-			});
+		// 	// Authenticate the user to github.
+		// 	git.Authenticate({
+		// 		username: context.state.gitUserInfo.username,
+		// 		repository_token: context.state.gitUserInfo.repository_token,
+		// 		gist_id: context.state.gitUserInfo.gist_id
+		// 	});
 
-			// Load the settings from the remote gist.
-			git.LoadGist().then(gist => {
-				require('fs').writeFile(dbUtils.GetPath(), gist.data.files['database.json'].content, (error) => {
-					if (error) reject(error);
-					else {
-						require('electron').remote.getCurrentWindow().webContents.reloadIgnoringCache();
-						resolve(gist.data);
-					}
-				})
-			}).catch(error => {
-				reject(error);
-			})
-		})
+		// 	// Load the settings from the remote gist.
+		// 	git.LoadGist().then(gist => {
+		// 		require('fs').writeFile(dbUtils.GetPath(), gist.data.files['database.json'].content, (error) => {
+		// 			if (error) reject(error);
+		// 			else {
+		// 				require('electron').remote.getCurrentWindow().webContents.reloadIgnoringCache();
+		// 				resolve(gist.data);
+		// 			}
+		// 		})
+		// 	}).catch(error => {
+		// 		reject(error);
+		// 	})
+		// })
 	}
 }
 

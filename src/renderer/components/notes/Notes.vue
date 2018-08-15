@@ -4,15 +4,15 @@
 		<CreateTimelineDialog/>
 		<UpdateNoteDialog v-if="updateDialog" />
 		<!-- <Menu /> -->
-		<div id="left_container">
-			<Content id="left_content" tag="todo" />
+		<div id="todo-container">
+			<Content id="todo-content" tag="todo" />
 		</div>
 
-		<div id="center_container">
-			<Content id="center_content" tag="in_progress" />
+		<div id="in_progress-container">
+			<Content id="in_progress-content" tag="in_progress" />
 		</div>
-		<div id="right_container">
-			<Content id="right_content" tag="done" />
+		<div id="done-container">
+			<Content id="done-content" tag="done" />
 		</div>
 	</div>
 </template>
@@ -83,19 +83,19 @@ export default {
 	grid-template-rows: 1fr;
 }
 
-#left_container{
+#todo-container{
 	grid-column: 1 / 2;
 	grid-row: 1 / 2;
 	overflow-y: auto;
 }
 
-#center_container{
+#in_progress-container{
 	grid-column: 2 / 3;
 	grid-row: 1 / 2;
 	overflow-y: auto;
 }
 
-#right_container{
+#done-container{
 	grid-column: 3 / 4;
 	grid-row: 1 / 2;
 	overflow-y: auto;

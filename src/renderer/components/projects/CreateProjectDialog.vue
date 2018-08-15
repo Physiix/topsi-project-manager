@@ -47,9 +47,6 @@ export default {
 				description: this.description
 			});
 
-			// Update timelines.
-			this.$store.commit('UpdateTimelines');
-
 			// Clean up the text fields and close dialog.
 			this.title = '';
 			this.description = '';

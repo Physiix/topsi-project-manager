@@ -8,7 +8,7 @@
 			</v-toolbar> -->
 		</div>
 		<div class="bottom" :id="id">
-			<Note v-for="(note, index) in notes" :key="index" :note="note" class="mx-4" />
+			<Note v-for="(note) in notes" :key="note.id" :note="note" class="mx-4" />
 		</div>
 		<div class="vline grey"></div>
 	</div>
@@ -38,7 +38,7 @@ export default {
 
 		notes() {
 			const timelineId = this.$store.state.AppStore.currentTimelineId;
-			return this.$store.getters.GetNotesById(this.$store.state.AppStore.openedProjectId).filter(note => note.timeline_id == timelineId && note.category == this.tag);
+			return this.$store.getters.GetNotes.filter(note => note.timeline_id == timelineId && note.category == this.tag);
 		}
 	},
 	methods: {
@@ -48,11 +48,16 @@ export default {
 		const element = document.getElementById(this.id);
 		const sortable = Sortable.create(element, {
 			group: {
-				name: "c",
+				name: "Notes",
 			},
 			onEnd: (event) => {
-				// console.log(this.id, document.getElementsByClassName('note'));
-				console.log(event)
+				this.$store.commit('UpdateNotesOrder', {
+					notes: document.getElementsByClassName('note'),
+					note: event.item,
+					tag: event.to.id.substr(0, event.to.id.indexOf('-')),
+					oldIndex: event.oldIndex,
+					newIndex: event.newIndex
+				})
 			},
 
 			onMove: (event) => {

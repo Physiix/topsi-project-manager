@@ -2,10 +2,11 @@ import {
 	app,
 	BrowserWindow
 } from 'electron'
-
 import {
-	dbUtils
-} from '../core/database'
+	App
+} from '../core/Application';
+
+
 
 /**
  * Set `__static` path to static files in production
@@ -20,13 +21,15 @@ const winURL = process.env.NODE_ENV === 'development' ?
 	`http://localhost:9080` :
 	`file://${__dirname}/index.html`
 
+const appDB = App.GetAppDB();
+
 function createWindow() {
 	/**
 	 * Initial window options
 	 */
 	mainWindow = new BrowserWindow({
-		width: dbUtils.GetValue('window_width', 800),
-		height: dbUtils.GetValue('window_height', 600),
+		width: appDB.GetValue('window_width', 800),
+		height: appDB.GetValue('window_height', 600),
 		useContentSize: true,
 		frame: false,
 	})
@@ -38,8 +41,8 @@ function createWindow() {
 
 	mainWindow.on('resize', () => {
 		const rect = mainWindow.getBounds();
-		dbUtils.SetValue('window_width', rect.width);
-		dbUtils.SetValue('window_height', rect.height);
+		appDB.SetValue('window_width', rect.width);
+		appDB.SetValue('window_height', rect.height);
 	})
 
 	mainWindow.on('closed', () => {

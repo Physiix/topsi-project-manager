@@ -27,6 +27,9 @@ export default {
 
 	},
 	mounted() {
+		// Update the projects list.
+		this.$store.commit('UpdateProjects');
+
 		let value = 50;
 		const id = setInterval(() => {
 			value += 8;

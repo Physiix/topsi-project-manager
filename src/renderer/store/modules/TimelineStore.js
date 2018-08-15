@@ -1,6 +1,6 @@
 import {
-	dbUtils
-} from '../../../core/database'
+	App
+} from "../../../core/Application";
 
 class Timeline {
 	constructor(title, project_id) {
@@ -12,7 +12,7 @@ class Timeline {
 
 const state = {
 	// Retrieve all the timelines by their ID.
-	timelines: dbUtils.GetAll('timelines', 'id')
+	timelines: null,
 };
 
 const getters = {
@@ -20,8 +20,8 @@ const getters = {
 	 * Get all the timelines associated with a project.
 	 * @param id ID of the project to retrieve the timelines for.
 	 */
-	GetTimelinesByProjectId(state) {
-		return id => state.timelines.filter(timeline => timeline.project_id == id);
+	GetTimelines(state) {
+		return state.timelines;
 	}
 }
 
@@ -39,17 +39,22 @@ const mutations = {
 
 		// Create the new timeline object
 		const timeline = new Timeline(data.title, data.project_id);
-		timeline.id = dbUtils.GetId('timelines_id');
+		const projectDB = App.GetDB(data.project_id);
+		timeline.id = projectDB.GetId('timelines_id');
 
 		// Store the new timeline object in the database.
-		dbUtils.Write('timelines', timeline);
+		projectDB.Write('timelines', timeline);
 
 		// Update the timelines
-		state.timelines = dbUtils.GetAll('timelines', 'id');
+		mutations.UpdateTimelines(state, data);
 	},
 
-	UpdateTimelines(state) {
-		state.timelines = dbUtils.GetAll('timelines', 'id');
+	/**
+	 * Get all the timelines from the current project's database.
+	 */
+	UpdateTimelines(state, data) {
+		if (data.project_id == null) throw new Error('UpdateTimelines: Project id required.');
+		state.timelines = App.GetDB(data.project_id).GetAll('timelines', 'id');
 	}
 }
 

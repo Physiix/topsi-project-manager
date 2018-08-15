@@ -4,22 +4,21 @@ import fs from 'fs'
 // Adapter
 const FileSync = require('lowdb/adapters/FileSync');
 
-// Paths
-const dataPath = path.join(path.resolve('.'), 'data');
-const dbFilePath = path.join(dataPath, 'database.json');
-
-// Make sure the 'data' folder exists
-if (!fs.existsSync(dataPath))
-	fs.mkdirSync(dataPath);
-
-const adapter = new FileSync(dbFilePath);
-const db = new lowdb(adapter);
 
 //Class containing all kind of helper functions to access
 //write and alter the local database.
-class DBUtils {
-	constructor() {
-		this.context = db;
+export class DBUtils {
+	constructor(name) {
+		// Paths
+		const dataPath = path.join(path.resolve('.'), 'data');
+		const dbFilePath = path.join(dataPath, name);
+
+		// Make sure the 'data' folder exists
+		if (!fs.existsSync(dataPath))
+			fs.mkdirSync(dataPath);
+
+		const adapter = new FileSync(dbFilePath);
+		this.context = new lowdb(adapter);
 	}
 
 	/**
@@ -130,7 +129,9 @@ class DBUtils {
 		data.timestamp = Date.now();
 
 		// Updating the data
-		this.context.get(table).find(key).assign(data).write();
+		const t = this.context.get(table);
+		if (key != null) t.find(key).assign(data).write();
+		else t.assign(data).write();
 	}
 
 	/**
@@ -141,5 +142,3 @@ class DBUtils {
 		return dbFilePath;
 	}
 }
-
-export const dbUtils = new DBUtils();

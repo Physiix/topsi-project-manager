@@ -33,8 +33,11 @@ export default {
 		 * Set the current project Id as the opened project.
 		 */
 		OpenProject() {
-			this.$store.commit('SetCurrentTimelineId', this.project.opened_timeline_id);
+			// this.$store.commit('SetCurrentTimelineId', this.project.opened_timeline_id);
 			this.$store.commit('OpenProject', this.project.id);
+			this.$store.commit('UpdateNotes', {
+				project_id: this.project.id
+			});
 		}
 	},
 }

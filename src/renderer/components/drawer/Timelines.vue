@@ -21,7 +21,7 @@ export default {
 	computed: {
 		timelines() {
 			const id = this.$store.state.AppStore.openedProjectId;
-			return this.$store.getters.GetTimelinesByProjectId(id);
+			return this.$store.getters.GetTimelines;
 		},
 
 		color() {
