@@ -29,12 +29,16 @@ body::-webkit-scrollbar {
 	display: none;
 }
 ::-webkit-scrollbar {
-	width: 5px;
-	height: 5px;
+	width: 6px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #ddd;
+	background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,5 +1,5 @@
 <template>
-	<div id="notes_container" style="background-color:#dedede;" class="pa-0">
+	<div id="notes_container" :class="color" class="pa-0">
 		<CreateNoteDialog v-if="createDialog" />
 		<CreateTimelineDialog/>
 		<UpdateNoteDialog v-if="updateDialog" />
@@ -45,6 +45,12 @@ export default {
 
 		updateDialog() {
 			return this.$store.state.AppStore.dialogs.updateNote
+		},
+
+		color() {
+			if (this.$store.getters.IsDarkMode)
+				return '';
+			else return 'grey lighten-2'
 		}
 	},
 	mounted() {

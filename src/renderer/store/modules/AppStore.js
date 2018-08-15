@@ -93,6 +93,10 @@ const getters = {
 
 	appColor(state) {
 		return state.baseColor;
+	},
+
+	IsDarkMode(state) {
+		return state.darkMode;
 	}
 }
 

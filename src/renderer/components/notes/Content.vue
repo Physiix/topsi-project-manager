@@ -74,7 +74,7 @@ export default {
 	transition: background-color .2s;
 }
 #bottom:hover {
-	background-color: rgba(0,0,0,0.5);  
+	background-color: rgba(102, 102, 102, 0.5);  
 }
 #bottom::-webkit-scrollbar-thumb {
 	background-color: inherit;
