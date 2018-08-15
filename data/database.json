@@ -1,5 +1,5 @@
 {
-  "dark_mode": true,
+  "dark_mode": false,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -13,7 +13,7 @@
       "title": "tset",
       "description": "tset",
       "opened_timeline_id": 1,
-      "timestamp": 1534295010429
+      "timestamp": 1534295970675
     },
     {
       "id": 1,
@@ -49,7 +49,7 @@
       "timestamp": 1517017284873
     }
   ],
-  "notes_id": 18,
+  "notes_id": 21,
   "notes": [
     {
       "id": 0,
@@ -76,50 +76,50 @@
       "project_id": 0,
       "title": "fghfg",
       "description": "hfghfg",
-      "category": "todo",
+      "category": "in_progress",
       "color": "primary white--text",
       "timeline_id": 1,
-      "timestamp": 1534270755343
+      "timestamp": 1534295112168
     },
     {
       "id": 3,
       "project_id": 0,
       "title": "fghfg",
       "description": "hfghfg",
-      "category": "todo",
+      "category": "in_progress",
       "color": "primary white--text",
       "timeline_id": 1,
-      "timestamp": 1534270755480
+      "timestamp": 1534295112330
     },
     {
       "id": 4,
       "project_id": 0,
       "title": "fghfg",
       "description": "hfghfg",
-      "category": "todo",
+      "category": "in_progress",
       "color": "primary white--text",
       "timeline_id": 1,
-      "timestamp": 1534270755612
+      "timestamp": 1534295112475
     },
     {
       "id": 5,
       "project_id": 0,
       "title": "fghfg",
       "description": "hfghfg",
-      "category": "todo",
+      "category": "in_progress",
       "color": "primary white--text",
       "timeline_id": 1,
-      "timestamp": 1534270755750
+      "timestamp": 1534295112617
     },
     {
       "id": 6,
       "project_id": 0,
       "title": "fghfg",
       "description": "hfghfg",
-      "category": "todo",
+      "category": "in_progress",
       "color": "primary white--text",
       "timeline_id": 1,
-      "timestamp": 1534270755878
+      "timestamp": 1534295112759
     },
     {
       "id": 7,
@@ -230,8 +230,38 @@
       "color": "",
       "timeline_id": 0,
       "timestamp": 1534272289232
+    },
+    {
+      "id": 18,
+      "project_id": 0,
+      "title": "asdasdas",
+      "description": "<p><span style=\"color: rgb(230, 0, 0); background-color: rgb(255, 255, 0);\">asdasdasdsa</span></p>",
+      "category": "done",
+      "color": "",
+      "timeline_id": 1,
+      "timestamp": 1534295528801
+    },
+    {
+      "id": 19,
+      "project_id": 0,
+      "title": "dasjkdahsjd adjhak ldhadkajla",
+      "description": "<p>sdfsdfsdfsdfsd</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 1,
+      "timestamp": 1534295903557
+    },
+    {
+      "id": 20,
+      "project_id": 0,
+      "title": "dasjkdahsjd adjhak ldhadkajla",
+      "description": "<blockquote><s>sdfsdfsdfsdfsd</s></blockquote>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 1,
+      "timestamp": 1534295908279
     }
   ],
-  "window_width": 1517,
-  "window_height": 875
+  "window_width": 1169,
+  "window_height": 774
 }

@@ -1,28 +1,28 @@
 <template>
 	<v-dialog v-model="createNote" max-width="70%" persistent>
 		<v-card>
-			<v-card-title class="py-1" :class="currentColor">New Note
+			<v-card-title class="py-0" :class="currentColor">
+				<!-- New Note
 				<v-spacer></v-spacer>
 				<v-btn class="ma-0" :class="currentColor" icon @click="currentColor = ''">
 					<v-icon>sync</v-icon>
-				</v-btn>
+				</v-btn> -->
+				<v-text-field autofocus label="Title" v-model="title"></v-text-field>
 			</v-card-title>
-			<v-container>
-				<v-layout row>
+			<v-container class="pa-0 px-3">
+				<!-- <v-layout row>
 					<v-spacer></v-spacer>
 					<v-btn v-for="(color, index) in colors" :key="index" class="color_item" :color="color" @click="currentColor = color"></v-btn>
 					<v-spacer></v-spacer>
-				</v-layout>
-				<v-text-field label="Title" v-model="title"></v-text-field>
-				<div>
+				</v-layout> -->
+
+				<v-card light class="elevation-2" style="border-radius:0;">
 					<div id="toolbar">
-						<button class="ql-bold">Bold</button>
-						<button class="ql-italic">Italic</button>
 					</div>
 					<div id="editor" style="height:200px;">
 					</div>
-				</div>
-				<v-select auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
+				</v-card>
+				<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 			</v-container>
 			<v-card-actions>
 				<v-spacer></v-spacer>
@@ -101,9 +101,19 @@ export default {
 		const options = {
 			modules: {
 				toolbar: [
-					[{ header: [1, 2, false] }],
-					['bold', 'italic', 'underline'],
-					['image', 'code-block']
+					[{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+					['bold', 'italic', 'underline', 'strike', 'image'],        // toggled buttons
+					['blockquote', 'code-block'],
+
+					[{ 'header': 1 }, { 'header': 2 }],               // custom button values
+					[{ 'list': 'ordered' }, { 'list': 'bullet' }],
+					[{ 'direction': 'rtl' }],                         // text direction
+
+
+					[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+					[{ 'align': [] }],
+
+					['clean']                                         // remove formatting button
 				]
 			},
 			placeholder: 'Compose an epic...',
