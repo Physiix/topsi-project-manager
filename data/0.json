@@ -14,17 +14,6 @@
   ],
   "notes": [
     {
-      "id": 8,
-      "project_id": 0,
-      "title": "New Note 2",
-      "description": "<p>test 2</p>",
-      "category": "in_progress",
-      "color": "",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534424288329
-    },
-    {
       "id": 3,
       "project_id": 0,
       "title": "dasdasd",
@@ -45,6 +34,17 @@
       "timeline_id": 0,
       "order": 0,
       "timestamp": 1534424121356
+    },
+    {
+      "id": 2,
+      "project_id": 0,
+      "title": "dasdasdas",
+      "description": "<p>dasdasdas</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534366132448
     },
     {
       "id": 6,
@@ -69,15 +69,15 @@
       "timestamp": 1534369024401
     },
     {
-      "id": 2,
+      "id": 8,
       "project_id": 0,
-      "title": "dasdasdas",
-      "description": "<p>dasdasdas</p>",
-      "category": "todo",
+      "title": "New Note 2",
+      "description": "<p>test 2</p>",
+      "category": "in_progress",
       "color": "",
       "timeline_id": 0,
-      "order": 2,
-      "timestamp": 1534366132448
+      "order": 1,
+      "timestamp": 1534424288329
     },
     {
       "id": 9,
@@ -87,7 +87,7 @@
       "category": "todo",
       "color": "",
       "timeline_id": 0,
-      "order": 3,
+      "order": 4,
       "timestamp": 1534434137522
     },
     {
@@ -98,7 +98,7 @@
       "category": "todo",
       "color": "",
       "timeline_id": 0,
-      "order": 4,
+      "order": 5,
       "timestamp": 1534435653241
     }
   ],

@@ -1,19 +1,12 @@
 <template>
 	<div>
-		<v-dialog v-model="createProject" max-width="300">
-			<v-card>
-				<v-card-title>New Project</v-card-title>
-				<v-container>
-					<v-text-field label="Title" v-model="title"></v-text-field>
-					<v-text-field label="Description" v-model="description" multi-line></v-text-field>
-				</v-container>
-				<v-card-actions>
-					<v-spacer></v-spacer>
-					<v-btn flat class="ma-0" @click="createProject = false">Cancel</v-btn>
-					<v-btn flat class="ma-0" @click="CreateProject">Save</v-btn>
-				</v-card-actions>
-			</v-card>
-		</v-dialog>
+		<Dialog v-if="createProject" width="300" v-on:close="createProject = false" v-on:save="CreateProject">
+			<v-card-title>New Project</v-card-title>
+			<v-container>
+				<v-text-field label="Title" v-model="title"></v-text-field>
+				<v-text-field label="Description" v-model="description" multi-line></v-text-field>
+			</v-container>
+		</Dialog>
 	</div>
 </template>
 <script>

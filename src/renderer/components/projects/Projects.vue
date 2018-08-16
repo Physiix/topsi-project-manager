@@ -9,7 +9,7 @@
 	</div>
 </template>
 <script>
-import CreateProjectDialog from './CreateProjectDialog.vue'
+import CreateProjectDialog from '../dialogs/CreateProjectDialog.vue'
 import Project from './Project'
 
 export default {

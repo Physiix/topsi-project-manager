@@ -19,8 +19,8 @@
 <script>
 import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
-import CreateNoteDialog from './CreateNoteDialog.vue'
-import CreateTimelineDialog from './CreateTimelineDialog.vue'
+import CreateNoteDialog from '../dialogs/CreateNoteDialog.vue'
+import CreateTimelineDialog from '../dialogs/CreateTimelineDialog.vue'
 import UpdateNoteDialog from './UpdateNoteDialog.vue'
 import Content from './Content.vue'
 
