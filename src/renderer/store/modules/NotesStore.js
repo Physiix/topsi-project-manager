@@ -85,16 +85,24 @@ const mutations = {
 		const note = state.notes.filter(n => n.id == SanitizeNoteId(data.note.id))[0];
 
 		// Removing the note from the last category.
-		state.notes.filter(n => n.category == note.category).splice(data.oldIndex, 1);
+		const sourceNotes = state.notes.filter(n => n.category == note.category)
+		sourceNotes.splice(data.oldIndex, 1);
 
 		// Adding the note to the new category/
-		const categNotes = state.notes.filter(n => n.category == data.tag);
+		let destNotes = null
+
+
+		// If the note stays in the same category, then the source and destinatimn array are the same.
+		if (note.category == data.tag)
+			destNotes = sourceNotes
+		else
+			destNotes = state.notes.filter(n => n.category == data.tag);
 
 		// Insert the new note in the appropriate index.
-		categNotes.splice(data.newIndex, 0, note);
+		destNotes.splice(data.newIndex, 0, note);
 
 		// This update the new note of the receiving category with the new order.
-		for (let i = 0; i < categNotes.length; i++) categNotes[i].order = i;
+		for (let i = 0; i < destNotes.length; i++) destNotes[i].order = i;
 
 		note.category = data.tag;
 
