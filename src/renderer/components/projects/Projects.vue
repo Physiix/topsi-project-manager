@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div :class="color" style="height:100%">
 		<CreateProjectDialog />
 		<v-layout row wrap>
 			<v-flex xs3 v-for="(project, i) in projects" :key="i">
@@ -22,9 +22,11 @@ export default {
 		projects() {
 			return this.$store.state.ProjectsStore.projects;
 		},
-	},
-	methods: {
-
+		color() {
+			if (this.$store.getters.IsDarkMode)
+				return '';
+			else return 'grey lighten-2'
+		}
 	},
 	mounted() {
 		// Update the projects list.

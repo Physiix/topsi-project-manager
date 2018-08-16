@@ -58,7 +58,8 @@ export default {
 
 		const resize = () => {
 			const drawerWidth = this.$store.state.AppStore.drawerWidth;
-			container.style.width = window.innerWidth - 50 + 'px';
+			const offset = 5;
+			container.style.width = window.innerWidth - 50 + offset + 'px';
 			container.style.height = (window.innerHeight - 30) + 'px';
 		}
 		let value = 250;
