@@ -59,7 +59,7 @@ const mutations = {
 
 	SetDarkMode(state, value) {
 		state.darkMode = value;
-		App.GetDB().SetValue('dark_mode', value);
+		App.GetAppDB().SetValue('dark_mode', value);
 	},
 
 	ShowSettings(state, value) {

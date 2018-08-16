@@ -62,7 +62,8 @@ export default {
 
 			onMove: (event) => {
 				// console.log(event.dragged)
-			}
+			},
+			animation: 100
 
 		});
 		// console.log(sortable)
