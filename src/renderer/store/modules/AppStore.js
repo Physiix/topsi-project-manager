@@ -29,7 +29,7 @@ const state = {
 	darkMode: App.GetAppDB().GetValue('dark_mode', true),
 
 	// Base color of the application.
-	baseColor: 'blue',
+	baseColor: 'indigo',
 
 	// Information about the github profile
 	gitUserInfo: App.GetAppDB().GetValue('git_user_info', new GitUserInfo()),

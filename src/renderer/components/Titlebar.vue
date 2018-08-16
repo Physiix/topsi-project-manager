@@ -1,17 +1,30 @@
 <template>
 	<div id="titlebar">
-		<v-toolbar app :class="color" height="30" class="px-0" dark @mousedown="moveWindow">
+		<v-toolbar app :class="color" height="30" class="px-0" dark>
+			<v-icon>project</v-icon>
 			<v-spacer></v-spacer>
 			Project Manager
 			<v-spacer></v-spacer>
 			<v-btn flat class="titlebar-btn mx-0" @click="minimize">
-				<v-icon class="pb-3">minimize</v-icon>
+				<svg width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M11 4.399V5.5H0V4.399h11z" fill="#fff" />
+				</svg>
+				<!-- <v-icon class="pb-3">minimize</v-icon> -->
 			</v-btn>
 			<v-btn flat class="titlebar-btn mx-0" @click="maximise">
-				<v-icon>border_outer</v-icon>
+				<!-- <v-icon>border_outer</v-icon> -->
+				<svg v-if="!maximized" width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M11 0v11H0V0h11zM9.899 1.101H1.1V9.9H9.9V1.1z" fill="#fff" />
+				</svg>
+				<svg v-else width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M11 8.798H8.798V11H0V2.202h2.202V0H11v8.798zm-3.298-5.5h-6.6v6.6h6.6v-6.6zM9.9 1.1H3.298v1.101h5.5v5.5h1.1v-6.6z" fill="#fff" />
+				</svg>
 			</v-btn>
-			<v-btn flat class="titlebar-btn mx-0" @click="close">
-				<v-icon>close</v-icon>
+			<v-btn flat class="titlebar-btn mx-0 close-btn" @click="close">
+				<svg width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6.279 5.5L11 10.221l-.779.779L5.5 6.279.779 11 0 10.221 4.721 5.5 0 .779.779 0 5.5 4.721 10.221 0 11 .779 6.279 5.5z" fill="#fff" />
+				</svg>
+				<!-- <v-icon>close</v-icon> -->
 			</v-btn>
 		</v-toolbar>
 	</div>
@@ -30,7 +43,7 @@ export default {
 		color() {
 			const baseColor = this.$store.getters.appColor;
 			return baseColor + ' darken-2';
-		}
+		},
 	},
 
 	methods: {
@@ -39,37 +52,21 @@ export default {
 		},
 
 		maximise() {
-			if (this.isMaximized) {
+			if (this.maximized) {
 				this.window.unmaximize();
-				this.isMaximized = false;
-			} else {
+				this.maximized = false;
+			}
+			else {
 				this.window.maximize();
-				this.isMaximized = true;
+				this.maximized = true;
 			}
 
+			console.log(this.maximized)
 		},
 
 		minimize() {
 			this.window.minimize();
 		},
-
-		moveWindow(event) {
-			// console.log(event);
-		},
-
-		startDrag() {
-			// const titlebar = document.getElementById('titlebar');
-			const mouseOver = (event) => {
-				const remote = require('electron').remote;
-				remote.getCurrentWindow().setmov
-			}
-			window.addEventListener('mousemove', mouseOver)
-
-			window.addEventListener('mouseup', () => {
-				console.log('up')
-				window.removeEventListener('mousemove', mouseOver)
-			})
-		}
 	},
 
 	mounted() {
@@ -85,7 +82,6 @@ export default {
 	created() {
 		this.window = require('electron').remote.getCurrentWindow();
 		this.maximized = this.window.isMaximized();
-
 	}
 }
 </script>
@@ -95,8 +91,9 @@ export default {
 	padding: 0;
 }
 .titlebar-btn{
-	min-width:35px!important;
-	max-width:35px!important;
+	min-width:46px!important;
+	max-width:46px!important;
+	height:30px;
 }
 
 #titlebar {
@@ -106,6 +103,13 @@ export default {
 
 .titlebar-btn {
   -webkit-app-region: no-drag;
+  cursor:auto;
+  border-radius:0;
+}
+
+.close-btn:hover{
+	background-color:rgba(255, 0, 0, 0.9);
+	color: white;
 }
 
 </style>
