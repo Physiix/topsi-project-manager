@@ -76,6 +76,7 @@ export default {
 		titlebar.style.top = '0';
 		titlebar.style.height = '30px';
 		titlebar.style.width = window.innerWidth + 'px';
+		titlebar.style.zIndex = 2;
 		window.addEventListener('resize', () => { titlebar.style.width = window.innerWidth + 'px'; })
 	},
 

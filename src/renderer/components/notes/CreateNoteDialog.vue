@@ -1,36 +1,31 @@
 <template>
-	<v-dialog v-model="createNote" max-width="70%" persistent>
-		<v-card>
-			<v-card-title class="py-0" :class="currentColor">
-				<!-- New Note
+	<!-- <v-dialog v-model="createNote" max-width="70%" persistent> -->
+	<Dialog v-on:save="CreateNote" v-on:close="Close" width="500">
+		<v-card-title class="py-0" :class="currentColor">
+			<!-- New Note
 				<v-spacer></v-spacer>
 				<v-btn class="ma-0" :class="currentColor" icon @click="currentColor = ''">
 					<v-icon>sync</v-icon>
 				</v-btn> -->
-				<v-text-field autofocus label="Title" v-model="title"></v-text-field>
-			</v-card-title>
-			<v-container class="pa-0 px-3">
-				<!-- <v-layout row>
+			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
+		</v-card-title>
+		<v-container class="pa-0 px-3">
+			<!-- <v-layout row>
 					<v-spacer></v-spacer>
 					<v-btn v-for="(color, index) in colors" :key="index" class="color_item" :color="color" @click="currentColor = color"></v-btn>
 					<v-spacer></v-spacer>
 				</v-layout> -->
 
-				<v-card light class="elevation-2" style="border-radius:0;">
-					<div id="toolbar">
-					</div>
-					<div id="editor" style="height:200px;">
-					</div>
-				</v-card>
-				<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
-			</v-container>
-			<v-card-actions>
-				<v-spacer></v-spacer>
-				<v-btn flat class="ma-0" @click="createNote = false">Cancel</v-btn>
-				<v-btn flat class="ma-0" @click="CreateNote">Save</v-btn>
-			</v-card-actions>
-		</v-card>
-	</v-dialog>
+			<v-card light class="elevation-2" style="border-radius:0;">
+				<div id="toolbar">
+				</div>
+				<div id="editor" style="height:200px;">
+				</div>
+			</v-card>
+			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
+		</v-container>
+	</Dialog>
+	<!-- </v-dialog> -->
 </template>
 <script>
 
@@ -40,7 +35,6 @@ let editor = null;
 export default {
 	name: 'CreateNoteDialog',
 	components: {
-
 	},
 	props: {
 
@@ -95,6 +89,11 @@ export default {
 			this.category = { text: 'TODO', tag: 'todo' };
 			this.title = this.description = null;
 			this.createNote = false;
+		},
+
+		Close() {
+			console.log('close')
+			this.createNote = false
 		}
 	},
 	mounted() {
@@ -120,12 +119,12 @@ export default {
 			theme: 'snow'  // or 'bubble'
 		};
 		editor = new Quill('#editor', options);
-		console.log(editor)
 	}
 }
 </script>
 
 <style scoped>
+
 .color_item{
 	min-width: 40px !important;
 	max-width: 40px !important;
