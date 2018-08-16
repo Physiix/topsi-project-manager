@@ -24,6 +24,9 @@ const state = {
 		note: null
 	},
 
+	// Note to Update.
+	updatedNote: null,
+
 	// Contains all the notes for the currently opened project.
 	notes: null,
 
@@ -114,6 +117,16 @@ const mutations = {
 	},
 
 	/**
+	 * Set the note to update.
+	 * @param {*State} state NotesStore state.
+	 * @param {*Note} data Contains the note to update.
+	 */
+	SetUpdatedNote(state, note) {
+		if (note == null) throw new Error("SetUpdatedNote: note parameter required.")
+		state.updatedNote = note;
+	},
+
+	/**
 	 * This function checks if the note's data in param is valid
 	 * and update it in the database. 
 	 * @param {*State} state NotesStore state.
@@ -124,13 +137,18 @@ const mutations = {
 		if (data.id == null || data.project_id == null || data.title == null || data.description == null || data.category == null)
 			throw new Error("Cannot update a note with invalid data ", data);
 
+		// Update the timestamp
+		data.updated_timestamp = Date.now();
+
 		const database = App.GetDB(data.project_id);
 
 		// Create the new note to store.
-		database.Update('notes', data.id, data);
+		database.Update('notes', {
+			id: data.id
+		}, data);
 
 		// Update the state
-		state.notes = database.GetAll('notes', 'timestamp');
+		state.notes = database.GetAll('notes', 'order');
 	},
 
 	SetShowMenu(state, value) {

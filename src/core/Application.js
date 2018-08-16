@@ -31,7 +31,6 @@ class Application {
 	 * @param {String} id ID of the project.
 	 */
 	GetDB(id) {
-		console.log(id, this.databases[id + EXTENSION])
 		return this.databases[id + EXTENSION];
 	}
 
@@ -43,7 +42,6 @@ class Application {
 		const id = this.appDB.GetId('projects_id');
 		const dbName = id + EXTENSION;
 		this.databases[dbName] = new DBUtils(dbName);
-		// console.log(this.databases)
 		return id;
 	}
 }

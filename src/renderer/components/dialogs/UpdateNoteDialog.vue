@@ -1,26 +1,12 @@
 <template>
-	<!-- <v-dialog v-model="createNote" max-width="70%" persistent> -->
-	<Dialog v-on:save="CreateNote" v-on:close="Close" width="500">
-		<v-card-title class="py-0" :class="currentColor">
-			<!-- New Note
-				<v-spacer></v-spacer>
-				<v-btn class="ma-0" :class="currentColor" icon @click="currentColor = ''">
-					<v-icon>sync</v-icon>
-				</v-btn> -->
+	<Dialog v-on:save="UpdateNote" v-on:close="Close" width="500">
+		<v-card-title class="py-0">
 			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
 		</v-card-title>
 		<v-container class="pa-0 px-3">
-			<!-- <v-layout row>
-					<v-spacer></v-spacer>
-					<v-btn v-for="(color, index) in colors" :key="index" class="color_item" :color="color" @click="currentColor = color"></v-btn>
-					<v-spacer></v-spacer>
-				</v-layout> -->
-
 			<v-card light class="elevation-2" style="border-radius:0;">
-				<div id="toolbar">
-				</div>
-				<div id="editor" style="height:200px;">
-				</div>
+				<div id="toolbar"></div>
+				<div id="editor" style="height:200px;"></div>
 			</v-card>
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
@@ -32,13 +18,8 @@
 import Quill from 'quill'
 let editor = null;
 
-export default {
-	name: 'CreateNoteDialog',
-	components: {
-	},
-	props: {
-
-	},
+export default { //SetUpdatedNote
+	name: 'UpdateNoteDialog',
 	data() {
 		return {
 			title: null,
@@ -48,51 +29,46 @@ export default {
 				{ text: 'TODO', tag: 'todo' },
 				{ text: 'In Progress', tag: 'in_progress' },
 				{ text: 'Done', tag: 'done' },
-			],
-			currentColor: '',
-			colors: [
-				'red white--text',
-				'primary white--text',
-				'green white--text',
-				'secondary white--text',
 			]
 		}
 	},
 	computed: {
+		note() {
+			return this.$store.state.NotesStore.updatedNote;
+		},
 		darkMode() {
 			return this.$store.state.AppStore.darkMode;
 		},
-		createNote: {
+		updateNote: {
 			set(value) {
-				this.$store.commit('CreateNoteDialog');
+				this.$store.commit('UpdateNoteDialog');
 			},
-
 			get() {
-				return this.$store.state.AppStore.dialogs.createNote;
+				return this.$store.state.AppStore.dialogs.updateNote;
 			}
 		}
 	},
 	methods: {
-		CreateNote() {
+		UpdateNote() {
 			const projectId = this.$store.state.AppStore.openedProjectId;
 			const timelineId = this.$store.state.AppStore.currentTimelineId;
-			this.$store.commit('CreateNote', {
+			this.$store.commit('UpdateNote', {
+				id: this.note.id,
 				project_id: projectId,
 				title: this.title,
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
 				color: this.currentColor,
-				timeline_id: timelineId
 			});
 
 			// Cleaning up
 			this.category = { text: 'TODO', tag: 'todo' };
 			this.title = this.description = null;
-			this.createNote = false;
+			this.updateNote = false;
 		},
 
 		Close() {
-			this.createNote = false
+			this.updateNote = false
 		}
 	},
 	mounted() {
@@ -118,6 +94,12 @@ export default {
 			theme: 'snow'  // or 'bubble'
 		};
 		editor = new Quill('#editor', options);
+
+		// Populate the content
+		this.title = this.note.title;
+		document.getElementsByClassName("ql-editor")[0].innerHTML = this.note.description;
+		this.category = this.items.filter(i => i.tag == this.note.category)[0];
+		this.currentColor = 'default';
 	}
 }
 </script>

@@ -30,7 +30,6 @@ const mutations = {
 	 * @param {*Project} data Contains the project's title and description.
 	 */
 	CreateProject(state, data) {
-		console.log('here')
 		// Make sure the project's data is valid.
 		if (data.title == null || data.description == null)
 			throw new Error("Cannot create a project with invalid data ", data);
@@ -45,7 +44,6 @@ const mutations = {
 		// Store the project in the database.
 		appDB.Write('projects', project);
 
-		console.log(appDB)
 		const projectDB = App.GetDB(project.id);
 		// Store the project info in its own database
 		projectDB.Write('info', {
@@ -84,7 +82,6 @@ const mutations = {
 	 */
 	UpdateProjects(state) {
 		state.projects = App.GetAppDB().GetAll('projects', 'id');
-		console.log(state.projects)
 	}
 }
 

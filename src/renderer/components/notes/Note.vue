@@ -2,7 +2,12 @@
 	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show">
 		<v-card-title class="py-2 pr-0">
 			{{note.title}}
-
+			<v-spacer></v-spacer>
+			<v-btn small icon class="ma-0" @click="Edit">
+				<v-icon style="font-size:16px;">
+					edit
+				</v-icon>
+			</v-btn>
 		</v-card-title>
 		<v-divider></v-divider>
 		<v-card-text v-html="note.description"></v-card-text>
@@ -34,6 +39,11 @@ export default {
 
 		MoveLeft() {
 			this.$store.commit('MoveNoteLeft', this.note);
+		},
+
+		Edit() {
+			this.$store.commit('SetUpdatedNote', this.note);
+			this.$store.commit('UpdateNoteDialog');
 		}
 	},
 	computed: {
@@ -59,6 +69,12 @@ export default {
 }
 .note:hover{
 	opacity: 0.8;
+}
+
+.note-btn{
+	min-width:20px!important;
+	max-width:20px!important;
+	height:20px;
 }
 
 .v-card__text img{

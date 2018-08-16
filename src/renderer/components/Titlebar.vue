@@ -60,8 +60,6 @@ export default {
 				this.window.maximize();
 				this.maximized = true;
 			}
-
-			console.log(this.maximized)
 		},
 
 		minimize() {
