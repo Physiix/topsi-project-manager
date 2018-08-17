@@ -1,5 +1,5 @@
 <template>
-	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show" @dblclick="Open">
+	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show" @dblclick="Open" :dark="dark">
 		<v-card-title class="py-2 pr-0">
 			{{note.title}}
 			<v-spacer></v-spacer>
@@ -53,8 +53,8 @@ export default {
 	},
 	computed: {
 		dark() {
-			const darkMode = this.$store.state.AppStore.darkMode;
-			return (darkMode) ? true : (this.note.color == '') ? false : true;
+			const darkMode = this.$store.state.AppStore.darkMode && this.note.color == '';
+			return (darkMode) ? true : (this.note.color.includes('white--text')) ? true : false;
 		}
 	}
 }

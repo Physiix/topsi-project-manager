@@ -3,6 +3,7 @@
 		<v-card-title class="py-0">
 			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
 		</v-card-title>
+		<ColorPicker width="500" padding="20" v-on:color-selected="ColorSelected"></ColorPicker>
 		<v-container class="pa-0 px-3">
 			<v-card light class="elevation-2" style="border-radius:0;">
 				<div id="toolbar"></div>
@@ -28,7 +29,8 @@ export default {
 				{ text: 'TODO', tag: 'todo' },
 				{ text: 'In Progress', tag: 'in_progress' },
 				{ text: 'Done', tag: 'done' },
-			]
+			],
+			color: null
 		}
 	},
 	computed: {
@@ -57,7 +59,7 @@ export default {
 				title: this.title,
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
-				color: this.currentColor,
+				color: this.color,
 			});
 
 			// Cleaning up
@@ -68,6 +70,10 @@ export default {
 
 		Close() {
 			this.updateNote = false
+		},
+
+		ColorSelected(color) {
+			this.color = color;
 		}
 	},
 	mounted() {
@@ -98,7 +104,7 @@ export default {
 		this.title = this.note.title;
 		document.getElementsByClassName("ql-editor")[0].innerHTML = this.note.description;
 		this.category = this.items.filter(i => i.tag == this.note.category)[0];
-		this.currentColor = 'default';
+		this.color = this.note.color;
 	}
 }
 </script>

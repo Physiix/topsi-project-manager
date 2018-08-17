@@ -70,7 +70,7 @@ const mutations = {
 		database.Write('notes', note);
 
 		// Update the state
-		state.notes = database.GetAll('notes', 'id');
+		state.notes = database.GetAll('notes', 'order');
 	},
 
 	/**

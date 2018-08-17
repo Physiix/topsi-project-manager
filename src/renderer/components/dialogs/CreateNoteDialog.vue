@@ -1,21 +1,10 @@
 <template>
-	<!-- <v-dialog v-model="createNote" max-width="70%" persistent> -->
 	<Dialog v-on:save="CreateNote" v-on:close="Close" width="500">
-		<v-card-title class="py-0" :class="currentColor">
-			<!-- New Note
-				<v-spacer></v-spacer>
-				<v-btn class="ma-0" :class="currentColor" icon @click="currentColor = ''">
-					<v-icon>sync</v-icon>
-				</v-btn> -->
+		<v-card-title class="py-0">
 			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
 		</v-card-title>
+		<ColorPicker padding="20" width="500" v-on:color-selected="ColorSelected" />
 		<v-container class="pa-0 px-3">
-			<!-- <v-layout row>
-					<v-spacer></v-spacer>
-					<v-btn v-for="(color, index) in colors" :key="index" class="color_item" :color="color" @click="currentColor = color"></v-btn>
-					<v-spacer></v-spacer>
-				</v-layout> -->
-
 			<v-card light class="elevation-2" style="border-radius:0;">
 				<div id="toolbar">
 				</div>
@@ -25,7 +14,6 @@
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
-	<!-- </v-dialog> -->
 </template>
 <script>
 
@@ -34,11 +22,6 @@ let editor = null;
 
 export default {
 	name: 'CreateNoteDialog',
-	components: {
-	},
-	props: {
-
-	},
 	data() {
 		return {
 			title: null,
@@ -49,19 +32,10 @@ export default {
 				{ text: 'In Progress', tag: 'in_progress' },
 				{ text: 'Done', tag: 'done' },
 			],
-			currentColor: '',
-			colors: [
-				'red white--text',
-				'primary white--text',
-				'green white--text',
-				'secondary white--text',
-			]
+			color: '',
 		}
 	},
 	computed: {
-		darkMode() {
-			return this.$store.state.AppStore.darkMode;
-		},
 		createNote: {
 			set(value) {
 				this.$store.commit('CreateNoteDialog');
@@ -81,7 +55,7 @@ export default {
 				title: this.title,
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
-				color: this.currentColor,
+				color: this.color,
 				timeline_id: timelineId
 			});
 
@@ -93,6 +67,10 @@ export default {
 
 		Close() {
 			this.createNote = false
+		},
+
+		ColorSelected(color) {
+			this.color = color;
 		}
 	},
 	mounted() {
@@ -106,7 +84,6 @@ export default {
 					[{ 'header': 1 }, { 'header': 2 }],               // custom button values
 					[{ 'list': 'ordered' }, { 'list': 'bullet' }],
 					[{ 'direction': 'rtl' }],                         // text direction
-
 
 					[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
 					[{ 'align': [] }],
