@@ -21,20 +21,9 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 1,
+      "order": 2,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840
-    },
-    {
-      "id": 2,
-      "project_id": 2,
-      "title": "Set a color for a note",
-      "description": "<p>With this feature, the user set a custom color to a note.</p>",
-      "category": "todo",
-      "color": "",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534432457302
     },
     {
       "id": 1,
@@ -44,20 +33,30 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 0,
+      "order": 1,
       "timestamp": 1534432424724
     },
     {
-      "id": 5,
+      "id": 2,
       "project_id": 2,
-      "title": "Update the README file",
-      "description": "<p>Adding a short showcase of the application in the readme file.</p>",
+      "title": "Set a color for a note",
+      "description": "<p>With this feature, the user set a custom color to a note.</p>",
       "category": "in_progress",
-      "color": "default",
+      "color": "",
       "timeline_id": 0,
-      "order": 1,
-      "timestamp": 1534446849627,
-      "updated_timestamp": 1534446849627
+      "order": 0,
+      "timestamp": 1534432457302
+    },
+    {
+      "id": 3,
+      "project_id": 2,
+      "title": "Timelines",
+      "description": "<p>Add support for timelines.</p><p>a <strong>timeline</strong> store notes for the same project, and a project can have multiple <strong>timelines</strong>.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 2,
+      "timestamp": 1534432493972
     },
     {
       "id": 4,
@@ -71,16 +70,51 @@
       "timestamp": 1534432621908
     },
     {
-      "id": 3,
+      "id": 5,
       "project_id": 2,
-      "title": "Timelines",
-      "description": "<p>Add support for timelines.</p><p>a <strong>timeline</strong> store notes for the same project, and a project can have multiple <strong>timelines</strong>.</p>",
+      "title": "Update the README file",
+      "description": "<p>Adding a short showcase of the application in the readme file.</p>",
+      "category": "done",
+      "color": "default",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534446849627,
+      "updated_timestamp": 1534446849627
+    },
+    {
+      "id": 6,
+      "project_id": 2,
+      "title": "Ability to change the main color of the Application.",
+      "description": "<p>With this feature, the user could change the <strong style=\"color: rgb(230, 0, 0);\">color</strong><strong> </strong>of the application. </p><p>The color is used for The titlebar and sidebar for now.</p>",
+      "category": "in_progress",
+      "color": "default",
+      "timeline_id": 0,
+      "order": 1,
+      "timestamp": 1534513587020,
+      "updated_timestamp": 1534513587020
+    },
+    {
+      "id": 7,
+      "project_id": 2,
+      "title": "Search bar",
+      "description": "<p>With this feature, a search bar would be added, and the user could search <strong style=\"color: rgb(230, 0, 0);\">notes</strong><strong> </strong>or <strong style=\"color: rgb(0, 102, 204);\">projects</strong><strong>.</strong></p>",
       "category": "todo",
       "color": "",
       "timeline_id": 0,
-      "order": 2,
-      "timestamp": 1534432493972
+      "order": 3,
+      "timestamp": 1534513690289
+    },
+    {
+      "id": 8,
+      "project_id": 2,
+      "title": "Save projects in Github and Gitlab",
+      "description": "<p>Ability to save a single project or all the projects in a <strong style=\"color: rgb(0, 102, 204);\">Github</strong> or <strong style=\"color: rgb(0, 102, 204);\">Gitlab</strong> <strong style=\"color: rgb(153, 51, 255);\">repository</strong><strong> </strong>or <strong style=\"color: rgb(0, 138, 0);\">gist</strong><strong>/</strong><strong style=\"color: rgb(0, 138, 0);\">snippet</strong></p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 3,
+      "timestamp": 1534517192315
     }
   ],
-  "notes_id": 6
+  "notes_id": 9
 }
