@@ -1,17 +1,15 @@
 <template>
-	<div>
-		<v-dialog v-model="showSettings" max-width="500">
-			<v-tabs v-model="active" fixed centered dark class="secondary" dark>
-				<v-tab v-for="(tab, index) in tabs" :key="index" ripple>
-					{{tab}}
-				</v-tab>
-				<v-tab-item v-for="(tab, index) in tabs " :key="index" :id="'tab-' + index">
-					<GeneralSettings v-if="tab=='General' " class="item " />
-					<GitSettings v-if="tab=='Git' " class="item " />
-				</v-tab-item>
-			</v-tabs>
-		</v-dialog>
-	</div>
+	<Dialog v-if="showSettings" width="500" v-on:close="showSettings = false" disable-save cancel-text="Close">
+		<v-tabs v-model="active" fixed centered>
+			<v-tab v-for="(tab, index) in tabs" :key="index" ripple>
+				{{tab}}
+			</v-tab>
+			<v-tab-item v-for="(tab, index) in tabs " :key="index" :id="'tab-' + index">
+				<GeneralSettings v-if="tab=='General' " class="item " />
+				<GitSettings v-if="tab=='Git' " class="item " />
+			</v-tab-item>
+		</v-tabs>
+	</Dialog>
 </template>
 <script>
 import GeneralSettings from './GeneralSettings.vue'

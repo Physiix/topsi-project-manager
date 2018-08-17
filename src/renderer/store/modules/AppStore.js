@@ -30,7 +30,7 @@ const state = {
 	darkMode: App.GetAppDB().GetValue('dark_mode', true),
 
 	// Base color of the application.
-	baseColor: 'indigo ',
+	baseColor: App.GetAppDB().GetValue('application_color', 'indigo'),
 
 	// Information about the github profile
 	gitUserInfo: App.GetAppDB().GetValue('git_user_info', new GitUserInfo()),
@@ -88,6 +88,11 @@ const mutations = {
 
 	SetCurrentTimelineId(state, id) {
 		state.currentTimelineId = id;
+	},
+
+	SetAppColor(state, color) {
+		state.baseColor = color;
+		App.GetAppDB().SetValue('application_color', color);
 	}
 }
 
