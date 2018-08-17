@@ -1,5 +1,5 @@
 <template>
-	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show">
+	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show" @dblclick="Open">
 		<v-card-title class="py-2 pr-0">
 			{{note.title}}
 			<v-spacer></v-spacer>
@@ -44,6 +44,11 @@ export default {
 		Edit() {
 			this.$store.commit('SetUpdatedNote', this.note);
 			this.$store.commit('UpdateNoteDialog');
+		},
+
+		Open() {
+			this.$store.commit('SetOpenedNote', this.note);
+			this.$store.commit('OpenNoteDialog');
 		}
 	},
 	computed: {

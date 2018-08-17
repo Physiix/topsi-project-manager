@@ -1,7 +1,8 @@
 <template>
 	<div id="notes_container" :class="color" class="pa-0">
 		<CreateNoteDialog v-if="createDialog" />
-		<CreateTimelineDialog/>
+		<!-- <CreateTimelineDialog/> -->
+		<VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
 		<UpdateNoteDialog v-if="updateDialog" />
 		<!-- <Menu /> -->
 		<div id="todo-container">
@@ -21,6 +22,7 @@ import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from '../dialogs/CreateNoteDialog.vue'
 import CreateTimelineDialog from '../dialogs/CreateTimelineDialog.vue'
+import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
 import UpdateNoteDialog from '../dialogs/UpdateNoteDialog.vue'
 import Content from './Content.vue'
 
@@ -30,6 +32,7 @@ export default {
 		CreateNoteDialog,
 		CreateTimelineDialog,
 		UpdateNoteDialog,
+		VisualizeNoteDialog,
 		Menu,
 		Content
 	},
@@ -45,6 +48,10 @@ export default {
 
 		updateDialog() {
 			return this.$store.state.AppStore.dialogs.updateNote
+		},
+
+		visualizeDialog() {
+			return this.$store.state.AppStore.dialogs.visualizeDialog;
 		},
 
 		color() {

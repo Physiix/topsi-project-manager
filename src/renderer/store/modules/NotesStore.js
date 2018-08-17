@@ -27,6 +27,9 @@ const state = {
 	// Note to Update.
 	updatedNote: null,
 
+	// Note to visualize
+	openedNote: null,
+
 	// Contains all the notes for the currently opened project.
 	notes: null,
 
@@ -149,6 +152,17 @@ const mutations = {
 
 		// Update the state
 		state.notes = database.GetAll('notes', 'order');
+	},
+
+
+	/**
+	 * Set the note to visualize.
+	 * @param {*State} state NotesStore state.
+	 * @param {*Note} data Contains the note to visualize.
+	 */
+	SetOpenedNote(state, note) {
+		if (note == null) throw new Error("SetOpenedNote: note parameter required.")
+		state.openedNote = note;
 	},
 
 	SetShowMenu(state, value) {

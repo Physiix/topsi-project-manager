@@ -11,14 +11,13 @@
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
-	<!-- </v-dialog> -->
 </template>
 <script>
 
 import Quill from 'quill'
 let editor = null;
 
-export default { //SetUpdatedNote
+export default {
 	name: 'UpdateNoteDialog',
 	data() {
 		return {

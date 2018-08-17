@@ -3,8 +3,8 @@
 		<slot></slot>
 		<v-card-actions>
 			<v-spacer></v-spacer>
-			<v-btn flat class="ma-0" @click="Close">{{(cancel_text)?cancel_text:'Cancel'}}</v-btn>
-			<v-btn flat class="ma-0" color="primary" @click="Save">{{(save_text)?save_text:'Save'}}</v-btn>
+			<v-btn flat class="ma-0" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
+			<v-btn v-if="!disableSave" flat class="ma-0" color="primary" @click="Save">{{(saveText)?saveText:'Save'}}</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -14,8 +14,9 @@ export default {
 	name: 'Dialog',
 	props: {
 		width: String,
-		cancel_text: String,
-		save_text: String
+		cancelText: String,
+		saveText: String,
+		disableSave: Boolean
 	},
 	data() {
 		return {
@@ -57,6 +58,7 @@ export default {
 		}
 	},
 	mounted() {
+		const maxHeight = 0.9;
 		const element = document.getElementById('project-dialog');
 
 		const width = this.width;
@@ -66,10 +68,15 @@ export default {
 		element.style.position = 'fixed';
 		element.style.top = top + 'px';
 		element.style.left = window.innerWidth / 2 - width / 2 + 'px';
+		element.style.maxHeight = window.innerHeight * maxHeight + 'px';
+
 		element.style.width = width + 'px';
 		element.style.zIndex = 1;
 
-		window.addEventListener('resize', () => element.style.left = window.innerWidth / 2 - width / 2 + 'px')
+		window.addEventListener('resize', () => {
+			element.style.left = window.innerWidth / 2 - width / 2 + 'px';
+			element.style.maxHeight = window.innerHeight * maxHeight + 'px';
+		})
 
 		const id = setInterval(() => {
 			top += 8;
@@ -87,5 +94,6 @@ export default {
 #project-dialog{
 	position: fixed;
 	border-radius: 0;
+	overflow-y: auto;	
 }
 </style>
