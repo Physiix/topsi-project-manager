@@ -1,14 +1,12 @@
 <template>
-	<div>
-		<v-card class="ma-2 project_card elevation-3" height="100%" @click.native="OpenProject">
-			<v-card-title>
-				{{project.title}}
-			</v-card-title>
-			<v-card-text>
-				{{project.description}}
-			</v-card-text>
-		</v-card>
-	</div>
+	<v-card class="ma-2 project_card elevation-3" height="90%" @click.native="OpenProject">
+		<v-card-title>
+			{{project.title}}
+		</v-card-title>
+		<v-card-text>
+			{{project.description}}
+		</v-card-text>
+	</v-card>
 </template>
 <script>
 

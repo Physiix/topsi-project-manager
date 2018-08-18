@@ -51,6 +51,7 @@ class ProjectManager {
 			const db = App.GetAppDB();
 			const id = db.GetId('projects_id');
 			project.info.id = id;
+			project.notes.forEach(note => note.project_id = id);
 			db.Write('projects', project.info)
 			const content = JSON.stringify(project, null, '\t')
 			fs.writeFileSync(p.join(db.dataPath, id + '.json'), content);

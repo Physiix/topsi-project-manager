@@ -192,6 +192,18 @@ const mutations = {
 	UpdateNotes(state, data) {
 		state.projectId = data.project_id;
 		state.notes = App.GetDB(data.project_id).GetAll('notes', 'order');
+	},
+
+	/**
+	 * Delete a note from a project permnanently.
+	 * @param {Object} state Current state of the Application.
+	 * @param {Object} note Note to delete.
+	 */
+	DeleteNote(state, note) {
+		App.GetDB(note.project_id).Remove('notes', {
+			id: note.id
+		});
+		state.notes = App.GetDB(note.project_id).GetAll('notes', 'order');
 	}
 }
 

@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-on:close="Close" width="800" disable-save cancel-text="Close">
+	<Dialog v-on:close="Close" v-on:accept="Delete" width="800" cancel-text="Close" accept-text="delete" accept-raised accept-color="error">
 		<div id="visualize-dialog">
 			<v-card-title class="py-0 pt-5 headline">
 				{{note.title}}
@@ -33,7 +33,11 @@ export default {
 	methods: {
 
 		Close() {
-			this.openedNote = false
+			this.openedNote = false;
+		},
+
+		Delete() {
+			this.$store.commit('DeleteNote', this.note);
 		}
 	}
 }

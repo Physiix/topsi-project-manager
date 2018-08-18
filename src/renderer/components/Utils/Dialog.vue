@@ -3,8 +3,9 @@
 		<slot></slot>
 		<v-card-actions>
 			<v-spacer></v-spacer>
-			<v-btn flat class="ma-0" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
-			<v-btn v-if="!disableSave" flat class="ma-0" color="primary" @click="Save">{{(saveText)?saveText:'Save'}}</v-btn>
+			<v-btn v-if="!disableCancel" :flat="!disableRaised" class="ma-0" :color="(disableColor)?disableColor:''" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
+
+			<v-btn v-if="!disableAccept" :flat="!acceptRaised" class="ma-0" :color="(acceptColor)?acceptColor:'primary'" @click="Accept">{{(acceptText)?acceptText:'Save'}}</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -15,8 +16,13 @@ export default {
 	props: {
 		width: String,
 		cancelText: String,
-		saveText: String,
-		disableSave: Boolean
+		acceptText: String,
+		disableAccept: Boolean,
+		disableCancel: Boolean,
+		acceptColor: String,
+		disableColor: String,
+		acceptRaised: Boolean,
+		disableRaised: Boolean
 	},
 	data() {
 		return {
@@ -33,10 +39,10 @@ export default {
 		},
 
 		/**
-		 * When the user clicks on the Save button.
+		 * When the user clicks on the accept button.
 		 */
-		Save(event) {
-			this.RollUp(() => this.$emit('save', event));
+		Accept(event) {
+			this.RollUp(() => this.$emit('accept', event));
 		},
 
 		/**
@@ -96,4 +102,9 @@ export default {
 	border-radius: 0;
 	overflow-y: auto;	
 }
+
+#project-dialog button{
+	border-radius:  0;
+}
+
 </style>

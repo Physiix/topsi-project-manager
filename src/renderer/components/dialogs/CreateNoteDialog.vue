@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-on:save="CreateNote" v-on:close="Close" width="500">
+	<Dialog v-on:accept="CreateNote" v-on:close="Close" width="500">
 		<v-card-title class="py-0">
 			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
 		</v-card-title>

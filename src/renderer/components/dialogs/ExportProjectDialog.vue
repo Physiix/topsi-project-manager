@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-if="exportProject" width="300" v-on:close="exportProject = false" v-on:save="ExportProject" save-text="Export">
+	<Dialog v-if="exportProject" width="300" v-on:close="exportProject = false" v-on:accept="ExportProject" accept-text="Export">
 		<v-container>
 			<v-radio-group v-model="project" column color="primary">
 				<v-radio v-for="(project, i) in projects" :key="project.title + i" :label="project.title" :value="project" color="primary"></v-radio>

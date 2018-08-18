@@ -1,29 +1,28 @@
 {
-  "dark_mode": false,
-  "git_user_info": {
-    "username": "",
-    "repository_token": "",
-    "gist_id": ""
-  },
-  "projects_id": 2,
-  "projects": [
-    {
-      "id": 0,
-      "title": "asdasd",
-      "description": "asdasdas",
-      "opened_timeline_id": 0,
-      "timestamp": 1534360213511
-    },
-    {
-      "id": 1,
-      "title": "Project Manager",
-      "description": "Project Manager where users can create projects and notes.",
-      "opened_timeline_id": 0,
-      "timestamp": 1534360778847
-    }
-  ],
-  "current_project_id": 0,
-  "window_width": 1215,
-  "window_height": 780,
-  "application_color": "indigo white--text"
+	"dark_mode": false,
+	"git_user_info": {
+		"username": "",
+		"repository_token": "",
+		"gist_id": ""
+	},
+	"projects_id": 2,
+	"projects": [{
+			"id": 0,
+			"title": "asdasd",
+			"description": "asdasdas",
+			"opened_timeline_id": 0,
+			"timestamp": 1534360213511
+		},
+		{
+			"id": 1,
+			"title": "Project Manager",
+			"description": "Project Manager where users can create projects and notes.",
+			"opened_timeline_id": 0,
+			"timestamp": 1534360778847
+		}
+	],
+	"current_project_id": 0,
+	"window_width": 1215,
+	"window_height": 780,
+	"application_color": "indigo white--text"
 }

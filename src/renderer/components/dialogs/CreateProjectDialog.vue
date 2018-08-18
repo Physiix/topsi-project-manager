@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-if="createProject" width="300" v-on:close="createProject = false" v-on:save="CreateProject">
+	<Dialog v-if="createProject" width="300" v-on:close="createProject = false" v-on:accept="CreateProject">
 		<v-card-title>
 			<v-text-field label="Title" v-model="title"></v-text-field>
 		</v-card-title>
