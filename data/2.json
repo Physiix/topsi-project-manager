@@ -67,7 +67,8 @@
       "color": "",
       "timeline_id": 0,
       "order": 1,
-      "timestamp": 1534432621908
+      "timestamp": 1534603069923,
+      "updated_timestamp": 1534603069923
     },
     {
       "id": 8,
@@ -193,7 +194,18 @@
       "order": 6,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840
+    },
+    {
+      "id": 22,
+      "project_id": 2,
+      "title": "First time use.",
+      "description": "<p>When the application is used for the first time, a setup <strong style=\"color: rgb(0, 102, 204);\">window</strong> should be displayed for the preferred options, like the <strong>default path to save</strong>, whether to use <strong style=\"color: rgb(0, 138, 0);\">dark mode</strong><strong> </strong> or not etc.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 5,
+      "timestamp": 1534606232986
     }
   ],
-  "notes_id": 22
+  "notes_id": 23
 }

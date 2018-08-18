@@ -14,12 +14,6 @@
 
 export default {
 	name: 'ProjectSettings',
-	components: {
-
-	},
-	props: {
-
-	},
 	data() {
 		return {
 			items: [
@@ -29,15 +23,25 @@ export default {
 					action: () => this.$store.commit('CreateProjDialog')
 				},
 				{
-					title: 'Upload Database',
-					icon: 'sync',
-					action: () => this.$store.dispatch('UploadGist')
+					title: 'Export Project',
+					icon: 'save',
+					action: () => { this.$store.commit('ExportProjDialog') }
 				},
 				{
-					title: 'Download Database',
-					icon: 'cloud_download',
-					action: () => this.$store.dispatch('DownloadGist')
+					title: 'Import Project',
+					icon: 'insert_drive_file',
+					action: () => { }
 				},
+				// {
+				// 	title: 'Upload Database',
+				// 	icon: 'sync',
+				// 	action: () => this.$store.dispatch('UploadGist')
+				// },
+				// {
+				// 	title: 'Download Database',
+				// 	icon: 'cloud_download',
+				// 	action: () => this.$store.dispatch('DownloadGist')
+				// },
 				{
 					title: 'Settings',
 					icon: 'settings',

@@ -15,6 +15,7 @@ const state = {
 		showSettings: false,
 		updateNote: false,
 		visualizeDialog: false,
+		exportProject: false,
 	},
 
 	// ID of the currently opened project.
@@ -93,6 +94,10 @@ const mutations = {
 	SetAppColor(state, color) {
 		state.baseColor = color;
 		App.GetAppDB().SetValue('application_color', color);
+	},
+
+	ExportProjDialog(state) {
+		state.dialogs.exportProject = !state.dialogs.exportProject;
 	}
 }
 

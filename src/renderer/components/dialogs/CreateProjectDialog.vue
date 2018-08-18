@@ -1,13 +1,12 @@
 <template>
-	<div>
-		<Dialog v-if="createProject" width="300" v-on:close="createProject = false" v-on:save="CreateProject">
-			<v-card-title>New Project</v-card-title>
-			<v-container>
-				<v-text-field label="Title" v-model="title"></v-text-field>
-				<v-text-field label="Description" v-model="description" multi-line></v-text-field>
-			</v-container>
-		</Dialog>
-	</div>
+	<Dialog v-if="createProject" width="300" v-on:close="createProject = false" v-on:save="CreateProject">
+		<v-card-title>
+			<v-text-field label="Title" v-model="title"></v-text-field>
+		</v-card-title>
+		<v-container>
+			<v-text-field label="Description" v-model="description" multi-line></v-text-field>
+		</v-container>
+	</Dialog>
 </template>
 <script>
 
