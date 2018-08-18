@@ -6,6 +6,9 @@ const p = require('path');
 
 import store from '../renderer/store'
 import Vue from 'vue'
+import {
+	Notifications
+} from './Notification';
 const vue = new Vue({
 	store
 });
@@ -28,7 +31,10 @@ class ProjectManager {
 		const fs = require('fs');
 		const content = JSON.stringify(App.GetDB(project.id).context.read().__wrapped__);
 		fs.writeFile(savePath, content, error => {
-			if (error != null) throw new Error('Failed to save the file.\n' + error);
+			if (error != null) {
+				Notifications.Error('Export project failed', error.message);
+				throw new Error('Failed to save the file.\n' + error);
+			}
 			console.log('file save successfuly')
 		})
 	}
@@ -46,7 +52,10 @@ class ProjectManager {
 
 		const fs = require('fs');
 		fs.readFile(path, 'utf8', (error, data) => {
-			if (error != null) throw new Error('Failed to open the file.\n' + error);
+			if (error != null) {
+				Notifications.Error('Load Project failed', error.message);
+				throw new Error('Failed to open the file.\n' + error);
+			}
 			const project = JSON.parse(data);
 			const db = App.GetAppDB();
 			const id = db.GetId('projects_id');
@@ -56,8 +65,8 @@ class ProjectManager {
 			const content = JSON.stringify(project, null, '\t')
 			fs.writeFileSync(p.join(db.dataPath, id + '.json'), content);
 			App.Load(id);
-			// App.GetDB(id).context.write(content);
-			vue.$store.commit('UpdateProjects')
+			vue.$store.commit('UpdateProjects');
+			Notifications.Success('Success', `Project ${project.info.title} has been successfully loaded`);
 		});
 	}
 }

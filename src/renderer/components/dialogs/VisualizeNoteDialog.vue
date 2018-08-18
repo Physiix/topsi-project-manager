@@ -10,7 +10,7 @@
 	</Dialog>
 </template>
 <script>
-
+import { Notifications } from '../../../core/Notification'
 
 export default {
 	name: 'VisualizeNoteDialog',
@@ -33,6 +33,7 @@ export default {
 	methods: {
 
 		Close() {
+			Notifications.Info('test', 'something');
 			this.openedNote = false;
 		},
 
