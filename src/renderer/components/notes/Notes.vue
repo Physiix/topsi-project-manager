@@ -4,16 +4,9 @@
 		<!-- <CreateTimelineDialog/> -->
 		<VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
 		<UpdateNoteDialog v-if="updateDialog" />
-		<!-- <Menu /> -->
-		<div id="todo-container">
-			<Content id="todo-content" tag="todo" />
-		</div>
 
-		<div id="in_progress-container">
-			<Content id="in_progress-content" tag="in_progress" />
-		</div>
-		<div id="done-container">
-			<Content id="done-content" tag="done" />
+		<div v-for="(category, index) in categories" :key="category+index" :id="category+'-container'" class="category-container">
+			<Content :id="category+'-content'" :tag="category" />
 		</div>
 	</div>
 </template>
@@ -25,6 +18,7 @@ import CreateTimelineDialog from '../dialogs/CreateTimelineDialog.vue'
 import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
 import UpdateNoteDialog from '../dialogs/UpdateNoteDialog.vue'
 import Content from './Content.vue'
+import { LayoutManager } from '../../../core/Layout';
 
 export default {
 	name: 'Notes',
@@ -35,6 +29,15 @@ export default {
 		VisualizeNoteDialog,
 		Menu,
 		Content
+	},
+	data() {
+		return {
+			categories: [
+				'todo',
+				'in_progress',
+				'done'
+			]
+		}
 	},
 	computed: {
 		project() {
@@ -61,51 +64,14 @@ export default {
 		}
 	},
 	mounted() {
-		const container = document.getElementById('notes_container');
-
-		const resize = () => {
-			const drawerWidth = this.$store.state.AppStore.drawerWidth;
-			const offset = 5;
-			container.style.width = window.innerWidth - 50 + offset + 'px';
-			container.style.height = (window.innerHeight - 30) + 'px';
-		}
-		let value = 250;
-		const id = setInterval(() => {
-			value -= 8;
-			document.getElementById('container').style.setProperty('grid-template-columns',
-				+value + 'px repeat(5, 1fr)')
-			if (value <= 50) clearInterval(id);
-		})
-
-		resize();
-		window.addEventListener('resize', resize);
+		LayoutManager.SetupNotesPage('notes_container', 'container', 'todo', 'in_progress', 'done');
 	}
 }
 </script>
 
 <style >
 
-#notes_container{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr) 5px;
-	grid-template-rows: 1fr;
-}
-
-#todo-container{
-	grid-column: 1 / 2;
-	grid-row: 1 / 2;
-	overflow-y: auto;
-}
-
-#in_progress-container{
-	grid-column: 2 / 3;
-	grid-row: 1 / 2;
-	overflow-y: auto;
-}
-
-#done-container{
-	grid-column: 3 / 4;
-	grid-row: 1 / 2;
+.category-container{
 	overflow-y: auto;
 }
 

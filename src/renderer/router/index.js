@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Vuetify from 'vuetify'
 import Components from '../plugins/Components';
 
-
 Vue.use(Router)
 Vue.use(Vuetify)
 Vue.use(Components)
