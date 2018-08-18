@@ -1,10 +1,11 @@
 {
-  "info": [
-    {
-      "id": 0,
-      "timestamp": 1534366038113
-    }
-  ],
+  "info": {
+    "id": 0,
+    "title": "asdasd",
+    "description": "asdasdas",
+    "opened_timeline_id": 0,
+    "timestamp": 1534615324734
+  },
   "timelines": [
     {
       "id": 0,

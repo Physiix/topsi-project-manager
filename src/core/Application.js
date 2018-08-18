@@ -3,7 +3,7 @@ import {
 } from './database'
 
 const EXTENSION = '.json';
-export class Application {
+class Application {
 	constructor() {
 		this.appDB = new DBUtils('database.json');
 		this.databases = [];

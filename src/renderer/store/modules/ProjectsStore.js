@@ -50,9 +50,7 @@ const mutations = {
 
 		const projectDB = App.GetDB(project.id);
 		// Store the project info in its own database
-		projectDB.Write('info', {
-			id: project.id
-		});
+		projectDB.SetValue('info', project);
 
 		// Create first timeline.
 		projectDB.Write('timelines', {

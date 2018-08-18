@@ -2,6 +2,14 @@ import {
 	App
 } from './Application';
 
+const p = require('path');
+
+import store from '../renderer/store'
+import Vue from 'vue'
+const vue = new Vue({
+	store
+});
+
 class ProjectManager {
 	SaveProject(project) {
 		const electron = require('electron')
@@ -17,15 +25,39 @@ class ProjectManager {
 		// Make sure the save path is valid.
 		if (savePath == null) return;
 
+		const fs = require('fs');
 		const content = JSON.stringify(App.GetDB(project.id).context.read().__wrapped__);
-		require('fs').writeFile(savePath, content, error => {
+		fs.writeFile(savePath, content, error => {
 			if (error != null) throw new Error('Failed to save the file.\n' + error);
 			console.log('file save successfuly')
 		})
 	}
 
 	LoadProject() {
+		const electron = require('electron')
+		const dialog = electron.remote.dialog;
 
+		const path = dialog.showOpenDialog(electron.remote.getCurrentWindow(), {
+			properties: [
+				'openFile',
+			],
+			title: 'Import Project'
+		})[0];
+
+		const fs = require('fs');
+		fs.readFile(path, 'utf8', (error, data) => {
+			if (error != null) throw new Error('Failed to open the file.\n' + error);
+			const project = JSON.parse(data);
+			const db = App.GetAppDB();
+			const id = db.GetId('projects_id');
+			project.info.id = id;
+			db.Write('projects', project.info)
+			const content = JSON.stringify(project, null, '\t')
+			fs.writeFileSync(p.join(db.dataPath, id + '.json'), content);
+			App.Load(id);
+			// App.GetDB(id).context.write(content);
+			vue.$store.commit('UpdateProjects')
+		});
 	}
 }
 

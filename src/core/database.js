@@ -10,12 +10,12 @@ const FileSync = require('lowdb/adapters/FileSync');
 export class DBUtils {
 	constructor(name) {
 		// Paths
-		const dataPath = path.join(path.resolve('.'), 'data');
-		const dbFilePath = path.join(dataPath, name);
+		this.dataPath = path.join(path.resolve('.'), 'data');
+		const dbFilePath = path.join(this.dataPath, name);
 
 		// Make sure the 'data' folder exists
-		if (!fs.existsSync(dataPath))
-			fs.mkdirSync(dataPath);
+		if (!fs.existsSync(this.dataPath))
+			fs.mkdirSync(this.dataPath);
 
 		const adapter = new FileSync(dbFilePath);
 		this.context = new lowdb(adapter);
@@ -81,7 +81,7 @@ export class DBUtils {
 	 * Save the state of the current database.
 	 */
 	Save() {
-		this.write();
+		this.context.write();
 	}
 
 	//Get all the entries from a table.

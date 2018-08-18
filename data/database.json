@@ -16,13 +16,6 @@
     },
     {
       "id": 1,
-      "title": "asdasdas",
-      "description": "dasdasdas",
-      "opened_timeline_id": 0,
-      "timestamp": 1534360778847
-    },
-    {
-      "id": 2,
       "title": "Project Manager",
       "description": "Project Manager where users can create projects and notes.",
       "opened_timeline_id": 0,
@@ -30,7 +23,7 @@
     }
   ],
   "current_project_id": 0,
-  "window_width": 1474,
-  "window_height": 794,
+  "window_width": 1215,
+  "window_height": 780,
   "application_color": "indigo white--text"
 }
