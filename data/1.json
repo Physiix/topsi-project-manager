@@ -33,9 +33,21 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 0,
+      "order": 1,
       "timestamp": 1534548834859,
       "updated_timestamp": 1534548834859
+    },
+    {
+      "id": 24,
+      "project_id": 1,
+      "title": "Notifications",
+      "description": "<p>Add a notification system.</p>",
+      "category": "done",
+      "color": "green white--text",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534621905197,
+      "updated_timestamp": 1534621905197
     },
     {
       "id": 18,
@@ -45,7 +57,7 @@
       "category": "done",
       "color": "indigo white--text",
       "timeline_id": 0,
-      "order": 1,
+      "order": 2,
       "timestamp": 1534540034130
     },
     {
@@ -79,7 +91,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 2,
+      "order": 3,
       "timestamp": 1534594290579
     },
     {
@@ -112,7 +124,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 3,
+      "order": 4,
       "timestamp": 1534513587020,
       "updated_timestamp": 1534513587020
     },
@@ -135,7 +147,7 @@
       "category": "done",
       "color": "indigo white--text",
       "timeline_id": 0,
-      "order": 4,
+      "order": 5,
       "timestamp": 1534539876759,
       "updated_timestamp": 1534539876759
     },
@@ -158,7 +170,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 5,
+      "order": 6,
       "timestamp": 1534519531183
     },
     {
@@ -180,7 +192,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 6,
+      "order": 7,
       "timestamp": 1534446849627,
       "updated_timestamp": 1534446849627
     },
@@ -204,20 +216,8 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 7,
+      "order": 8,
       "timestamp": 1534432424724
-    },
-    {
-      "id": 24,
-      "project_id": 1,
-      "title": "Notifications",
-      "description": "<p>Add a notification system.</p>",
-      "category": "in_progress",
-      "color": "green white--text",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534621905197,
-      "updated_timestamp": 1534621905197
     },
     {
       "id": 0,
@@ -227,7 +227,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 8,
+      "order": 9,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840
     }

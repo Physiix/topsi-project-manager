@@ -31,9 +31,7 @@ export default {
 		}
 	},
 	methods: {
-
 		Close() {
-			Notifications.Info('test', 'something');
 			this.openedNote = false;
 		},
 
