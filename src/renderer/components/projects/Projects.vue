@@ -11,6 +11,7 @@
 <script>
 import CreateProjectDialog from '../dialogs/CreateProjectDialog.vue'
 import Project from './Project'
+import { AppManager } from '../../../core/ApplicationManager';
 
 export default {
 	name: 'Projects',
@@ -31,15 +32,7 @@ export default {
 	mounted() {
 		// Update the projects list.
 		this.$store.commit('UpdateProjects');
-
-		let value = 50;
-		const id = setInterval(() => {
-			value += 8;
-			document.getElementById('container').style.setProperty('grid-template-columns',
-				+value + 'px repeat(5, 1fr)')
-			// resize();
-			if (value >= 250) clearInterval(id);
-		})
+		AppManager.SetupProjectsPage('container');
 	}
 }
 </script>

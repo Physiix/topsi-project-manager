@@ -1,6 +1,13 @@
-class Layout {
+import Vue from "vue";
+import store from '../renderer/store'
+
+const COMPACT_DRAWER_WIDTH = 50;
+class ApplicationManager {
 	constructor() {
 		this.mainContainerId = null;
+		this.vue = new Vue({
+			store
+		});
 	}
 
 	SetupLandingPage(containerId, sideId, contentId) {
@@ -16,7 +23,7 @@ class Layout {
 		window.addEventListener('resize', resize);
 
 		container.style.display = 'grid';
-		container.style.gridTemplateColumns = '250px repeat(5, 1fr)';
+		container.style.gridTemplateColumns = this.vue.$store.getters.drawerWidth + 'px repeat(5, 1fr)';
 		container.style.gridTemplateRows = '30px repeat(5, 1fr)';
 
 		side.style.gridColumn = '1 / 2';
@@ -33,15 +40,15 @@ class Layout {
 
 		const resize = () => {
 			const offset = 5;
-			container.style.width = window.innerWidth - 50 + offset + 'px';
+			container.style.width = window.innerWidth - COMPACT_DRAWER_WIDTH + offset + 'px';
 			container.style.height = (window.innerHeight - 30) + 'px';
 		}
 
-		let value = 250;
+		let value = this.vue.$store.getters.drawerWidth;
 		const id = setInterval(() => {
 			value -= 8;
 			document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
-			if (value <= 50) clearInterval(id);
+			if (value <= COMPACT_DRAWER_WIDTH) clearInterval(id);
 		})
 
 		resize();
@@ -58,6 +65,16 @@ class Layout {
 			index++;
 		})
 	}
+
+	SetupProjectsPage(containerId) {
+		let value = COMPACT_DRAWER_WIDTH;
+		const width = this.vue.$store.getters.drawerWidth;
+		const id = setInterval(() => {
+			value += 8;
+			document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
+			if (value >= width) clearInterval(id);
+		})
+	}
 }
 
-export const LayoutManager = new Layout();
+export const AppManager = new ApplicationManager();

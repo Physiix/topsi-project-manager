@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { LayoutManager } from '../../core/Layout'
+import { AppManager } from '../../core/ApplicationManager'
 
 import Titlebar from './Titlebar.vue'
 import Notes from './notes/Notes.vue'
@@ -34,7 +34,7 @@ export default {
 		}
 	},
 	mounted() {
-		LayoutManager.SetupLandingPage('container', 'side', 'content');
+		AppManager.SetupLandingPage('container', 'side', 'content');
 	}
 }
 </script>

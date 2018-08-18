@@ -24,7 +24,7 @@ const state = {
 	currentTimelineId: 0,
 
 	// Width of the main drawer
-	drawerWidth: 245,
+	drawerWidth: 200,
 
 	// Whether dark mode is enabled or not.
 	darkMode: App.GetAppDB().GetValue('dark_mode', true),
@@ -107,6 +107,10 @@ const getters = {
 
 	IsDarkMode(state) {
 		return state.darkMode;
+	},
+
+	drawerWidth(state) {
+		return state.drawerWidth;
 	}
 }
 

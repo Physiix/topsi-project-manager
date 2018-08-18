@@ -18,7 +18,7 @@ import CreateTimelineDialog from '../dialogs/CreateTimelineDialog.vue'
 import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
 import UpdateNoteDialog from '../dialogs/UpdateNoteDialog.vue'
 import Content from './Content.vue'
-import { LayoutManager } from '../../../core/Layout';
+import { AppManager } from '../../../core/ApplicationManager';
 
 export default {
 	name: 'Notes',
@@ -64,7 +64,7 @@ export default {
 		}
 	},
 	mounted() {
-		LayoutManager.SetupNotesPage('notes_container', 'container', 'todo', 'in_progress', 'done');
+		AppManager.SetupNotesPage('notes_container', 'container', 'todo', 'in_progress', 'done');
 	}
 }
 </script>

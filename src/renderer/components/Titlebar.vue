@@ -9,10 +9,8 @@
 				<svg width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M11 4.399V5.5H0V4.399h11z" fill="#fff" />
 				</svg>
-				<!-- <v-icon class="pb-3">minimize</v-icon> -->
 			</v-btn>
 			<v-btn flat class="titlebar-btn mx-0" @click="maximise">
-				<!-- <v-icon>border_outer</v-icon> -->
 				<svg v-if="!maximized" width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M11 0v11H0V0h11zM9.899 1.101H1.1V9.9H9.9V1.1z" fill="#fff" />
 				</svg>
@@ -24,7 +22,6 @@
 				<svg width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M6.279 5.5L11 10.221l-.779.779L5.5 6.279.779 11 0 10.221 4.721 5.5 0 .779.779 0 5.5 4.721 10.221 0 11 .779 6.279 5.5z" fill="#fff" />
 				</svg>
-				<!-- <v-icon>close</v-icon> -->
 			</v-btn>
 		</v-toolbar>
 	</div>
