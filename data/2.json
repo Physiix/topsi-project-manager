@@ -26,6 +26,28 @@
       "updated_timestamp": 1534513587020
     },
     {
+      "id": 17,
+      "project_id": 2,
+      "title": "Tags",
+      "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user ccould look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 1,
+      "timestamp": 1534539983106
+    },
+    {
+      "id": 4,
+      "project_id": 2,
+      "title": "Dynamic categories",
+      "description": "<p>With this feature, the user could add a <strong style=\"color: rgb(0, 102, 204);\">category</strong> dynamically.</p><p>The default categories will still be <strong>TODO, In Progress </strong>and <strong>Done. </strong></p><p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534432621908
+    },
+    {
       "id": 2,
       "project_id": 2,
       "title": "Set a color for a note",
@@ -38,15 +60,26 @@
       "updated_timestamp": 1534539876759
     },
     {
-      "id": 4,
+      "id": 7,
       "project_id": 2,
-      "title": "Dynamic categories",
-      "description": "<p>With this feature, the user could add a <strong style=\"color: rgb(0, 102, 204);\">category</strong> dynamically.</p><p>The default categories will still be <strong>TODO, In Progress </strong>and <strong>Done. </strong></p><p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
+      "title": "Search bar",
+      "description": "<p>With this feature, a search bar would be added, and the user could search <strong style=\"color: rgb(230, 0, 0);\">notes</strong><strong> </strong>or <strong style=\"color: rgb(0, 102, 204);\">projects</strong><strong>.</strong></p>",
       "category": "todo",
       "color": "",
       "timeline_id": 0,
       "order": 1,
-      "timestamp": 1534432621908
+      "timestamp": 1534513690289
+    },
+    {
+      "id": 3,
+      "project_id": 2,
+      "title": "Timelines",
+      "description": "<p>Add support for timelines.</p><p>a <strong>timeline</strong> store notes for the same project, and a project can have multiple <strong>timelines</strong>.</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 2,
+      "timestamp": 1534432493972
     },
     {
       "id": 9,
@@ -60,15 +93,26 @@
       "timestamp": 1534519531183
     },
     {
-      "id": 3,
+      "id": 8,
       "project_id": 2,
-      "title": "Timelines",
-      "description": "<p>Add support for timelines.</p><p>a <strong>timeline</strong> store notes for the same project, and a project can have multiple <strong>timelines</strong>.</p>",
+      "title": "Save projects in Github and Gitlab",
+      "description": "<p>Ability to save a single project or all the projects in a <strong style=\"color: rgb(0, 102, 204);\">Github</strong> or <strong style=\"color: rgb(0, 102, 204);\">Gitlab</strong> <strong style=\"color: rgb(153, 51, 255);\">repository</strong><strong> </strong>or <strong style=\"color: rgb(0, 138, 0);\">gist</strong><strong>/</strong><strong style=\"color: rgb(0, 138, 0);\">snippet</strong></p>",
       "category": "todo",
       "color": "",
       "timeline_id": 0,
       "order": 2,
-      "timestamp": 1534432493972
+      "timestamp": 1534517192315
+    },
+    {
+      "id": 18,
+      "project_id": 2,
+      "title": "Import & Export projects",
+      "description": "<p>Ability to export a project to a file, and import it after.</p>",
+      "category": "in_progress",
+      "color": "indigo white--text",
+      "timeline_id": 0,
+      "order": 3,
+      "timestamp": 1534540034130
     },
     {
       "id": 5,
@@ -83,15 +127,27 @@
       "updated_timestamp": 1534446849627
     },
     {
-      "id": 7,
+      "id": 10,
       "project_id": 2,
-      "title": "Search bar",
-      "description": "<p>With this feature, a search bar would be added, and the user could search <strong style=\"color: rgb(230, 0, 0);\">notes</strong><strong> </strong>or <strong style=\"color: rgb(0, 102, 204);\">projects</strong><strong>.</strong></p>",
+      "title": "Single Dialog",
+      "description": "<p>Only one <strong style=\"color: rgb(0, 102, 204);\">dialog</strong> should be <strong>opened</strong> at all times. If a <strong>new</strong> <strong>dialog</strong> is requested while another one is oponed, the currently opened dialog should <strong>close</strong>, and the other one starts.</p>",
       "category": "todo",
       "color": "",
       "timeline_id": 0,
       "order": 3,
-      "timestamp": 1534513690289
+      "timestamp": 1534522642150
+    },
+    {
+      "id": 19,
+      "project_id": 2,
+      "title": "Feature: Delete note",
+      "description": "<p>Ability to delete a note in a <strong>project</strong>.</p><p>A message asking the user to <strong style=\"color: rgb(0, 102, 204);\">confirm</strong> the deletion is diesplayed. </p><p>The button should be in <strong style=\"color: rgb(230, 0, 0);\">red</strong>.</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 4,
+      "timestamp": 1534548834859,
+      "updated_timestamp": 1534548834859
     },
     {
       "id": 1,
@@ -105,15 +161,15 @@
       "timestamp": 1534432424724
     },
     {
-      "id": 8,
+      "id": 20,
       "project_id": 2,
-      "title": "Save projects in Github and Gitlab",
-      "description": "<p>Ability to save a single project or all the projects in a <strong style=\"color: rgb(0, 102, 204);\">Github</strong> or <strong style=\"color: rgb(0, 102, 204);\">Gitlab</strong> <strong style=\"color: rgb(153, 51, 255);\">repository</strong><strong> </strong>or <strong style=\"color: rgb(0, 138, 0);\">gist</strong><strong>/</strong><strong style=\"color: rgb(0, 138, 0);\">snippet</strong></p>",
-      "category": "todo",
+      "title": "Cleanup the code.",
+      "description": "<p>The code could be <strong>formatted</strong> in a better way.</p><p><strong>Comments</strong> needs to be added.</p>",
+      "category": "in_progress",
       "color": "",
       "timeline_id": 0,
-      "order": 4,
-      "timestamp": 1534517192315
+      "order": 0,
+      "timestamp": 1534594290579
     },
     {
       "id": 0,
@@ -126,40 +182,7 @@
       "order": 5,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840
-    },
-    {
-      "id": 10,
-      "project_id": 2,
-      "title": "Single Dialog",
-      "description": "<p>Only one <strong style=\"color: rgb(0, 102, 204);\">dialog</strong> should be <strong>opened</strong> at all times. If a <strong>new</strong> <strong>dialog</strong> is requested while another one is oponed, the currently opened dialog should <strong>close</strong>, and the other one starts.</p>",
-      "category": "todo",
-      "color": "",
-      "timeline_id": 0,
-      "order": 5,
-      "timestamp": 1534522642150
-    },
-    {
-      "id": 17,
-      "project_id": 2,
-      "title": "Tags",
-      "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user ccould look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
-      "category": "in_progress",
-      "color": "",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534539983106
-    },
-    {
-      "id": 18,
-      "project_id": 2,
-      "title": "Import & Export projects",
-      "description": "<p>Ability to export a project to a file, and import it after.</p>",
-      "category": "todo",
-      "color": "indigo white--text",
-      "timeline_id": 0,
-      "order": 6,
-      "timestamp": 1534540034130
     }
   ],
-  "notes_id": 19
+  "notes_id": 21
 }
