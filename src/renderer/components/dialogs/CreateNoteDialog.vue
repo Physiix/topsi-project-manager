@@ -27,11 +27,7 @@ export default {
 			title: null,
 			description: null,
 			category: { text: 'TODO', tag: 'todo' },
-			items: [
-				{ text: 'TODO', tag: 'todo' },
-				{ text: 'In Progress', tag: 'in_progress' },
-				{ text: 'Done', tag: 'done' },
-			],
+			items: [],
 			color: '',
 		}
 	},
@@ -44,7 +40,16 @@ export default {
 			get() {
 				return this.$store.state.AppStore.dialogs.createNote;
 			}
-		}
+		},
+
+		project() {
+			const id = this.$store.state.AppStore.openedProjectId;
+			return this.$store.getters.GetProjectById(id);
+		},
+
+		categories() {
+			return this.project.categories;
+		},
 	},
 	methods: {
 		CreateNote() {
@@ -95,6 +100,10 @@ export default {
 			theme: 'snow'  // or 'bubble'
 		};
 		editor = new Quill('#editor', options);
+
+		// Setup the categories
+		this.categories.forEach(category => this.items.push({ text: category.title, tag: category.tag }))
+		this.category = this.items[0];
 	}
 }
 </script>

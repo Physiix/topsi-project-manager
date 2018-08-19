@@ -36,6 +36,7 @@ class ApplicationManager {
 	}
 
 	SetupNotesPage(categoryContainerId, containerId, ...categories) {
+		categories = categories[0];
 		const container = document.getElementById(categoryContainerId);
 
 		const resize = () => {

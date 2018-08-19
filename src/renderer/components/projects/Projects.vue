@@ -1,6 +1,6 @@
 <template>
 	<div :class="color" style="height:100%">
-		<CreateProjectDialog />
+		<CreateProjectDialog v-if="createProjectDialog" />
 		<ExportProjectDialog />
 		<v-layout row wrap>
 			<v-flex xs3 v-for="(project, i) in projects" :key="i">
@@ -30,7 +30,11 @@ export default {
 			if (this.$store.getters.IsDarkMode)
 				return '';
 			else return 'grey lighten-2'
-		}
+		},
+
+		createProjectDialog() {
+			return this.$store.state.AppStore.dialogs.createProject;
+		},
 	},
 	mounted() {
 		// Update the projects list.

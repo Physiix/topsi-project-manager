@@ -5,8 +5,8 @@
 		<VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
 		<UpdateNoteDialog v-if="updateDialog" />
 
-		<div v-for="(category, index) in categories" :key="category+index" :id="category+'-container'" class="category-container">
-			<Content :id="category+'-content'" :tag="category" />
+		<div v-for="(category, index) in categories" :key="category+index" :id="category.tag+'-container'" class="category-container">
+			<Content :id="category.tag+'-content'" :category="category" />
 		</div>
 	</div>
 </template>
@@ -30,19 +30,14 @@ export default {
 		Menu,
 		Content
 	},
-	data() {
-		return {
-			categories: [
-				'todo',
-				'in_progress',
-				'done'
-			]
-		}
-	},
 	computed: {
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
 			return this.$store.getters.GetProjectById(id);
+		},
+
+		categories() {
+			return this.project.categories;
 		},
 
 		createDialog() {
@@ -64,7 +59,10 @@ export default {
 		}
 	},
 	mounted() {
-		AppManager.SetupNotesPage('notes_container', 'container', 'todo', 'in_progress', 'done');
+		const categories = []
+		this.categories.forEach(c => categories.push(c.tag));
+		console.log(categories)
+		AppManager.SetupNotesPage('notes_container', 'container', categories);
 	}
 }
 </script>

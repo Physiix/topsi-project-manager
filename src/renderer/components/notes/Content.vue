@@ -24,7 +24,7 @@ export default {
 	},
 	props: {
 		id: String,
-		tag: String
+		category: Object
 	},
 	data() {
 		return {
@@ -33,12 +33,12 @@ export default {
 	},
 	computed: {
 		title() {
-			return this.tag == 'todo' ? 'TODO' : this.tag == 'in_progress' ? 'In Progress' : 'Done';
+			return this.category.title;
 		},
 
 		notes() {
 			const timelineId = this.$store.state.AppStore.currentTimelineId;
-			return this.$store.getters.GetNotes.filter(note => note.timeline_id == timelineId && note.category == this.tag);
+			return this.$store.getters.GetNotes.filter(note => note.timeline_id == timelineId && note.category == this.category.tag);
 		}
 	},
 	methods: {

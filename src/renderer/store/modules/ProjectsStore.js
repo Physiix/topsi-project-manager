@@ -3,10 +3,11 @@ import {
 } from "../../../core/Application";
 
 class Project {
-	constructor(title, description) {
+	constructor(title, description, categories) {
 		this.id = -1;
 		this.title = title;
 		this.description = description;
+		this.categories = categories;
 		this.opened_timeline_id = 0;
 	}
 }
@@ -35,11 +36,11 @@ const mutations = {
 	 */
 	CreateProject(state, data) {
 		// Make sure the project's data is valid.
-		if (data.title == null || data.description == null)
+		if (data.title == null || data.description == null || data.categories == null || data.categories.length <= 0)
 			throw new Error("Cannot create a project with invalid data ", data);
 
 		// Create the new project to store.
-		let project = new Project(data.title, data.description);
+		let project = new Project(data.title, data.description, data.categories);
 
 		// Create the database for the project.
 		project.id = App.CreateDB();
