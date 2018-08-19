@@ -18,7 +18,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534689461654
+    "timestamp": 1534708833930
   },
   "timelines": [
     {
@@ -47,9 +47,21 @@
       "category": "done",
       "color": "green white--text",
       "timeline_id": 0,
-      "order": 0,
+      "order": 1,
       "timestamp": 1534621905197,
       "updated_timestamp": 1534621905197
+    },
+    {
+      "id": 4,
+      "project_id": 0,
+      "title": "Dynamic categories",
+      "description": "<p>With this feature, the user could add a <strong style=\"color: rgb(0, 102, 204);\">category</strong> dynamically.</p><p>The default categories will still be <strong>TODO, In Progress </strong>and <strong>Done. </strong></p><p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
+      "category": "done",
+      "color": "",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534691012910,
+      "updated_timestamp": 1534691012910
     },
     {
       "id": 25,
@@ -59,20 +71,8 @@
       "category": "in_progress",
       "color": "",
       "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534684938200
-    },
-    {
-      "id": 4,
-      "project_id": 2,
-      "title": "Dynamic categories",
-      "description": "<p>With this feature, the user could add a <strong style=\"color: rgb(0, 102, 204);\">category</strong> dynamically.</p><p>The default categories will still be <strong>TODO, In Progress </strong>and <strong>Done. </strong></p><p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
-      "category": "in_progress",
-      "color": "",
-      "timeline_id": 0,
       "order": 1,
-      "timestamp": 1534603069923,
-      "updated_timestamp": 1534603069923
+      "timestamp": 1534684938200
     },
     {
       "id": 19,
@@ -82,7 +82,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 1,
+      "order": 2,
       "timestamp": 1534548834859,
       "updated_timestamp": 1534548834859
     },
@@ -98,17 +98,6 @@
       "timestamp": 1534517192315
     },
     {
-      "id": 17,
-      "project_id": 2,
-      "title": "Tags",
-      "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user ccould look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
-      "category": "in_progress",
-      "color": "",
-      "timeline_id": 0,
-      "order": 3,
-      "timestamp": 1534539983106
-    },
-    {
       "id": 18,
       "project_id": 2,
       "title": "Import & Export projects",
@@ -116,7 +105,7 @@
       "category": "done",
       "color": "indigo white--text",
       "timeline_id": 0,
-      "order": 2,
+      "order": 3,
       "timestamp": 1534540034130
     },
     {
@@ -142,6 +131,17 @@
       "timestamp": 1534606232986
     },
     {
+      "id": 17,
+      "project_id": 2,
+      "title": "Tags",
+      "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user ccould look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 3,
+      "timestamp": 1534539983106
+    },
+    {
       "id": 20,
       "project_id": 2,
       "title": "Cleanup the code.",
@@ -149,7 +149,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 3,
+      "order": 4,
       "timestamp": 1534594290579
     },
     {
@@ -171,7 +171,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 4,
+      "order": 5,
       "timestamp": 1534513587020,
       "updated_timestamp": 1534513587020
     },
@@ -194,7 +194,7 @@
       "category": "done",
       "color": "indigo white--text",
       "timeline_id": 0,
-      "order": 5,
+      "order": 6,
       "timestamp": 1534539876759,
       "updated_timestamp": 1534539876759
     },
@@ -206,7 +206,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 6,
+      "order": 7,
       "timestamp": 1534519531183
     },
     {
@@ -229,7 +229,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 7,
+      "order": 8,
       "timestamp": 1534446849627,
       "updated_timestamp": 1534446849627
     },
@@ -241,7 +241,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 8,
+      "order": 9,
       "timestamp": 1534432424724
     },
     {
@@ -252,10 +252,33 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 9,
+      "order": 10,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840
+    },
+    {
+      "id": 26,
+      "project_id": 0,
+      "title": "Update categories.",
+      "description": "<p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 6,
+      "timestamp": 1534691024555
+    },
+    {
+      "id": 27,
+      "project_id": 0,
+      "title": "Fold categoy",
+      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
+      "category": "todo",
+      "color": "blue white--text",
+      "timeline_id": 0,
+      "order": 7,
+      "timestamp": 1534691075022,
+      "updated_timestamp": 1534691075022
     }
   ],
-  "notes_id": 26
+  "notes_id": 28
 }

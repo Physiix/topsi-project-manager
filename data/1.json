@@ -22,7 +22,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534689833359
+    "timestamp": 1534721698941
   },
   "timelines": [
     {
@@ -42,18 +42,6 @@
       "timeline_id": 0,
       "order": 1,
       "timestamp": 1534689761860
-    },
-    {
-      "id": 1,
-      "project_id": 1,
-      "title": "asdasdas",
-      "description": "<p>dasdasdas</p>",
-      "category": "archieves",
-      "color": "",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534689766805,
-      "updated_timestamp": 1534689766805
     }
   ],
   "notes_id": 3

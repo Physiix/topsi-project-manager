@@ -3,7 +3,7 @@
 		<slot></slot>
 		<v-card-actions>
 			<v-spacer></v-spacer>
-			<v-btn v-if="!disableCancel" :flat="!disableRaised" class="ma-0" :color="(disableColor)?disableColor:''" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
+			<v-btn v-if="!disableCancel" :flat="!cancelRaised" class="ma-0" :color="(cancelColor)?cancelColor:''" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
 
 			<v-btn v-if="!disableAccept" :flat="!acceptRaised" class="ma-0" :color="(acceptColor)?acceptColor:'primary'" @click="Accept">{{(acceptText)?acceptText:'Save'}}</v-btn>
 		</v-card-actions>
@@ -20,9 +20,9 @@ export default {
 		disableAccept: Boolean,
 		disableCancel: Boolean,
 		acceptColor: String,
-		disableColor: String,
+		cancelColor: String,
 		acceptRaised: Boolean,
-		disableRaised: Boolean
+		cancelRaised: Boolean
 	},
 	data() {
 		return {

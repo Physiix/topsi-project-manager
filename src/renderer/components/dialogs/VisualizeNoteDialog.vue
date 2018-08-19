@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-on:close="Close" v-on:accept="Delete" width="800" cancel-text="Close" accept-text="delete" accept-raised accept-color="error">
+	<Dialog v-on:close="Delete" v-on:accept="Close" width="800" accept-text="Close" cancel-text="delete" cancel-raised cancel-color="error" accept-color=" ">
 		<div id="visualize-dialog">
 			<v-card-title class="py-0 pt-5 headline">
 				{{note.title}}
