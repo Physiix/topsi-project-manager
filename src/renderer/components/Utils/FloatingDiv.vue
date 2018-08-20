@@ -1,6 +1,6 @@
 <template>
 	<div ref="floating_div">
-		<v-card :dark="dark" class="elevation-0">
+		<v-card :dark="dark" class="elevation-0" :color="(color)?color:''">
 			<slot id="asdkasjhdas" ref="floating_content" :dark="dark"></slot>
 		</v-card>
 
@@ -18,7 +18,8 @@ export default {
 		dark: Boolean,
 		indicatorColor: String,
 		left: Boolean,
-		top: Boolean
+		top: Boolean,
+		color: String
 	},
 
 	data() {
@@ -71,6 +72,7 @@ export default {
 			drawer.style.borderRadius = '1%';
 			if (this.dark) drawer.className = 'elevation-15 secondary';
 			else drawer.className = 'elevation-15 white';
+
 			drawer.style.visibility = 'visible';
 
 			const tRect = triangle.getBoundingClientRect();
@@ -90,7 +92,7 @@ export default {
 				drawer.style.opacity = opacity;
 				triangle.style.opacity = opacity;
 				opacity += 0.025;
-				if (opacity > 1) {
+				if (opacity > 0.975) {
 					triangle.style.opacity = 1;
 					clearInterval(inId);
 				}

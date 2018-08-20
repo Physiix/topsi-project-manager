@@ -1,15 +1,16 @@
 <template>
 	<v-list dense class="pt-0 transparent" dark>
-		<v-list-tile :ref="item.ref" v-for="item in items" :key="item.title" @click="item.action()">
-			<v-list-tile-action>
-				<v-icon>{{ item.icon }}</v-icon>
-			</v-list-tile-action>
-			<v-list-tile-content>
-				<v-list-tile-title>{{ item.title }}</v-list-tile-title>
-			</v-list-tile-content>
-		</v-list-tile>
-		<TagsSettings />
+		<div v-for="item in items" :key="item.title">
+			<Tooltip :content="item.hint" right>
+				<v-list-tile @click="item.action()">
+					<v-list-tile-action>
+						<v-icon>{{ item.icon }}</v-icon>
+					</v-list-tile-action>
+				</v-list-tile>
+			</Tooltip>
+		</div>
 
+		<TagsSettings />
 		<v-divider></v-divider>
 		<Timelines />
 	</v-list>
@@ -33,6 +34,7 @@ export default {
 				{
 					icon: 'arrow_back',
 					title: '',
+					hint: 'Back to projects',
 					action: () => {
 						// Save the id of the opened timeline
 						this.$store.commit('SetProjectTimelineId', {
@@ -45,13 +47,21 @@ export default {
 					}
 				},
 				{
+					icon: 'search',
+					title: 'Search',
+					hint: 'Search in notes (CTRL + F)',
+					action: () => { }
+				},
+				{
 					icon: 'add',
 					title: 'New Note',
+					hint: 'Add a new Note',
 					action: () => this.$store.commit('CreateNoteDialog')
 				},
 				{
 					icon: 'timeline',
 					title: 'New Timeline',
+					hint: 'Add a new timeline',
 					ref: 'timeline',
 					action: () => { }
 				},
