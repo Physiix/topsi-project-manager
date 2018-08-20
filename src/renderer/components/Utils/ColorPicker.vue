@@ -26,7 +26,7 @@ export default {
 				'purple white--text',
 				'indigo white--text',
 				'pink white--text',
-				'grey white--text',
+				'grey black--text',
 				'',
 			],
 			selected: null
