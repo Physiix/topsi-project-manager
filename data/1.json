@@ -22,7 +22,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534789300876
+    "timestamp": 1534795357587
   },
   "timelines": [
     {
@@ -44,5 +44,6 @@
       "timestamp": 1534689761860
     }
   ],
-  "notes_id": 3
+  "notes_id": 3,
+  "tags": []
 }

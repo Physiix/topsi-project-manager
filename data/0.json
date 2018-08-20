@@ -18,7 +18,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534790875804
+    "timestamp": 1534795574968
   },
   "timelines": [
     {
@@ -291,9 +291,20 @@
       "order": 11,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840
+    },
+    {
+      "id": 29,
+      "project_id": 0,
+      "title": "Notes Toolbar on the side or top",
+      "description": "<p>With this feature, the user could set the <strong>toolbar </strong>to the side or the top.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 5,
+      "timestamp": 1534795668619
     }
   ],
-  "notes_id": 29,
+  "notes_id": 30,
   "tags": [
     {
       "tag": "Feature",

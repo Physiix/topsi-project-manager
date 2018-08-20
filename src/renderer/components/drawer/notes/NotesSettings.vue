@@ -1,19 +1,38 @@
 <template>
-	<v-list dense class="pt-0 transparent" dark>
-		<div v-for="item in items" :key="item.title">
-			<Tooltip :content="item.hint" right>
-				<v-list-tile @click="item.action()">
-					<v-list-tile-action>
-						<v-icon>{{ item.icon }}</v-icon>
-					</v-list-tile-action>
-				</v-list-tile>
-			</Tooltip>
+	<div>
+
+		<v-list dense class="pt-0 transparent" dark>
+
+			<div v-for="item in items" :key="item.title">
+				<Tooltip :content="item.hint" right>
+					<v-list-tile @click="item.action()">
+						<v-list-tile-action>
+							<v-icon>{{ item.icon }}</v-icon>
+						</v-list-tile-action>
+					</v-list-tile>
+				</Tooltip>
+			</div>
+
+			<TagsSettings />
+			<v-divider></v-divider>
+			<Timelines />
+		</v-list>
+		<div style="width:25px;margin-left:13px;cursor:pointer;position:absolute;bottom:0;">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" transform="rotate(180)">
+				<title>DockBottom_16x</title>
+				<path class="icon-vs-bg" d="M1,2V14H15V2ZM14,9H2V3H14Z" fill="#fff" />
+			</svg>
 		</div>
 
-		<TagsSettings />
-		<v-divider></v-divider>
-		<Timelines />
-	</v-list>
+		<!-- Side -->
+		<!-- <div style="width:25px;margin-left:13px;cursor:pointer;">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" transform="rotate(90 0 0)">
+				<title>DockBottom_16x</title>
+				<path class="icon-vs-bg" d="M1,2V14H15V2ZM14,9H2V3H14Z" />
+			</svg>
+		</div> -->
+	</div>
+
 </template>
 <script>
 import TagsSettings from './TagsSettings.vue'
