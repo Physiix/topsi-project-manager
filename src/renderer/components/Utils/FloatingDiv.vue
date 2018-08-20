@@ -12,7 +12,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
 	name: 'FloatingDiv',
 	props: {
-		divId: String,
+		activatorId: String,
 		width: String,
 		height: String,
 		dark: Boolean,
@@ -26,7 +26,7 @@ export default {
 	},
 
 	mounted() {
-		const button = document.getElementById(this.divId);
+		const button = document.getElementById(this.activatorId);
 		const floatingDiv = this.$refs.floating_div;
 		const drawer = floatingDiv;
 		drawer.style.position = 'fixed';

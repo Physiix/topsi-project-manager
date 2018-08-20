@@ -6,7 +6,7 @@
 	</div>
 </template>
 <script>
-import NotesSettings from './NotesSettings.vue'
+import NotesSettings from './notes/NotesSettings.vue'
 import ProjectSettings from './ProjectSettings.vue'
 import Settings from './Settings.vue'
 

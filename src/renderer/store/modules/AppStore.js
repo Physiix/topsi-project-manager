@@ -115,6 +115,15 @@ const mutations = {
 		if (data.defaultFolder == null) Notifications.Error('SetupApplication', 'A valid data parameter required :' + data);
 		App.GetAppDB().SetValue('default_databases_folder', data.defaultFolder);
 		mutations.DisableFirstTimeUse(state);
+	},
+
+	AddTag(state, tag) {
+		if (tag == null || tag.tag.length <= 0) Notifications.Error('AddTag', `tag "${tag}" is invalid`);
+		if (state.openedProjectId < 0) Notifications.Error('AddTag', 'A project must be opened to add a tag');
+		const db = App.GetDB(state.openedProjectId);
+		const tags = db.GetValue('tags', []);
+		tags.push(tag);
+		db.SetValue('tags', tags);
 	}
 }
 
@@ -137,6 +146,11 @@ const getters = {
 
 	firstTimeUse(state) {
 		return state.firstTimeUse;
+	},
+
+	getProjectTags() {
+		if (state.openedProjectId < 0) Notifications.Error('getProjecTags', 'A project must be opened to get its tags');
+		return App.GetDB(state.openedProjectId).GetValue('tags', []);
 	}
 }
 

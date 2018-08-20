@@ -12,7 +12,8 @@ export default {
 	name: 'ColorPicker',
 	props: {
 		padding: String,
-		width: String
+		width: String,
+		value: String
 	},
 	data() {
 		return {
@@ -62,6 +63,7 @@ export default {
 
 			// Emit an event with the selected color.
 			this.$emit('color-selected', color);
+			this.$emit('input', color);
 		}
 	},
 	mounted() {

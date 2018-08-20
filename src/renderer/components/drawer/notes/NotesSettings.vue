@@ -8,30 +8,20 @@
 				<v-list-tile-title>{{ item.title }}</v-list-tile-title>
 			</v-list-tile-content>
 		</v-list-tile>
-		<v-list-tile id="timeline-button" @click="">
-			<v-list-tile-action>
-				<v-icon>timeline</v-icon>
-			</v-list-tile-action>
-			<v-list-tile-content>
-				<v-list-tile-title>Timeline</v-list-tile-title>
-			</v-list-tile-content>
-		</v-list-tile>
-		<FloatingDiv div-id="timeline-button" v-on:action="" width="500" dark left>
-			<v-toolbar color="secondary" dark class="px-2 elevation-0">
-				<v-text-field></v-text-field>
-				<v-btn flat>Add</v-btn>
-			</v-toolbar>
-		</FloatingDiv>
+		<TagsSettings />
+
 		<v-divider></v-divider>
 		<Timelines />
 	</v-list>
 </template>
 <script>
+import TagsSettings from './TagsSettings.vue'
 import Timelines from './Timelines.vue'
 
 export default {
 	name: 'NotesSettings',
 	components: {
+		TagsSettings,
 		Timelines
 	},
 	props: {

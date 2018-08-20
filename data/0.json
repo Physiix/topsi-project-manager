@@ -292,5 +292,27 @@
       "updated_timestamp": 1534446758840
     }
   ],
-  "notes_id": 29
+  "notes_id": 29,
+  "tags": [
+    {
+      "tag": "Feature",
+      "color": "blue white--text"
+    },
+    {
+      "tag": "Bug",
+      "color": "red white--text"
+    },
+    {
+      "tag": "Enhancement",
+      "color": "orange black--text"
+    },
+    {
+      "tag": "Test",
+      "color": "purple white--text"
+    },
+    {
+      "tag": "Default",
+      "color": ""
+    }
+  ]
 }
