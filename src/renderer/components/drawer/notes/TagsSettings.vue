@@ -10,7 +10,6 @@
 				</v-list-tile-content>
 			</v-list-tile>
 		</Tooltip>
-
 		<FloatingDiv activator-id="timeline-button" v-on:action="" width="500" dark left>
 			<v-toolbar color="secondary" dark class="px-2 elevation-0">
 				<v-text-field v-model="tag" @keyup.enter.native="AddTag"></v-text-field>

@@ -11,7 +11,7 @@
 				<div id="editor" style="height:200px;">
 				</div>
 			</v-card>
-			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips light flat hide-details chips label="Tags?" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
+			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips flat hide-details chips label="Tags?" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
@@ -74,7 +74,6 @@ export default {
 					if (entry.tag == tagName) tags.push(entry);
 				})
 			);
-			console.log(tags)
 
 			// Create the note
 			this.$store.commit('CreateNote', {

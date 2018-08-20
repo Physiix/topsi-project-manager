@@ -14,7 +14,7 @@ class Note {
 		this.category = category;
 		this.color = color;
 		this.timeline_id = timeline_id;
-		this.tags = tags;
+		this.tags = tags || [];
 		this.order = 0;
 	}
 }
