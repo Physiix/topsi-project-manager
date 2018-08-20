@@ -18,7 +18,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534795574968
+    "timestamp": 1534798512653
   },
   "timelines": [
     {
@@ -325,6 +325,14 @@
     {
       "tag": "Default",
       "color": ""
+    },
+    {
+      "tag": "TEST",
+      "color": ""
+    },
+    {
+      "tag": "BUG",
+      "color": "red white--text"
     }
   ]
 }

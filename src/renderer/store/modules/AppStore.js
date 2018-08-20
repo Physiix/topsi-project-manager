@@ -41,6 +41,9 @@ const state = {
 
 	// Whether the application is opened for the first time.
 	firstTimeUse: App.GetAppDB().GetValue('first_time_use', true),
+
+	// Flag set to true to enable to search toolbar
+	showSearch: false,
 }
 
 const mutations = {
@@ -124,6 +127,10 @@ const mutations = {
 		const tags = db.GetValue('tags', []);
 		tags.push(tag);
 		db.SetValue('tags', tags);
+	},
+
+	ToggleSearch(state) {
+		state.showSearch = !state.showSearch;
 	}
 }
 
@@ -148,9 +155,13 @@ const getters = {
 		return state.firstTimeUse;
 	},
 
-	getProjectTags() {
+	getProjectTags(state) {
 		if (state.openedProjectId < 0) Notifications.Error('getProjecTags', 'A project must be opened to get its tags');
 		return App.GetDB(state.openedProjectId).GetValue('tags', []);
+	},
+
+	isShowSearch(state) {
+		return state.showSearch;
 	}
 }
 

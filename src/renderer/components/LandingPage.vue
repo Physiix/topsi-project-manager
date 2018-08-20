@@ -4,9 +4,10 @@
 			<Drawer />
 		</div>
 		<div id="content">
+			<SearchBar v-if="showSearch" />
 			<FirstUse v-if="firstTimeUse"></FirstUse>
 			<Projects v-else-if="displayProjects" />
-			<Notes v-else />
+			<Notes v-else/>
 		</div>
 		<!-- The titlebar needs to be on top of the other divs, so it's the last one to be rendered. -->
 		<Titlebar />
@@ -16,12 +17,14 @@
 
 <script>
 import { AppManager } from '../../core/ApplicationManager'
+import { Inputs } from '../../core/InputManager'
 
 import Titlebar from './Titlebar.vue'
 import Notes from './notes/Notes.vue'
 import Drawer from './drawer/Drawer.vue'
 import Projects from './projects/Projects.vue'
 import FirstUse from './Temp/FirstUse.vue'
+import SearchBar from './SearchBar.vue'
 
 export default {
 	name: 'landing-page',
@@ -30,7 +33,8 @@ export default {
 		FirstUse,
 		Projects,
 		Notes,
-		Drawer
+		Drawer,
+		SearchBar
 	},
 	computed: {
 		displayProjects() {
@@ -39,10 +43,20 @@ export default {
 
 		firstTimeUse() {
 			return this.$store.getters.firstTimeUse;
+		},
+
+		showSearch() {
+			return this.$store.getters.isShowSearch;
+		}
+	},
+	methods: {
+		KeyUp(event) {
+			console.log(event);
 		}
 	},
 	mounted() {
 		AppManager.SetupLandingPage('container', 'side', 'content');
+		Inputs.Initialize(this);
 	}
 }
 </script>
