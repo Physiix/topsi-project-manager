@@ -11,6 +11,7 @@
 				<div id="editor" style="height:200px;">
 				</div>
 			</v-card>
+			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips light flat hide-details chips label="Tags?" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
@@ -29,6 +30,8 @@ export default {
 			category: { text: 'TODO', tag: 'todo' },
 			items: [],
 			color: '',
+			tagSearch: null,
+			selectedTags: [],
 		}
 	},
 	computed: {
@@ -50,18 +53,38 @@ export default {
 		categories() {
 			return this.project.categories;
 		},
+
+		tagItems() {
+			return this.$store.getters.getProjectTags.map(tag => tag.tag);
+		},
+
+		tags() {
+			return this.$store.getters.getProjectTags;
+		},
 	},
 	methods: {
 		CreateNote() {
 			const projectId = this.$store.state.AppStore.openedProjectId;
 			const timelineId = this.$store.state.AppStore.currentTimelineId;
+
+			// Getting the selected tags.
+			const tags = [];
+			this.selectedTags.forEach(tagName =>
+				this.tags.forEach(entry => {
+					if (entry.tag == tagName) tags.push(entry);
+				})
+			);
+			console.log(tags)
+
+			// Create the note
 			this.$store.commit('CreateNote', {
 				project_id: projectId,
 				title: this.title,
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
 				color: this.color,
-				timeline_id: timelineId
+				timeline_id: timelineId,
+				tags: tags
 			});
 
 			// Cleaning up

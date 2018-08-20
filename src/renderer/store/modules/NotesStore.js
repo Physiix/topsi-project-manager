@@ -1,9 +1,12 @@
 import {
 	App
 } from "../../../core/Application";
+import {
+	Notifications
+} from '../../../core/Notification'
 
 class Note {
-	constructor(project_id, title, description, category, color, timeline_id) {
+	constructor(project_id, title, description, category, color, timeline_id, tags) {
 		this.id = -1;
 		this.project_id = project_id;
 		this.title = title;
@@ -11,6 +14,7 @@ class Note {
 		this.category = category;
 		this.color = color;
 		this.timeline_id = timeline_id;
+		this.tags = tags;
 		this.order = 0;
 	}
 }
@@ -53,10 +57,10 @@ const mutations = {
 	CreateNote(state, data) {
 		// Make sure the note's data is valid.
 		if (data.project_id == null || data.title == null || data.description == null || data.category == null)
-			throw new Error("Cannot create a note with invalid data ", data);
+			Notifications.Error('CreateNote', "Cannot create a note with invalid data " + data);
 
 		// Create the new note to store.
-		let note = new Note(data.project_id, data.title, data.description, data.category, data.color, data.timeline_id)
+		let note = new Note(data.project_id, data.title, data.description, data.category, data.color, data.timeline_id, data.tags)
 
 		const database = App.GetDB(data.project_id);
 
@@ -75,7 +79,8 @@ const mutations = {
 
 	/**
 	 * Update the order and category of a note.
-	 * @param {*} data Contains the HTMLElement of the note in @param data.note, the receiving tag in @param data.tag and the old and new indices in @param data.newIndex and @param data.oldIndex respectively.
+	 * @param {*} data Contains the HTMLElement of the note in @param data.note, the receiving tag in * @param data.tag and the old and new indices in @param data.newIndex and @param data.oldIndex
+	 * respectively.
 	 */
 	UpdateNotesOrder(state, data) {
 		if (data.note == null || data.tag == null || data.oldIndex == null || data.newIndex == null) throw new Error('UpdateNotesOrder: All or some data attributes missing.');

@@ -10,6 +10,9 @@
 			</v-btn>
 		</v-card-title>
 		<v-divider></v-divider>
+		<div v-if="note.tags != null">
+			<v-chip v-for="(entry, index) in note.tags" :key="index" small :class="entry.color">{{entry.tag}}</v-chip>
+		</div>
 		<v-card-text v-html="note.description"></v-card-text>
 	</v-card>
 </template>
