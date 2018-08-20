@@ -1,60 +1,63 @@
 {
-	"dark_mode": true,
-	"git_user_info": {
-		"username": "",
-		"repository_token": "",
-		"gist_id": ""
-	},
-	"projects_id": 2,
-	"projects": [{
-			"id": 0,
-			"title": "Project Manager",
-			"categories": [{
-					"title": "TODO",
-					"tag": "todo"
-				},
-				{
-					"title": "In Progress",
-					"tag": "in_progress"
-				},
-				{
-					"title": "Done",
-					"tag": "done"
-				}
-			],
-			"description": "Project Manager where users can create projects and notes.",
-			"opened_timeline_id": 0,
-			"timestamp": 1534360778847
-		},
-		{
-			"id": 1,
-			"title": "Test",
-			"description": "Test project.",
-			"categories": [{
-					"tag": "todo",
-					"title": "TODO"
-				},
-				{
-					"tag": "in_progress",
-					"title": "In Progress"
-				},
-				{
-					"tag": "done",
-					"title": "Done"
-				},
-				{
-					"tag": "archieves",
-					"title": "Archieves"
-				}
-			],
-			"opened_timeline_id": 0,
-			"timestamp": 1534689479191
-		}
-	],
-	"current_project_id": 0,
-	"window_width": 1225,
-	"window_height": 721,
-	"application_color": "indigo white--text",
-	"first_time_use": false,
-	"default_databases_folder": ""
+  "dark_mode": false,
+  "git_user_info": {
+    "username": "",
+    "repository_token": "",
+    "gist_id": ""
+  },
+  "projects_id": 2,
+  "projects": [
+    {
+      "id": 0,
+      "title": "Project Manager",
+      "categories": [
+        {
+          "title": "TODO",
+          "tag": "todo"
+        },
+        {
+          "title": "In Progress",
+          "tag": "in_progress"
+        },
+        {
+          "title": "Done",
+          "tag": "done"
+        }
+      ],
+      "description": "Project Manager where users can create projects and notes.",
+      "opened_timeline_id": 0,
+      "timestamp": 1534360778847
+    },
+    {
+      "id": 1,
+      "title": "Test",
+      "description": "Test project.",
+      "categories": [
+        {
+          "tag": "todo",
+          "title": "TODO"
+        },
+        {
+          "tag": "in_progress",
+          "title": "In Progress"
+        },
+        {
+          "tag": "done",
+          "title": "Done"
+        },
+        {
+          "tag": "archieves",
+          "title": "Archieves"
+        }
+      ],
+      "opened_timeline_id": 0,
+      "timestamp": 1534689479191
+    }
+  ],
+  "current_project_id": 0,
+  "window_width": 1265,
+  "window_height": 803,
+  "application_color": "indigo white--text",
+  "first_time_use": false,
+  "default_databases_folder": ""
 }

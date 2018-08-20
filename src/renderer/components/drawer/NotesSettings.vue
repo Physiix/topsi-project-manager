@@ -1,6 +1,6 @@
 <template>
 	<v-list dense class="pt-0 transparent" dark>
-		<v-list-tile v-for="item in items" :key="item.title" @click="item.action()">
+		<v-list-tile :ref="item.ref" v-for="item in items" :key="item.title" @click="item.action()">
 			<v-list-tile-action>
 				<v-icon>{{ item.icon }}</v-icon>
 			</v-list-tile-action>
@@ -8,6 +8,20 @@
 				<v-list-tile-title>{{ item.title }}</v-list-tile-title>
 			</v-list-tile-content>
 		</v-list-tile>
+		<v-list-tile id="timeline-button" @click="">
+			<v-list-tile-action>
+				<v-icon>timeline</v-icon>
+			</v-list-tile-action>
+			<v-list-tile-content>
+				<v-list-tile-title>Timeline</v-list-tile-title>
+			</v-list-tile-content>
+		</v-list-tile>
+		<FloatingDiv div-id="timeline-button" v-on:action="" width="500" dark left>
+			<v-toolbar color="secondary" dark class="px-2 elevation-0">
+				<v-text-field></v-text-field>
+				<v-btn flat>Add</v-btn>
+			</v-toolbar>
+		</FloatingDiv>
 		<v-divider></v-divider>
 		<Timelines />
 	</v-list>
@@ -48,7 +62,8 @@ export default {
 				{
 					icon: 'timeline',
 					title: 'New Timeline',
-					action: () => this.$store.commit('CreateTimelineDialog')
+					ref: 'timeline',
+					action: () => { }
 				},
 			]
 		}

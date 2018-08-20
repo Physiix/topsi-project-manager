@@ -18,7 +18,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534726492109
+    "timestamp": 1534786724071
   },
   "timelines": [
     {
@@ -52,14 +52,25 @@
       "updated_timestamp": 1534726438948
     },
     {
+      "id": 25,
+      "project_id": 1,
+      "title": "Custom path for a project",
+      "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534684938200
+    },
+    {
       "id": 17,
       "project_id": 2,
       "title": "Tags",
       "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user ccould look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
-      "category": "in_progress",
+      "category": "todo",
       "color": "",
       "timeline_id": 0,
-      "order": 1,
+      "order": 5,
       "timestamp": 1534539983106
     },
     {
@@ -86,17 +97,6 @@
       "timestamp": 1534517192315
     },
     {
-      "id": 25,
-      "project_id": 1,
-      "title": "Custom path for a project",
-      "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
-      "category": "in_progress",
-      "color": "",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534684938200
-    },
-    {
       "id": 24,
       "project_id": 1,
       "title": "Notifications",
@@ -120,6 +120,17 @@
       "timestamp": 1534432493972
     },
     {
+      "id": 10,
+      "project_id": 2,
+      "title": "Single Dialog",
+      "description": "<p>Only one <strong style=\"color: rgb(0, 102, 204);\">dialog</strong> should be <strong>opened</strong> at all times. If a <strong>new</strong> <strong>dialog</strong> is requested while another one is oponed, the currently opened dialog should <strong>close</strong>, and the other one starts.</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 2,
+      "timestamp": 1534522642150
+    },
+    {
       "id": 19,
       "project_id": 2,
       "title": "Feature: Delete note",
@@ -132,15 +143,15 @@
       "updated_timestamp": 1534548834859
     },
     {
-      "id": 10,
-      "project_id": 2,
-      "title": "Single Dialog",
-      "description": "<p>Only one <strong style=\"color: rgb(0, 102, 204);\">dialog</strong> should be <strong>opened</strong> at all times. If a <strong>new</strong> <strong>dialog</strong> is requested while another one is oponed, the currently opened dialog should <strong>close</strong>, and the other one starts.</p>",
-      "category": "todo",
+      "id": 26,
+      "project_id": 0,
+      "title": "Update categories.",
+      "description": "<p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
+      "category": "in_progress",
       "color": "",
       "timeline_id": 0,
       "order": 3,
-      "timestamp": 1534522642150
+      "timestamp": 1534691024555
     },
     {
       "id": 18,
@@ -161,8 +172,20 @@
       "category": "todo",
       "color": "",
       "timeline_id": 0,
-      "order": 4,
+      "order": 3,
       "timestamp": 1534601345656
+    },
+    {
+      "id": 27,
+      "project_id": 0,
+      "title": "Fold categoy",
+      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
+      "category": "in_progress",
+      "color": "blue white--text",
+      "timeline_id": 0,
+      "order": 4,
+      "timestamp": 1534691075022,
+      "updated_timestamp": 1534691075022
     },
     {
       "id": 20,
@@ -183,7 +206,7 @@
       "category": "todo",
       "color": "red white--text",
       "timeline_id": 0,
-      "order": 5,
+      "order": 4,
       "timestamp": 1534612421640,
       "updated_timestamp": 1534612421640
     },
@@ -200,17 +223,6 @@
       "updated_timestamp": 1534513587020
     },
     {
-      "id": 26,
-      "project_id": 0,
-      "title": "Update categories.",
-      "description": "<p>The <strong style=\"color: rgb(0, 102, 204);\">categories</strong><strong> </strong>could also be updated after they're created.</p>",
-      "category": "todo",
-      "color": "",
-      "timeline_id": 0,
-      "order": 6,
-      "timestamp": 1534691024555
-    },
-    {
       "id": 2,
       "project_id": 2,
       "title": "Set a color for a note",
@@ -223,18 +235,6 @@
       "updated_timestamp": 1534539876759
     },
     {
-      "id": 27,
-      "project_id": 0,
-      "title": "Fold categoy",
-      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
-      "category": "todo",
-      "color": "blue white--text",
-      "timeline_id": 0,
-      "order": 7,
-      "timestamp": 1534691075022,
-      "updated_timestamp": 1534691075022
-    },
-    {
       "id": 9,
       "project_id": 2,
       "title": "Visualise a note in full-screen",
@@ -244,6 +244,17 @@
       "timeline_id": 0,
       "order": 8,
       "timestamp": 1534519531183
+    },
+    {
+      "id": 28,
+      "project_id": 0,
+      "title": "Icon for the application",
+      "description": "<p>Create an <strong>icon</strong> for the Application.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 6,
+      "timestamp": 1534726757346
     },
     {
       "id": 5,
@@ -281,5 +292,5 @@
       "updated_timestamp": 1534446758840
     }
   ],
-  "notes_id": 28
+  "notes_id": 29
 }
