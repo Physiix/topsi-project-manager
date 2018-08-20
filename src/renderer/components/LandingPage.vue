@@ -4,7 +4,8 @@
 			<Drawer />
 		</div>
 		<div id="content">
-			<Projects v-if="displayProjects" />
+			<FirstUse v-if="firstTimeUse"></FirstUse>
+			<Projects v-else-if="displayProjects" />
 			<Notes v-else />
 		</div>
 		<!-- The titlebar needs to be on top of the other divs, so it's the last one to be rendered. -->
@@ -20,10 +21,13 @@ import Titlebar from './Titlebar.vue'
 import Notes from './notes/Notes.vue'
 import Drawer from './drawer/Drawer.vue'
 import Projects from './projects/Projects.vue'
+import FirstUse from './Temp/FirstUse.vue'
+
 export default {
 	name: 'landing-page',
 	components: {
 		Titlebar,
+		FirstUse,
 		Projects,
 		Notes,
 		Drawer
@@ -31,6 +35,10 @@ export default {
 	computed: {
 		displayProjects() {
 			return !this.$store.getters.IsProjectOpened;
+		},
+
+		firstTimeUse() {
+			return this.$store.getters.firstTimeUse;
 		}
 	},
 	mounted() {

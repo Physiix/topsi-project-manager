@@ -7,6 +7,7 @@ class Application {
 	constructor() {
 		this.appDB = new DBUtils('database.json');
 		this.databases = [];
+		this.defaultFolder = this.appDB.GetValue('default_databases_folder', '') || null;
 
 		this.appDB.GetAll('projects', 'id').forEach(project => this.Load(project.id));
 	}
@@ -23,7 +24,8 @@ class Application {
 	 * @param {Number} id Id of the database's project.
 	 */
 	Load(id) {
-		this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION);
+		console.log(this.defaultFolder);
+		this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION, this.defaultFolder);
 	}
 
 	/**

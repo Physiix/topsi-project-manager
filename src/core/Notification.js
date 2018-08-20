@@ -25,6 +25,7 @@ class Notification {
 	 */
 	Error(title, description = '', timeout = DEFAULT_TIME) {
 		this.Notify(new NotificationEntry(title, description, timeout), 'error white--text');
+		throw new Error(`${title} ${description}`);
 	}
 
 

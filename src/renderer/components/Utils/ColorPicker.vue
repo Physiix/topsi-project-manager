@@ -18,7 +18,6 @@ export default {
 		return {
 			// To add support for a new color, just add a new line to the array.
 			colors: [
-				'',
 				'red white--text',
 				'blue white--text',
 				'orange black--text',
@@ -27,6 +26,7 @@ export default {
 				'indigo white--text',
 				'pink white--text',
 				'grey white--text',
+				'',
 			],
 			selected: null
 		}

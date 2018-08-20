@@ -1,10 +1,13 @@
 import {
-	git,
 	GitUserInfo
 } from '../../../core/git';
 import {
 	App
 } from '../../../core/Application';
+
+import {
+	Notifications
+} from '../../../core/Notification'
 
 const state = {
 	// Contains all the flags about dialogs.
@@ -35,6 +38,9 @@ const state = {
 
 	// Information about the github profile
 	gitUserInfo: App.GetAppDB().GetValue('git_user_info', new GitUserInfo()),
+
+	// Whether the application is opened for the first time.
+	firstTimeUse: App.GetAppDB().GetValue('first_time_use', true),
 }
 
 const mutations = {
@@ -98,6 +104,17 @@ const mutations = {
 
 	ExportProjDialog(state) {
 		state.dialogs.exportProject = !state.dialogs.exportProject;
+	},
+
+	DisableFirstTimeUse(state) {
+		App.GetAppDB().SetValue('first_time_use', false);
+		state.firstTimeUse = false;
+	},
+
+	SetupApplication(state, data) {
+		if (data.defaultFolder == null) Notifications.Error('SetupApplication', 'A valid data parameter required :' + data);
+		App.GetAppDB().SetValue('default_databases_folder', data.defaultFolder);
+		mutations.DisableFirstTimeUse(state);
 	}
 }
 
@@ -116,6 +133,10 @@ const getters = {
 
 	drawerWidth(state) {
 		return state.drawerWidth;
+	},
+
+	firstTimeUse(state) {
+		return state.firstTimeUse;
 	}
 }
 

@@ -8,10 +8,12 @@ const FileSync = require('lowdb/adapters/FileSync');
 //Class containing all kind of helper functions to access
 //write and alter the local database.
 export class DBUtils {
-	constructor(name) {
+	constructor(name, defaultPath) {
 		// Paths
-		this.dataPath = path.join(path.resolve('.'), 'data');
+		if (defaultPath == null || defaultPath.length <= 0) this.dataPath = path.join(path.resolve('.'), 'data');
+		else this.dataPath = defaultPath;
 		const dbFilePath = path.join(this.dataPath, name);
+		console.log(dbFilePath)
 
 		// Make sure the 'data' folder exists
 		if (!fs.existsSync(this.dataPath))
