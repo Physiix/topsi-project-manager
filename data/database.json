@@ -22,15 +22,11 @@
         {
           "tag": "done",
           "title": "Done"
-        },
-        {
-          "tag": "archieves",
-          "title": "Archieves"
         }
       ],
       "description": "<p>Project Manager where users can create projects and notes.</p>",
       "opened_timeline_id": 0,
-      "timestamp": 1534885463615
+      "timestamp": 1534885570784
     },
     {
       "id": 1,
