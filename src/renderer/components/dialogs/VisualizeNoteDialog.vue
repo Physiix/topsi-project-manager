@@ -4,6 +4,7 @@
 			<v-card-title class="py-0 pt-5 headline">
 				{{note.title}}
 			</v-card-title>
+			<NoteTags class="px-2" :tags="note.tags" />
 			<v-container class="dialog-container pt-5" v-html="note.description">
 			</v-container>
 		</div>
@@ -12,8 +13,13 @@
 <script>
 import { Notifications } from '../../../core/Notification'
 
+import NoteTags from '../notes/NoteTags.vue'
+
 export default {
 	name: 'VisualizeNoteDialog',
+	components: {
+		NoteTags
+	},
 	computed: {
 		note() {
 			return this.$store.state.NotesStore.openedNote;

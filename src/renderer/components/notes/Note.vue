@@ -10,16 +10,18 @@
 			</v-btn>
 		</v-card-title>
 		<v-divider></v-divider>
-		<div class="px-2">
-			<v-chip class="tag" v-for="(entry, index) in note.tags" :key="index" small :class="entry.color">{{entry.tag}}</v-chip>
-		</div>
+		<NoteTags class="px-2" :tags="note.tags" />
 		<v-card-text v-html="note.description"></v-card-text>
 	</v-card>
 </template>
 <script>
+import NoteTags from './NoteTags.vue'
 
 export default {
 	name: 'Note',
+	components: {
+		NoteTags
+	},
 	props: {
 		note: Object
 	},
