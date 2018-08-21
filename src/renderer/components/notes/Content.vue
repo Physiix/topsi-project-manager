@@ -3,7 +3,22 @@
 		<div class="top pa-3 title">
 			<!-- <v-toolbar color="secondary" dark class="elevation-0" dense>
 				<v-toolbar-title class="subheading" scroll-off-screen> -->
-			{{title}}
+			<div class="content-category-title">
+				<v-toolbar height="30" color="transparent" flat>
+					{{title}}
+					<v-spacer></v-spacer>
+					<div class="content-category-icon">
+						<v-btn :id="'btn-category-'+category.tag" icon fab small>
+							<v-icon>
+								settings
+							</v-icon>
+						</v-btn>
+					</div>
+				</v-toolbar>
+			</div>
+			<FloatingDiv :activator-id="'btn-category-'+category.tag" top width="200">
+				<v-toolbar></v-toolbar>
+			</FloatingDiv>
 			<!-- </v-toolbar-title>
 			</v-toolbar> -->
 		</div>
@@ -111,5 +126,18 @@ export default {
 
 .title_card{
 	border-radius: 0;
+}
+
+</style>
+
+<style>
+
+
+.content-category-title .content-category-icon{
+	opacity: 0;
+	transition: 0.2s!important;
+}
+.content-category-title:hover .content-category-icon{
+	opacity: 1;
 }
 </style>

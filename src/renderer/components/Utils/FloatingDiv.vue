@@ -82,6 +82,11 @@ export default {
 				drawer.style.left = tRect.left + tRect.width + 'px';
 			}
 
+			// Make sure it doesn't go out of screen
+			const dRect = drawer.getBoundingClientRect();
+			if (dRect.left + dRect.width > window.innerWidth)
+				drawer.style.left = dRect.left - (dRect.left + dRect.width - window.innerWidth) - 10 + 'px';
+
 
 			drawer.removeChild(triangle);
 			drawer.appendChild(triangle);

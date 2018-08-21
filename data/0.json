@@ -18,7 +18,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534864365339
+    "timestamp": 1534872423809
   },
   "timelines": [
     {
@@ -481,9 +481,35 @@
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840,
       "tags": []
+    },
+    {
+      "id": 31,
+      "project_id": 0,
+      "title": "Edit Mode",
+      "description": "<p>When the <strong>edit mode </strong>is enabled for a project, the user will have controls to update the <strong>notes </strong>and <strong>categories. </strong>This include the ability to modify them.</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        },
+        {
+          "tag": "URGENT",
+          "color": "indigo white--text"
+        }
+      ],
+      "order": 7,
+      "timestamp": 1534873196357,
+      "updated_timestamp": 1534873196357
     }
   ],
-  "notes_id": 31,
+  "notes_id": 32,
   "tags": [
     {
       "tag": "Feature",
