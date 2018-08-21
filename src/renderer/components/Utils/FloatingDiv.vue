@@ -3,7 +3,6 @@
 		<v-card :dark="dark" class="elevation-0" :color="(color)?color:''">
 			<slot id="asdkasjhdas" ref="floating_content" :dark="dark"></slot>
 		</v-card>
-
 	</div>
 </template>
 
@@ -28,11 +27,10 @@ export default {
 
 	mounted() {
 		const button = document.getElementById(this.activatorId);
-		const floatingDiv = this.$refs.floating_div;
-		const drawer = floatingDiv;
+		const drawer = this.$refs.floating_div;
 		drawer.style.position = 'fixed';
 		drawer.style.opacity = '0';
-		drawer.style.visibility = 'visible';
+		drawer.style.visibility = 'collapse';
 		button.onclick = () => {
 			if (document.getElementById("floating-triangle-id")) return;
 
@@ -51,7 +49,7 @@ export default {
 				if (this.dark) triangle.style.borderBottom = '10px solid #424242';
 				else triangle.style.borderBottom = '10px solid #fff';
 				if (this.indicatorColor) triangle.style.borderBottom = `10px solid ${colors[this.indicatorColor].base}`;
-				triangle.style.left = rect.width / 2 - 10 + 'px';
+				triangle.style.left = rect.left + rect.width / 2 - 10 + 'px';
 				triangle.style.top = rect.top + rect.height + 'px';
 			} else {
 				triangle.style.borderTop = '10px solid transparent';
@@ -59,11 +57,11 @@ export default {
 				if (this.dark) triangle.style.borderRight = '10px solid #424242';
 				else triangle.style.borderRight = '10px solid #fff';
 				if (this.indicatorColor) triangle.style.borderRight = `10px solid ${colors[this.indicatorColor].base}`;
-				triangle.style.left = rect.width + 5 + 'px';
+				triangle.style.left = rect.left + rect.width + 5 + 'px';
 				triangle.style.top = rect.top + ((rect.height / 2) - 10) + 'px';
 			}
 
-			floatingDiv.appendChild(triangle);
+			drawer.appendChild(triangle);
 
 			drawer.style.position = 'fixed';
 			drawer.style.zIndex = 1;
@@ -85,8 +83,8 @@ export default {
 			}
 
 
-			floatingDiv.removeChild(triangle);
-			floatingDiv.appendChild(triangle);
+			drawer.removeChild(triangle);
+			drawer.appendChild(triangle);
 			let opacity = 0;
 			const inId = setInterval(() => {
 				drawer.style.opacity = opacity;
