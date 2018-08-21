@@ -1,8 +1,6 @@
 <template>
 	<div>
-
 		<v-list dense class="pt-0 transparent" dark>
-
 			<div v-for="item in items" :key="item.title">
 				<Tooltip :content="item.hint" right>
 					<v-list-tile @click="item.action()">
@@ -12,7 +10,6 @@
 					</v-list-tile>
 				</Tooltip>
 			</div>
-
 			<TagsSettings />
 			<v-divider></v-divider>
 			<Timelines />

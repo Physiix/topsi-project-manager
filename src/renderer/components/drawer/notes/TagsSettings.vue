@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Tooltip right content="Add a new tag">
+		<Tooltip top content="Add a new tag">
 			<v-list-tile id="timeline-button" @click="">
 				<v-list-tile-action style="margin-left:-6px;">
 					TAGS
