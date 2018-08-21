@@ -92,7 +92,7 @@ export default {
 				drawer.style.opacity = opacity;
 				triangle.style.opacity = opacity;
 				opacity += 0.025;
-				if (opacity > 0.975) {
+				if (opacity > 1) {
 					triangle.style.opacity = 1;
 					clearInterval(inId);
 				}

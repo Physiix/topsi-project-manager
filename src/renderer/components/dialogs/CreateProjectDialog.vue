@@ -3,12 +3,23 @@
 		<v-card-title>
 			<v-text-field label="Title" v-model="title"></v-text-field>
 		</v-card-title>
+		<v-container class="pa-0 px-3">
+			<v-card light class="elevation-2" style="border-radius:0;">
+				<div id="toolbar">
+				</div>
+				<div id="editor" style="height:200px;">
+				</div>
+			</v-card>
+		</v-container>
+		<v-divider class="mt-4"></v-divider>
 		<v-card-title>
-			<v-textarea label="Description" v-model="description"></v-textarea>
-		</v-card-title>
-		<v-divider class="py-3"></v-divider>
-		<v-card-title>
-			<v-text-field placeholder="Add a new category" v-model="category" @keyup.enter.native="AddCategory"></v-text-field>
+			<v-toolbar flat class="pa-2">
+				<v-text-field placeholder="Add a new category" v-model="category" @keyup.enter.native="AddCategory"></v-text-field>
+				<v-btn flat @click="AddCategory">
+					Add
+				</v-btn>
+			</v-toolbar>
+
 		</v-card-title>
 		<v-card-title>
 			<v-layout row wrap align-center ref="categs" dark>
@@ -26,6 +37,9 @@
 </template>
 <script>
 import Sortable from 'sortablejs'
+import Quill from 'quill'
+
+let editor = null;
 
 export default {
 	name: 'CreateProjectDialog',
@@ -67,12 +81,10 @@ export default {
 				});
 			})
 
-			console.log('cate', categories)
-
 			// Create the project.
 			this.$store.commit('CreateProject', {
 				title: this.title,
-				description: this.description,
+				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				categories: categories
 			});
 
@@ -103,7 +115,6 @@ export default {
 
 	mounted() {
 		const element = this.$refs.categs;
-		console.log(element)
 		const sortable = Sortable.create(element, {
 			group: {
 				name: "Categories",
@@ -118,6 +129,28 @@ export default {
 			animation: 100
 
 		});
+
+		// Setup QUILL
+		const options = {
+			modules: {
+				toolbar: [
+					[{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+					['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+
+					[{ 'header': 1 }, { 'header': 2 }],               // custom button values
+					[{ 'list': 'ordered' }, { 'list': 'bullet' }],
+					[{ 'direction': 'rtl' }],                         // text direction
+
+					[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+					[{ 'align': [] }],
+
+					['clean']                                         // remove formatting button
+				]
+			},
+			placeholder: 'Compose an epic...',
+			theme: 'snow'  // or 'bubble'
+		};
+		editor = new Quill('#editor', options);
 	}
 }
 </script>

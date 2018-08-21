@@ -3,8 +3,8 @@
 		<v-card-title>
 			{{project.title}}
 		</v-card-title>
-		<v-card-text>
-			{{project.description}}
+		<v-card-text v-html="project.description">
+
 		</v-card-text>
 	</v-card>
 </template>
