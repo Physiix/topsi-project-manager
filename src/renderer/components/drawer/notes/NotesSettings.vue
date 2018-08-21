@@ -76,6 +76,12 @@ export default {
 					title: 'New Note',
 					hint: 'Add a new Note',
 					action: () => this.$store.commit('CreateNoteDialog')
+				},
+				{
+					icon: 'edit',
+					title: 'Edit Project',
+					hint: 'Edit Project',
+					action: () => this.$store.commit('ToggleUpdateProject')
 				}
 			]
 		}

@@ -4,6 +4,7 @@
 		<!-- <CreateTimelineDialog/> -->
 		<VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
 		<UpdateNoteDialog v-if="updateDialog" />
+		<UpdateProjectDialog v-if="updateProject" />
 
 		<div v-for="(category, index) in categories" :key="category+index" :id="category.tag+'-container'" class="category-container">
 			<Content :id="category.tag+'-content'" :category="category" />
@@ -17,6 +18,7 @@ import CreateNoteDialog from '../dialogs/CreateNoteDialog.vue'
 import CreateTimelineDialog from '../dialogs/CreateTimelineDialog.vue'
 import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
 import UpdateNoteDialog from '../dialogs/UpdateNoteDialog.vue'
+import UpdateProjectDialog from '../dialogs/UpdateProjectDialog.vue'
 import Content from './Content.vue'
 import { AppManager } from '../../../core/ApplicationManager';
 
@@ -27,6 +29,7 @@ export default {
 		CreateTimelineDialog,
 		UpdateNoteDialog,
 		VisualizeNoteDialog,
+		UpdateProjectDialog,
 		Menu,
 		Content
 	},
@@ -52,6 +55,10 @@ export default {
 			return this.$store.state.AppStore.dialogs.visualizeDialog;
 		},
 
+		updateProject() {
+			return this.$store.getters.isUpdateProject;
+		},
+
 		color() {
 			if (this.$store.getters.IsDarkMode)
 				return '';
@@ -59,10 +66,7 @@ export default {
 		}
 	},
 	mounted() {
-		const categories = []
-		this.categories.forEach(c => categories.push(c.tag));
-		console.log(categories)
-		AppManager.SetupNotesPage('notes_container', 'container', categories);
+		AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
 	}
 }
 </script>

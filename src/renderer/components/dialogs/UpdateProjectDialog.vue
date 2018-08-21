@@ -1,5 +1,5 @@
 <template>
-	<Dialog width="500" v-on:close="createProject = false" v-on:accept="CreateProject">
+	<Dialog width="500" v-on:close="updateProject = false" v-on:accept="UpdateProject" accept-text="Update">
 		<v-card-title>
 			<v-text-field label="Title" v-model="title"></v-text-field>
 		</v-card-title>
@@ -13,8 +13,8 @@
 		</v-container>
 		<v-divider class="mt-4"></v-divider>
 		<v-card-title>
-			<v-toolbar flat class="pa-2">
-				<v-text-field placeholder="Add a new category" v-model="category" @keyup.enter.native="AddCategory"></v-text-field>
+			<v-toolbar flat class="pa-1" color="transparent">
+				<v-text-field placeholder="Add a new category" v-model="category" @keyup.enter.native="AddCategory" solo></v-text-field>
 				<v-btn flat @click="AddCategory">
 					Add
 				</v-btn>
@@ -42,34 +42,34 @@ import Quill from 'quill'
 let editor = null;
 
 export default {
-	name: 'CreateProjectDialog',
+	name: 'UpdateProjectDialog',
 	data() {
 		return {
 			title: '',
 			description: '',
 			category: '',
-			categories: [
-				'TODO',
-				'In Progress',
-				'Done'
-			]
+			categories: []
 		}
 	},
 	computed: {
-		createProject: {
+		updateProject: {
 			set(value) {
-				this.$store.commit('CreateProjDialog');
+				this.$store.commit('ToggleUpdateProject');
 			},
 			get() {
-				return this.$store.state.AppStore.dialogs.createProject;
+				return this.$store.getters.isUpdateProject;
 			}
+		},
+
+		project() {
+			return this.$store.getters.getCurrentProject(this);
 		}
 	},
 	methods: {
 		/**
 		 * Handle the 'Save' button click.
 		 */
-		CreateProject() {
+		UpdateProject() {
 			// Format the categories.
 			const categories = [];
 			this.categories.forEach(category => {
@@ -81,17 +81,20 @@ export default {
 				});
 			})
 
-			// Create the project.
-			this.$store.commit('CreateProject', {
+			// Update the project.
+			this.$store.commit('UpdateProject', {
+				id: this.project.id,
 				title: this.title,
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				categories: categories
 			});
 
+			this.$forceUpdate();
+
 			// Clean up the text fields and close dialog.
 			this.title = '';
 			this.description = '';
-			this.createProject = false;
+			this.updateProject = false;
 			this.categories = []
 		},
 
@@ -114,6 +117,8 @@ export default {
 	},
 
 	mounted() {
+		this.categories = this.project.categories.map(category => category.title);
+
 		const element = this.$refs.categs;
 		const sortable = Sortable.create(element, {
 			group: {
@@ -126,7 +131,6 @@ export default {
 				this.categories.splice(newIndex, 0, tmp);
 			},
 			animation: 100
-
 		});
 
 		// Setup QUILL
@@ -150,6 +154,9 @@ export default {
 			theme: 'snow'  // or 'bubble'
 		};
 		editor = new Quill('#editor', options);
+
+		this.title = this.project.title;
+		document.getElementsByClassName("ql-editor")[0].innerHTML = this.project.description;
 	}
 }
 </script>

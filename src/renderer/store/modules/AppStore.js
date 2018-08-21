@@ -19,6 +19,7 @@ const state = {
 		updateNote: false,
 		visualizeDialog: false,
 		exportProject: false,
+		updateProject: false,
 	},
 
 	// ID of the currently opened project.
@@ -131,6 +132,10 @@ const mutations = {
 
 	ToggleSearch(state) {
 		state.showSearch = !state.showSearch;
+	},
+
+	ToggleUpdateProject(state) {
+		state.dialogs.updateProject = !state.dialogs.updateProject;
 	}
 }
 
@@ -162,6 +167,14 @@ const getters = {
 
 	isShowSearch(state) {
 		return state.showSearch;
+	},
+
+	isUpdateProject(state) {
+		return state.dialogs.updateProject;
+	},
+
+	getCurrentProject(state) {
+		return (context) => context.$store.getters.GetProjectById(state.openedProjectId);
 	}
 }
 

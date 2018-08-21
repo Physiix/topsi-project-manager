@@ -1,7 +1,12 @@
 import {
 	App
 } from "../../../core/Application";
-
+import {
+	Notifications
+} from "../../../core/Notification";
+import {
+	AppManager
+} from '../../../core/ApplicationManager'
 class Project {
 	constructor(title, description, categories) {
 		this.id = -1;
@@ -37,7 +42,7 @@ const mutations = {
 	CreateProject(state, data) {
 		// Make sure the project's data is valid.
 		if (data.title == null || data.description == null || data.categories == null || data.categories.length <= 0)
-			throw new Error("Cannot create a project with invalid data ", data);
+			Notifications.Error('CreateProject', "Cannot create a project with invalid data " + data);
 
 		// Create the new project to store.
 		let project = new Project(data.title, data.description, data.categories);
@@ -64,6 +69,24 @@ const mutations = {
 
 		// Update the state
 		state.projects = appDB.GetAll('projects', 'id');
+	},
+
+	UpdateProject(state, data) {
+		// Make sure the project's data is valid.
+		if (data.id == null || data.title == null || data.description == null || data.categories == null || data.categories.length <= 0)
+			Notifications.Error('UpdateProject', "Cannot update a project with invalid data " + Object.values(data));
+
+		// Update the project
+		App.GetDB(data.id).SetValue('info', data)
+		App.GetAppDB().Update('projects', {
+			id: data.id
+		}, data);
+
+		// Update the state
+		state.projects = App.GetAppDB().GetAll('projects', 'id');
+
+		// // Update the layout
+		AppManager.SetupNotesPage('notes_container', 'container', data.categories.map(category => category.tag));
 	},
 
 	SetProjectTimelineId(state, data) {
