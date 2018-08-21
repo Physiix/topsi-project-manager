@@ -12,6 +12,10 @@
 	</div>
 </template>
 <script>
+import { EventsManager } from '../../../core/EventManager.js';
+import { AppManager } from '../../../core/ApplicationManager';
+
+
 import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from '../dialogs/CreateNoteDialog.vue'
@@ -20,7 +24,6 @@ import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
 import UpdateNoteDialog from '../dialogs/UpdateNoteDialog.vue'
 import UpdateProjectDialog from '../dialogs/UpdateProjectDialog.vue'
 import Content from './Content.vue'
-import { AppManager } from '../../../core/ApplicationManager';
 
 export default {
 	name: 'Notes',
@@ -67,6 +70,11 @@ export default {
 	},
 	mounted() {
 		AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
+		EventsManager.Subscribe('update-notes-component', () => {
+			this.$nextTick(() => {
+				AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
+			});
+		});
 	}
 }
 </script>

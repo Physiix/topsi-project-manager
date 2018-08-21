@@ -7,6 +7,11 @@ import {
 import {
 	AppManager
 } from '../../../core/ApplicationManager'
+import {
+	EventsManager
+} from '../../../core/EventManager.js'
+
+
 class Project {
 	constructor(title, description, categories) {
 		this.id = -1;
@@ -86,7 +91,7 @@ const mutations = {
 		state.projects = App.GetAppDB().GetAll('projects', 'id');
 
 		// // Update the layout
-		AppManager.SetupNotesPage('notes_container', 'container', data.categories.map(category => category.tag));
+		EventsManager.Emit('update-notes-component');
 	},
 
 	SetProjectTimelineId(state, data) {
