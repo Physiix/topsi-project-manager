@@ -10,6 +10,7 @@
 					</v-list-tile>
 				</Tooltip>
 			</div>
+			<MilestonesSettings />
 			<TagsSettings />
 			<v-divider></v-divider>
 			<Timelines />
@@ -32,6 +33,7 @@
 
 </template>
 <script>
+import MilestonesSettings from './MilestonesSettings.vue'
 import TagsSettings from './TagsSettings.vue'
 import Timelines from './Timelines.vue'
 
@@ -39,6 +41,7 @@ export default {
 	name: 'NotesSettings',
 	components: {
 		TagsSettings,
+		MilestonesSettings,
 		Timelines
 	},
 	props: {
@@ -73,14 +76,7 @@ export default {
 					title: 'New Note',
 					hint: 'Add a new Note',
 					action: () => this.$store.commit('CreateNoteDialog')
-				},
-				{
-					icon: 'timeline',
-					title: 'New Timeline',
-					hint: 'Add a new timeline',
-					ref: 'timeline',
-					action: () => { }
-				},
+				}
 			]
 		}
 	},

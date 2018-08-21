@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Tooltip top content="Add a new tag">
-			<v-list-tile id="timeline-button" @click="">
+			<v-list-tile id="tags-button" @click="">
 				<v-list-tile-action style="margin-left:-6px;">
 					TAGS
 				</v-list-tile-action>
@@ -10,7 +10,7 @@
 				</v-list-tile-content>
 			</v-list-tile>
 		</Tooltip>
-		<FloatingDiv activator-id="timeline-button" v-on:action="" width="500" dark left>
+		<FloatingDiv activator-id="tags-button" v-on:action="" width="500" dark left>
 			<v-toolbar color="secondary" dark class="px-2 elevation-0">
 				<v-text-field v-model="tag" @keyup.enter.native="AddTag"></v-text-field>
 				<v-btn flat @click="AddTag">Add</v-btn>
