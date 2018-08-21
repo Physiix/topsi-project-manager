@@ -1,7 +1,10 @@
 <template>
 	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show" @dblclick="Open" :dark="dark">
 		<v-card-title class="py-2 pr-0">
-			<strong>{{note.title}}</strong>
+			<div class="blue--text pr-1">
+				<strong>#{{note.id}}</strong>
+			</div>
+			<h4>{{note.title}}</h4>
 			<v-spacer></v-spacer>
 			<v-btn small icon class="ma-0" @click="Edit">
 				<v-icon style="font-size:16px;">
