@@ -31,7 +31,7 @@
     {
       "id": 1,
       "title": "Test",
-      "description": "<p>Test project.</p>",
+      "description": "Test project.",
       "categories": [
         {
           "tag": "todo",
@@ -51,12 +51,12 @@
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1534948636507
+      "timestamp": 1534689479191
     }
   ],
   "current_project_id": 0,
-  "window_width": 1391,
-  "window_height": 817,
+  "window_width": 1312,
+  "window_height": 799,
   "application_color": "indigo white--text",
   "first_time_use": false,
   "default_databases_folder": ""

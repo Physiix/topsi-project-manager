@@ -1,7 +1,7 @@
 <template>
 	<div ref="floating_div">
 		<v-card :dark="dark" class="elevation-0" :color="(color)?color:''">
-			<slot id="asdkasjhdas" ref="floating_content" :dark="dark"></slot>
+			<slot ref="floating_content" :dark="dark"></slot>
 		</v-card>
 	</div>
 </template>

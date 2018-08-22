@@ -37,13 +37,15 @@
 							add
 						</v-icon>
 					</v-btn>
-					<FloatingDiv activator-id="add-category-btn" v-on:action="" dark top :indicator-color="color.substr(0, color.indexOf(' '))">
-						<v-toolbar class="px-2" :color="color" height="55">
-							<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
-							<v-btn flat @click="AddCategory">
-								Add
-							</v-btn>
-						</v-toolbar>
+					<FloatingDiv activator-id="add-category-btn" v-on:action="" dark right>
+						<v-card>
+							<v-toolbar class="px-2" color="secondary" height="55">
+								<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
+								<v-btn flat @click="AddCategory">
+									Add
+								</v-btn>
+							</v-toolbar>
+						</v-card>
 					</FloatingDiv>
 				</v-layout>
 			</v-layout>
