@@ -4,8 +4,6 @@
 <script>
 import ProjectDialogContent from './ProjectDialogContent.vue'
 
-let editor = null;
-
 export default {
 	name: 'CreateProjectDialog',
 	components: {
@@ -25,6 +23,7 @@ export default {
 			return {
 				title: '',
 				category: '',
+				description: '',
 				categories: [
 					'TODO', 'In Progress', 'Done'
 				]
@@ -36,8 +35,6 @@ export default {
 		 * Handle the 'Save' button click.
 		 */
 		CreateProject(data) {
-			console.log(data)
-
 			// Create the project.
 			this.$store.commit('CreateProject', {
 				title: data.title,

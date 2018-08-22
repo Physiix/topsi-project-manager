@@ -19,7 +19,7 @@
 				</v-btn>
 			</v-toolbar>
 		</v-card-title>
-		<v-card class="ma-3 elevation-0">
+		<v-card class="ma-3 elevation-0 px-5">
 			<v-toolbar color="indigo darken-2 white--text" dense height="10" style="font-size:8px;">
 				<v-spacer></v-spacer>
 				Project Manager
@@ -148,6 +148,7 @@ export default {
 			theme: 'snow'  // or 'bubble'
 		};
 		editor = new Quill('#editor', options);
+		document.getElementsByClassName("ql-editor")[0].innerHTML = this.project.description;
 	}
 }
 </script>
