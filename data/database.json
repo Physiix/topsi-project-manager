@@ -13,7 +13,8 @@
       "categories": [
         {
           "tag": "todo",
-          "title": "TODO"
+          "title": "TODO",
+          "folded": false
         },
         {
           "tag": "in_progress",
@@ -21,12 +22,13 @@
         },
         {
           "tag": "done",
-          "title": "Done"
+          "title": "Done",
+          "folded": false
         }
       ],
       "description": "<p>Project Manager where users can create projects and notes.</p>",
       "opened_timeline_id": 0,
-      "timestamp": 1534885570784
+      "timestamp": 1534965393959
     },
     {
       "id": 1,
@@ -36,31 +38,30 @@
         {
           "tag": "todo",
           "title": "TODO",
-          "folded": true
+          "folded": false
         },
         {
           "tag": "in_progress",
-          "title": "In Progress",
-          "folded": true
+          "title": "In Progress"
         },
         {
           "tag": "done",
           "title": "Done",
-          "folded": true
+          "folded": false
         },
         {
-          "tag": "archieves",
-          "title": "Archieves",
-          "folded": true
+          "tag": "adasdas",
+          "title": "adasdas",
+          "folded": false
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1534963958629
+      "timestamp": 1534965324800
     }
   ],
   "current_project_id": 0,
-  "window_width": 1287,
-  "window_height": 730,
+  "window_width": 1248,
+  "window_height": 711,
   "application_color": "indigo white--text",
   "first_time_use": false,
   "default_databases_folder": ""

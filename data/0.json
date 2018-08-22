@@ -6,7 +6,8 @@
     "categories": [
       {
         "tag": "todo",
-        "title": "TODO"
+        "title": "TODO",
+        "folded": false
       },
       {
         "tag": "in_progress",
@@ -14,11 +15,12 @@
       },
       {
         "tag": "done",
-        "title": "Done"
+        "title": "Done",
+        "folded": false
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534961598304
+    "timestamp": 1534965393959
   },
   "timelines": [
     {
@@ -58,7 +60,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 0,
+      "order": 1,
       "timestamp": 1534807571681,
       "tags": [
         {
@@ -81,6 +83,28 @@
       "updated_timestamp": 1534807571681
     },
     {
+      "id": 27,
+      "project_id": 0,
+      "title": "Fold categoy",
+      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
+      "category": "done",
+      "color": "blue white--text",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534959543719,
+      "updated_timestamp": 1534959543719,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        }
+      ]
+    },
+    {
       "id": 34,
       "project_id": 0,
       "title": "Better looking project creation/update",
@@ -98,7 +122,7 @@
           "color": "orange black--text"
         }
       ],
-      "order": 1,
+      "order": 2,
       "timestamp": 1534944578252
     },
     {
@@ -118,32 +142,6 @@
         }
       ],
       "updated_timestamp": 1534807492474
-    },
-    {
-      "id": 31,
-      "project_id": 0,
-      "title": "Edit Mode",
-      "description": "<p>When the <strong>edit mode </strong>is enabled for a project, the user will have controls to update the <strong>notes </strong>and <strong>categories. </strong>This include the ability to modify them.</p>",
-      "category": "done",
-      "color": "",
-      "timeline_id": 0,
-      "tags": [
-        {
-          "tag": "Feature",
-          "color": "blue white--text"
-        },
-        {
-          "tag": "UI",
-          "color": "pink white--text"
-        },
-        {
-          "tag": "URGENT",
-          "color": "indigo white--text"
-        }
-      ],
-      "order": 2,
-      "timestamp": 1534943550060,
-      "updated_timestamp": 1534943550060
     },
     {
       "id": 26,
@@ -172,6 +170,32 @@
       "updated_timestamp": 1534807912200
     },
     {
+      "id": 31,
+      "project_id": 0,
+      "title": "Edit Mode",
+      "description": "<p>When the <strong>edit mode </strong>is enabled for a project, the user will have controls to update the <strong>notes </strong>and <strong>categories. </strong>This include the ability to modify them.</p>",
+      "category": "done",
+      "color": "",
+      "timeline_id": 0,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        },
+        {
+          "tag": "URGENT",
+          "color": "indigo white--text"
+        }
+      ],
+      "order": 3,
+      "timestamp": 1534943550060,
+      "updated_timestamp": 1534943550060
+    },
+    {
       "id": 23,
       "project_id": 0,
       "title": "Repair dependencies.",
@@ -192,28 +216,6 @@
           "color": "orange black--text"
         }
       ]
-    },
-    {
-      "id": 33,
-      "project_id": 0,
-      "title": "Tags in notes change color depending on the note's color.",
-      "description": "<p>If the note has tags with the same color as its own, the tags change color.</p>",
-      "category": "done",
-      "color": "",
-      "timeline_id": 0,
-      "tags": [
-        {
-          "tag": "UI",
-          "color": "pink white--text"
-        },
-        {
-          "tag": "Enhancement",
-          "color": "orange black--text"
-        }
-      ],
-      "order": 3,
-      "timestamp": 1534943723208,
-      "updated_timestamp": 1534943723208
     },
     {
       "id": 3,
@@ -246,6 +248,28 @@
       "updated_timestamp": 1534943568215
     },
     {
+      "id": 33,
+      "project_id": 0,
+      "title": "Tags in notes change color depending on the note's color.",
+      "description": "<p>If the note has tags with the same color as its own, the tags change color.</p>",
+      "category": "done",
+      "color": "",
+      "timeline_id": 0,
+      "tags": [
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        },
+        {
+          "tag": "Enhancement",
+          "color": "orange black--text"
+        }
+      ],
+      "order": 4,
+      "timestamp": 1534943723208,
+      "updated_timestamp": 1534943723208
+    },
+    {
       "id": 10,
       "project_id": 0,
       "title": "Single Dialog",
@@ -272,6 +296,24 @@
       "updated_timestamp": 1534864511301
     },
     {
+      "id": 25,
+      "project_id": 0,
+      "title": "Custom path for a projects",
+      "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "order": 3,
+      "timestamp": 1534807286480,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        }
+      ],
+      "updated_timestamp": 1534807286480
+    },
+    {
       "id": 17,
       "project_id": 0,
       "title": "Tags",
@@ -279,7 +321,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 4,
+      "order": 5,
       "timestamp": 1534807849342,
       "updated_timestamp": 1534807849342,
       "tags": [
@@ -331,7 +373,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 5,
+      "order": 6,
       "timestamp": 1534807321557,
       "updated_timestamp": 1534807321557,
       "tags": [
@@ -340,24 +382,6 @@
           "color": "blue white--text"
         }
       ]
-    },
-    {
-      "id": 25,
-      "project_id": 0,
-      "title": "Custom path for a projects",
-      "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
-      "category": "in_progress",
-      "color": "",
-      "timeline_id": 0,
-      "order": 3,
-      "timestamp": 1534807286480,
-      "tags": [
-        {
-          "tag": "Feature",
-          "color": "blue white--text"
-        }
-      ],
-      "updated_timestamp": 1534807286480
     },
     {
       "id": 28,
@@ -385,32 +409,10 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 6,
+      "order": 7,
       "timestamp": 1534691012910,
       "updated_timestamp": 1534691012910,
       "tags": []
-    },
-    {
-      "id": 27,
-      "project_id": 0,
-      "title": "Fold categoy",
-      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
-      "category": "in_progress",
-      "color": "blue white--text",
-      "timeline_id": 0,
-      "order": 0,
-      "timestamp": 1534959543719,
-      "updated_timestamp": 1534959543719,
-      "tags": [
-        {
-          "tag": "Feature",
-          "color": "blue white--text"
-        },
-        {
-          "tag": "UI",
-          "color": "pink white--text"
-        }
-      ]
     },
     {
       "id": 30,
@@ -446,7 +448,7 @@
       "category": "done",
       "color": "green white--text",
       "timeline_id": 0,
-      "order": 7,
+      "order": 8,
       "timestamp": 1534621905197,
       "updated_timestamp": 1534621905197,
       "tags": []
@@ -480,7 +482,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 8,
+      "order": 9,
       "timestamp": 1534883303619,
       "updated_timestamp": 1534883303619,
       "tags": [
@@ -498,7 +500,7 @@
       "category": "done",
       "color": "indigo white--text",
       "timeline_id": 0,
-      "order": 9,
+      "order": 10,
       "timestamp": 1534807865477,
       "tags": [
         {
@@ -516,7 +518,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 10,
+      "order": 11,
       "timestamp": 1534883316035,
       "tags": [
         {
@@ -534,7 +536,7 @@
       "category": "done",
       "color": "indigo white--text",
       "timeline_id": 0,
-      "order": 11,
+      "order": 12,
       "timestamp": 1534883334035,
       "updated_timestamp": 1534883334035,
       "tags": [
@@ -556,7 +558,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 12,
+      "order": 13,
       "timestamp": 1534883323753,
       "updated_timestamp": 1534883323753,
       "tags": [
@@ -578,7 +580,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 13,
+      "order": 14,
       "timestamp": 1534883357893,
       "tags": [
         {
@@ -604,7 +606,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 14,
+      "order": 15,
       "timestamp": 1534446849627,
       "updated_timestamp": 1534446849627,
       "tags": []
@@ -617,7 +619,7 @@
       "category": "done",
       "color": "",
       "timeline_id": 0,
-      "order": 15,
+      "order": 16,
       "timestamp": 1534432424724,
       "tags": []
     },
@@ -629,7 +631,7 @@
       "category": "done",
       "color": "default",
       "timeline_id": 0,
-      "order": 16,
+      "order": 17,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840,
       "tags": []

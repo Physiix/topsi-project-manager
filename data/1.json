@@ -7,26 +7,24 @@
       {
         "tag": "todo",
         "title": "TODO",
-        "folded": true
+        "folded": false
       },
       {
         "tag": "in_progress",
-        "title": "In Progress",
-        "folded": true
+        "title": "In Progress"
       },
       {
         "tag": "done",
         "title": "Done",
-        "folded": true
+        "folded": false
       },
       {
-        "tag": "archieves",
-        "title": "Archieves",
-        "folded": true
+        "tag": "adasdas",
+        "title": "adasdas",
+        "folded": false
       }
     ],
-    "timestamp": 1534948646223,
-    "opened_timeline_id": 0
+    "timestamp": 1534965323464
   },
   "timelines": [
     {

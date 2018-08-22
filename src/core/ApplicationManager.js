@@ -35,7 +35,7 @@ class ApplicationManager {
 		this.mainContainerId = containerId;
 	}
 
-	SetupNotesPage(categoryContainerId, containerId, categories, foldedCategories = []) {
+	SetupNotesPage(categoryContainerId, containerId, categories, foldedCategories = [], foldDrawer = true) {
 		const container = document.getElementById(categoryContainerId);
 
 		const resize = () => {
@@ -48,25 +48,31 @@ class ApplicationManager {
 			})
 		}
 
-		let value = this.vue.$store.getters.drawerWidth;
-		const id = setInterval(() => {
-			value -= 8;
-			document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
-			if (value <= COMPACT_DRAWER_WIDTH) clearInterval(id);
-		})
+		if (foldDrawer) {
+			let value = this.vue.$store.getters.drawerWidth;
+			const id = setInterval(() => {
+				value -= 8;
+				document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
+				if (value <= COMPACT_DRAWER_WIDTH) clearInterval(id);
+			})
+		}
 
 		resize();
 		window.addEventListener('resize', resize);
 
 		container.style.display = 'grid';
-		let columns = `repeat(${categories.length}, 1fr)`;
-		if (categories.length <= 0) columns = '1fr';
-		container.style.gridTemplateColumns = `${columns} repeat(${foldedCategories.length}, 50px)`
+		let unfoldedColumns = `repeat(${categories.length}, 1fr)`;
+		if (categories.length <= 0) unfoldedColumns = '1fr';
+
+		let foldedColumns = `repeat(${foldedCategories.length}, 50px)`
+		if (foldedCategories.length <= 0) foldedColumns = '';
+		container.style.gridTemplateColumns = `${unfoldedColumns} ${foldedColumns}`
 		container.style.gridTemplateRows = '1fr';
 
 		let index = 1;
 		categories.forEach(category => {
 			const parcel = document.getElementById(category + '-container');
+			parcel.removeAttribute('style');
 			parcel.style.gridColumn = `${index}/${index + 1}`;
 			parcel.style.gridRow = `1 / 2`;
 			index++;
@@ -74,6 +80,7 @@ class ApplicationManager {
 
 		foldedCategories.forEach(category => {
 			const parcel = document.getElementById(category + '-container');
+			parcel.removeAttribute('style');
 			parcel.style.gridColumn = `${index}/${index + 1}`;
 			parcel.style.gridRow = `1 / 2`;
 			parcel.style.writingMode = 'vertical-rl';

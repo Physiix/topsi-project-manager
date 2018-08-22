@@ -44,6 +44,7 @@ export default {
 	},
 	props: {
 		id: String,
+		projectId: Number,
 		category: Object
 	},
 	data() {
@@ -68,16 +69,11 @@ export default {
 
 		searchContent() {
 			return this.$store.getters.getSearchContent.toLowerCase();
-		},
-
-		projectId() {
-			this.$store.state.AppStore.openedProjectId;
 		}
 	},
 	methods: {
 		Fold() {
-			console.log(this.projectId)
-			this.$store.commit('FoldCategory', {
+			this.$store.commit('ToggleFoldCategory', {
 				projectId: this.projectId,
 				category: this.category
 			});
