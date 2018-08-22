@@ -35,14 +35,17 @@ class ApplicationManager {
 		this.mainContainerId = containerId;
 	}
 
-	SetupNotesPage(categoryContainerId, containerId, ...categories) {
-		categories = categories[0];
+	SetupNotesPage(categoryContainerId, containerId, categories, foldedCategories = []) {
 		const container = document.getElementById(categoryContainerId);
 
 		const resize = () => {
 			const offset = 5;
 			container.style.width = window.innerWidth - COMPACT_DRAWER_WIDTH + offset + 'px';
 			container.style.height = (window.innerHeight - 30) + 'px';
+
+			foldedCategories.forEach(category => {
+				document.getElementById(category + '-container').childNodes[0].style.height = (window.innerHeight - 30) + 'px';
+			})
 		}
 
 		let value = this.vue.$store.getters.drawerWidth;
@@ -56,15 +59,27 @@ class ApplicationManager {
 		window.addEventListener('resize', resize);
 
 		container.style.display = 'grid';
-		container.style.gridTemplateColumns = `repeat(${categories.length}, 1fr) 5px`
+		container.style.gridTemplateColumns = `repeat(${categories.length}, 1fr) repeat(${foldedCategories.length}, 50px)`
 		container.style.gridTemplateRows = '1fr';
 
 		let index = 1;
 		categories.forEach(category => {
 			const parcel = document.getElementById(category + '-container');
 			parcel.style.gridColumn = `${index}/${index + 1}`;
+			parcel.style.gridRow = `1 / 2`;
 			index++;
-		})
+		});
+
+		foldedCategories.forEach(category => {
+			const parcel = document.getElementById(category + '-container');
+			parcel.style.gridColumn = `${index}/${index + 1}`;
+			parcel.style.gridRow = `1 / 2`;
+			parcel.style.writingMode = 'vertical-rl';
+			parcel.style.textAlign = 'center';
+			parcel.style.overflow = 'unset';
+			index++;
+		});
+		window.addEventListener('resize', resize);
 	}
 
 	SetupProjectsPage(containerId) {

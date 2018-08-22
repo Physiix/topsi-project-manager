@@ -14,11 +14,13 @@
       },
       {
         "tag": "done",
-        "title": "Done"
+        "title": "Done",
+        "folded": true
       },
       {
         "tag": "archieves",
-        "title": "Archieves"
+        "title": "Archieves",
+        "folded": true
       }
     ],
     "timestamp": 1534948646223,

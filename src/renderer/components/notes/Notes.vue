@@ -6,7 +6,17 @@
 		<UpdateNoteDialog v-if="updateDialog" />
 		<UpdateProjectDialog v-if="updateProject" />
 		<div v-for="(category, index) in categories" :key="category+index" :id="category.tag+'-container'" class="category-container">
-			<Content :id="category.tag+'-content'" :category="category" />
+			<Content v-if="!category.folded" :id="category.tag+'-content'" :category="category" />
+			<div v-else style="height:100%;width:100%" class="pa-2">
+				<v-card class="px-2 elevation-3" style="cursor:pointer;">
+					<v-btn icon style="width:0px;">
+						<v-icon small class="pr-2">
+							add
+						</v-icon>
+					</v-btn>
+					<strong>{{category.tag.toUpperCase()}}</strong>
+				</v-card>
+			</div>
 		</div>
 	</div>
 </template>
@@ -68,7 +78,8 @@ export default {
 		},
 	},
 	mounted() {
-		AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
+		AppManager.SetupNotesPage('notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag),
+			this.categories.filter(category => category.folded).map(category => category.tag));
 		EventsManager.Subscribe('update-notes-component', () => {
 			this.$nextTick(() => {
 				AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
