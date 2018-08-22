@@ -45,6 +45,9 @@ const state = {
 
 	// Flag set to true to enable to search toolbar
 	showSearch: false,
+
+	// Search content
+	searchContent: '',
 }
 
 const mutations = {
@@ -69,8 +72,8 @@ const mutations = {
 	},
 
 	OpenProject(state, id) {
-		// App.GetAppDB().SetValue('current_project_id', id);
 		state.openedProjectId = id;
+		state.searchContent = ''; // Clear the search content, searches are different from project to notes.
 	},
 
 	SetDarkMode(state, value) {
@@ -136,6 +139,10 @@ const mutations = {
 
 	ToggleUpdateProject(state) {
 		state.dialogs.updateProject = !state.dialogs.updateProject;
+	},
+
+	SetSearchContent(state, value) {
+		state.searchContent = value;
 	}
 }
 
@@ -175,6 +182,10 @@ const getters = {
 
 	getCurrentProject(state) {
 		return (context) => context.$store.getters.GetProjectById(state.openedProjectId);
+	},
+
+	getSearchContent(state) {
+		return state.searchContent;
 	}
 }
 

@@ -1,8 +1,8 @@
 <template>
 	<div ref=container>
-		<v-card ref=card width="500" class="elevation-24" dark>
+		<v-card ref=card width="500" class="elevation-24" dark @keyup.esc.native="Close" @keyup.enter.native="Close">
 			<v-card-title class="py-0">
-				<v-text-field autofocus placeholder="Search..."></v-text-field>
+				<v-text-field v-model="search" autofocus placeholder="Search by title, tags, project..."></v-text-field>
 			</v-card-title>
 			<!-- <v-card-text>
 				<v-container>
@@ -15,9 +15,25 @@
 	</div>
 </template>
 <script>
+import { EventsManager } from '../../core/EventManager';
 
 export default {
 	name: 'SearchBar',
+	computed: {
+		search: {
+			get() {
+				return this.$store.getters.getSearchContent;
+			},
+			set(value) {
+				return this.$store.commit('SetSearchContent', value);
+			}
+		}
+	},
+	methods: {
+		Close() {
+			this.$store.commit('ToggleSearch');
+		}
+	},
 	mounted() {
 		const container = this.$refs.container;
 		const bg = this.$refs.search;

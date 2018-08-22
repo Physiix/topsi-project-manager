@@ -5,7 +5,6 @@
 		<VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
 		<UpdateNoteDialog v-if="updateDialog" />
 		<UpdateProjectDialog v-if="updateProject" />
-
 		<div v-for="(category, index) in categories" :key="category+index" :id="category.tag+'-container'" class="category-container">
 			<Content :id="category.tag+'-content'" :category="category" />
 		</div>
@@ -66,7 +65,7 @@ export default {
 			if (this.$store.getters.IsDarkMode)
 				return '';
 			else return 'grey lighten-2'
-		}
+		},
 	},
 	mounted() {
 		AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
