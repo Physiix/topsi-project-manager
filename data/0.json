@@ -11,7 +11,8 @@
       },
       {
         "tag": "in_progress",
-        "title": "In Progress"
+        "title": "In Progress",
+        "folded": false
       },
       {
         "tag": "done",
@@ -20,7 +21,7 @@
       }
     ],
     "opened_timeline_id": 0,
-    "timestamp": 1534965393959
+    "timestamp": 1534980312583
   },
   "timelines": [
     {

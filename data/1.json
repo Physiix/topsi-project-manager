@@ -16,15 +16,16 @@
       {
         "tag": "done",
         "title": "Done",
-        "folded": false
+        "folded": true
       },
       {
         "tag": "adasdas",
         "title": "adasdas",
-        "folded": false
+        "folded": true
       }
     ],
-    "timestamp": 1534965323464
+    "timestamp": 1534980236673,
+    "opened_timeline_id": 0
   },
   "timelines": [
     {
