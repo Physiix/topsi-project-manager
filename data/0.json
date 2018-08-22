@@ -6,22 +6,17 @@
     "categories": [
       {
         "tag": "todo",
-        "title": "TODO",
-        "folded": false
+        "title": "TODO"
       },
       {
         "tag": "in_progress",
-        "title": "In Progress",
-        "folded": false
+        "title": "In Progress"
       },
       {
         "tag": "done",
-        "title": "Done",
-        "folded": false
+        "title": "Done"
       }
-    ],
-    "opened_timeline_id": 0,
-    "timestamp": 1534980312583
+    ]
   },
   "timelines": [
     {
@@ -299,20 +294,20 @@
     {
       "id": 25,
       "project_id": 0,
-      "title": "Custom path for a projects",
+      "title": "Custom path for a project",
       "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
       "category": "in_progress",
       "color": "",
       "timeline_id": 0,
       "order": 3,
-      "timestamp": 1534807286480,
+      "timestamp": 1534980353366,
       "tags": [
         {
           "tag": "Feature",
           "color": "blue white--text"
         }
       ],
-      "updated_timestamp": 1534807286480
+      "updated_timestamp": 1534980353366
     },
     {
       "id": 17,

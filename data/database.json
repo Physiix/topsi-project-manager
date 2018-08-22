@@ -1,5 +1,5 @@
 {
-  "dark_mode": false,
+  "dark_mode": true,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -13,23 +13,20 @@
       "categories": [
         {
           "tag": "todo",
-          "title": "TODO",
-          "folded": false
+          "title": "TODO"
         },
         {
           "tag": "in_progress",
-          "title": "In Progress",
-          "folded": false
+          "title": "In Progress"
         },
         {
           "tag": "done",
-          "title": "Done",
-          "folded": false
+          "title": "Done"
         }
       ],
       "description": "<p>Project Manager where users can create projects and notes.</p>",
       "opened_timeline_id": 0,
-      "timestamp": 1534980312996
+      "timestamp": 1534982040430
     },
     {
       "id": 1,

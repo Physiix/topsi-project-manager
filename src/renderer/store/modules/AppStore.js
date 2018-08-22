@@ -189,6 +189,10 @@ const getters = {
 
 	getSearchContent(state) {
 		return state.searchContent;
+	},
+
+	getDefaultPath(state) {
+		return App.GetAppDB().GetValue('default_databases_folder', '');
 	}
 }
 

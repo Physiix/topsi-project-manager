@@ -1,0 +1,66 @@
+<template>
+	<div>
+		<v-toolbar class="mx-2 pa-2 px-4 transparent elevation-0">
+			<v-text-field class="pt-2 mt-1" value="path/to/default/folder" v-model="folder" solo></v-text-field>
+			<div>
+				<v-icon v-if="folderExists" color="success">
+					check
+				</v-icon>
+				<v-icon v-else color="error">
+					close
+				</v-icon>
+			</div>
+			<v-btn @click="OpenDialog" class="ml-5 justify-right text-xs-right" flat>
+				Browse
+			</v-btn>
+
+		</v-toolbar>
+	</div>
+</template>
+<script>
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const electron = require('electron');
+
+export default {
+	name: 'FolderInput',
+	props: {
+		value: String,
+	},
+	data() {
+		return {
+			folder: ''
+		}
+	},
+	watch: {
+		folder(value) {
+			this.$emit('input', this.folder);
+		}
+	},
+	computed: {
+		folderExists() {
+			return fs.existsSync(this.folder);
+		}
+	},
+	methods: {
+		OpenDialog() {
+			const dialog = electron.remote.dialog;
+			// Get the selected folder by the user.
+			this.folder = dialog.showOpenDialog(electron.remote.getCurrentWindow(), {
+				properties: [
+					'openDirectory',
+					'createFolder'
+				]
+			});
+
+			// Adds the separator at the end.
+			this.folder += path.sep;
+		},
+	},
+}
+</script>
+
+<style scoped>
+
+</style>
