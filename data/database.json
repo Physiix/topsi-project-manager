@@ -31,7 +31,7 @@
     {
       "id": 1,
       "title": "Test",
-      "description": "Test project.",
+      "description": "<p>Test project.</p>",
       "categories": [
         {
           "tag": "todo",
@@ -51,7 +51,7 @@
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1534689479191
+      "timestamp": 1534948636507
     }
   ],
   "current_project_id": 0,

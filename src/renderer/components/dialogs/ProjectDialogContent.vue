@@ -11,35 +11,40 @@
 				</div>
 			</v-card>
 		</v-container>
-		<v-card-title class="py-2">
-			<v-toolbar flat class="transparent">
-				<v-text-field placeholder="Add a new category" v-model="category" @keyup.enter.native="AddCategory" solo></v-text-field>
-				<v-btn flat @click="AddCategory">
-					Add
-				</v-btn>
-			</v-toolbar>
-		</v-card-title>
 		<v-card class="ma-3 elevation-0 px-5">
-			<v-toolbar color="indigo darken-2 white--text" dense height="10" style="font-size:8px;">
+			<v-toolbar color="indigo darken-2 white--text elevation-3" dense height="10" style="font-size:8px;">
 				<v-spacer></v-spacer>
 				Project Manager
 				<v-spacer></v-spacer>
 			</v-toolbar>
-			<v-layout row>
-				<v-navigation-drawer class="indigo px-1" permanent stateless height="200" width="50">
-					<v-card v-for="i in 5" :key="i" height="5" class="mb-1 elevation-0" style="border-radius:0">
-
+			<v-layout row class="white py-0 elevation-2">
+				<v-navigation-drawer class="indigo px-1 pt-1" permanent stateless height="205" width="50">
+					<v-card v-for="i in 5" :key="i" height="5" class="mb-1 elevation-0" style="border-radius:0" light>
 					</v-card>
 				</v-navigation-drawer>
-				<v-layout row wrap align-center ref="categs" dark>
-					<v-flex v-for="(categ,i) in categories" class="text-xs-center pa-0" :key="categ+i">
+				<v-layout row wrap align-center ref="categs">
+					<v-flex v-for="(categ,i) in categories" class="text-xs-center pa-0 " :key="categ+i">
 						<v-card class="pa-0 ma-1 project-category elevation-0" dark height="195" style="cursor:-webkit-grab;">
 							<div id="sheet" class="red" @click="RemoveCategory(i)">
 								<v-icon id="sheet-icon" dark>close</v-icon>
 							</div>
 							<p style="font-size:8px;">{{categ}}</p>
+							<v-card v-for="i in 5" :key="i" height="20" class="ma-2 grey"> </v-card>
 						</v-card>
 					</v-flex>
+					<v-btn fab flat id="add-category-btn">
+						<v-icon color="indigo">
+							add
+						</v-icon>
+					</v-btn>
+					<FloatingDiv activator-id="add-category-btn" v-on:action="" dark top>
+						<v-toolbar class="px-2" color="transparent" height="55">
+							<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
+							<v-btn flat @click="AddCategory">
+								Add
+							</v-btn>
+						</v-toolbar>
+					</FloatingDiv>
 				</v-layout>
 			</v-layout>
 		</v-card>

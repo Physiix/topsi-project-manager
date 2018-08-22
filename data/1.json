@@ -2,7 +2,7 @@
   "info": {
     "id": 1,
     "title": "Test",
-    "description": "Test project.",
+    "description": "<p>Test project.</p>",
     "categories": [
       {
         "tag": "todo",
@@ -21,8 +21,8 @@
         "title": "Archieves"
       }
     ],
-    "opened_timeline_id": 0,
-    "timestamp": 1534795357587
+    "timestamp": 1534948646223,
+    "opened_timeline_id": 0
   },
   "timelines": [
     {
@@ -37,10 +37,10 @@
       "project_id": 1,
       "title": "fsdf",
       "description": "<p>sdfsdf</p>",
-      "category": "archieves",
+      "category": "todo",
       "color": "",
       "timeline_id": 0,
-      "order": 1,
+      "order": 0,
       "timestamp": 1534689761860
     }
   ],
