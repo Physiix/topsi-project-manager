@@ -12,13 +12,13 @@
 			</v-card>
 		</v-container>
 		<v-card class="ma-3 elevation-0 px-5">
-			<v-toolbar color="indigo darken-2 white--text elevation-3" dense height="10" style="font-size:8px;">
+			<v-toolbar :color="color" class="darken-2 white--text elevation-3" dense height="10" style="font-size:8px;">
 				<v-spacer></v-spacer>
 				Project Manager
 				<v-spacer></v-spacer>
 			</v-toolbar>
 			<v-layout row class="white py-0 elevation-2">
-				<v-navigation-drawer class="indigo px-1 pt-1" permanent stateless height="205" width="50">
+				<v-navigation-drawer :class="color" class="px-1 pt-1" permanent stateless height="205" width="50">
 					<v-card v-for="i in 5" :key="i" height="5" class="mb-1 elevation-0" style="border-radius:0" light>
 					</v-card>
 				</v-navigation-drawer>
@@ -33,12 +33,12 @@
 						</v-card>
 					</v-flex>
 					<v-btn fab flat id="add-category-btn">
-						<v-icon color="indigo">
+						<v-icon :color="color">
 							add
 						</v-icon>
 					</v-btn>
-					<FloatingDiv activator-id="add-category-btn" v-on:action="" dark top>
-						<v-toolbar class="px-2" color="transparent" height="55">
+					<FloatingDiv activator-id="add-category-btn" v-on:action="" dark top :indicator-color="color.substr(0, color.indexOf(' '))">
+						<v-toolbar class="px-2" :color="color" height="55">
 							<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
 							<v-btn flat @click="AddCategory">
 								Add
@@ -68,6 +68,9 @@ export default {
 		}
 	},
 	computed: {
+		color() {
+			return this.$store.getters.appColor;
+		}
 	},
 	methods: {
 		/**
