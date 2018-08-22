@@ -59,7 +59,9 @@ class ApplicationManager {
 		window.addEventListener('resize', resize);
 
 		container.style.display = 'grid';
-		container.style.gridTemplateColumns = `repeat(${categories.length}, 1fr) repeat(${foldedCategories.length}, 50px)`
+		let columns = `repeat(${categories.length}, 1fr)`;
+		if (categories.length <= 0) columns = '1fr';
+		container.style.gridTemplateColumns = `${columns} repeat(${foldedCategories.length}, 50px)`
 		container.style.gridTemplateRows = '1fr';
 
 		let index = 1;

@@ -8,6 +8,9 @@ import {
 import {
 	Notifications
 } from '../../../core/Notification'
+import {
+	EventsManager
+} from '../../../core/EventManager.js'
 
 const state = {
 	// Contains all the flags about dialogs.
@@ -143,7 +146,7 @@ const mutations = {
 
 	SetSearchContent(state, value) {
 		state.searchContent = value;
-	}
+	},
 }
 
 const getters = {

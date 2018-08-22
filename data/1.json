@@ -6,11 +6,13 @@
     "categories": [
       {
         "tag": "todo",
-        "title": "TODO"
+        "title": "TODO",
+        "folded": true
       },
       {
         "tag": "in_progress",
-        "title": "In Progress"
+        "title": "In Progress",
+        "folded": true
       },
       {
         "tag": "done",

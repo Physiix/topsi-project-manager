@@ -6,6 +6,11 @@
 			<div class="content-category-title">
 				<v-toolbar height="30" color="transparent" flat>
 					{{title}}
+					<v-btn icon fab small style="width:20px;height:20px;" class="ml-1 mt-2" @click="Fold">
+						<v-icon>
+							unfold_less
+						</v-icon>
+					</v-btn>
 					<v-spacer></v-spacer>
 					<div class="content-category-icon">
 						<v-btn :id="'btn-category-'+category.tag" icon fab small>
@@ -63,10 +68,20 @@ export default {
 
 		searchContent() {
 			return this.$store.getters.getSearchContent.toLowerCase();
+		},
+
+		projectId() {
+			this.$store.state.AppStore.openedProjectId;
 		}
 	},
 	methods: {
-
+		Fold() {
+			console.log(this.projectId)
+			this.$store.commit('FoldCategory', {
+				projectId: this.projectId,
+				category: this.category
+			});
+		}
 	},
 	mounted() {
 		const element = document.getElementById(this.id);

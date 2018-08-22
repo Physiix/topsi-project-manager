@@ -46,8 +46,12 @@ export default {
 		Content
 	},
 	computed: {
+		projectId() {
+			return this.$store.state.AppStore.openedProjectId;
+		},
+
 		project() {
-			const id = this.$store.state.AppStore.openedProjectId;
+			const id = this.projectId;
 			return this.$store.getters.GetProjectById(id);
 		},
 
@@ -78,11 +82,10 @@ export default {
 		},
 	},
 	mounted() {
-		AppManager.SetupNotesPage('notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag),
-			this.categories.filter(category => category.folded).map(category => category.tag));
+		AppManager.SetupNotesPage('notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag));
 		EventsManager.Subscribe('update-notes-component', () => {
 			this.$nextTick(() => {
-				AppManager.SetupNotesPage('notes_container', 'container', this.categories.map(category => category.tag));
+				AppManager.SetupNotesPage('notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag));
 			});
 		});
 	}

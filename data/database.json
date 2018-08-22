@@ -1,62 +1,67 @@
 {
-	"dark_mode": false,
-	"git_user_info": {
-		"username": "",
-		"repository_token": "",
-		"gist_id": ""
-	},
-	"projects_id": 2,
-	"projects": [{
-			"id": 0,
-			"title": "Project Manager",
-			"categories": [{
-					"tag": "todo",
-					"title": "TODO"
-				},
-				{
-					"tag": "in_progress",
-					"title": "In Progress"
-				},
-				{
-					"tag": "done",
-					"title": "Done"
-				}
-			],
-			"description": "<p>Project Manager where users can create projects and notes.</p>",
-			"opened_timeline_id": 0,
-			"timestamp": 1534885570784
-		},
-		{
-			"id": 1,
-			"title": "Test",
-			"description": "Test project.",
-			"categories": [{
-					"tag": "todo",
-					"title": "TODO"
-				},
-				{
-					"tag": "in_progress",
-					"title": "In Progress"
-				},
-				{
-					"tag": "done",
-					"title": "Done",
-					"folded": true
-				},
-				{
-					"tag": "archieves",
-					"title": "Archieves",
-					"folded": true
-				}
-			],
-			"opened_timeline_id": 0,
-			"timestamp": 1534689479191
-		}
-	],
-	"current_project_id": 0,
-	"window_width": 1287,
-	"window_height": 730,
-	"application_color": "indigo white--text",
-	"first_time_use": false,
-	"default_databases_folder": ""
+  "dark_mode": false,
+  "git_user_info": {
+    "username": "",
+    "repository_token": "",
+    "gist_id": ""
+  },
+  "projects_id": 2,
+  "projects": [
+    {
+      "id": 0,
+      "title": "Project Manager",
+      "categories": [
+        {
+          "tag": "todo",
+          "title": "TODO"
+        },
+        {
+          "tag": "in_progress",
+          "title": "In Progress"
+        },
+        {
+          "tag": "done",
+          "title": "Done"
+        }
+      ],
+      "description": "<p>Project Manager where users can create projects and notes.</p>",
+      "opened_timeline_id": 0,
+      "timestamp": 1534885570784
+    },
+    {
+      "id": 1,
+      "title": "Test",
+      "description": "<p>Test project.</p>",
+      "categories": [
+        {
+          "tag": "todo",
+          "title": "TODO",
+          "folded": true
+        },
+        {
+          "tag": "in_progress",
+          "title": "In Progress",
+          "folded": true
+        },
+        {
+          "tag": "done",
+          "title": "Done",
+          "folded": true
+        },
+        {
+          "tag": "archieves",
+          "title": "Archieves",
+          "folded": true
+        }
+      ],
+      "opened_timeline_id": 0,
+      "timestamp": 1534963958629
+    }
+  ],
+  "current_project_id": 0,
+  "window_width": 1287,
+  "window_height": 730,
+  "application_color": "indigo white--text",
+  "first_time_use": false,
+  "default_databases_folder": ""
 }
