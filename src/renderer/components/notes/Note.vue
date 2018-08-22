@@ -13,7 +13,7 @@
 			</v-btn>
 		</v-card-title>
 		<v-divider></v-divider>
-		<NoteTags class="px-2" :tags="note.tags" />
+		<NoteTags class="px-2" :note-color="note.color" :tags="note.tags" />
 		<v-card-text v-html="note.description"></v-card-text>
 	</v-card>
 </template>
