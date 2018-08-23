@@ -57,9 +57,6 @@ export default {
 			// Adds the separator at the end.
 			this.folder += path.sep;
 		},
-	},
-	mounted() {
-		console.log(this.value)
 	}
 }
 </script>

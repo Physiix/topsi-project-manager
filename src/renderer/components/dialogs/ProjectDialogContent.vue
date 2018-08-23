@@ -139,7 +139,6 @@ export default {
 		}
 	},
 	mounted() {
-		console.log(this.project)
 		this.title = this.project.title;
 		this.category = this.project.category;
 		this.categories = this.project.categories;
