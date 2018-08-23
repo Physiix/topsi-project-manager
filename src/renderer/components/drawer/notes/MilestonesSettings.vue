@@ -9,7 +9,7 @@
 		</Tooltip>
 		<FloatingDiv activator-id="milestone-button" v-on:action="" width="500" dark left height=500>
 			<div id="milestone-container" style="height:500px;">
-				<div id="milestone-content" class="elevation-5">
+				<div id="milestone-content">
 					<v-container>
 						<v-toolbar class="px-2" color="transparent" flat>
 							<v-text-field solo light v-model="title"></v-text-field>
@@ -18,10 +18,50 @@
 							</v-btn>
 						</v-toolbar>
 
-						<v-progress-linear color="success" background-color="red" height="5" :value="notesDone"></v-progress-linear>
+						<v-progress-linear color="success" background-color="red" height="5" :value="notesDoneRatio()"></v-progress-linear>
+
 					</v-container>
 				</div>
 				<div id="milestone-side" class="">
+					<v-tabs centered grow slider-color="primary">
+						<v-tab>
+							TODO
+						</v-tab>
+						<v-tab>
+							Done
+						</v-tab>
+
+						<v-tabs-items>
+							<v-tab-item style="overflow-y:auto;height:300px;">
+								<v-container>
+									<v-list>
+										<v-list-tile v-for="(item, index) in notes.todo" :key="item.id" avatar ripple @click="">
+											<v-list-tile-content>
+												<v-list-tile-title>{{ item.title }}</v-list-tile-title>
+											</v-list-tile-content>
+											<v-list-tile-action>
+												<v-list-tile-action-text>#{{ item.id }}</v-list-tile-action-text>
+											</v-list-tile-action>
+										</v-list-tile>
+									</v-list>
+								</v-container>
+							</v-tab-item>
+							<v-tab-item style="overflow-y:auto;height:300px;">
+								<v-container>
+									<v-list>
+										<v-list-tile v-for="(item, index) in notes.done" :key="item.id" avatar ripple @click="">
+											<v-list-tile-content>
+												<v-list-tile-title>{{ item.title }}</v-list-tile-title>
+											</v-list-tile-content>
+											<v-list-tile-action>
+												<v-list-tile-action-text>#{{ item.id }}</v-list-tile-action-text>
+											</v-list-tile-action>
+										</v-list-tile>
+									</v-list>
+								</v-container>
+							</v-tab-item>
+						</v-tabs-items>
+					</v-tabs>
 					<!-- <div v-for="i in 2" :key="i">
 						<v-btn :ripple="false" color="primary" class="milestone-btn elevation-0" fab>
 							<div style="font-size:8px;">
@@ -49,7 +89,13 @@ export default {
 	},
 	data() {
 		return {
-			title: 'Milestone'
+			title: 'Milestone',
+			selected: [2],
+			notes: {
+				all: [],
+				done: [],
+				todo: []
+			}
 		}
 	},
 	watch: {
@@ -58,28 +104,36 @@ export default {
 		}
 	},
 	computed: {
-		notesDone() {
-			const timelineId = this.$store.state.AppStore.currentTimelineId;
-			const notes = this.$store.getters.GetNotes.filter(note => note.timeline_id == timelineId);
-			return notes.filter(n => n.category == 'done').length * 100 / notes.length;
-		}
 	},
 	methods: {
+		notesDoneRatio() {
+			const notes = this.dNotes;
+			return this.notes.done.length * 100 / this.notes.all.length;
+		},
 
+		getNotes() {
+			const timelineId = this.$store.state.AppStore.currentTimelineId;
+			return this.$store.getters.GetNotes.filter(note => note.timeline_id == timelineId);
+		},
 	},
+	mounted() {
+		this.notes.all = this.getNotes();
+		this.notes.done = this.notes.all.filter(n => n.category == 'done');
+		this.notes.todo = this.notes.all.filter(n => n.category != 'done');
+	}
 }
 </script>
 
 <style scoped>
 #milestone-container{
 	display: grid;
-	grid-template-columns: 1fr 75px; 
-	grid-template-rows: 1fr;
+	grid-template-columns: 1fr; 
+	grid-template-rows: 1fr 3fr;
 }
 
 #milestone-side{
-	grid-column: 2 / 3;
-	grid-row: 1 / 2;
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
@@ -87,6 +141,8 @@ export default {
 #milestone-content{
 	grid-column: 1 / 2;
 	grid-row: 1 / 2;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 .milestone-btn{
 	transition:100ms!important;
