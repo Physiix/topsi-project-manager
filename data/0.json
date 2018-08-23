@@ -21,7 +21,7 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535036042443,
+    "timestamp": 1535043104462,
     "opened_timeline_id": 0
   },
   "timelines": [
@@ -662,9 +662,34 @@
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840,
       "tags": []
+    },
+    {
+      "id": 36,
+      "project_id": 0,
+      "title": "Add a limit to the number of tasks a category can hold.",
+      "description": "<p>Limit the <strong>number</strong> of notes that a <strong style=\"color: rgb(0, 102, 204);\">category</strong> can hold. The limit is customizable and can be edited at any time. </p><p>This increases effiecency and the user can focus on the <strong>current</strong> tasks. </p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "Enhancement",
+          "color": "orange black--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        }
+      ],
+      "order": 8,
+      "timestamp": 1535042978257
     }
   ],
-  "notes_id": 36,
+  "notes_id": 37,
   "tags": [
     {
       "tag": "Feature",

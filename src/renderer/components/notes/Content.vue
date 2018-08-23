@@ -156,6 +156,7 @@ export default {
 .bottom {
 	overflow-y: scroll;
 	overflow-x: hidden;
+	margin-right:3px;
 	background-color: rgba(0,0,0,0);
 	-webkit-background-clip: text;
 	transition: background-color .2s;

@@ -71,7 +71,7 @@ export default {
 	},
 	mounted() {
 		const maxHeight = 0.9;
-		const actionsOffset = 30;
+		const actionsOffset = 85;
 		const element = document.getElementById('project-dialog');
 
 		const width = this.width;
