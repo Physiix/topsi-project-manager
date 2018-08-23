@@ -5,7 +5,12 @@
 				<v-toolbar-title class="subheading" scroll-off-screen> -->
 			<div class="content-category-title">
 				<v-toolbar height="30" color="transparent" flat>
-					{{title}}
+					<div v-show="!editTitle" @dblclick="EditTitle">
+						{{title}}
+					</div>
+					<div v-show="editTitle" ref="edit" class="pt-3 mt-1" style="width:100px">
+						<v-text-field v-model="editedTitle" :value="title"></v-text-field>
+					</div>
 					<v-btn icon fab small style="width:20px;height:20px;" class="ml-1 mt-2" @click="Fold">
 						<v-icon>
 							unfold_less
@@ -36,6 +41,7 @@
 <script>
 import Note from './Note.vue'
 import Sortable from 'sortablejs'
+import { Utils } from '../../../core/Utils'
 
 export default {
 	name: 'Content',
@@ -49,12 +55,23 @@ export default {
 	},
 	data() {
 		return {
-
+			editTitle: false,
+			editedTitle: ''
 		}
 	},
 	computed: {
-		title() {
-			return this.category.title;
+		title: {
+			get() {
+				return this.category.title;
+			},
+			set(value) {
+				if (value == this.category.title) return;
+				this.$store.commit('UpdateCategory', {
+					category: this.category,
+					projectId: this.projectId,
+					newTitle: value
+				})
+			}
 		},
 
 		notes() {
@@ -77,6 +94,16 @@ export default {
 				projectId: this.projectId,
 				category: this.category
 			});
+		},
+
+		EditTitle() {
+			this.editTitle = true;
+			this.editedTitle = this.title;
+			console.log(this.$refs.edit)
+			Utils.ClickOutside(this.$refs.edit, (event) => {
+				this.editTitle = false;
+				this.title = this.editedTitle;
+			})
 		}
 	},
 	mounted() {
@@ -101,7 +128,6 @@ export default {
 			animation: 100
 
 		});
-		// console.log(sortable)
 	}
 }
 </script>

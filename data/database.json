@@ -43,8 +43,8 @@
           "folded": false
         },
         {
-          "tag": "in_progress",
-          "title": "In Progress",
+          "tag": "in_progresss",
+          "title": "In Progresss",
           "folded": false
         },
         {
@@ -54,14 +54,14 @@
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1535033055862,
+      "timestamp": 1535035405477,
       "customPath": ""
     }
   ],
   "current_project_id": 0,
   "window_width": 1227,
   "window_height": 651,
-  "application_color": "red white--text",
+  "application_color": "blue white--text",
   "first_time_use": false,
   "default_databases_folder": ""
 }

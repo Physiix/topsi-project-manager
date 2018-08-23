@@ -106,13 +106,47 @@ const mutations = {
 	},
 
 	ToggleFoldCategory(state, data) {
-		console.log(data)
 		if (data.projectId == null || data.category.tag == null || data.category.title == null) Notifications.Error('FoldCategory', `Cannot fold a category with invalid data ${data}`);
 
 		const projectDB = App.GetDB(data.projectId);
 		const projectInfo = projectDB.GetValue('info');
+
+		// Update the categories
 		projectInfo.categories.forEach(category => {
 			if (category.tag == data.category.tag && category.title == data.category.title) category.folded = !category.folded;
+		})
+
+		projectDB.SetValue('info', projectInfo);
+		App.GetAppDB().Update('projects', {
+			id: projectInfo.id
+		}, projectInfo);
+
+		// Update the state
+		state.projects = App.GetAppDB().GetAll('projects', 'id');
+
+		// Update the layout
+		EventsManager.Emit('update-notes-component');
+	},
+
+	UpdateCategory(state, data) {
+
+		// category: this.category,
+		// projectId: projectId,
+		// newTitle: value
+
+		if (data.projectId == null || data.category == null || data.newTitle == null) Notifications.Error('FoldCategory', `Cannot fold a category with invalid data ${data}`);
+
+		const projectDB = App.GetDB(data.projectId);
+		const projectInfo = projectDB.GetValue('info');
+
+		// Update the categories
+		projectInfo.categories.forEach(category => {
+			if (category.tag == data.category.tag && category.title == data.category.title) {
+				let categ = data.newTitle.replace(/ /g, '_')
+				categ = categ.toLowerCase();
+				category.tag = categ;
+				category.title = data.newTitle;
+			}
 		})
 
 		projectDB.SetValue('info', projectInfo);
