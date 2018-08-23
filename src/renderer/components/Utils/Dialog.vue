@@ -1,7 +1,7 @@
 <template>
 	<v-card id="project-dialog" class="elevation-20" :class="color" :height="height">
 		<slot></slot>
-		<v-card-actions style="position:absolute;bottom:0px;right:0px;">
+		<v-card-actions style="position:relative;bottom:0px;right:0px;">
 			<v-spacer></v-spacer>
 			<v-btn v-if="!disableCancel" :flat="!cancelRaised" class="ma-0" :color="(cancelColor)?cancelColor:''" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
 
@@ -71,12 +71,13 @@ export default {
 	},
 	mounted() {
 		const maxHeight = 0.9;
-		const actionsOffset = 85;
+		const actionsOffset = 0;
 		const element = document.getElementById('project-dialog');
 
 		const width = this.width;
 		const offsetTop = this.top;
 		const height = element.getBoundingClientRect().height;
+		const minHeight = height;
 		let top = -height;
 		element.style.position = 'fixed';
 		element.style.top = top + 'px';
@@ -85,7 +86,9 @@ export default {
 
 		element.style.width = width + 'px';
 		element.style.zIndex = 1;
-		element.style.minHeight = height + actionsOffset + 'px';
+
+		if (minHeight < window.innerHeight)
+			element.style.minHeight = minHeight + 'px';
 
 		window.addEventListener('resize', () => {
 			element.style.left = window.innerWidth / 2 - width / 2 + 'px';
