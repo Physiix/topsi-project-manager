@@ -21,7 +21,7 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535046144488,
+    "timestamp": 1535049060367,
     "opened_timeline_id": 0
   },
   "timelines": [
@@ -687,9 +687,30 @@
       ],
       "order": 8,
       "timestamp": 1535042978257
+    },
+    {
+      "id": 37,
+      "project_id": 0,
+      "title": "Max Height isn't set correctly for dialogs.",
+      "description": "<p>Max height doesn't seem to be working.</p>",
+      "category": "in_progress",
+      "color": "",
+      "timeline_id": 0,
+      "tags": [
+        {
+          "tag": "BUG",
+          "color": "red white--text"
+        },
+        {
+          "tag": "URGENT",
+          "color": "indigo white--text"
+        }
+      ],
+      "order": 1,
+      "timestamp": 1535048481676
     }
   ],
-  "notes_id": 37,
+  "notes_id": 38,
   "tags": [
     {
       "tag": "Feature",

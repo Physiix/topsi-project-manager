@@ -29,6 +29,7 @@ export default {
 
 	mounted() {
 		const button = document.getElementById(this.activatorId);
+		console.log(button);
 		const drawer = this.$refs.floating_div;
 		drawer.style.position = 'fixed';
 		drawer.style.opacity = '0';
