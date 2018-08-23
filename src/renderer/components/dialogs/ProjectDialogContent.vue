@@ -123,7 +123,8 @@ export default {
 				categ = categ.toLowerCase();
 				categories.push({
 					tag: categ,
-					title: category
+					title: category,
+					folded: false,
 				});
 			})
 
