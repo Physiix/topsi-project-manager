@@ -11,20 +11,17 @@
       },
       {
         "tag": "in_progress",
-        "title": "In Progress"
+        "title": "In Progress",
+        "folded": false
       },
       {
         "tag": "done",
         "title": "Done",
-        "folded": true
-      },
-      {
-        "tag": "adasdas",
-        "title": "adasdas",
-        "folded": true
+        "folded": false
       }
     ],
-    "timestamp": 1534980236673,
+    "customPath": "",
+    "timestamp": 1535033082409,
     "opened_timeline_id": 0
   },
   "timelines": [

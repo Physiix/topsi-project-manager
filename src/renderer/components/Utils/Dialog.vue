@@ -1,7 +1,7 @@
 <template>
-	<v-card id="project-dialog" class="elevation-20">
+	<v-card id="project-dialog" class="elevation-20" :class="color" :height="height">
 		<slot></slot>
-		<v-card-actions>
+		<v-card-actions style="position:absolute;bottom:0px;right:0px;">
 			<v-spacer></v-spacer>
 			<v-btn v-if="!disableCancel" :flat="!cancelRaised" class="ma-0" :color="(cancelColor)?cancelColor:''" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
 
@@ -15,6 +15,7 @@ export default {
 	name: 'Dialog',
 	props: {
 		width: String,
+		height: String,
 		cancelText: String,
 		acceptText: String,
 		disableAccept: Boolean,
@@ -61,6 +62,11 @@ export default {
 					clearInterval(id);
 				}
 			})
+		}
+	},
+	computed: {
+		color() {
+			return (!this.$store.getters.IsDarkMode) ? 'grey lighten-2' : '';
 		}
 	},
 	mounted() {

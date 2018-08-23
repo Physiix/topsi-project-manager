@@ -1,11 +1,11 @@
 <template>
-	<Dialog width="600" v-on:close="Close" v-on:accept="Accept">
-		<v-tabs fixed-tabs>
+	<Dialog width="600" height="500" v-on:close="Close" v-on:accept="Accept">
+		<v-tabs fixed-tabs color="transparent">
 			<v-tab>
 				Project
 			</v-tab>
 			<v-tab>
-				Options
+				Layout & Options
 			</v-tab>
 			<v-tabs-items v-model="tabItem">
 				<v-tab-item>
@@ -20,7 +20,10 @@
 							</div>
 						</v-card>
 					</v-container>
-					<v-card class="ma-3 elevation-0 px-5">
+
+				</v-tab-item>
+				<v-tab-item>
+					<v-card class="ma-3 elevation-0 px-5 transparent">
 						<v-toolbar :color="color" class="darken-2 white--text elevation-3" dense height="10" style="font-size:8px;">
 							<v-spacer></v-spacer>
 							Project Manager
@@ -59,9 +62,7 @@
 							</v-layout>
 						</v-layout>
 					</v-card>
-				</v-tab-item>
-				<v-tab-item>
-					<v-card height="593">
+					<v-card class="px-4 pt-5 transparent">
 						<FolderInput v-model="customPath"></FolderInput>
 					</v-card>
 				</v-tab-item>

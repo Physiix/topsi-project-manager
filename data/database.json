@@ -13,20 +13,24 @@
       "categories": [
         {
           "tag": "todo",
-          "title": "TODO"
+          "title": "TODO",
+          "folded": false
         },
         {
           "tag": "in_progress",
-          "title": "In Progress"
+          "title": "In Progress",
+          "folded": false
         },
         {
           "tag": "done",
-          "title": "Done"
+          "title": "Done",
+          "folded": false
         }
       ],
-      "description": "<p>Project Manager where users can create projects and notes.</p>",
+      "description": "<p><strong>Project Manager </strong>is a open source Kanban board software.</p><p>It's used to manage the differents tasks of a project and organize them in away that make sense to the users. </p><p>The full source code is available on <strong>github. </strong></p><p>The project is still in alpha, and have many bugs.</p><p>where users can create projects and notes.</p>",
       "opened_timeline_id": 0,
-      "timestamp": 1534982040430
+      "timestamp": 1535033033654,
+      "customPath": ""
     },
     {
       "id": 1,
@@ -40,27 +44,24 @@
         },
         {
           "tag": "in_progress",
-          "title": "In Progress"
+          "title": "In Progress",
+          "folded": false
         },
         {
           "tag": "done",
           "title": "Done",
-          "folded": true
-        },
-        {
-          "tag": "adasdas",
-          "title": "adasdas",
-          "folded": true
+          "folded": false
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1534980234788
+      "timestamp": 1535033055862,
+      "customPath": ""
     }
   ],
   "current_project_id": 0,
-  "window_width": 1248,
-  "window_height": 711,
-  "application_color": "indigo white--text",
+  "window_width": 1227,
+  "window_height": 651,
+  "application_color": "red white--text",
   "first_time_use": false,
   "default_databases_folder": ""
 }
