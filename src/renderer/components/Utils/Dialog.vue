@@ -93,13 +93,13 @@ export default {
 		})
 
 		const id = setInterval(() => {
-			top += 8;
+			top += 26;
 			element.style.top = top + 'px';
 			if (top >= offsetTop) {
 				element.style.top = '30px';
 				clearInterval(id);
 			}
-		})
+		}, 10)
 	}
 }
 </script>
