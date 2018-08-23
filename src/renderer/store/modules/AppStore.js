@@ -23,6 +23,7 @@ const state = {
 		visualizeDialog: false,
 		exportProject: false,
 		updateProject: false,
+		milestonesList: false,
 	},
 
 	// ID of the currently opened project.
@@ -147,6 +148,10 @@ const mutations = {
 	SetSearchContent(state, value) {
 		state.searchContent = value;
 	},
+
+	ToggleMilestonesList(state, value) {
+		state.dialogs.milestonesList = value || !state.dialogs.milestonesList;
+	}
 }
 
 const getters = {
@@ -193,6 +198,10 @@ const getters = {
 
 	getDefaultPath(state) {
 		return App.GetAppDB().GetValue('default_databases_folder', '');
+	},
+
+	isMilestonesList(state) {
+		return state.dialogs.milestonesList;
 	}
 }
 

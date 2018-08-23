@@ -9,9 +9,11 @@
 			<Content :projectId="projectId" v-if="!category.folded" :id="category.tag+'-content'" :category="category" />
 			<FoldedContent v-else :projectId="projectId" :category="category" />
 		</div>
+		<MilestonesList />
 	</div>
 </template>
 <script>
+import MilestonesList from './MilestonesList.vue'
 import FoldedContent from './FoldedContent.vue'
 import { EventsManager } from '../../../core/EventManager.js';
 import { AppManager } from '../../../core/ApplicationManager';
@@ -36,7 +38,8 @@ export default {
 		UpdateProjectDialog,
 		Menu,
 		Content,
-		FoldedContent
+		FoldedContent,
+		MilestonesList
 	},
 	computed: {
 		projectId() {

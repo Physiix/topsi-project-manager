@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Tooltip content="Milestones" top>
+		<Tooltip content="Current milestone settings" top>
 			<v-list-tile id="milestone-button" @click="">
 				<v-list-tile-action>
 					<v-icon>timeline</v-icon>

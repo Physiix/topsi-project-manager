@@ -82,6 +82,12 @@ export default {
 					title: 'Edit Project',
 					hint: 'Edit Project',
 					action: () => this.$store.commit('ToggleUpdateProject')
+				},
+				{
+					icon: 'reorder',
+					title: 'Milestones',
+					hint: 'Milestones',
+					action: () => this.$store.commit('ToggleMilestonesList')
 				}
 			]
 		}
