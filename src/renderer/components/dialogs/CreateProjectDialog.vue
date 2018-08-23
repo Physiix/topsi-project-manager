@@ -39,7 +39,8 @@ export default {
 			this.$store.commit('CreateProject', {
 				title: data.title,
 				description: data.description,
-				categories: data.categories
+				categories: data.categories,
+				customPath: data.customPath
 			});
 			this.createProject = false;
 		},

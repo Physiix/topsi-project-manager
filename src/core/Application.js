@@ -9,7 +9,7 @@ class Application {
 		this.databases = [];
 		this.defaultFolder = this.appDB.GetValue('default_databases_folder', '') || null;
 
-		this.appDB.GetAll('projects', 'id').forEach(project => this.Load(project.id));
+		this.appDB.GetAll('projects', 'id').forEach(project => this.Load(project.id, project.customPath || this.defaultFolder));
 	}
 
 	/**
@@ -23,9 +23,14 @@ class Application {
 	 * Load a database into memory.
 	 * @param {Number} id Id of the database's project.
 	 */
-	Load(id) {
-		console.log(this.defaultFolder);
-		this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION, this.defaultFolder);
+	Load(id, defaultFolder) {
+		this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION, defaultFolder);
+	}
+
+	Move(id, path) {
+		const state = this.GetDB(id).context.getState();
+		this.Load(id, path);
+		this.GetDB(id).context.setState(state);
 	}
 
 	/**

@@ -19,6 +19,7 @@ class Project {
 		this.description = description;
 		this.categories = categories;
 		this.opened_timeline_id = 0;
+		this.customPath = '';
 	}
 }
 
@@ -51,6 +52,7 @@ const mutations = {
 
 		// Create the new project to store.
 		let project = new Project(data.title, data.description, data.categories);
+		project.customPath = data.customPath || App.GetAppDB().GetValue('default_databases_folder');
 
 		// Create the database for the project.
 		project.id = App.CreateDB();
@@ -74,12 +76,18 @@ const mutations = {
 
 		// Update the state
 		state.projects = appDB.GetAll('projects', 'id');
+
+		// Send notification
+		Notifications.Success('Project created', `Project ${data.title} has been updated !`);
 	},
 
 	UpdateProject(state, data) {
 		// Make sure the project's data is valid.
 		if (data.id == null || data.title == null || data.description == null || data.categories == null || data.categories.length <= 0)
 			Notifications.Error('UpdateProject', "Cannot update a project with invalid data " + Object.values(data));
+
+		// Move to the new path.
+		App.Move(data.id, data.customPath);
 
 		// Update the project
 		App.GetDB(data.id).SetValue('info', data)
@@ -92,6 +100,9 @@ const mutations = {
 
 		// Update the layout
 		EventsManager.Emit('update-notes-component');
+
+		// Send notification
+		Notifications.Success('Project updated', `Project ${data.title} has been updated !`);
 	},
 
 	ToggleFoldCategory(state, data) {

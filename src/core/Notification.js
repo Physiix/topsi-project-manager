@@ -1,4 +1,4 @@
-const DEFAULT_TIME = 5000;
+const DEFAULT_TIME = 3000;
 export class NotificationEntry {
 	constructor(title, description, timeout) {
 		this.title = title;

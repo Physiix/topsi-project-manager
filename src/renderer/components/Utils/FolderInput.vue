@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-toolbar class="mx-2 pa-2 px-4 transparent elevation-0">
-			<v-text-field class="pt-2 mt-1" value="path/to/default/folder" v-model="folder" solo></v-text-field>
+			<v-text-field class="pt-2 mt-1" value="path/to/default/folder" light v-model="folder" solo></v-text-field>
 			<div>
 				<v-icon v-if="folderExists" color="success">
 					check
@@ -30,7 +30,7 @@ export default {
 	},
 	data() {
 		return {
-			folder: ''
+			folder: this.value
 		}
 	},
 	watch: {
@@ -58,6 +58,9 @@ export default {
 			this.folder += path.sep;
 		},
 	},
+	mounted() {
+		console.log(this.value)
+	}
 }
 </script>
 

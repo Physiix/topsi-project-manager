@@ -131,15 +131,16 @@ export default {
 			this.$emit('accept', {
 				title: this.title,
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
-				categories: categories
+				categories: categories,
+				customPath: this.customPath
 			});
 		}
 	},
 	mounted() {
+		console.log(this.project)
 		this.title = this.project.title;
 		this.category = this.project.category;
 		this.categories = this.project.categories;
-		this.customPath = this.$store.getters.getDefaultPath;
 
 		// Setup the draggable elements.
 		const element = this.$refs.categs;
@@ -179,6 +180,10 @@ export default {
 		};
 		editor = new Quill('#editor', options);
 		document.getElementsByClassName("ql-editor")[0].innerHTML = this.project.description;
+	},
+
+	created() {
+		this.customPath = this.project.customPath || this.$store.getters.getDefaultPath;
 	}
 }
 </script>

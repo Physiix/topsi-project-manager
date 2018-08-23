@@ -35,7 +35,8 @@ export default {
 				id: this.project.id,
 				title: data.title,
 				description: data.description,
-				categories: data.categories
+				categories: data.categories,
+				customPath: data.customPath
 			});
 
 			this.updateProject = false;
