@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-toolbar class="mx-2 pa-2 px-4 transparent elevation-0">
-			<v-text-field class="pt-2 mt-1" value="path/to/default/folder" light v-model="folder" solo></v-text-field>
+			<v-text-field class="pt-2 mt-1" light v-model="folder" solo></v-text-field>
 			<div>
 				<v-icon v-if="folderExists" color="success">
 					check
@@ -10,7 +10,7 @@
 					close
 				</v-icon>
 			</div>
-			<v-btn @click="OpenDialog" class="ml-5 justify-right text-xs-right" flat>
+			<v-btn @click="OpenDialog" class="elevation-5 justify-right text-xs-right" color="primary" style="border-radius:0;">
 				Browse
 			</v-btn>
 

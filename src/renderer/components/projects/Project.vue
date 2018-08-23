@@ -1,11 +1,13 @@
 <template>
-	<v-card class="ma-2 project_card elevation-3" height="90%" @click.native="OpenProject">
+	<v-card class="ma-2 pa-3 project_card elevation-3" height="90%" @click.native="OpenProject">
 		<v-card-title>
 			{{project.title}}
 		</v-card-title>
-		<v-card-text v-html="project.description">
-
+		<v-divider></v-divider>
+		<v-card-text v-show="project.customPath">
+			<strong>Path: </strong> {{project.customPath}}
 		</v-card-text>
+		<v-card-text v-html="project.description"></v-card-text>
 	</v-card>
 </template>
 <script>

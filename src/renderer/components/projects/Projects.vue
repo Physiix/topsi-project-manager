@@ -3,7 +3,7 @@
 		<CreateProjectDialog v-if="createProjectDialog" />
 		<ExportProjectDialog />
 		<v-layout row wrap>
-			<v-flex xs3 v-for="(project, i) in projects" :key="i">
+			<v-flex offset-xs2 xs8 v-for="(project, i) in projects" :key="i">
 				<Project :project="project" />
 			</v-flex>
 		</v-layout>
