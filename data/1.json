@@ -22,12 +22,11 @@
       {
         "tag": "archives",
         "title": "Archives",
-        "folded": true
+        "folded": false
       }
     ],
     "customPath": "",
-    "timestamp": 1535036495217,
-    "opened_timeline_id": 0
+    "timestamp": 1535037100425
   },
   "timelines": [
     {

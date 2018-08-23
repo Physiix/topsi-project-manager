@@ -8,6 +8,7 @@
 
 <script>
 import colors from 'vuetify/es5/util/colors'
+import { Utils } from '../../../core/Utils';
 export default {
 	name: 'FloatingDiv',
 	props: {
@@ -18,7 +19,8 @@ export default {
 		indicatorColor: String,
 		left: Boolean,
 		top: Boolean,
-		color: String
+		color: String,
+		releaseKey: String,
 	},
 
 	data() {
@@ -101,30 +103,27 @@ export default {
 				}
 			});
 
-			let firstTime = true;
-			const onclick = function (event) {
-				if (firstTime) { firstTime = false; return; }
-				const dRect = drawer.getBoundingClientRect();
-				if (event.clientX > dRect.left + dRect.width ||
-					event.clientX < dRect.left ||
-					event.clientY > dRect.top + dRect.height ||
-					event.clientY < dRect.top) {
-					let opacity = 1;
-					const outId = setInterval(() => {
-						drawer.style.opacity = opacity;
-						triangle.style.opacity = opacity;
-						opacity -= 0.025;
-						if (opacity <= 0) {
-							drawer.style.visibility = 'collapse';
-							triangle.parentNode.removeChild(triangle);
-							window.removeEventListener('click', onclick);
-							clearInterval(outId);
-						}
-					});
-				}
-			};
-			window.addEventListener('click', onclick);
-			this.$emit('action');
+			// let firstTime = true;
+			const callback = () => {
+				let opacity = 1;
+				const outId = setInterval(() => {
+					drawer.style.opacity = opacity;
+					triangle.style.opacity = opacity;
+					opacity -= 0.025;
+					if (opacity <= 0) {
+						drawer.style.visibility = 'collapse';
+						triangle.parentNode.removeChild(triangle);
+						window.removeEventListener('click', onclick);
+						clearInterval(outId);
+					}
+				});
+			}
+
+			if (this.releaseKey) {
+				Utils.ClickOutsideOrKeyPress(drawer, callback, { key: this.releaseKey });
+			} else {
+				Utils.ClickOutside(drawer, callback);
+			}
 		}
 	}
 }

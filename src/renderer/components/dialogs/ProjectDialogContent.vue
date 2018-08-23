@@ -49,7 +49,7 @@
 										add
 									</v-icon>
 								</v-btn>
-								<FloatingDiv activator-id="add-category-btn" v-on:action="" dark right>
+								<FloatingDiv activator-id="add-category-btn" v-on:action="" dark right release-key="Enter">
 									<v-card>
 										<v-toolbar class="px-2" color="secondary" height="55">
 											<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>

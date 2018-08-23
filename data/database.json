@@ -55,11 +55,11 @@
         {
           "tag": "archives",
           "title": "Archives",
-          "folded": true
+          "folded": false
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1535036492036,
+      "timestamp": 1535037100425,
       "customPath": ""
     }
   ],

@@ -13,7 +13,12 @@ class Utilities {
 	 * @param {Function} callback Function to call when the click is outside the element.
 	 */
 	ClickOutside(element, callback) {
+		let firstTime = true;
 		const onclick = (event) => {
+			if (firstTime) {
+				firstTime = false;
+				return;
+			}
 			if (!element.contains(event.target)) {
 				callback(event);
 				window.removeEventListener('click', onclick);
@@ -34,7 +39,12 @@ class Utilities {
 			keyup: null,
 		}
 
-		events.onclick = (event) => {
+		let firstTime = true;
+		const onclick = (event) => {
+			if (firstTime) {
+				firstTime = false;
+				return;
+			}
 			if (!element.contains(event.target)) {
 				callback(event, 'click');
 				window.removeEventListener('click', events.onclick);
