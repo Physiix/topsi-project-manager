@@ -71,6 +71,7 @@ export default {
 	},
 	mounted() {
 		const maxHeight = 0.9;
+		const actionsOffset = 30;
 		const element = document.getElementById('project-dialog');
 
 		const width = this.width;
@@ -84,6 +85,7 @@ export default {
 
 		element.style.width = width + 'px';
 		element.style.zIndex = 1;
+		element.style.minHeight = height + actionsOffset + 'px';
 
 		window.addEventListener('resize', () => {
 			element.style.left = window.innerWidth / 2 - width / 2 + 'px';
