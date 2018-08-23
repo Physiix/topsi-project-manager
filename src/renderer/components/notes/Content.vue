@@ -1,15 +1,13 @@
 <template>
 	<div class="content">
 		<div class="top pa-3 title">
-			<!-- <v-toolbar color="secondary" dark class="elevation-0" dense>
-				<v-toolbar-title class="subheading" scroll-off-screen> -->
 			<div class="content-category-title">
 				<v-toolbar height="30" color="transparent" flat>
 					<div v-show="!editTitle" @dblclick="EditTitle">
 						{{title}}
 					</div>
 					<div v-show="editTitle" ref="edit" class="pt-3 mt-1" style="width:100px">
-						<v-text-field v-model="editedTitle" :value="title"></v-text-field>
+						<v-text-field v-model="editedTitle" :value="title" @keyup.enter.native="UpdateTitle" autofocus></v-text-field>
 					</div>
 					<v-btn icon fab small style="width:20px;height:20px;" class="ml-1 mt-2" @click="Fold">
 						<v-icon>
@@ -29,8 +27,6 @@
 			<FloatingDiv :activator-id="'btn-category-'+category.tag" top width="200">
 				<v-toolbar></v-toolbar>
 			</FloatingDiv>
-			<!-- </v-toolbar-title>
-			</v-toolbar> -->
 		</div>
 		<div class="bottom" :id="id">
 			<Note v-for="(note) in notes" :key="note.id" :note="note" class="mx-4" />
@@ -99,11 +95,17 @@ export default {
 		EditTitle() {
 			this.editTitle = true;
 			this.editedTitle = this.title;
-			console.log(this.$refs.edit)
-			Utils.ClickOutside(this.$refs.edit, (event) => {
+			Utils.ClickOutsideOrKeyPress(this.$refs.edit, (event, type) => {
 				this.editTitle = false;
-				this.title = this.editedTitle;
-			})
+				if (type == 'click') {
+					this.title = this.editedTitle;
+				}
+			}, { key: 'Escape' })
+		},
+
+		UpdateTitle() {
+			this.editTitle = false;
+			this.title = this.editedTitle;
 		}
 	},
 	mounted() {

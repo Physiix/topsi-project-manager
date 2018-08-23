@@ -43,18 +43,23 @@
           "folded": false
         },
         {
-          "tag": "in_progresss",
-          "title": "In Progresss",
+          "tag": "in_progress",
+          "title": "In Progress",
           "folded": false
         },
         {
           "tag": "done",
           "title": "Done",
           "folded": false
+        },
+        {
+          "tag": "archives",
+          "title": "Archives",
+          "folded": true
         }
       ],
       "opened_timeline_id": 0,
-      "timestamp": 1535035405477,
+      "timestamp": 1535036492036,
       "customPath": ""
     }
   ],

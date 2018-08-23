@@ -1,8 +1,4 @@
 class InputManager {
-	constructor() {
-
-	}
-
 	/**
 	 * Setup all the input to listen to and their callbacks.
 	 * @param {Vue} context Vue context.
