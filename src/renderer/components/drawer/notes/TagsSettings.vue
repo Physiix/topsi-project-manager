@@ -11,10 +11,13 @@
 		</Tooltip>
 		<FloatingDiv activator-id="tags-button" v-on:action="" width="500" dark left>
 			<v-toolbar color="secondary" dark class="px-2 elevation-0">
-				<v-text-field v-model="tag" @keyup.enter.native="AddTag"></v-text-field>
-				<v-btn flat @click="AddTag">Add</v-btn>
+				<v-text-field v-model="tag" :color="color" @keyup.enter.native="AddTag"></v-text-field>
+				<v-btn color="primary" style="border-radius:0;" @click="AddTag">Add</v-btn>
 			</v-toolbar>
 			<ColorPicker width="500" padding="20" v-model="color"></ColorPicker>
+			<v-card-title v-if="tag.length > 0" class="justify-center">
+				<v-chip small :class="color">{{tag}}</v-chip>
+			</v-card-title>
 			<v-container>
 				<v-chip v-for="(entry, index) in tags" :key="index" small :class="entry.color">{{entry.tag}}</v-chip>
 			</v-container>
