@@ -24,6 +24,9 @@ const winURL = process.env.NODE_ENV === 'development' ?
 const appDB = App.GetAppDB();
 
 function createWindow() {
+	const isMac = process.platform == 'darwin';
+	appDB.SetValue('isMac', isMac);
+
 	/**
 	 * Initial window options
 	 */
@@ -31,7 +34,7 @@ function createWindow() {
 		width: appDB.GetValue('window_width', 800),
 		height: appDB.GetValue('window_height', 600),
 		useContentSize: true,
-		frame: false,
+		frame: isMac,
 	})
 
 	// Disable the default menu

@@ -176,6 +176,10 @@ const mutations = {
 }
 
 const getters = {
+	isMac(){
+		return App.GetAppDB().GetValue('isMac', false);
+	},
+
 	IsProjectOpened(state) {
 		return state.openedProjectId != -1;
 	},

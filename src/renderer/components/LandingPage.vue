@@ -11,7 +11,7 @@
 			<Notes v-else/>
 		</div>
 		<!-- The titlebar needs to be on top of the other divs, so it's the last one to be rendered. -->
-		<Titlebar />
+		<Titlebar v-if="!macos" />
 	</div>
 
 </template>
@@ -54,6 +54,10 @@ export default {
 
 		showHelper() {
 			return this.$store.getters.isShowHelper;
+		},
+
+		macos(){
+			return this.$store.getters.isMac;
 		}
 	},
 	methods: {
@@ -62,7 +66,7 @@ export default {
 		}
 	},
 	mounted() {
-		AppManager.SetupLandingPage('container', 'side', 'content');
+		AppManager.SetupLandingPage((this.macos?0:30), 'container', 'side', 'content');
 		Inputs.Initialize(this);
 	}
 }

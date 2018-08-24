@@ -10,7 +10,7 @@ class ApplicationManager {
 		});
 	}
 
-	SetupLandingPage(containerId, sideId, contentId) {
+	SetupLandingPage(titlebar, containerId, sideId, contentId) {
 		const container = document.getElementById(containerId);
 		const side = document.getElementById(sideId);
 		const content = document.getElementById(contentId);
@@ -24,7 +24,8 @@ class ApplicationManager {
 
 		container.style.display = 'grid';
 		container.style.gridTemplateColumns = this.vue.$store.getters.drawerWidth + 'px repeat(5, 1fr)';
-		container.style.gridTemplateRows = '30px repeat(5, 1fr)';
+
+		container.style.gridTemplateRows = `${titlebar}px repeat(5, 1fr)`;
 
 		side.style.gridColumn = '1 / 2';
 		side.style.gridRow = '2 / 7';
@@ -35,26 +36,29 @@ class ApplicationManager {
 		this.mainContainerId = containerId;
 	}
 
-	SetupNotesPage(categoryContainerId, containerId, categories, foldedCategories = [], foldDrawer = true) {
+	SetupNotesPage(titlebar, categoryContainerId, containerId, categories, foldedCategories = [], foldDrawer = true) {
 		const container = document.getElementById(categoryContainerId);
 
 		const resize = () => {
 			const offset = 5;
 			container.style.width = window.innerWidth - COMPACT_DRAWER_WIDTH + offset + 'px';
-			container.style.height = (window.innerHeight - 30) + 'px';
+			container.style.height = (window.innerHeight - titlebar) + 'px';
 
 			foldedCategories.forEach(category => {
-				document.getElementById(category + '-container').childNodes[0].style.height = (window.innerHeight - 30) + 'px';
+				document.getElementById(category + '-container').childNodes[0].style.height = (window.innerHeight - titlebar) + 'px';
 			})
 		}
 
 		if (foldDrawer) {
 			let value = this.vue.$store.getters.drawerWidth;
 			const id = setInterval(() => {
-				value -= 8;
+				value -= 16;
 				document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
-				if (value <= COMPACT_DRAWER_WIDTH) clearInterval(id);
-			})
+				if (value <= COMPACT_DRAWER_WIDTH){
+					document.getElementById(containerId).style.gridTemplateColumns = COMPACT_DRAWER_WIDTH + 'px repeat(5, 1fr)';
+					clearInterval(id);
+				}
+			}, 10)
 		}
 
 		resize();
@@ -95,10 +99,13 @@ class ApplicationManager {
 		let value = COMPACT_DRAWER_WIDTH;
 		const width = this.vue.$store.getters.drawerWidth;
 		const id = setInterval(() => {
-			value += 8;
+			value += 16;
 			document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
-			if (value >= width) clearInterval(id);
-		})
+			if (value >= width) {
+				document.getElementById(containerId).style.gridTemplateColumns = width + 'px repeat(5, 1fr)';
+				clearInterval(id);
+			}
+		}, 10)
 	}
 }
 

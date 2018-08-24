@@ -99,10 +99,13 @@ export default {
 			top += 26;
 			element.style.top = top + 'px';
 			if (top >= offsetTop) {
-				element.style.top = '30px';
+				element.style.top = this.top + 'px';
 				clearInterval(id);
 			}
-		}, 10)
+		}, 10);
+
+		// Adjust the top if it's mac
+		if(this.$store.getters.isMac) this.top = 0;
 	}
 }
 </script>

@@ -73,12 +73,16 @@ export default {
 				return '';
 			else return 'grey lighten-2'
 		},
+
+		macos(){
+			return this.$store.getters.isMac;
+		}
 	},
 	mounted() {
-		AppManager.SetupNotesPage('notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag));
+		AppManager.SetupNotesPage((this.macos?0:30), 'notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag));
 		EventsManager.Subscribe('update-notes-component', () => {
 			this.$nextTick(() => {
-				AppManager.SetupNotesPage('notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag), false);
+				AppManager.SetupNotesPage((this.macos?0:30), 'notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag), false);
 			});
 		});
 	}
