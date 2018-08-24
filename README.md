@@ -6,19 +6,34 @@ It's free and Open Source under the AGPL V3 Clause.
 ## Version 0.1
 
 ## Features
-- **No** internet required, it is fully useable offline.
-- **No** Sign Up needed
+### **No** internet required, it is fully useable offline. **No** Sign Up needed
 ![screenshot from 2018-08-24 17-40-57](https://user-images.githubusercontent.com/2964165/44611105-6e920e00-a7cd-11e8-99d3-fa9d172e1fd7.png)
-- Simple Kanban Board
-- Supports multiple milestones
-- Drag & Drop notes
-- Tags
-- Search for notes by title or tag
-- Image attachment
-- Export projects (in JSON format)
-- Import projects
-- Customizable (WIP, more customizations are coming)
-- Free and Open Source
+
+### Simple Kanban Board
+![screenshot from 2018-08-24 18-29-59](https://user-images.githubusercontent.com/2964165/44611113-7b166680-a7cd-11e8-8909-077bd7ec87c7.png) 
+
+### Organize your notes in multiple milestones
+![screenshot from 2018-08-24 18-30-43](https://user-images.githubusercontent.com/2964165/44611155-ad27c880-a7cd-11e8-89fa-acf0dea717cb.png)
+
+### Drag & Drop notes
+![drag_drop](https://user-images.githubusercontent.com/2964165/44611998-c1ba8f80-a7d2-11e8-9675-30ac9bc203e4.gif)
+
+### Tags
+![tagsv2](https://user-images.githubusercontent.com/2964165/44611830-b6b32f80-a7d1-11e8-91d3-66175c503978.gif)
+
+### Search for notes by title or tag
+![search](https://user-images.githubusercontent.com/2964165/44611789-63d97800-a7d1-11e8-9410-cef3776b779b.gif)
+
+### Image attachment
+![image](https://user-images.githubusercontent.com/2964165/44611858-de09fc80-a7d1-11e8-90a1-f0b3a695e108.gif)
+
+### Export & Import projects (in JSON format)
+![export](https://user-images.githubusercontent.com/2964165/44611163-b87af400-a7cd-11e8-8364-1424e3d24682.png)
+
+### Dark mode & Customization (WIP, more customizations are coming)
+![customization](https://user-images.githubusercontent.com/2964165/44611545-aac66e00-a7cf-11e8-8de5-83e888181712.gif)
+
+### 100% Free and Open Source
 
 ## Roadmap
 These are the features that will be implemented next.
@@ -40,10 +55,16 @@ These are the features that will be implemented next.
 ## Contributions
 All contributions are welcome: Typo correction, translation, reporting bugs, code contribution, documentation. 
 
+## Frameworks used in this projects
+- VueJS
+- ElectronJS
+- Vuetify
+- Quill.js
+- Sortable.js
 
 ## License
 
-## Old 
+## Old Versions
 
 ![screenshot](https://user-images.githubusercontent.com/2964165/44429207-ac402e00-a564-11e8-86d0-71cd9c46b2b5.png)
 
