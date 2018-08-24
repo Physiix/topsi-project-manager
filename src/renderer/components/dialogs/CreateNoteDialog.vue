@@ -65,7 +65,8 @@ export default {
 	methods: {
 		CreateNote() {
 			const projectId = this.$store.state.AppStore.openedProjectId;
-			const timelineId = this.$store.state.AppStore.currentTimelineId;
+			const milestoneId = this.$store.getters.getCurrentMilestoneId;
+			console.log(milestoneId)
 
 			// Getting the selected tags.
 			const tags = [];
@@ -82,7 +83,7 @@ export default {
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
 				color: this.color,
-				timeline_id: timelineId,
+				milestoneId: milestoneId,
 				tags: tags
 			});
 

@@ -6,14 +6,14 @@ import {
 } from '../../../core/Notification'
 
 class Note {
-	constructor(project_id, title, description, category, color, timeline_id, tags) {
+	constructor(project_id, title, description, category, color, milestone_id, tags) {
 		this.id = -1;
 		this.project_id = project_id;
 		this.title = title;
 		this.description = description;
 		this.category = category;
 		this.color = color;
-		this.timeline_id = timeline_id;
+		this.milestone_id = milestone_id;
 		this.tags = tags || [];
 		this.order = 0;
 	}
@@ -38,7 +38,9 @@ const state = {
 	notes: null,
 
 	// Id of the currently opened project.
-	projectId: -1
+	projectId: -1,
+
+	milestoneId: 0
 }
 
 const getters = {
@@ -56,11 +58,11 @@ const mutations = {
 	 */
 	CreateNote(state, data) {
 		// Make sure the note's data is valid.
-		if (data.project_id == null || data.title == null || data.description == null || data.category == null)
+		if (data.project_id == null || data.title == null || data.description == null || data.category == null || data.milestoneId == null)
 			Notifications.Error('CreateNote', "Cannot create a note with invalid data " + data);
 
 		// Create the new note to store.
-		let note = new Note(data.project_id, data.title, data.description, data.category, data.color, data.timeline_id, data.tags)
+		let note = new Note(data.project_id, data.title, data.description, data.category, data.color, data.milestoneId, data.tags)
 
 		const database = App.GetDB(data.project_id);
 
@@ -74,7 +76,10 @@ const mutations = {
 		database.Write('notes', note);
 
 		// Update the state
-		state.notes = database.GetAll('notes', 'order');
+		mutations.UpdateNotes(state, {
+			projectId: data.project_id,
+			milestoneId: data.milestoneId
+		})
 	},
 
 	/**
@@ -121,7 +126,10 @@ const mutations = {
 		db.SetValue('notes', state.notes);
 
 		// Retrieve the new values as saved from the database. 
-		state.notes = db.GetAll('notes', 'order');
+		mutations.UpdateNotes(state, {
+			projectId: state.projectId,
+			milestoneId: state.milestoneId
+		})
 	},
 
 	/**
@@ -155,8 +163,11 @@ const mutations = {
 			id: data.id
 		}, data);
 
-		// Update the state
-		state.notes = database.GetAll('notes', 'order');
+		// Retrieve the new values as saved from the database. 
+		mutations.UpdateNotes(state, {
+			projectId: state.projectId,
+			milestoneId: state.milestoneId
+		})
 	},
 
 
@@ -195,8 +206,11 @@ const mutations = {
 	 * @param {Object} data Contains the data about the project to retrieve the notes for.
 	 */
 	UpdateNotes(state, data) {
-		state.projectId = data.project_id;
-		state.notes = App.GetDB(data.project_id).GetAll('notes', 'order');
+		state.projectId = data.projectId;
+		state.milestoneId = data.milestoneId;
+		state.notes = App.GetDB(data.projectId).GetAll('notes', 'order', [{
+			milestone_id: data.milestoneId
+		}]);
 	},
 
 	/**
@@ -208,7 +222,12 @@ const mutations = {
 		App.GetDB(note.project_id).Remove('notes', {
 			id: note.id
 		});
-		state.notes = App.GetDB(note.project_id).GetAll('notes', 'order');
+
+		// Retrieve the new values as saved from the database. 
+		mutations.UpdateNotes(state, {
+			projectId: state.projectId,
+			milestoneId: state.milestoneId
+		})
 	}
 }
 

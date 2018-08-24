@@ -1,29 +1,30 @@
 <template>
 	<v-navigation-drawer v-model="drawer" floating temporary right width="150" height="100%" fixed style="zIndex:5;opacity:0.9; padding-top:35px;">
 		<div id="milestone-drawer">
-			<v-card v-for="i in 5" :key="i" class="mx-1 py-3 primary milestone text-xs-center" dark :class="selected==i?'milestone-selected':''" @click.native="Select(i)" >
-				Milestone{{i}}
+			<v-card v-for="(milestone, i) in milestones" :key="i" class="mx-1 py-3 primary milestone text-xs-center" dark :class="selected==i?'milestone-selected':''" @click.native="Select(i)">
+				{{milestone.title}}
 			</v-card>
-			<v-card id="add-milestone-card" color="transparent" class="mx-1 py-3 milestone text-xs-center elevation-0">
+			<v-card id="add-milestone-card" color="transparent" class="mx-1 py-3 milestone text-xs-center elevation-0" @click.native="AddMilestone">
 				<v-icon color="primary">add</v-icon>
 			</v-card>
-			<FloatingDiv activator-id="add-milestone-card" v-on:action="" right dark>
-				<v-card>
-					<v-toolbar class="px-2" color="secondary" height="55">
-						
-					</v-toolbar>
-				</v-card>
-			</FloatingDiv>
+			<v-card ref="flash_input" width="500" class="secondary elevation-24" dark>
+				<v-card-title class="py-0">
+					<v-text-field ref="milestone_input" v-model="milestoneName" autofocus placeholder="Milestone Name"></v-text-field>
+				</v-card-title>
+			</v-card>
 		</div>
 	</v-navigation-drawer>
 </template>
 <script>
+import { Utils } from '../../../core/Utils';
 
 export default {
 	name: 'MilestonesList',
+	props: {
+	},
 	data() {
 		return {
-			selected: 1,
+			milestoneName: ''
 		}
 	},
 	computed: {
@@ -34,13 +35,65 @@ export default {
 			set(value) {
 				this.$store.commit('ToggleMilestonesList', value);
 			}
+		},
+
+		selected: {
+			get() {
+				return this.$store.getters.getCurrentMilestoneId;
+			},
+			set(value) {
+				this.$store.commit('UpdateProjectMilestoneId', {
+					projectId: this.$store.getters.getOpenedProjectId,
+					milestoneId: value
+				});
+				this.$store.commit('SetCurrentMilestoneId', value);
+				this.$store.commit('UpdateNotes', {
+					projectId: this.$store.getters.getOpenedProjectId,
+					milestoneId: value
+				})
+			}
+		},
+		milestones() {
+			return this.$store.getters.GetMilestones;
 		}
 	},
 	methods: {
 		Select(index) {
 			this.selected = index;
-		}
+		},
+
+		AddMilestone() {
+			const element = this.$refs.flash_input.$el;
+			element.style.position = 'fixed';
+			element.style.visibility = 'visible';
+
+			element.style.top = '100px';
+			this.$refs.milestone_input.$el.focus();
+
+			Utils.ClickOutsideOrKeyPress(element, (event, type) => {
+				element.style.visibility = 'hidden';
+				if (type == 'keyup') {
+					console.log(this.milestoneName)
+					this.$store.commit('CreateMilestone', {
+						projectId: this.$store.getters.getOpenedProjectId,
+						name: this.milestoneName
+					});
+					this.milestoneName = '';
+				}
+			}, { key: 'Enter' });
+		},
 	},
+	mounted() {
+		const element = this.$refs.flash_input.$el;
+		element.parentNode.removeChild(element);
+		document.querySelector('body').appendChild(element);
+		element.style.position = 'fixed';
+		element.style.visibility = 'hidden';
+		element.style.height = '100px';
+		element.style.zIndex = 7;
+		element.style.left = window.innerWidth / 2 - 250 + 'px';
+		window.addEventListener('resize', () => element.style.left = window.innerWidth / 2 - 250 + 'px');
+	}
 }
 </script>
 

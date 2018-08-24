@@ -5,9 +5,6 @@
 				<v-list-tile-action style="margin-left:-6px;">
 					TAGS
 				</v-list-tile-action>
-				<v-list-tile-content>
-					<v-list-tile-title>Timeline</v-list-tile-title>
-				</v-list-tile-content>
 			</v-list-tile>
 		</Tooltip>
 		<FloatingDiv activator-id="tags-button" v-on:action="" width="500" dark left>

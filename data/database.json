@@ -1,72 +1,69 @@
 {
-  "dark_mode": true,
-  "git_user_info": {
-    "username": "",
-    "repository_token": "",
-    "gist_id": ""
-  },
-  "projects_id": 2,
-  "projects": [
-    {
-      "id": 0,
-      "title": "Project Manager",
-      "categories": [
-        {
-          "tag": "todo",
-          "title": "TODO",
-          "folded": false
-        },
-        {
-          "tag": "in_progress",
-          "title": "In Progress",
-          "folded": false
-        },
-        {
-          "tag": "done",
-          "title": "Done",
-          "folded": false
-        }
-      ],
-      "description": "<p><strong>Project Manager </strong>is a open source Kanban board software.</p><p>It's used to manage the differents tasks of a project and organize them in away that make sense to the users. </p><p>The full source code is available on <strong>github. </strong></p><p>The project is still in alpha, and have many bugs.</p><p>where users can create projects and notes.</p>",
-      "opened_timeline_id": 0,
-      "timestamp": 1535046589789,
-      "customPath": ""
-    },
-    {
-      "id": 1,
-      "title": "Test",
-      "description": "<p>Test project.</p>",
-      "categories": [
-        {
-          "tag": "todo",
-          "title": "TODO",
-          "folded": false
-        },
-        {
-          "tag": "in_progress",
-          "title": "In Progress",
-          "folded": false
-        },
-        {
-          "tag": "done",
-          "title": "Done",
-          "folded": false
-        },
-        {
-          "tag": "archives",
-          "title": "Archives",
-          "folded": false
-        }
-      ],
-      "opened_timeline_id": 0,
-      "timestamp": 1535037100425,
-      "customPath": ""
-    }
-  ],
-  "current_project_id": 0,
-  "window_width": 1440,
-  "window_height": 784,
-  "application_color": "blue white--text",
-  "first_time_use": false,
-  "default_databases_folder": ""
+	"dark_mode": false,
+	"git_user_info": {
+		"username": "",
+		"repository_token": "",
+		"gist_id": ""
+	},
+	"projects_id": 3,
+	"projects": [{
+			"id": 0,
+			"title": "Project Manager",
+			"categories": [{
+					"tag": "todo",
+					"title": "TODO",
+					"folded": false
+				},
+				{
+					"tag": "in_progress",
+					"title": "In Progress",
+					"folded": false
+				},
+				{
+					"tag": "done",
+					"title": "Done",
+					"folded": false
+				}
+			],
+			"description": "<p><strong>Project Manager </strong>is a open source Kanban board software.</p><p>It's used to manage the differents tasks of a project and organize them in away that make sense to the users. </p><p>The full source code is available on <strong>github. </strong></p><p>The project is still in alpha, and have many bugs.</p><p>where users can create projects and notes.</p>",
+			"opened_milestone_id": 1,
+			"timestamp": 1535115700040,
+			"customPath": ""
+		},
+		{
+			"id": 1,
+			"title": "Test",
+			"description": "<p>Test project.</p>",
+			"categories": [{
+					"tag": "todo",
+					"title": "TODO",
+					"folded": false
+				},
+				{
+					"tag": "in_progress",
+					"title": "In Progress",
+					"folded": false
+				},
+				{
+					"tag": "done",
+					"title": "Done",
+					"folded": false
+				},
+				{
+					"tag": "archives",
+					"title": "Archives",
+					"folded": false
+				}
+			],
+			"opened_milestone_id": 0,
+			"timestamp": 1535037100425,
+			"customPath": ""
+		}
+	],
+	"current_project_id": 0,
+	"window_width": 1440,
+	"window_height": 784,
+	"application_color": "blue white--text",
+	"first_time_use": false,
+	"default_databases_folder": ""
 }

@@ -17,7 +17,6 @@ const state = {
 	dialogs: {
 		createProject: false,
 		createNote: false,
-		createTimeline: false,
 		showSettings: false,
 		updateNote: false,
 		visualizeDialog: false,
@@ -29,8 +28,8 @@ const state = {
 	// ID of the currently opened project.
 	openedProjectId: -1,
 
-	// ID of the currently opened timeline.
-	currentTimelineId: 0,
+	// ID of the currently opened milestone.
+	currentMilestoneId: 0,
 
 	// Width of the main drawer
 	drawerWidth: 200,
@@ -63,10 +62,6 @@ const mutations = {
 		state.dialogs.createNote = !state.dialogs.createNote;
 	},
 
-	CreateTimelineDialog(state) {
-		state.dialogs.createTimeline = !state.dialogs.createTimeline;
-	},
-
 	UpdateNoteDialog(state) {
 		state.dialogs.updateNote = !state.dialogs.updateNote;
 	},
@@ -77,6 +72,8 @@ const mutations = {
 
 	OpenProject(state, id) {
 		state.openedProjectId = id;
+		// Set the default milestone when opening a project.
+		if (id >= 0) state.currentMilestoneId = App.GetDB(id).GetValue('info').opened_milestone_id;
 		state.searchContent = ''; // Clear the search content, searches are different from project to notes.
 	},
 
@@ -104,8 +101,8 @@ const mutations = {
 		App.GetDB().SetValue('git_user_info', state.gitUserInfo);
 	},
 
-	SetCurrentTimelineId(state, id) {
-		state.currentTimelineId = id;
+	SetCurrentMilestoneId(state, id) {
+		state.currentMilestoneId = id;
 	},
 
 	SetAppColor(state, color) {
@@ -196,12 +193,24 @@ const getters = {
 		return state.searchContent;
 	},
 
+	getOpenedProjectId(state) {
+		return state.openedProjectId;
+	},
+
 	getDefaultPath(state) {
 		return App.GetAppDB().GetValue('default_databases_folder', '');
 	},
 
 	isMilestonesList(state) {
 		return state.dialogs.milestonesList;
+	},
+
+	getCurrentProjectMilestones(state) {
+		return () => App.GetDB(state.openedProjectId).GetAll('milestones', 'id');
+	},
+
+	getCurrentMilestoneId(state) {
+		return state.currentMilestoneId;
 	}
 }
 

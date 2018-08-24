@@ -13,7 +13,6 @@
 			<MilestonesSettings />
 			<TagsSettings />
 			<v-divider></v-divider>
-			<Timelines />
 		</v-list>
 		<div style="width:25px;margin-left:13px;cursor:pointer;position:absolute;bottom:0;">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" transform="rotate(180)">
@@ -35,14 +34,12 @@
 <script>
 import MilestonesSettings from './MilestonesSettings.vue'
 import TagsSettings from './TagsSettings.vue'
-import Timelines from './Timelines.vue'
 
 export default {
 	name: 'NotesSettings',
 	components: {
 		TagsSettings,
-		MilestonesSettings,
-		Timelines
+		MilestonesSettings
 	},
 	props: {
 
@@ -55,12 +52,6 @@ export default {
 					title: '',
 					hint: 'Back to projects',
 					action: () => {
-						// Save the id of the opened timeline
-						this.$store.commit('SetProjectTimelineId', {
-							project_id: this.$store.state.AppStore.openedProjectId,
-							timeline_id: this.$store.state.AppStore.currentTimelineId
-						});
-
 						// Back to the main menu.
 						this.$store.commit('OpenProject', -1);
 					}

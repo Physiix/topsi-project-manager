@@ -1,7 +1,6 @@
 <template>
 	<div id="notes_container" :class="color" class="pa-0">
 		<CreateNoteDialog v-if="createDialog" />
-		<!-- <CreateTimelineDialog/> -->
 		<VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
 		<UpdateNoteDialog v-if="updateDialog" />
 		<UpdateProjectDialog v-if="updateProject" />
@@ -22,7 +21,6 @@ import { AppManager } from '../../../core/ApplicationManager';
 import Menu from './Menu.vue'
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from '../dialogs/CreateNoteDialog.vue'
-import CreateTimelineDialog from '../dialogs/CreateTimelineDialog.vue'
 import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
 import UpdateNoteDialog from '../dialogs/UpdateNoteDialog.vue'
 import UpdateProjectDialog from '../dialogs/UpdateProjectDialog.vue'
@@ -32,7 +30,6 @@ export default {
 	name: 'Notes',
 	components: {
 		CreateNoteDialog,
-		CreateTimelineDialog,
 		UpdateNoteDialog,
 		VisualizeNoteDialog,
 		UpdateProjectDialog,

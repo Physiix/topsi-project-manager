@@ -18,7 +18,7 @@ class Project {
 		this.title = title;
 		this.description = description;
 		this.categories = categories;
-		this.opened_timeline_id = 0;
+		this.opened_milestone_id = 0;
 		this.customPath = '';
 	}
 }
@@ -65,8 +65,8 @@ const mutations = {
 		// Store the project info in its own database
 		projectDB.SetValue('info', project);
 
-		// Create first timeline.
-		projectDB.Write('timelines', {
+		// Create first milestone.
+		projectDB.Write('milestones', {
 			id: 0,
 			title: 'Default'
 		});
@@ -129,11 +129,6 @@ const mutations = {
 	},
 
 	UpdateCategory(state, data) {
-
-		// category: this.category,
-		// projectId: projectId,
-		// newTitle: value
-
 		if (data.projectId == null || data.category == null || data.newTitle == null) Notifications.Error('FoldCategory', `Cannot fold a category with invalid data ${data}`);
 
 		const projectDB = App.GetDB(data.projectId);
@@ -159,20 +154,6 @@ const mutations = {
 
 		// Update the layout
 		EventsManager.Emit('update-notes-component');
-	},
-
-	SetProjectTimelineId(state, data) {
-		// Check if the data is valid.
-		if (data.project_id == null || data.project_id < 0 || data.timeline_id == null || data.timeline_id < 0)
-			throw new Error("Cannot set invalid timeline data to project.");
-
-		// Update the project.
-		App.GetDB(data.project_id).Update('info', null, {
-			opened_timeline_id: data.timeline_id
-		});
-
-		// Update the projects.
-		// state.projects = dbUtils.GetAll('projects', 'id');
 	},
 
 	/**

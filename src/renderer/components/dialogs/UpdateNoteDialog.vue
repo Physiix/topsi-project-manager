@@ -68,7 +68,6 @@ export default {
 	methods: {
 		UpdateNote() {
 			const projectId = this.$store.state.AppStore.openedProjectId;
-			const timelineId = this.$store.state.AppStore.currentTimelineId;
 
 			// Getting the selected tags.
 			const tags = [];

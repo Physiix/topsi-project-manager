@@ -142,7 +142,7 @@ export default {
 
 		getNotes() {
 			const timelineId = this.$store.state.AppStore.currentTimelineId;
-			return this.$store.getters.GetNotes.filter(note => note.timeline_id == timelineId);
+			return this.$store.getters.GetNotes;
 		},
 
 		Select(index) {

@@ -71,10 +71,8 @@ export default {
 		},
 
 		notes() {
-			const timelineId = this.$store.state.AppStore.currentTimelineId;
 			return this.$store.getters.GetNotes.filter(note => {
-				let value = note.timeline_id == timelineId && note.category == this.category.tag;
-				if (!value) return false;
+				if (note.category != this.category.tag) return false;
 				const searchContent = this.searchContent;
 				return note.title.toLowerCase().includes(searchContent) || note.tags.some(tag => tag.tag.toLowerCase().includes(searchContent));
 			});
