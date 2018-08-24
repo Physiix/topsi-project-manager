@@ -21,7 +21,7 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535128430330,
+    "timestamp": 1535129467121,
     "opened_milestone_id": 1
   },
   "timelines": [
@@ -758,7 +758,7 @@
           "color": "indigo white--text"
         }
       ],
-      "order": 0,
+      "order": 1,
       "timestamp": 1535123829282
     },
     {
@@ -766,7 +766,7 @@
       "project_id": 0,
       "title": "Polish the application UI",
       "description": "<p>Add some polishing to the application UI.</p>",
-      "category": "in_progress",
+      "category": "done",
       "color": "",
       "milestone_id": 1,
       "tags": [
@@ -796,7 +796,7 @@
           "color": "pink white--text"
         }
       ],
-      "order": 1,
+      "order": 2,
       "timestamp": 1535126607180
     }
   ],
