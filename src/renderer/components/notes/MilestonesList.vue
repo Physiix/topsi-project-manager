@@ -1,7 +1,7 @@
 <template>
 	<v-navigation-drawer v-model="drawer" floating temporary right width="150" height="100%" fixed style="zIndex:5;opacity:0.9; padding-top:35px;">
 		<div id="milestone-drawer">
-			<v-card v-for="(milestone, i) in milestones" :key="i" class="mx-1 py-3 primary milestone text-xs-center" dark :class="selected==i?'milestone-selected':''" @click.native="Select(i)">
+			<v-card v-for="(milestone, i) in milestones" :key="i" class="mx-1 py-3  milestone text-xs-center" dark :class="selected==i?'milestone-selected':''" @click.native="Select(i)">
 				{{milestone.title}}
 			</v-card>
 			<v-card id="add-milestone-card" color="transparent" class="mx-1 py-3 milestone text-xs-center elevation-0" @click.native="AddMilestone">
@@ -9,7 +9,7 @@
 			</v-card>
 			<v-card ref="flash_input" width="500" class="secondary elevation-24" dark>
 				<v-card-title class="py-0">
-					<v-text-field ref="milestone_input" v-model="milestoneName" autofocus placeholder="Milestone Name"></v-text-field>
+					<v-text-field ref="milestone_input" v-model="milestoneName" autofocus placeholder="Milestone Name" @keyup.esc.native="Hide"></v-text-field>
 				</v-card-title>
 			</v-card>
 		</div>
@@ -68,7 +68,7 @@ export default {
 			element.style.visibility = 'visible';
 
 			element.style.top = '100px';
-			this.$refs.milestone_input.$el.focus();
+			Utils.FocusTextField(this.$refs.milestone_input.$el);
 
 			Utils.ClickOutsideOrKeyPress(element, (event, type) => {
 				element.style.visibility = 'hidden';
@@ -82,6 +82,11 @@ export default {
 				}
 			}, { key: 'Enter' });
 		},
+
+		Hide() {
+			this.milestoneName = '';
+			this.$refs.flash_input.$el.style.visibility = 'hidden';
+		}
 	},
 	mounted() {
 		const element = this.$refs.flash_input.$el;
@@ -108,7 +113,7 @@ export default {
 
 .milestone-selected{
 	/* border-radius: 10%!important; */
-	background-color: grey!important;
+	background-color: #2196F3!important;
 	margin-top:5px;
 	margin-bottom:5px;
 }

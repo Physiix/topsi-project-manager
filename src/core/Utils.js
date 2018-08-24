@@ -40,7 +40,7 @@ class Utilities {
 		}
 
 		let firstTime = true;
-		const onclick = (event) => {
+		events.onclick = (event) => {
 			if (firstTime) {
 				firstTime = false;
 				return;
