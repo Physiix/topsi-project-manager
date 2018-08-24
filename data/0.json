@@ -21,8 +21,8 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535121990320,
-    "opened_milestone_id": 0
+    "timestamp": 1535123745707,
+    "opened_milestone_id": 1
   },
   "timelines": [
     {
@@ -39,9 +39,9 @@
       "description": "<p>Ability to save a single project or all the projects in a <strong style=\"color: rgb(0, 102, 204);\">Github</strong> or <strong style=\"color: rgb(0, 102, 204);\">Gitlab</strong> <strong style=\"color: rgb(153, 51, 255);\">repository</strong><strong> </strong>or <strong style=\"color: rgb(0, 138, 0);\">gist</strong><strong>/</strong><strong style=\"color: rgb(0, 138, 0);\">snippet</strong></p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "order": 0,
-      "timestamp": 1534807381084,
+      "timestamp": 1535123718527,
       "tags": [
         {
           "tag": "Feature",
@@ -52,7 +52,7 @@
           "color": "orange black--text"
         }
       ],
-      "updated_timestamp": 1534807381084
+      "updated_timestamp": 1535123718527
     },
     {
       "id": 37,
@@ -131,7 +131,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 0,
+      "order": 3,
       "timestamp": 1535115207196,
       "tags": [
         {
@@ -175,7 +175,7 @@
           "color": "orange black--text"
         }
       ],
-      "order": 3,
+      "order": 4,
       "timestamp": 1534984652819
     },
     {
@@ -208,7 +208,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 4,
+      "order": 5,
       "timestamp": 1534980353366,
       "tags": [
         {
@@ -252,7 +252,7 @@
       "category": "done",
       "color": "blue white--text",
       "milestone_id": 0,
-      "order": 5,
+      "order": 6,
       "timestamp": 1534959543719,
       "updated_timestamp": 1534959543719,
       "tags": [
@@ -296,7 +296,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 6,
+      "order": 7,
       "timestamp": 1534807571681,
       "tags": [
         {
@@ -354,7 +354,7 @@
           "color": "orange black--text"
         }
       ],
-      "order": 7,
+      "order": 8,
       "timestamp": 1534944578252
     },
     {
@@ -405,7 +405,7 @@
           "color": "indigo white--text"
         }
       ],
-      "order": 8,
+      "order": 9,
       "timestamp": 1534943550060,
       "updated_timestamp": 1534943550060
     },
@@ -448,7 +448,7 @@
           "color": "orange black--text"
         }
       ],
-      "order": 9,
+      "order": 10,
       "timestamp": 1534943723208,
       "updated_timestamp": 1534943723208
     },
@@ -485,7 +485,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 10,
+      "order": 11,
       "timestamp": 1534807849342,
       "updated_timestamp": 1534807849342,
       "tags": [
@@ -515,7 +515,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 11,
+      "order": 12,
       "timestamp": 1534807321557,
       "updated_timestamp": 1534807321557,
       "tags": [
@@ -533,7 +533,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 12,
+      "order": 13,
       "timestamp": 1534691012910,
       "updated_timestamp": 1534691012910,
       "tags": []
@@ -546,7 +546,7 @@
       "category": "done",
       "color": "green white--text",
       "milestone_id": 0,
-      "order": 13,
+      "order": 14,
       "timestamp": 1534621905197,
       "updated_timestamp": 1534621905197,
       "tags": []
@@ -559,7 +559,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 14,
+      "order": 15,
       "timestamp": 1534883303619,
       "updated_timestamp": 1534883303619,
       "tags": [
@@ -577,7 +577,7 @@
       "category": "done",
       "color": "indigo white--text",
       "milestone_id": 0,
-      "order": 15,
+      "order": 16,
       "timestamp": 1534807865477,
       "tags": [
         {
@@ -595,7 +595,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 16,
+      "order": 17,
       "timestamp": 1534883316035,
       "tags": [
         {
@@ -613,7 +613,7 @@
       "category": "done",
       "color": "indigo white--text",
       "milestone_id": 0,
-      "order": 17,
+      "order": 18,
       "timestamp": 1534883334035,
       "updated_timestamp": 1534883334035,
       "tags": [
@@ -635,7 +635,7 @@
       "category": "done",
       "color": "default",
       "milestone_id": 0,
-      "order": 18,
+      "order": 19,
       "timestamp": 1534883323753,
       "updated_timestamp": 1534883323753,
       "tags": [
@@ -657,7 +657,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 19,
+      "order": 20,
       "timestamp": 1534883357893,
       "tags": [
         {
@@ -683,7 +683,7 @@
       "category": "done",
       "color": "default",
       "milestone_id": 0,
-      "order": 20,
+      "order": 21,
       "timestamp": 1534446849627,
       "updated_timestamp": 1534446849627,
       "tags": []
@@ -696,7 +696,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 21,
+      "order": 22,
       "timestamp": 1534432424724,
       "tags": []
     },
@@ -708,7 +708,7 @@
       "category": "done",
       "color": "default",
       "milestone_id": 0,
-      "order": 22,
+      "order": 23,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840,
       "tags": []
@@ -718,7 +718,7 @@
       "project_id": 0,
       "title": "Select a milestone for a note",
       "description": "<p>When <strong>creating</strong> or <strong>updating</strong> a note, the user should be able to chose to which <strong style=\"color: rgb(230, 0, 0);\">milestone</strong> it should be added.</p>",
-      "category": "in_progress",
+      "category": "done",
       "color": "",
       "milestone_id": 0,
       "tags": [
@@ -737,9 +737,30 @@
       ],
       "order": 0,
       "timestamp": 1535121340205
+    },
+    {
+      "id": 44,
+      "project_id": 0,
+      "title": "Moving a note deletes other notes.",
+      "description": "<p>Moving a <strong>note</strong> in a <strong>milestone</strong> deletes all the notes in <strong>other</strong> <strong>milestones</strong>.</p>",
+      "category": "done",
+      "color": "",
+      "milestone_id": 1,
+      "tags": [
+        {
+          "tag": "BUG",
+          "color": "red white--text"
+        },
+        {
+          "tag": "URGENT",
+          "color": "indigo white--text"
+        }
+      ],
+      "order": 0,
+      "timestamp": 1535123829282
     }
   ],
-  "notes_id": 44,
+  "notes_id": 45,
   "tags": [
     {
       "tag": "Feature",

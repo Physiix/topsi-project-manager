@@ -20,14 +20,6 @@
 				<path class="icon-vs-bg" d="M1,2V14H15V2ZM14,9H2V3H14Z" fill="#fff" />
 			</svg>
 		</div>
-
-		<!-- Side -->
-		<!-- <div style="width:25px;margin-left:13px;cursor:pointer;">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" transform="rotate(90 0 0)">
-				<title>DockBottom_16x</title>
-				<path class="icon-vs-bg" d="M1,2V14H15V2ZM14,9H2V3H14Z" />
-			</svg>
-		</div> -->
 	</div>
 
 </template>
@@ -60,7 +52,7 @@ export default {
 					icon: 'search',
 					title: 'Search',
 					hint: 'Search in notes (CTRL + F)',
-					action: () => { }
+					action: () => { this.$store.commit('ToggleSearch'); }
 				},
 				{
 					icon: 'add',

@@ -9,7 +9,7 @@ class InputManager {
 				if (event.ctrlKey)
 					context.$store.commit('ToggleSearch');
 			}
-		})
+		});
 	}
 }
 

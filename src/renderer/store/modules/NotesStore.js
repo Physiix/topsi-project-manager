@@ -97,11 +97,15 @@ const mutations = {
 
 		const db = App.GetDB(state.projectId);
 
+		// Setup the notes to work with.
+		const projectNotes = db.GetAll('notes');
+		const currentNotes = projectNotes.filter(note => note.milestone_id == state.milestoneId);
+
 		// Getting the note that has been moved.
-		const note = state.notes.filter(n => n.id == SanitizeNoteId(data.note.id))[0];
+		const note = currentNotes.filter(n => n.id == SanitizeNoteId(data.note.id))[0];
 
 		// Removing the note from the last category.
-		const sourceNotes = state.notes.filter(n => n.category == note.category)
+		const sourceNotes = currentNotes.filter(n => n.category == note.category)
 		sourceNotes.splice(data.oldIndex, 1);
 
 		// Adding the note to the new category/
@@ -112,7 +116,7 @@ const mutations = {
 		if (note.category == data.tag)
 			destNotes = sourceNotes
 		else
-			destNotes = state.notes.filter(n => n.category == data.tag);
+			destNotes = currentNotes.filter(n => n.category == data.tag);
 
 		// Insert the new note in the appropriate index.
 		destNotes.splice(data.newIndex, 0, note);
@@ -123,7 +127,7 @@ const mutations = {
 		note.category = data.tag;
 
 		// Save the new order in the database.
-		db.SetValue('notes', state.notes);
+		db.SetValue('notes', projectNotes);
 
 		// Retrieve the new values as saved from the database. 
 		mutations.UpdateNotes(state, {
