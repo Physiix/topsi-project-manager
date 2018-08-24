@@ -10,6 +10,7 @@
 				<div id="editor" style="height:200px;"></div>
 			</v-card>
 			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips flat hide-details chips label="Tags?" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
+			<v-select class="px-2" auto v-bind:items="milestoneItems" v-model="milestone" label="Milestone" title="Milestone" single-line return-object required></v-select>
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
@@ -27,6 +28,8 @@ export default {
 			description: null,
 			category: null,
 			items: [],
+			milestoneItems: [],
+			milestone: null,
 			color: null,
 			tagSearch: null,
 			selectedTags: [],
@@ -57,6 +60,10 @@ export default {
 			return this.project.categories;
 		},
 
+		milestones() {
+			return this.$store.getters.GetMilestones;
+		},
+
 		tagItems() {
 			return this.$store.getters.getProjectTags.map(tag => tag.tag);
 		},
@@ -85,6 +92,7 @@ export default {
 				description: document.getElementsByClassName("ql-editor")[0].innerHTML,
 				category: this.category.tag,
 				color: this.color,
+				milestone_id: this.milestone.id,
 				tags: tags
 			});
 
@@ -129,12 +137,15 @@ export default {
 		// Setup the categories
 		this.categories.forEach(category => this.items.push({ text: category.title, tag: category.tag }))
 
+		// Setup the milestones
+		this.milestones.forEach(milestone => this.milestoneItems.push({ text: milestone.title, id: milestone.id }))
+
 		// Populate the content
 		this.title = this.note.title;
 		document.getElementsByClassName("ql-editor")[0].innerHTML = this.note.description;
 		this.category = this.items.filter(i => i.tag == this.note.category)[0];
 		this.color = this.note.color;
-
+		this.milestone = this.milestoneItems.filter(m => m.id == this.note.milestone_id)[0];
 		this.note.tags.forEach(entry => this.selectedTags.push(entry.tag))
 	}
 }

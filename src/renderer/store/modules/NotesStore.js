@@ -150,7 +150,7 @@ const mutations = {
 	 */
 	UpdateNote(state, data) {
 		// Make sure the note's data is valid.
-		if (data.id == null || data.project_id == null || data.title == null || data.description == null || data.category == null)
+		if (data.id == null || data.project_id == null || data.title == null || data.description == null || data.category == null || data.milestone_id == null)
 			throw new Error("Cannot update a note with invalid data ", data);
 
 		// Update the timestamp

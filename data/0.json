@@ -21,7 +21,7 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535116958127,
+    "timestamp": 1535121990320,
     "opened_milestone_id": 0
   },
   "timelines": [
@@ -712,9 +712,34 @@
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840,
       "tags": []
+    },
+    {
+      "id": 42,
+      "project_id": 0,
+      "title": "Select a milestone for a note",
+      "description": "<p>When <strong>creating</strong> or <strong>updating</strong> a note, the user should be able to chose to which <strong style=\"color: rgb(230, 0, 0);\">milestone</strong> it should be added.</p>",
+      "category": "in_progress",
+      "color": "",
+      "milestone_id": 0,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "Enhancement",
+          "color": "orange black--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        }
+      ],
+      "order": 0,
+      "timestamp": 1535121340205
     }
   ],
-  "notes_id": 42,
+  "notes_id": 44,
   "tags": [
     {
       "tag": "Feature",

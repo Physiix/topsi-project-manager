@@ -42,7 +42,6 @@ const mutations = {
 		const projectDB = App.GetDB(data.projectId);
 		// Create the new milestone object
 		const milestone = new Milestone(projectDB.GetId('milestones_id'), data.name);
-		console.log(milestone)
 
 		// Store the new milestone object in the database.
 		projectDB.Write('milestones', milestone);
