@@ -2,8 +2,10 @@
 	<div>
 		<Tooltip top content="Add a new tag">
 			<v-list-tile id="tags-button" @click="">
-				<v-list-tile-action style="margin-left:-6px;">
-					TAGS
+				<v-list-tile-action>
+					<v-icon>
+						fa-tags
+					</v-icon>
 				</v-list-tile-action>
 			</v-list-tile>
 		</Tooltip>

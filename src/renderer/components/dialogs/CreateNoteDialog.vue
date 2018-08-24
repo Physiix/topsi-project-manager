@@ -12,6 +12,7 @@
 				</div>
 			</v-card>
 			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips flat hide-details chips label="Tags?" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
+			<v-select class="px-2" auto v-bind:items="milestoneItems" v-model="milestone" label="Milestone" title="Milestone" single-line return-object required></v-select>
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
@@ -29,6 +30,8 @@ export default {
 			description: null,
 			category: { text: 'TODO', tag: 'todo' },
 			items: [],
+			milestoneItems: [],
+			milestone: null,
 			color: '',
 			tagSearch: null,
 			selectedTags: [],
@@ -52,6 +55,10 @@ export default {
 
 		categories() {
 			return this.project.categories;
+		},
+
+		milestones() {
+			return this.$store.getters.GetMilestones;
 		},
 
 		tagItems() {
@@ -127,6 +134,10 @@ export default {
 		// Setup the categories
 		this.categories.forEach(category => this.items.push({ text: category.title, tag: category.tag }))
 		this.category = this.items[0];
+
+		// Setup the milestones
+		this.milestones.forEach(milestone => this.milestoneItems.push({ text: `Milestone: ${milestone.title}`, id: milestone.id }))
+		this.milestone = this.milestoneItems.filter(m => m.id == this.project.opened_milestone_id)[0];
 	}
 }
 </script>

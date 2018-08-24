@@ -69,13 +69,13 @@ export default {
 					action: () => this.$store.commit('CreateNoteDialog')
 				},
 				{
-					icon: 'edit',
+					icon: 'fa-edit',
 					title: 'Edit Project',
 					hint: 'Edit Project',
 					action: () => this.$store.commit('ToggleUpdateProject')
 				},
 				{
-					icon: 'reorder',
+					icon: 'fa-list-ol',
 					title: 'Milestones',
 					hint: 'Milestones',
 					action: () => this.$store.commit('ToggleMilestonesList')

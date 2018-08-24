@@ -138,7 +138,7 @@ export default {
 		this.categories.forEach(category => this.items.push({ text: category.title, tag: category.tag }))
 
 		// Setup the milestones
-		this.milestones.forEach(milestone => this.milestoneItems.push({ text: milestone.title, id: milestone.id }))
+		this.milestones.forEach(milestone => this.milestoneItems.push({ text: `Milestone: ${milestone.title}`, id: milestone.id }))
 
 		// Populate the content
 		this.title = this.note.title;
