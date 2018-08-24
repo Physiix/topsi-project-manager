@@ -31,7 +31,7 @@ It's free and Open Source under the AGPL V3 Clause.
 ![export](https://user-images.githubusercontent.com/2964165/44611163-b87af400-a7cd-11e8-8364-1424e3d24682.png)
 
 ### Dark mode & Customization (WIP, more customizations are coming)
-![customization](https://user-images.githubusercontent.com/2964165/44611545-aac66e00-a7cf-11e8-8de5-83e888181712.gif)
+![customizationv2](https://user-images.githubusercontent.com/2964165/44612138-e95e2780-a7d3-11e8-84b5-96533faf9888.gif)
 
 ### 100% Free and Open Source
 
