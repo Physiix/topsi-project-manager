@@ -8,6 +8,15 @@ class InputManager {
 			if (event.key === 'f') {
 				if (event.ctrlKey)
 					context.$store.commit('ToggleSearch');
+			} else if (event.key === 'd') {
+				if (event.ctrlKey)
+					context.$store.commit('ToggleShowHelper');
+			} else if (event.key === 'l') {
+				if (event.ctrlKey)
+					context.$store.commit('ToggleMilestonesList');
+			} else if (event.key === 'n') {
+				if (event.ctrlKey)
+					context.$store.commit('CreateNoteDialog');
 			}
 		});
 	}

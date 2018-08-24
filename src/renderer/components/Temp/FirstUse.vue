@@ -7,6 +7,7 @@
 				</v-card-title>
 
 				<v-card-text class="text-xs-center">
+					<strong>Press CTRL+D at any time to display the help page.</strong>
 					Since this is the first time you're using this application, please setup the next default values to be used by the application. <br/> <br/> All the settings can be
 					<strong>modified </strong> at any time.
 				</v-card-text>

@@ -5,6 +5,7 @@
 		</div>
 		<div id="content">
 			<SearchBar v-if="showSearch" />
+			<Helper v-if="showHelper" />
 			<FirstUse v-if="firstTimeUse"></FirstUse>
 			<Projects v-else-if="displayProjects" />
 			<Notes v-else/>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import Helper from './Helper.vue'
 import { AppManager } from '../../core/ApplicationManager'
 import { Inputs } from '../../core/InputManager'
 
@@ -34,7 +36,8 @@ export default {
 		Projects,
 		Notes,
 		Drawer,
-		SearchBar
+		SearchBar,
+		Helper
 	},
 	computed: {
 		displayProjects() {
@@ -47,6 +50,10 @@ export default {
 
 		showSearch() {
 			return this.$store.getters.isShowSearch;
+		},
+
+		showHelper() {
+			return this.$store.getters.isShowHelper;
 		}
 	},
 	methods: {

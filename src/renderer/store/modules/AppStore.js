@@ -51,6 +51,9 @@ const state = {
 
 	// Search content
 	searchContent: '',
+
+	// Flag set to true to show the helper page.
+	showHelper: false,
 }
 
 const mutations = {
@@ -164,6 +167,11 @@ const mutations = {
 
 	ToggleMilestonesList(state, value) {
 		state.dialogs.milestonesList = value || !state.dialogs.milestonesList;
+	},
+
+	ToggleShowHelper(state, value) {
+		if (value != null) state.showHelper = value;
+		else state.showHelper = !state.showHelper;
 	}
 }
 
@@ -227,6 +235,10 @@ const getters = {
 
 	getCurrentMilestoneId(state) {
 		return state.currentMilestoneId;
+	},
+
+	isShowHelper(state) {
+		return state.showHelper;
 	}
 }
 

@@ -10,7 +10,8 @@
 					</v-list-tile>
 				</Tooltip>
 			</div>
-			<MilestonesSettings />
+			<!-- Note yet ready	 -->
+			<!-- <MilestonesSettings /> -->
 			<TagsSettings />
 			<v-divider></v-divider>
 		</v-list>
