@@ -38,7 +38,6 @@ export default {
 		const container = this.$refs.container;
 		const bg = this.$refs.search;
 		const card = this.$refs.card.$el;
-		const titlebar = 30;
 
 		container.style.position = 'fixed';
 		container.style.zIndex = 5;

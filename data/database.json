@@ -64,10 +64,10 @@
     }
   ],
   "current_project_id": 0,
-  "window_width": 1196,
-  "window_height": 652,
+  "window_width": 1237,
+  "window_height": 757,
   "application_color": "blue white--text",
   "first_time_use": false,
   "default_databases_folder": "",
-  "isMac": true
+  "isMac": false
 }
