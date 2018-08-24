@@ -3,7 +3,7 @@
 		<v-dialog v-model="dialog" width="600" persistent>
 			<v-card>
 				<v-card-title class="headline justify-center" dark primary-title>
-					Welcome to Project Manager
+					Welcome to Topsi Project Manager
 				</v-card-title>
 
 				<v-card-text class="text-xs-center">
@@ -43,11 +43,6 @@ export default {
 			dialog: true,
 		}
 	},
-	computed: {
-		folderExists() {
-			return fs.existsSync(this.defaultFolder);
-		}
-	},
 	methods: {
 		SelectColor(color) {
 			this.$store.commit('SetAppColor', color);
@@ -68,7 +63,6 @@ export default {
 		},
 
 		Done() {
-			if (!this.folderExists) return;
 			this.$store.commit('SetupApplication', {
 				defaultFolder: this.defaultFolder,
 			});

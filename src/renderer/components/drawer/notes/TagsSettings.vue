@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Tooltip top content="Add a new tag">
+		<Tooltip top content="Tags">
 			<v-list-tile id="tags-button" @click="">
 				<v-list-tile-action>
 					<v-icon style="margin-left:-2px">

@@ -23,7 +23,6 @@ export default {
 				'blue white--text',
 				'orange black--text',
 				'green white--text',
-				'green white--text',
 				'purple white--text',
 				'indigo white--text',
 				'pink white--text',

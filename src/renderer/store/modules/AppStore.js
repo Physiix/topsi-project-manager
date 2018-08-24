@@ -35,7 +35,7 @@ const state = {
 	drawerWidth: 200,
 
 	// Whether dark mode is enabled or not.
-	darkMode: App.GetAppDB().GetValue('dark_mode', true),
+	darkMode: App.GetAppDB().GetValue('dark_mode', false),
 
 	// Base color of the application.
 	baseColor: App.GetAppDB().GetValue('application_color', 'indigo'),
@@ -176,7 +176,7 @@ const mutations = {
 }
 
 const getters = {
-	isMac(){
+	isMac() {
 		return App.GetAppDB().GetValue('isMac', false);
 	},
 

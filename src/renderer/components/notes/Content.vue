@@ -14,19 +14,8 @@
 							unfold_less
 						</v-icon>
 					</v-btn>
-					<v-spacer></v-spacer>
-					<div class="content-category-icon">
-						<v-btn :id="'btn-category-'+category.tag" icon fab small>
-							<v-icon>
-								settings
-							</v-icon>
-						</v-btn>
-					</div>
 				</v-toolbar>
 			</div>
-			<FloatingDiv :activator-id="'btn-category-'+category.tag" top width="200">
-				<v-toolbar></v-toolbar>
-			</FloatingDiv>
 		</div>
 		<div class="bottom" :id="id">
 			<Note v-for="(note) in notes" :key="note.id" :note="note" class="mx-4" />

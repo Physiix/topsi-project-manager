@@ -55,7 +55,7 @@ const mutations = {
 		project.customPath = data.customPath || App.GetAppDB().GetValue('default_databases_folder');
 
 		// Create the database for the project.
-		project.id = App.CreateDB();
+		project.id = App.CreateDB(data.customPath);
 
 		const appDB = App.GetAppDB();
 		// Store the project in the database.

@@ -43,12 +43,13 @@ class Application {
 
 	/**
 	 * Create a new Database for a project.
+	 * @param path Path where to store the database.
 	 * @return ID of the project to create the Database for.
 	 */
-	CreateDB() {
+	CreateDB(path) {
 		const id = this.appDB.GetId('projects_id');
 		const dbName = id + EXTENSION;
-		this.databases[dbName] = new DBUtils(dbName);
+		this.databases[dbName] = new DBUtils(dbName, path);
 		return id;
 	}
 }

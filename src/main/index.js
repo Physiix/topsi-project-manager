@@ -35,6 +35,7 @@ function createWindow() {
 		height: appDB.GetValue('window_height', 600),
 		useContentSize: true,
 		frame: isMac,
+		title: 'Topsi Project Manager'
 	})
 
 	// Disable the default menu

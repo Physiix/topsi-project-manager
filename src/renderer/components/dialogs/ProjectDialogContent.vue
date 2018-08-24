@@ -26,7 +26,7 @@
 					<v-card class="ma-3 elevation-0 px-5 transparent">
 						<v-toolbar :color="color" class="darken-2 white--text elevation-3" dense height="10" style="font-size:8px;">
 							<v-spacer></v-spacer>
-							Project Manager
+							Topsi Project Manager
 							<v-spacer></v-spacer>
 						</v-toolbar>
 						<v-layout row class="white py-0 elevation-2">
