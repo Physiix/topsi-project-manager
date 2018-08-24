@@ -21,7 +21,7 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535129467121,
+    "timestamp": 1535137213438,
     "opened_milestone_id": 1
   },
   "timelines": [
@@ -798,9 +798,35 @@
       ],
       "order": 2,
       "timestamp": 1535126607180
+    },
+    {
+      "id": 47,
+      "project_id": 0,
+      "title": "Create a website",
+      "description": "<p>Create a simple website to showcase the Project Manager project.</p>",
+      "category": "in_progress",
+      "color": "",
+      "milestone_id": 1,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "Website",
+          "color": "teal white--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        }
+      ],
+      "order": 0,
+      "timestamp": 1535137307145,
+      "updated_timestamp": 1535137307145
     }
   ],
-  "notes_id": 47,
+  "notes_id": 48,
   "tags": [
     {
       "tag": "Feature",
@@ -829,6 +855,10 @@
     {
       "tag": "URGENT",
       "color": "indigo white--text"
+    },
+    {
+      "tag": "Website",
+      "color": "teal white--text"
     }
   ],
   "milestones_id": 2,

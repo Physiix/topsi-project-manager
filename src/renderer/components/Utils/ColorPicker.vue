@@ -108,7 +108,7 @@ export default {
 	margin: 0;
 	margin-bottom: 10px;
 	border-radius: 0;
-	font-size: 8px;
+	font-size: 5px;
 }
 
 .color-picker{
