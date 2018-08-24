@@ -134,6 +134,22 @@ const mutations = {
 		db.SetValue('tags', tags);
 	},
 
+	RemoveTag(state, tag) {
+		if (tag == null || tag.tag.length <= 0) Notifications.Error('RemoveTag', `tag "${tag}" is invalid`);
+		if (state.openedProjectId < 0) Notifications.Error('RemoveTag', 'A project must be opened to add a tag');
+		const db = App.GetDB(state.openedProjectId);
+		let tags = db.GetValue('tags', []);
+		let index = -1;
+		for (let i = 0; i < tags.length; i++)
+			if (tags[i].tag == tag.tag) {
+				index = i;
+				break;
+			}
+		if (index == -1) Notifications.Error('RemoveTag', 'Could not find tag ' + tag);
+		tags.splice(index, 1);
+		db.SetValue('tags', tags);
+	},
+
 	ToggleSearch(state) {
 		state.showSearch = !state.showSearch;
 	},

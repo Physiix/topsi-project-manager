@@ -16,10 +16,11 @@
 			</v-toolbar>
 			<ColorPicker width="500" padding="20" v-model="color"></ColorPicker>
 			<v-card-title v-if="tag.length > 0" class="justify-center">
-				<v-chip small :class="color">{{tag}}</v-chip>
+				<v-chip small label :class="color">{{tag}}</v-chip>
 			</v-card-title>
 			<v-container>
-				<v-chip v-for="(entry, index) in tags" :key="index" small :class="entry.color">{{entry.tag}}</v-chip>
+				<div v-if="tags.length < 0"> No tags created yet. </div>
+				<v-chip label v-for="(entry, index) in tags" :key="index" small :class="entry.color" close v-on:input="test(index)">{{entry.tag}}</v-chip>
 			</v-container>
 		</FloatingDiv>
 	</div>
@@ -31,24 +32,33 @@ export default {
 	data() {
 		return {
 			tag: '',
-			color: ''
-		}
-	},
-	computed: {
-		tags() {
-			return this.$store.getters.getProjectTags;
+			color: '',
+			tags: []
 		}
 	},
 	methods: {
+		test(index) {
+			console.log(this.tags[index])
+			this.$store.commit('RemoveTag', this.tags[index]);
+			this.UpdateTags();
+		},
 		AddTag() {
 			this.$store.commit('AddTag', {
 				tag: this.tag,
 				color: this.color
 			});
+			this.UpdateTags();
 			this.tag = '';
 			this.color = ''
+		},
+
+		UpdateTags() {
+			this.tags = this.$store.getters.getProjectTags;
 		}
 	},
+	mounted() {
+		this.UpdateTags();
+	}
 }
 </script>
 

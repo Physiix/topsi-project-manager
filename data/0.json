@@ -777,9 +777,30 @@
       ],
       "order": 0,
       "timestamp": 1535124382899
+    },
+    {
+      "id": 46,
+      "project_id": 0,
+      "title": "Remove tags",
+      "description": "<p>Let the user delete any <strong>tags</strong>.</p>",
+      "category": "done",
+      "color": "",
+      "milestone_id": 1,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        }
+      ],
+      "order": 1,
+      "timestamp": 1535126607180
     }
   ],
-  "notes_id": 46,
+  "notes_id": 47,
   "tags": [
     {
       "tag": "Feature",
