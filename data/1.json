@@ -1,49 +1,62 @@
 {
-	"info": {
-		"id": 1,
-		"title": "Test",
-		"description": "<p>Test project.</p>",
-		"categories": [{
-				"tag": "todo",
-				"title": "TODO",
-				"folded": false
-			},
-			{
-				"tag": "in_progress",
-				"title": "In Progress",
-				"folded": false
-			},
-			{
-				"tag": "done",
-				"title": "Done",
-				"folded": false
-			},
-			{
-				"tag": "archives",
-				"title": "Archives",
-				"folded": false
-			}
-		],
-		"customPath": "",
-		"timestamp": 1535037210760,
-		"opened_milestone_id": 0
-	},
-	"timelines": [{
-		"id": 0,
-		"title": "Default",
-		"timestamp": 1534689479193
-	}],
-	"notes": [{
-		"id": 2,
-		"project_id": 1,
-		"title": "fsdf",
-		"description": "<p>sdfsdf</p>",
-		"category": "todo",
-		"color": "",
-		"timeline_id": 0,
-		"order": 0,
-		"timestamp": 1534689761860
-	}],
-	"notes_id": 3,
-	"tags": []
+  "info": {
+    "id": 1,
+    "title": "Test",
+    "description": "<p>Test project.</p>",
+    "categories": [
+      {
+        "tag": "todo",
+        "title": "TODO",
+        "folded": false
+      },
+      {
+        "tag": "in_progress",
+        "title": "In Progress",
+        "folded": false
+      },
+      {
+        "tag": "done",
+        "title": "Done",
+        "folded": false
+      },
+      {
+        "tag": "archives",
+        "title": "Archives",
+        "folded": false
+      }
+    ],
+    "customPath": "",
+    "timestamp": 1535037210760,
+    "opened_milestone_id": 0
+  },
+  "timelines": [
+    {
+      "id": 0,
+      "title": "Default",
+      "timestamp": 1534689479193
+    }
+  ],
+  "notes": [
+    {
+      "id": 2,
+      "project_id": 1,
+      "title": "fsdf",
+      "description": "<p>sdfsdf</p>",
+      "category": "todo",
+      "color": "",
+      "timeline_id": 0,
+      "order": 0,
+      "timestamp": 1534689761860
+    }
+  ],
+  "notes_id": 3,
+  "tags": [],
+  "milestones_id": 1,
+  "milestones": [
+    {
+      "id": 0,
+      "title": "Default",
+      "timestamp": 1535116415883
+    }
+  ]
 }

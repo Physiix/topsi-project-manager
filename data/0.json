@@ -21,8 +21,8 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535115700040,
-    "opened_milestone_id": 1
+    "timestamp": 1535116958127,
+    "opened_milestone_id": 0
   },
   "timelines": [
     {
@@ -55,6 +55,27 @@
       "updated_timestamp": 1534807381084
     },
     {
+      "id": 37,
+      "project_id": 0,
+      "title": "Max Height isn't set correctly for dialogs.",
+      "description": "<p>Max height doesn't seem to be working.</p>",
+      "category": "done",
+      "color": "",
+      "milestone_id": 0,
+      "tags": [
+        {
+          "tag": "BUG",
+          "color": "red white--text"
+        },
+        {
+          "tag": "URGENT",
+          "color": "indigo white--text"
+        }
+      ],
+      "order": 1,
+      "timestamp": 1535048481676
+    },
+    {
       "id": 26,
       "project_id": 0,
       "title": "Update categories.",
@@ -62,7 +83,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 1,
+      "order": 2,
       "timestamp": 1535035574846,
       "tags": [
         {
@@ -83,27 +104,6 @@
         }
       ],
       "updated_timestamp": 1535035574846
-    },
-    {
-      "id": 35,
-      "project_id": 0,
-      "title": "Update project's UI",
-      "description": "<p><br></p>",
-      "category": "done",
-      "color": "",
-      "milestone_id": 0,
-      "tags": [
-        {
-          "tag": "UI",
-          "color": "pink white--text"
-        },
-        {
-          "tag": "Enhancement",
-          "color": "orange black--text"
-        }
-      ],
-      "order": 2,
-      "timestamp": 1534984652819
     },
     {
       "id": 21,
@@ -128,10 +128,10 @@
       "project_id": 0,
       "title": "Milestones",
       "description": "<p>Add support for timelines.</p><p>a <strong>milestone</strong> store notes for the same project, and a project can have multiple <strong>milestones</strong>.</p>",
-      "category": "in_progress",
+      "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 1,
+      "order": 0,
       "timestamp": 1535115207196,
       "tags": [
         {
@@ -158,43 +158,25 @@
       "updated_timestamp": 1535115207196
     },
     {
-      "id": 37,
+      "id": 35,
       "project_id": 0,
-      "title": "Max Height isn't set correctly for dialogs.",
-      "description": "<p>Max height doesn't seem to be working.</p>",
+      "title": "Update project's UI",
+      "description": "<p><br></p>",
       "category": "done",
       "color": "",
       "milestone_id": 0,
       "tags": [
         {
-          "tag": "BUG",
-          "color": "red white--text"
+          "tag": "UI",
+          "color": "pink white--text"
         },
         {
-          "tag": "URGENT",
-          "color": "indigo white--text"
+          "tag": "Enhancement",
+          "color": "orange black--text"
         }
       ],
-      "order": 0,
-      "timestamp": 1535048481676
-    },
-    {
-      "id": 25,
-      "project_id": 0,
-      "title": "Custom path for a project",
-      "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
-      "category": "done",
-      "color": "",
-      "milestone_id": 0,
       "order": 3,
-      "timestamp": 1534980353366,
-      "tags": [
-        {
-          "tag": "Feature",
-          "color": "blue white--text"
-        }
-      ],
-      "updated_timestamp": 1534980353366
+      "timestamp": 1534984652819
     },
     {
       "id": 23,
@@ -219,26 +201,22 @@
       ]
     },
     {
-      "id": 27,
+      "id": 25,
       "project_id": 0,
-      "title": "Fold categoy",
-      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
+      "title": "Custom path for a project",
+      "description": "<p>A project can be <strong>saved</strong> in a <strong style=\"color: rgb(107, 36, 178);\">custom</strong> location. </p><p>It can be usefull if we want to save it inside a git project for example.</p>",
       "category": "done",
-      "color": "blue white--text",
+      "color": "",
       "milestone_id": 0,
       "order": 4,
-      "timestamp": 1534959543719,
-      "updated_timestamp": 1534959543719,
+      "timestamp": 1534980353366,
       "tags": [
         {
           "tag": "Feature",
           "color": "blue white--text"
-        },
-        {
-          "tag": "UI",
-          "color": "pink white--text"
         }
-      ]
+      ],
+      "updated_timestamp": 1534980353366
     },
     {
       "id": 10,
@@ -267,34 +245,26 @@
       "updated_timestamp": 1534864511301
     },
     {
-      "id": 7,
+      "id": 27,
       "project_id": 0,
-      "title": "Search bar",
-      "description": "<p>With this feature, a search bar would be added, and the user could search <strong style=\"color: rgb(230, 0, 0);\">notes</strong><strong> </strong>or <strong style=\"color: rgb(0, 102, 204);\">projects</strong><strong>.</strong></p>",
+      "title": "Fold categoy",
+      "description": "<p>MWith this feature, the user could fold a category, and it will be displayed on the right.</p>",
       "category": "done",
-      "color": "",
+      "color": "blue white--text",
       "milestone_id": 0,
       "order": 5,
-      "timestamp": 1534807571681,
+      "timestamp": 1534959543719,
+      "updated_timestamp": 1534959543719,
       "tags": [
         {
           "tag": "Feature",
           "color": "blue white--text"
         },
         {
-          "tag": "Test",
-          "color": "purple white--text"
-        },
-        {
-          "tag": "BUG",
-          "color": "red white--text"
-        },
-        {
-          "tag": "EARLY",
-          "color": "green white--text"
+          "tag": "UI",
+          "color": "pink white--text"
         }
-      ],
-      "updated_timestamp": 1534807571681
+      ]
     },
     {
       "id": 29,
@@ -319,25 +289,34 @@
       "updated_timestamp": 1534807583775
     },
     {
-      "id": 34,
+      "id": 7,
       "project_id": 0,
-      "title": "Better looking project creation/update",
-      "description": "<p>The current UI to create or update categories for a project needs some work.</p>",
+      "title": "Search bar",
+      "description": "<p>With this feature, a search bar would be added, and the user could search <strong style=\"color: rgb(230, 0, 0);\">notes</strong><strong> </strong>or <strong style=\"color: rgb(0, 102, 204);\">projects</strong><strong>.</strong></p>",
       "category": "done",
       "color": "",
       "milestone_id": 0,
+      "order": 6,
+      "timestamp": 1534807571681,
       "tags": [
         {
-          "tag": "UI",
-          "color": "pink white--text"
+          "tag": "Feature",
+          "color": "blue white--text"
         },
         {
-          "tag": "Enhancement",
-          "color": "orange black--text"
+          "tag": "Test",
+          "color": "purple white--text"
+        },
+        {
+          "tag": "BUG",
+          "color": "red white--text"
+        },
+        {
+          "tag": "EARLY",
+          "color": "green white--text"
         }
       ],
-      "order": 6,
-      "timestamp": 1534944578252
+      "updated_timestamp": 1534807571681
     },
     {
       "id": 28,
@@ -358,30 +337,25 @@
       "updated_timestamp": 1534944618892
     },
     {
-      "id": 31,
+      "id": 34,
       "project_id": 0,
-      "title": "Edit Mode",
-      "description": "<p>When the <strong>edit mode </strong>is enabled for a project, the user will have controls to update the <strong>notes </strong>and <strong>categories. </strong>This include the ability to modify them.</p>",
+      "title": "Better looking project creation/update",
+      "description": "<p>The current UI to create or update categories for a project needs some work.</p>",
       "category": "done",
       "color": "",
       "milestone_id": 0,
       "tags": [
         {
-          "tag": "Feature",
-          "color": "blue white--text"
-        },
-        {
           "tag": "UI",
           "color": "pink white--text"
         },
         {
-          "tag": "URGENT",
-          "color": "indigo white--text"
+          "tag": "Enhancement",
+          "color": "orange black--text"
         }
       ],
       "order": 7,
-      "timestamp": 1534943550060,
-      "updated_timestamp": 1534943550060
+      "timestamp": 1534944578252
     },
     {
       "id": 30,
@@ -410,26 +384,30 @@
       "updated_timestamp": 1534807819740
     },
     {
-      "id": 33,
+      "id": 31,
       "project_id": 0,
-      "title": "Tags in notes change color depending on the note's color.",
-      "description": "<p>If the note has tags with the same color as its own, the tags change color.</p>",
+      "title": "Edit Mode",
+      "description": "<p>When the <strong>edit mode </strong>is enabled for a project, the user will have controls to update the <strong>notes </strong>and <strong>categories. </strong>This include the ability to modify them.</p>",
       "category": "done",
       "color": "",
       "milestone_id": 0,
       "tags": [
         {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
           "tag": "UI",
           "color": "pink white--text"
         },
         {
-          "tag": "Enhancement",
-          "color": "orange black--text"
+          "tag": "URGENT",
+          "color": "indigo white--text"
         }
       ],
       "order": 8,
-      "timestamp": 1534943723208,
-      "updated_timestamp": 1534943723208
+      "timestamp": 1534943550060,
+      "updated_timestamp": 1534943550060
     },
     {
       "id": 32,
@@ -453,34 +431,26 @@
       "timestamp": 1534885524857
     },
     {
-      "id": 17,
+      "id": 33,
       "project_id": 0,
-      "title": "Tags",
-      "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user could look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
+      "title": "Tags in notes change color depending on the note's color.",
+      "description": "<p>If the note has tags with the same color as its own, the tags change color.</p>",
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 9,
-      "timestamp": 1534807849342,
-      "updated_timestamp": 1534807849342,
       "tags": [
         {
-          "tag": "Feature",
-          "color": "blue white--text"
+          "tag": "UI",
+          "color": "pink white--text"
         },
         {
           "tag": "Enhancement",
           "color": "orange black--text"
-        },
-        {
-          "tag": "Test",
-          "color": "purple white--text"
-        },
-        {
-          "tag": "EARLY",
-          "color": "green white--text"
         }
-      ]
+      ],
+      "order": 9,
+      "timestamp": 1534943723208,
+      "updated_timestamp": 1534943723208
     },
     {
       "id": 36,
@@ -508,6 +478,36 @@
       "timestamp": 1535042978257
     },
     {
+      "id": 17,
+      "project_id": 0,
+      "title": "Tags",
+      "description": "<p>Each note can hold a set of tags.</p><p>A <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong> </strong>has a title and a color.</p><p>When the search bar is implemented, the user could look up for notes with a <strong style=\"color: rgb(0, 102, 204);\">tag</strong><strong>.</strong></p>",
+      "category": "done",
+      "color": "",
+      "milestone_id": 0,
+      "order": 10,
+      "timestamp": 1534807849342,
+      "updated_timestamp": 1534807849342,
+      "tags": [
+        {
+          "tag": "Feature",
+          "color": "blue white--text"
+        },
+        {
+          "tag": "Enhancement",
+          "color": "orange black--text"
+        },
+        {
+          "tag": "Test",
+          "color": "purple white--text"
+        },
+        {
+          "tag": "EARLY",
+          "color": "green white--text"
+        }
+      ]
+    },
+    {
       "id": 22,
       "project_id": 0,
       "title": "First time use.",
@@ -515,7 +515,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 10,
+      "order": 11,
       "timestamp": 1534807321557,
       "updated_timestamp": 1534807321557,
       "tags": [
@@ -533,7 +533,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 11,
+      "order": 12,
       "timestamp": 1534691012910,
       "updated_timestamp": 1534691012910,
       "tags": []
@@ -546,7 +546,7 @@
       "category": "done",
       "color": "green white--text",
       "milestone_id": 0,
-      "order": 12,
+      "order": 13,
       "timestamp": 1534621905197,
       "updated_timestamp": 1534621905197,
       "tags": []
@@ -559,7 +559,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 13,
+      "order": 14,
       "timestamp": 1534883303619,
       "updated_timestamp": 1534883303619,
       "tags": [
@@ -577,7 +577,7 @@
       "category": "done",
       "color": "indigo white--text",
       "milestone_id": 0,
-      "order": 14,
+      "order": 15,
       "timestamp": 1534807865477,
       "tags": [
         {
@@ -595,7 +595,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 15,
+      "order": 16,
       "timestamp": 1534883316035,
       "tags": [
         {
@@ -613,7 +613,7 @@
       "category": "done",
       "color": "indigo white--text",
       "milestone_id": 0,
-      "order": 16,
+      "order": 17,
       "timestamp": 1534883334035,
       "updated_timestamp": 1534883334035,
       "tags": [
@@ -635,7 +635,7 @@
       "category": "done",
       "color": "default",
       "milestone_id": 0,
-      "order": 17,
+      "order": 18,
       "timestamp": 1534883323753,
       "updated_timestamp": 1534883323753,
       "tags": [
@@ -657,7 +657,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 18,
+      "order": 19,
       "timestamp": 1534883357893,
       "tags": [
         {
@@ -683,7 +683,7 @@
       "category": "done",
       "color": "default",
       "milestone_id": 0,
-      "order": 19,
+      "order": 20,
       "timestamp": 1534446849627,
       "updated_timestamp": 1534446849627,
       "tags": []
@@ -696,7 +696,7 @@
       "category": "done",
       "color": "",
       "milestone_id": 0,
-      "order": 20,
+      "order": 21,
       "timestamp": 1534432424724,
       "tags": []
     },
@@ -708,7 +708,7 @@
       "category": "done",
       "color": "default",
       "milestone_id": 0,
-      "order": 21,
+      "order": 22,
       "timestamp": 1534446758841,
       "updated_timestamp": 1534446758840,
       "tags": []

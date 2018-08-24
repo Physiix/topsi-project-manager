@@ -88,16 +88,6 @@
 							</v-tab-item>
 						</v-tabs-items>
 					</v-tabs>
-					<!-- <div v-for="i in 2" :key="i">
-						<v-btn :ripple="false" color="primary" class="milestone-btn elevation-0" fab>
-							<div style="font-size:8px;">
-								Milestone {{i}}
-							</div>
-						</v-btn>
-					</div>
-					<v-btn fab class="milestone-btn elevation-0" :ripple=false color="transparent">
-						<v-icon>add</v-icon>
-					</v-btn> -->
 				</div>
 			</div>
 		</FloatingDiv>
@@ -107,15 +97,10 @@
 
 export default {
 	name: 'MilestonesSettings',
-	components: {
-
-	},
-	props: {
-
-	},
 	data() {
 		return {
 			title: 'Milestone',
+			finishingCategory: '',
 			selected: [2],
 			notes: {
 				all: [],
@@ -127,12 +112,19 @@ export default {
 			selectedId: 1
 		}
 	},
+	computed: {
+		milestoneId() {
+			return this.$store.getters.getCurrentMilestoneId;
+		}
+	},
 	watch: {
 		title(value) {
 			console.log(value)
+		},
+
+		milestoneId(value) {
+			this.Update();
 		}
-	},
-	computed: {
 	},
 	methods: {
 		notesDoneRatio() {
@@ -141,7 +133,6 @@ export default {
 		},
 
 		getNotes() {
-			const timelineId = this.$store.state.AppStore.currentTimelineId;
 			return this.$store.getters.GetNotes;
 		},
 
@@ -152,8 +143,6 @@ export default {
 		Open() {
 			const container = document.getElementById('milestone-container');
 			const list = document.getElementById('milestone-list');
-			const content = document.getElementById('milestone-content');
-			const side = document.getElementById('milestone-side');
 
 			let value = 0;
 			const openId = setInterval(() => {
@@ -171,8 +160,6 @@ export default {
 		Close() {
 			const container = document.getElementById('milestone-container');
 			const list = document.getElementById('milestone-list');
-			const content = document.getElementById('milestone-content');
-			const side = document.getElementById('milestone-side');
 			list.style.overflowX = 'hidden';
 
 			let value = this.listHeight;
@@ -190,21 +177,24 @@ export default {
 		Base() {
 			const container = document.getElementById('milestone-container');
 			const list = document.getElementById('milestone-list');
-			const content = document.getElementById('milestone-content');
-			const side = document.getElementById('milestone-side');
 
 			container.style.height = '500px';
 			container.style.gridTemplateRows = '0fr 1fr 3fr';
 			list.style.overflowX = 'hidden';
 			this.listOpened = false;
+		},
+
+		Update() {
+			const categories = this.$store.getters.getCurrentProject(this).categories;
+			this.finishingCategory = categories[categories.length - 1].tag;
+			this.notes.all = this.getNotes();
+			this.notes.done = this.notes.all.filter(n => n.category == this.finishingCategory);
+			this.notes.todo = this.notes.all.filter(n => n.category != this.finishingCategory);
 		}
 	},
 	mounted() {
 		this.Base();
-
-		this.notes.all = this.getNotes();
-		this.notes.done = this.notes.all.filter(n => n.category == 'done');
-		this.notes.todo = this.notes.all.filter(n => n.category != 'done');
+		this.Update();
 	}
 }
 </script>
