@@ -21,7 +21,7 @@
       }
     ],
     "customPath": "",
-    "timestamp": 1535123745707,
+    "timestamp": 1535123923581,
     "opened_milestone_id": 1
   },
   "timelines": [
@@ -112,16 +112,16 @@
       "description": "<p>With this feature, the user could update a note by adding a <strong style=\"color: rgb(0, 138, 0);\">comment</strong> to it.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "order": 1,
-      "timestamp": 1534807492474,
+      "timestamp": 1535123878293,
       "tags": [
         {
           "tag": "Feature",
           "color": "blue white--text"
         }
       ],
-      "updated_timestamp": 1534807492474
+      "updated_timestamp": 1535123878293
     },
     {
       "id": 3,
@@ -185,10 +185,10 @@
       "description": "<p>With this feature, if there is a problem projects (like assignation id etc.), the user could repair the dependencies.</p><p>Under the hood, the application will re-assign all the ids and their project.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "order": 2,
-      "timestamp": 1534807834353,
-      "updated_timestamp": 1534807834353,
+      "timestamp": 1535123882221,
+      "updated_timestamp": 1535123882221,
       "tags": [
         {
           "tag": "Feature",
@@ -225,9 +225,9 @@
       "description": "<p>Only one <strong style=\"color: rgb(0, 102, 204);\">dialog</strong> should be <strong>opened</strong> at all times. If a <strong>new</strong> <strong>dialog</strong> is requested while another one is oponed, the currently opened dialog should <strong>close</strong>, and the other one starts.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "order": 3,
-      "timestamp": 1534864511301,
+      "timestamp": 1535123885564,
       "tags": [
         {
           "tag": "Enhancement",
@@ -242,7 +242,7 @@
           "color": "pink white--text"
         }
       ],
-      "updated_timestamp": 1534864511301
+      "updated_timestamp": 1535123885564
     },
     {
       "id": 27,
@@ -273,20 +273,20 @@
       "description": "<p>With this feature, the user could set the <strong>toolbar </strong>to the side or the top.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
-      "order": 4,
-      "timestamp": 1534807583775,
+      "milestone_id": 1,
+      "order": 0,
+      "timestamp": 1535123890531,
       "tags": [
         {
           "tag": "EARLY",
-          "color": "green white--text"
+          "color": "purple white--text"
         },
         {
           "tag": "Feature",
           "color": "blue white--text"
         }
       ],
-      "updated_timestamp": 1534807583775
+      "updated_timestamp": 1535123890531
     },
     {
       "id": 7,
@@ -325,16 +325,16 @@
       "description": "<p>Create an <strong>icon</strong> for the Application.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
-      "order": 5,
-      "timestamp": 1534944618892,
+      "milestone_id": 1,
+      "order": 1,
+      "timestamp": 1535123894034,
       "tags": [
         {
           "tag": "UI",
           "color": "pink white--text"
         }
       ],
-      "updated_timestamp": 1534944618892
+      "updated_timestamp": 1535123894034
     },
     {
       "id": 34,
@@ -364,7 +364,7 @@
       "description": "<p>With this feature, the user could select a category and a make it a finishing <strong>category</strong>.</p><p>Once a category is marked as finishing, all the notes inside of it will be marked as done. </p><p><strong style=\"color: rgb(0, 102, 204);\">UI: </strong>The title of the card should be crossed out.</p><p>This could be useful if there is an integration with <strong>github/gitlab</strong> issues.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "tags": [
         {
           "tag": "Feature",
@@ -379,9 +379,9 @@
           "color": "pink white--text"
         }
       ],
-      "order": 6,
-      "timestamp": 1534807819740,
-      "updated_timestamp": 1534807819740
+      "order": 2,
+      "timestamp": 1535123897546,
+      "updated_timestamp": 1535123897546
     },
     {
       "id": 31,
@@ -416,7 +416,7 @@
       "description": "<p>The current implementation of the EventManager is trivial and not very good.</p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "tags": [
         {
           "tag": "BUG",
@@ -427,8 +427,9 @@
           "color": "orange black--text"
         }
       ],
-      "order": 7,
-      "timestamp": 1534885524857
+      "order": 3,
+      "timestamp": 1535123900627,
+      "updated_timestamp": 1535123900627
     },
     {
       "id": 33,
@@ -459,7 +460,7 @@
       "description": "<p>Limit the <strong>number</strong> of notes that a <strong style=\"color: rgb(0, 102, 204);\">category</strong> can hold. The limit is customizable and can be edited at any time. </p><p>This increases effiecency and the user can focus on the <strong>current</strong> tasks. </p>",
       "category": "todo",
       "color": "",
-      "milestone_id": 0,
+      "milestone_id": 1,
       "tags": [
         {
           "tag": "Feature",
@@ -474,8 +475,9 @@
           "color": "pink white--text"
         }
       ],
-      "order": 8,
-      "timestamp": 1535042978257
+      "order": 4,
+      "timestamp": 1535123905402,
+      "updated_timestamp": 1535123905402
     },
     {
       "id": 17,
@@ -758,9 +760,26 @@
       ],
       "order": 0,
       "timestamp": 1535123829282
+    },
+    {
+      "id": 45,
+      "project_id": 0,
+      "title": "Polish the application UI",
+      "description": "<p>Add some polishing to the application UI.</p>",
+      "category": "in_progress",
+      "color": "",
+      "milestone_id": 1,
+      "tags": [
+        {
+          "tag": "UI",
+          "color": "pink white--text"
+        }
+      ],
+      "order": 0,
+      "timestamp": 1535124382899
     }
   ],
-  "notes_id": 45,
+  "notes_id": 46,
   "tags": [
     {
       "tag": "Feature",

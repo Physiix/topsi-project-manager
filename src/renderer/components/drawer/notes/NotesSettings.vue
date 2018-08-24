@@ -5,7 +5,7 @@
 				<Tooltip :content="item.hint" right>
 					<v-list-tile @click="item.action()">
 						<v-list-tile-action>
-							<v-icon>{{ item.icon }}</v-icon>
+							<v-icon :class="item.class?item.class:''" :style="item.style?item.style:''">{{ item.icon }}</v-icon>
 						</v-list-tile-action>
 					</v-list-tile>
 				</Tooltip>
@@ -58,17 +58,20 @@ export default {
 					icon: 'add',
 					title: 'New Note',
 					hint: 'Add a new Note',
+					style: 'margin-left:-2px;',
 					action: () => this.$store.commit('CreateNoteDialog')
 				},
 				{
 					icon: 'fa-edit',
 					title: 'Edit Project',
+					class: 'pr-2',
 					hint: 'Edit Project',
 					action: () => this.$store.commit('ToggleUpdateProject')
 				},
 				{
 					icon: 'fa-list-ol',
 					title: 'Milestones',
+					style: 'margin-left:-2px;',
 					hint: 'Milestones',
 					action: () => this.$store.commit('ToggleMilestonesList')
 				}

@@ -1,16 +1,18 @@
 <template>
 	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show" @dblclick="Open" :dark="dark">
-		<v-card-title class="py-2 pr-0">
-			<div class="blue--text pr-1">
-				<strong>#{{note.id}}</strong>
-			</div>
-			<h4>{{note.title}}</h4>
-			<v-spacer></v-spacer>
-			<v-btn small icon class="ma-0" @click="Edit">
-				<v-icon style="font-size:16px;">
-					edit
-				</v-icon>
-			</v-btn>
+		<v-card-title class="py-2 pt-3 pr-0">
+			<v-layout row>
+				<div class="blue--text pr-1">
+					<strong>#{{note.id}}</strong>
+				</div>
+				<h4>{{note.title}}</h4>
+				<v-spacer></v-spacer>
+				<v-btn small icon class="ma-0" @click="Edit">
+					<v-icon style="font-size:16px;">
+						edit
+					</v-icon>
+				</v-btn>
+			</v-layout>
 		</v-card-title>
 		<v-divider></v-divider>
 		<NoteTags class="px-2" :note-color="note.color" :tags="note.tags" />

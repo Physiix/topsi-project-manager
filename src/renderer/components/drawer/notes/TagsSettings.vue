@@ -3,7 +3,7 @@
 		<Tooltip top content="Add a new tag">
 			<v-list-tile id="tags-button" @click="">
 				<v-list-tile-action>
-					<v-icon>
+					<v-icon style="margin-left:-2px">
 						fa-tags
 					</v-icon>
 				</v-list-tile-action>

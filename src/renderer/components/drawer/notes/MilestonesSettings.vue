@@ -3,7 +3,7 @@
 		<Tooltip content="Current milestone settings" top>
 			<v-list-tile id="milestone-button" @click="">
 				<v-list-tile-action>
-					<v-icon>timeline</v-icon>
+					<v-icon style="margin-left:-2px">timeline</v-icon>
 				</v-list-tile-action>
 			</v-list-tile>
 		</Tooltip>
