@@ -103,6 +103,9 @@ export default {
 				}
 			});
 
+			// Emit open event
+			this.$emit('opened');
+
 			// let firstTime = true;
 			const callback = () => {
 				let opacity = 1;

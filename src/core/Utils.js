@@ -62,6 +62,16 @@ class Utilities {
 		window.addEventListener('click', events.onclick);
 		window.addEventListener('keyup', events.keyup);
 	}
+
+	/**
+	 * Helper function to focus on the textfield.
+	 * @param {HTMLElement} textField Textfield to focus on.
+	 */
+	FocusTextField(textField) {
+		setTimeout(() => {
+			textField.getElementsByTagName('input')[0].focus()
+		}, 100);
+	}
 }
 
 export const Utils = new Utilities();

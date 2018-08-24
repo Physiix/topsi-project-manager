@@ -9,9 +9,9 @@
 				</v-list-tile-action>
 			</v-list-tile>
 		</Tooltip>
-		<FloatingDiv activator-id="tags-button" v-on:action="" width="500" dark left>
+		<FloatingDiv activator-id="tags-button" v-on:action="" width="500" dark left v-on:opened="Opened">
 			<v-toolbar color="secondary" dark class="px-2 elevation-0">
-				<v-text-field v-model="tag" :color="color" @keyup.enter.native="AddTag"></v-text-field>
+				<v-text-field ref="tag_input" v-model="tag" :color="color" autofocus @keyup.enter.native="AddTag"></v-text-field>
 				<v-btn color="primary" style="border-radius:0;" @click="AddTag">Add</v-btn>
 			</v-toolbar>
 			<ColorPicker width="500" padding="20" v-model="color"></ColorPicker>
@@ -26,6 +26,7 @@
 	</div>
 </template>
 <script>
+import { Utils } from '../../../../core/Utils';
 
 export default {
 	name: 'TagsSettings',
@@ -42,6 +43,7 @@ export default {
 			this.$store.commit('RemoveTag', this.tags[index]);
 			this.UpdateTags();
 		},
+
 		AddTag() {
 			this.$store.commit('AddTag', {
 				tag: this.tag,
@@ -54,6 +56,10 @@ export default {
 
 		UpdateTags() {
 			this.tags = this.$store.getters.getProjectTags;
+		},
+
+		Opened() {
+			Utils.FocusTextField(this.$refs.tag_input.$el)
 		}
 	},
 	mounted() {
