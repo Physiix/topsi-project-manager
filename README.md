@@ -54,6 +54,21 @@ These are the features that will be implemented next.
 - Users
 - Updates
 
+## Build
+```bash
+# Clone the project
+git clone https://github.com/Physiix/topsi-project-manager
+
+# You can use npm too
+yarn
+
+# To run in dev mode.
+yarn run dev
+
+# To build the executable
+yarn build
+```
+
 ## Contributions
 All contributions are welcome: Typo correction, translation, reporting bugs, code contribution, documentation. 
 
