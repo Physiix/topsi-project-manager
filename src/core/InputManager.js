@@ -5,16 +5,16 @@ class InputManager {
 	 */
 	Initialize(context) {
 		window.addEventListener('keypress', (event) => {
-			if (event.key === 'f') {
+			if (event.code === 'KeyF') {
 				if (event.ctrlKey)
 					context.$store.commit('ToggleSearch');
-			} else if (event.key === 'd') {
+			} else if (event.code === 'KeyD') {
 				if (event.ctrlKey)
 					context.$store.commit('ToggleShowHelper');
-			} else if (event.key === 'l') {
+			} else if (event.code === 'KeyL') {
 				if (event.ctrlKey)
 					context.$store.commit('ToggleMilestonesList');
-			} else if (event.key === 'n') {
+			} else if (event.code === 'KeyN') {
 				if (event.ctrlKey)
 					context.$store.commit('CreateNoteDialog');
 			}

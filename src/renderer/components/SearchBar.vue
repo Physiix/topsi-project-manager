@@ -2,7 +2,7 @@
 	<div ref=container>
 		<v-card ref=card width="500" class="elevation-24" dark @keyup.esc.native="Close" @keyup.enter.native="Close">
 			<v-card-title class="py-0">
-				<v-text-field v-model="search" autofocus :placeholder="this.lang.Get('searchLabel')"></v-text-field>
+				<v-text-field v-model="search" autofocus :placeholder="this.$lang.Get('searchLabel')"></v-text-field>
 			</v-card-title>
 		</v-card>
 	</div>
