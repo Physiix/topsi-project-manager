@@ -1,5 +1,5 @@
 <template>
-	<Dialog width="600" height="500" v-on:close="Close" v-on:accept="Accept">
+	<Dialog width="600" height="460" v-on:close="Close" v-on:accept="Accept">
 		<v-tabs fixed-tabs color="transparent">
 			<v-tab>
 				Project

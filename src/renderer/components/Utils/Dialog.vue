@@ -1,7 +1,7 @@
 <template>
 	<v-card id="project-dialog" class="elevation-20" :class="color" :height="height">
 		<slot></slot>
-		<v-card-actions style="position:relative;bottom:0px;right:0px;">
+		<v-card-actions ref="card_actions" style="bottom:0px;right:0px;">
 			<v-spacer></v-spacer>
 			<v-btn v-if="!disableCancel" :flat="!cancelRaised" class="ma-0" :color="(cancelColor)?cancelColor:''" @click="Close">{{(cancelText)?cancelText:this.$lang.Get('cancel')}}</v-btn>
 
@@ -70,7 +70,7 @@ export default {
 		}
 	},
 	mounted() {
-		const maxHeight = 0.9;
+		const maxHeightRatio = 0.9;
 		const actionsOffset = 0;
 		const element = document.getElementById('project-dialog');
 
@@ -78,21 +78,26 @@ export default {
 		const offsetTop = this.top;
 		const height = element.getBoundingClientRect().height;
 		const minHeight = height;
+		const maxHeight = window.innerHeight * maxHeightRatio;
 		let top = -height;
 		element.style.position = 'fixed';
 		element.style.top = top + 'px';
 		element.style.left = window.innerWidth / 2 - width / 2 + 'px';
-		element.style.maxHeight = window.innerHeight * maxHeight + 'px';
+		element.style.maxHeight = maxHeight + 'px';
 
 		element.style.width = width + 'px';
 		element.style.zIndex = 1;
+
+		if (height >= maxHeight) this.$refs.card_actions.style.position = 'relative';
+		else this.$refs.card_actions.style.position = 'absolute';
 
 		if (minHeight < window.innerHeight)
 			element.style.minHeight = minHeight + 'px';
 
 		window.addEventListener('resize', () => {
+			const maxHeight = window.innerHeight * maxHeightRatio;
 			element.style.left = window.innerWidth / 2 - width / 2 + 'px';
-			element.style.maxHeight = window.innerHeight * maxHeight + 'px';
+			element.style.maxHeight = maxHeight + 'px';
 		})
 
 		const id = setInterval(() => {

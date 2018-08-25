@@ -4,7 +4,7 @@
 			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
 		</v-card-title>
 		<ColorPicker width="500" padding="20" v-on:color-selected="ColorSelected"></ColorPicker>
-		<v-container class="pa-0 px-3">
+		<v-container class="pa-0 px-3 pb-5">
 			<v-card light class="elevation-2" style="border-radius:0;">
 				<div id="toolbar"></div>
 				<div id="editor" style="height:200px;"></div>
