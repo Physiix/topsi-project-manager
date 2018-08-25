@@ -71,4 +71,4 @@ class ProjectManager {
 	}
 }
 
-export const ProjManager = new ProjectManager();
+export const ProjectsManager = new ProjectManager();

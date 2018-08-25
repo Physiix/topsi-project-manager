@@ -14,19 +14,8 @@
 
 export default {
 	name: 'Project',
-	components: {
-
-	},
 	props: {
 		project: Object
-	},
-	data() {
-		return {
-
-		}
-	},
-	computed: {
-
 	},
 	methods: {
 		/**

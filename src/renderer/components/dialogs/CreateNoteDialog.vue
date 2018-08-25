@@ -11,9 +11,9 @@
 				<div id="editor" style="height:200px;">
 				</div>
 			</v-card>
-			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips flat hide-details chips label="Tags?" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
-			<v-select class="px-2" auto v-bind:items="milestoneItems" v-model="milestone" label="Milestone" title="Milestone" single-line return-object required></v-select>
-			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
+			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" small-chips flat hide-details chips label="Tags?" solo color="primary" multiple :no-data-text="this.$lang.Get('noTagFound')"></v-autocomplete>
+			<v-select class="px-2" auto v-bind:items="milestoneItems" v-model="milestone" :label="this.$lang.Get('milestone')" :title="this.$lang.Get('milestone')" single-line return-object required></v-select>
+			<v-select class="px-2" auto v-bind:items="items" v-model="category" :label="this.$lang.Get('category')" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>
 </template>

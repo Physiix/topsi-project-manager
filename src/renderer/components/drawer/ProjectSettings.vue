@@ -11,7 +11,7 @@
 	</v-list>
 </template>
 <script>
-import { ProjManager } from '../../../core/ProjectManager';
+import { ProjectsManager } from '../../../core/ProjectManager';
 
 export default {
 	name: 'ProjectSettings',
@@ -31,7 +31,7 @@ export default {
 				{
 					title: 'Import Project',
 					icon: 'insert_drive_file',
-					action: () => { ProjManager.LoadProject(); }
+					action: () => { ProjectsManager.LoadProject(); }
 				},
 				// {
 				// 	title: 'Upload Database',

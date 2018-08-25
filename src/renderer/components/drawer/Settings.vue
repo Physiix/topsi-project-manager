@@ -5,11 +5,11 @@
 				{{tab}}
 			</v-tab>
 			<v-tab-item v-for="(tab, index) in tabs " :key="index" :id="'tab-' + index">
-				<GeneralSettings v-if="tab=='General' " class="item " />
-				<div v-if="tab=='About' " class="item white">
+				<GeneralSettings v-if="tab==$lang.Get('general')" class="item " />
+				<div v-if="tab==$lang.Get('about')" class="item white">
 					<v-card class="elevation-0">
 						<v-card-text class="justify-center text-xs-center">
-							Topsi Project Manager is a simple kanban board software built with electron and vuejs. It supports all three major platforms (Windows, Linux and OSX). It's free and Open Source under the GPL V3 Clause.
+							{{$lang.Get('about')}}
 						</v-card-text>
 					</v-card>
 				</div>
@@ -28,8 +28,8 @@ export default {
 	data() {
 		return {
 			tabs: [
-				'General',
-				'About'
+				this.$lang.Get('general'),
+				this.$lang.Get('about')
 			],
 			active: 0
 		}

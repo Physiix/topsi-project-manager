@@ -9,7 +9,7 @@
 			</v-card>
 			<v-card ref="flash_input" width="500" class="secondary elevation-24" dark>
 				<v-card-title class="py-0">
-					<v-text-field ref="milestone_input" v-model="milestoneName" autofocus placeholder="Milestone Name" @keyup.esc.native="Hide"></v-text-field>
+					<v-text-field ref="milestone_input" v-model="milestoneName" autofocus :placeholder="this.$lang.Get('newMilestoneLabel')" @keyup.esc.native="Hide"></v-text-field>
 				</v-card-title>
 			</v-card>
 		</div>
@@ -20,8 +20,6 @@ import { Utils } from '../../../core/Utils';
 
 export default {
 	name: 'MilestonesList',
-	props: {
-	},
 	data() {
 		return {
 			milestoneName: ''

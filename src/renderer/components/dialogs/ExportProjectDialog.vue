@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-if="exportProject" width="300" v-on:close="exportProject = false" v-on:accept="ExportProject" accept-text="Export">
+	<Dialog v-if="exportProject" width="300" v-on:close="exportProject = false" v-on:accept="ExportProject" :accept-text="this.$lang.Get('export')">
 		<v-container>
 			<v-radio-group v-model="project" column color="primary">
 				<v-radio v-for="(project, i) in projects" :key="project.title + i" :label="project.title" :value="project" color="primary"></v-radio>
@@ -8,7 +8,7 @@
 	</Dialog>
 </template>
 <script>
-import { ProjManager } from '../../../core/ProjectManager'
+import { ProjectsManager } from '../../../core/ProjectManager'
 
 export default {
 	name: 'ExportProjectDialog',
@@ -44,7 +44,7 @@ export default {
 			if (this.project == null) return;
 
 			// Save the project.
-			ProjManager.SaveProject(this.project);
+			ProjectsManager.SaveProject(this.project);
 		}
 	},
 }

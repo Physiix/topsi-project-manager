@@ -36,11 +36,12 @@ It's free and Open Source under the AGPL V3 Clause.
 ### 100% Free and Open Source
 
 ## Roadmap
-These are the features that will be implemented next.
+These are the features that will be implemented next. 
+The developpement is done in the `dev` branch.
+- Support for other languages than English. (Translation)
 - Quick commands
 - Better image attachment (currently slows down the application)
 - Comments
-- Support for other languages than English. (Translation)
 - Plugin system
 - Better milestone management
 - File attachments

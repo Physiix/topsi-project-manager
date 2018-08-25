@@ -54,7 +54,7 @@
 							TODO
 						</v-tab>
 						<v-tab>
-							Done
+							{{this.lang.Get('done')}}
 						</v-tab>
 
 						<v-tabs-items>

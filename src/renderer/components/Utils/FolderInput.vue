@@ -10,7 +10,7 @@
 			</v-icon>
 		</div>
 		<v-btn @click="OpenDialog" class="elevation-5 justify-right text-xs-right" color="primary" style="border-radius:0;">
-			Browse
+			{{this.$lang.Get('browse')}}
 		</v-btn>
 
 	</v-toolbar>

@@ -3,7 +3,7 @@
 		<v-toolbar app :class="color" height="30" class="px-0" dark>
 			<v-icon>project</v-icon>
 			<v-spacer></v-spacer>
-			Topsi Project Manager
+			{{this.$lang.Get('projectName')}}
 			<v-spacer></v-spacer>
 			<v-btn flat class="titlebar-btn mx-0" @click="minimize">
 				<svg width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">

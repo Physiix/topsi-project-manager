@@ -3,7 +3,7 @@
 		<v-dialog v-model="dialog" width="600" persistent>
 			<v-card>
 				<v-card-title class="headline justify-center" dark primary-title>
-					Helper/Shortcuts
+					{{this.lang.Get('helperTitle')}}
 				</v-card-title>
 
 				<v-card-text class="text-xs-left">
@@ -15,7 +15,7 @@
 				<v-card-actions>
 					<v-spacer></v-spacer>
 					<v-btn color="primary" flat @click="Close">
-						Close
+						{{this.lang.Get('close')}}
 					</v-btn>
 				</v-card-actions>
 			</v-card>

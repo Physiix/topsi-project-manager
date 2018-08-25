@@ -3,9 +3,9 @@
 		<slot></slot>
 		<v-card-actions style="position:relative;bottom:0px;right:0px;">
 			<v-spacer></v-spacer>
-			<v-btn v-if="!disableCancel" :flat="!cancelRaised" class="ma-0" :color="(cancelColor)?cancelColor:''" @click="Close">{{(cancelText)?cancelText:'Cancel'}}</v-btn>
+			<v-btn v-if="!disableCancel" :flat="!cancelRaised" class="ma-0" :color="(cancelColor)?cancelColor:''" @click="Close">{{(cancelText)?cancelText:this.$lang.Get('cancel')}}</v-btn>
 
-			<v-btn v-if="!disableAccept" :flat="!acceptRaised" class="ma-0" :color="(acceptColor)?acceptColor:'primary'" @click="Accept">{{(acceptText)?acceptText:'Save'}}</v-btn>
+			<v-btn v-if="!disableAccept" :flat="!acceptRaised" class="ma-0" :color="(acceptColor)?acceptColor:'primary'" @click="Accept">{{(acceptText)?acceptText:this.$lang.Get('save')}}</v-btn>
 		</v-card-actions>
 	</v-card>
 </template>
@@ -105,7 +105,7 @@ export default {
 		}, 10);
 
 		// Adjust the top if it's mac
-		if(this.$store.getters.isMac) this.top = 0;
+		if (this.$store.getters.isMac) this.top = 0;
 	}
 }
 </script>
