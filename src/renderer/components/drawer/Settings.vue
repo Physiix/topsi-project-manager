@@ -6,10 +6,10 @@
 			</v-tab>
 			<v-tab-item v-for="(tab, index) in tabs " :key="index" :id="'tab-' + index">
 				<GeneralSettings v-if="tab==$lang.Get('general')" class="item " />
-				<div v-if="tab==$lang.Get('about')" class="item white">
+				<div v-if="tab==$lang.Get('about')" class="item">
 					<v-card class="elevation-0">
 						<v-card-text class="justify-center text-xs-center">
-							{{$lang.Get('about')}}
+							{{$lang.Get('aboutContent')}}
 						</v-card-text>
 					</v-card>
 				</div>

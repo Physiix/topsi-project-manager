@@ -7,7 +7,7 @@ export default {
 		<strong>modified </strong> at any time.`,
 		"firstUseSetupFolder": "Setup the default folder to store your projects.",
 		"firstUseSetupColor": "Setup the default application color",
-		"about": "Topsi Project Manager is a simple kanban board software built with electron and vuejs. It supports all three major platforms (Windows, Linux and OSX). It's free and Open Source under the AGPL V3 Clause.",
+		"aboutContent": "Topsi Project Manager is a simple kanban board software built with electron and vuejs. It supports all three major platforms (Windows, Linux and OSX). It's free and Open Source under the AGPL V3 Clause.",
 		"searchLabel": "Search by title, tags, project...",
 		"helperTitle": "Helper/Shortcuts",
 		"newMilestoneLabel": "Milestone Name",
