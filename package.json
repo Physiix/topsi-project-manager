@@ -1,5 +1,5 @@
 {
-	"name": "project_manager",
+	"name": "topsi_project_manager",
 	"version": "0.0.0",
 	"author": "Physix <yanis.m.1992@gmail.com>",
 	"description": "An electron-vue project",
@@ -17,7 +17,7 @@
 		"postinstall": ""
 	},
 	"build": {
-		"productName": "project_manager",
+		"productName": "Topsi",
 		"appId": "org.simulatedgreg.electron-vue",
 		"directories": {
 			"output": "build"
@@ -81,7 +81,7 @@
 		"css-loader": "^0.28.4",
 		"del": "^3.0.0",
 		"devtron": "^1.4.0",
-		"electron": "^1.7.5",
+		"electron": "^1.8.8",
 		"electron-builder": "^19.19.1",
 		"electron-debug": "^1.4.0",
 		"electron-devtools-installer": "^2.2.0",
