@@ -1,17 +1,43 @@
 {
-	"dark_mode": true,
-	"git_user_info": {
-		"username": "",
-		"repository_token": "",
-		"gist_id": ""
-	},
-	"projects_id": 3,
-	"projects": [],
-	"current_project_id": 0,
-	"window_width": 1237,
-	"window_height": 739,
-	"application_color": "blue white--text",
-	"first_time_use": false,
-	"default_databases_folder": "",
-	"isMac": false
+  "dark_mode": true,
+  "git_user_info": {
+    "username": "",
+    "repository_token": "",
+    "gist_id": ""
+  },
+  "projects_id": 4,
+  "projects": [
+    {
+      "id": 3,
+      "title": "Test project",
+      "description": "<p>Simple test project.</p>",
+      "categories": [
+        {
+          "tag": "todo",
+          "title": "TODO",
+          "folded": false
+        },
+        {
+          "tag": "in_progress",
+          "title": "In Progress",
+          "folded": false
+        },
+        {
+          "tag": "done",
+          "title": "Done",
+          "folded": false
+        }
+      ],
+      "opened_milestone_id": 0,
+      "customPath": "",
+      "timestamp": 1535286279580
+    }
+  ],
+  "current_project_id": 0,
+  "window_width": 1324,
+  "window_height": 778,
+  "application_color": "blue white--text",
+  "first_time_use": false,
+  "default_databases_folder": "",
+  "isMac": false
 }

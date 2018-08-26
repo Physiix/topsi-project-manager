@@ -1,0 +1,36 @@
+{
+  "info": {
+    "id": 3,
+    "title": "Test project",
+    "description": "<p>Simple test project.</p>",
+    "categories": [
+      {
+        "tag": "todo",
+        "title": "TODO",
+        "folded": false
+      },
+      {
+        "tag": "in_progress",
+        "title": "In Progress",
+        "folded": false
+      },
+      {
+        "tag": "done",
+        "title": "Done",
+        "folded": false
+      }
+    ],
+    "opened_milestone_id": 0,
+    "customPath": "",
+    "timestamp": 1535286279580
+  },
+  "milestones": [
+    {
+      "id": 0,
+      "title": "Default",
+      "timestamp": 1535286279581
+    }
+  ],
+  "notes": [],
+  "tags": []
+}

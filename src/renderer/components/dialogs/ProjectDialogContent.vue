@@ -63,7 +63,7 @@
 						</v-layout>
 					</v-card>
 					<v-card class="px-4 pt-5 transparent">
-						<FolderInput v-model="customPath"></FolderInput>
+						<FolderInput :label="this.$lang.Get('projectDialogFolderLabel')" v-model="customPath"></FolderInput>
 					</v-card>
 				</v-tab-item>
 			</v-tabs-items>

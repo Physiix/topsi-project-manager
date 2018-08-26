@@ -8,8 +8,8 @@
 				<GeneralSettings v-if="tab==$lang.Get('general')" class="item " />
 				<div v-if="tab==$lang.Get('about')" class="item">
 					<v-card class="elevation-0">
-						<v-card-text class="justify-center text-xs-center">
-							{{$lang.Get('aboutContent')}}
+						<v-card-text class="justify-center text-xs-center" v-html="$lang.Get('aboutContent')">
+
 						</v-card-text>
 					</v-card>
 				</div>
