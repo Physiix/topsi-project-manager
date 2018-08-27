@@ -10,7 +10,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 export class DBUtils {
 	constructor(name, defaultPath) {
 		// Paths
-		if (defaultPath == null || defaultPath.length <= 0) this.dataPath = path.join(path.resolve('.'), 'data');
+		if (defaultPath == null || defaultPath.length <= 0) this.dataPath = path.join(process.platform == 'darwin' ? process.cwd() : path.resolve('.'), 'data');
 		else this.dataPath = defaultPath;
 		const dbFilePath = path.join(this.dataPath, name);
 		console.log(dbFilePath)
