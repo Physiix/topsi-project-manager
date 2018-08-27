@@ -39,5 +39,5 @@
   "application_color": "blue white--text",
   "first_time_use": false,
   "default_databases_folder": "",
-  "isMac": false
+  "isMac": true
 }

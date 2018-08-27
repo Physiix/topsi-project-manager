@@ -1,0 +1,14 @@
+{
+  "default_databases_folder": "",
+  "isMac": true,
+  "window_width": 800,
+  "window_height": 600,
+  "dark_mode": false,
+  "application_color": "indigo",
+  "git_user_info": {
+    "username": "",
+    "repository_token": "",
+    "gist_id": ""
+  },
+  "first_time_use": true
+}
