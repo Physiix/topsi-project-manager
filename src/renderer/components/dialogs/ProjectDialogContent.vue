@@ -1,5 +1,6 @@
 <template>
-	<Dialog width="600" height="460" v-on:close="Close" v-on:accept="Accept">
+	<Dialog width="600" height="500" v-on:close="Close" v-on:accept="Accept">
+		<ConfirmDialog v-if="deleteDialog" :title="'Delete ' + project.title" message="Are you sure you want to delete this project ?" accept-msg="Delete" v-on:accept="Delete"  v-on:cancel="deleteDialog = false" accept-color="error" />
 		<v-tabs fixed-tabs color="transparent">
 			<v-tab>
 				Project
@@ -9,6 +10,7 @@
 			</v-tab>
 			<v-tabs-items v-model="tabItem">
 				<v-tab-item>
+					<v-btn block color="error" v-if="enableDelete" @click="deleteDialog = true" style="border-radius:0;">delete</v-btn>
 					<v-card-title>
 						<v-text-field label="Title" v-model="title"></v-text-field>
 					</v-card-title>
@@ -20,7 +22,6 @@
 							</div>
 						</v-card>
 					</v-container>
-
 				</v-tab-item>
 				<v-tab-item>
 					<v-card class="ma-3 elevation-0 px-5 transparent">
@@ -71,14 +72,19 @@
 	</Dialog>
 </template>
 <script>
+import ConfirmDialog from './ConfirmDialog.vue'
 import Sortable from 'sortablejs'
 import Quill from 'quill'
 let editor = null;
 
 export default {
 	name: 'ProjectDialogContent',
+	components: {
+		ConfirmDialog
+	},
 	props: {
-		project: Object
+		project: Object,
+		enableDelete: Boolean
 	},
 	data() {
 		return {
@@ -86,7 +92,8 @@ export default {
 			category: '',
 			categories: [],
 			customPath: '',
-			tabItem: null
+			tabItem: null,
+			deleteDialog: false,
 		}
 	},
 	computed: {
@@ -136,6 +143,14 @@ export default {
 				categories: categories,
 				customPath: this.customPath
 			});
+		},
+
+		/**
+		 * Delete the current project.
+		 */
+		Delete(){
+			this.deleteDialog = false;
+			console.log('delete project');
 		}
 	},
 	mounted() {
