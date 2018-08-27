@@ -5,7 +5,7 @@
     "repository_token": "",
     "gist_id": ""
   },
-  "projects_id": 4,
+  "projects_id": 6,
   "projects": [
     {
       "id": 3,
@@ -39,5 +39,5 @@
   "application_color": "blue white--text",
   "first_time_use": false,
   "default_databases_folder": "",
-  "isMac": true
+  "isMac": false
 }

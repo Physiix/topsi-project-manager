@@ -1,6 +1,6 @@
 <template>
 	<Dialog width="600" height="500" v-on:close="Close" v-on:accept="Accept">
-		<ConfirmDialog v-if="deleteDialog" :title="'Delete ' + project.title" message="Are you sure you want to delete this project ?" accept-msg="Delete" v-on:accept="Delete"  v-on:cancel="deleteDialog = false" accept-color="error" />
+		<ConfirmDialog v-if="deleteDialog" :title="'Delete ' + project.title" message="Are you sure you want to delete this project ?" accept-msg="Delete" v-on:accept="Delete" v-on:cancel="deleteDialog = false" accept-color="error" />
 		<v-tabs fixed-tabs color="transparent">
 			<v-tab>
 				Project
@@ -147,10 +147,14 @@ export default {
 
 		/**
 		 * Delete the current project.
+		 * Returns to the project's page when deleted.
 		 */
-		Delete(){
+		Delete() {
 			this.deleteDialog = false;
-			console.log('delete project');
+			// Delete the project from the database/
+			this.$store.commit('DeleteProject', this.project);
+			// When the project is deleted, the user is redirected to the projects page.
+			this.$store.commit('OpenProject', -1);
 		}
 	},
 	mounted() {
