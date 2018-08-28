@@ -45,7 +45,7 @@
 										<v-card v-for="i in 5" :key="i" height="20" class="ma-2 grey"> </v-card>
 									</v-card>
 								</v-flex>
-								<v-btn fab flat id="add-category-btn">
+								<v-btn fab flat id="add-category-btn" @click="FocusAddCategory">
 									<v-icon :color="color">
 										add
 									</v-icon>
@@ -53,7 +53,7 @@
 								<FloatingDiv activator-id="add-category-btn" v-on:action="" dark right release-key="Enter">
 									<v-card>
 										<v-toolbar class="px-2" color="secondary" height="55">
-											<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
+											<v-text-field ref="add_category" v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
 											<v-btn flat @click="AddCategory">
 												Add
 											</v-btn>
@@ -75,6 +75,7 @@
 import ConfirmDialog from './ConfirmDialog.vue'
 import Sortable from 'sortablejs'
 import Quill from 'quill'
+import { Utils } from '../../../core/Utils';
 let editor = null;
 
 export default {
@@ -155,6 +156,11 @@ export default {
 			this.$store.commit('DeleteProject', this.project);
 			// When the project is deleted, the user is redirected to the projects page.
 			this.$store.commit('OpenProject', -1);
+		},
+
+
+		FocusAddCategory() {
+			Utils.FocusTextField(this.$refs.add_category.$el);
 		}
 	},
 	mounted() {
