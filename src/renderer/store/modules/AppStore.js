@@ -58,19 +58,19 @@ const state = {
 
 const mutations = {
 	CreateProjDialog(state) {
-		state.dialogs.createProject = !state.dialogs.createProject;
+		mutations.OpenDialog(state, 'createProject');
 	},
 
 	CreateNoteDialog(state) {
-		state.dialogs.createNote = !state.dialogs.createNote;
+		mutations.OpenDialog(state, 'createNote');
 	},
 
 	UpdateNoteDialog(state) {
-		state.dialogs.updateNote = !state.dialogs.updateNote;
+		mutations.OpenDialog(state, 'updateNote');
 	},
 
 	OpenNoteDialog(state) {
-		state.dialogs.visualizeDialog = !state.dialogs.visualizeDialog;
+		mutations.OpenDialog(state, 'visualizeDialog');
 	},
 
 	OpenProject(state, id) {
@@ -86,7 +86,7 @@ const mutations = {
 	},
 
 	ShowSettings(state, value) {
-		state.dialogs.showSettings = !state.dialogs.showSettings;
+		mutations.OpenDialog(state, 'showSettings');
 	},
 
 	SetUsername(state, username) {
@@ -114,7 +114,7 @@ const mutations = {
 	},
 
 	ExportProjDialog(state) {
-		state.dialogs.exportProject = !state.dialogs.exportProject;
+		mutations.OpenDialog(state, 'exportProject');
 	},
 
 	DisableFirstTimeUse(state) {
@@ -158,7 +158,7 @@ const mutations = {
 	},
 
 	ToggleUpdateProject(state) {
-		state.dialogs.updateProject = !state.dialogs.updateProject;
+		mutations.OpenDialog(state, 'updateProject');
 	},
 
 	SetSearchContent(state, value) {
@@ -166,12 +166,18 @@ const mutations = {
 	},
 
 	ToggleMilestonesList(state, value) {
-		state.dialogs.milestonesList = value || !state.dialogs.milestonesList;
+		mutations.OpenDialog(state, 'milestonesList', value);
 	},
 
 	ToggleShowHelper(state, value) {
 		if (value != null) state.showHelper = value;
 		else state.showHelper = !state.showHelper;
+		mutations.OpenDialog(state, 'test');
+	},
+
+	OpenDialog(state, dialog, value) {
+		for (let property in state.dialogs)
+			(property == dialog) ? state.dialogs[property] = value || !state.dialogs[property] : state.dialogs[property] = false;
 	}
 }
 
