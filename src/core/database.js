@@ -1,6 +1,8 @@
 import lowdb from 'lowdb'
 import path from 'path'
 import fs from 'fs'
+import os from 'os'
+
 // Adapter
 const FileSync = require('lowdb/adapters/FileSync');
 
@@ -10,15 +12,16 @@ const FileSync = require('lowdb/adapters/FileSync');
 export class DBUtils {
 	constructor(name, defaultPath) {
 		// Paths
-		if (defaultPath == null || defaultPath.length <= 0) this.dataPath = path.join(path.resolve('.'), 'data');
+		const dir = process.platform == 'darwin' ? path.join(os.homedir(), '.topsi') : path.resolve('.');
+		if (defaultPath == null || defaultPath.length <= 0) this.dataPath = path.join(dir, 'data/');
 		else this.dataPath = defaultPath;
 		const dbFilePath = path.join(this.dataPath, name);
-		console.log(dbFilePath)
 
 		// Make sure the 'data' folder exists
-		if (!fs.existsSync(this.dataPath))
+		if (!fs.existsSync(this.dataPath)){
+			if(process.platform == 'darwin' && !fs.existsSync(dir)) fs.mkdirSync(dir);
 			fs.mkdirSync(this.dataPath);
-
+		}
 		const adapter = new FileSync(dbFilePath);
 		this.context = new lowdb(adapter);
 	}

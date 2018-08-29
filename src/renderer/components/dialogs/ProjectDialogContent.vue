@@ -1,5 +1,6 @@
 <template>
-	<Dialog width="600" height="460" v-on:close="Close" v-on:accept="Accept">
+	<Dialog width="600" height="500" v-on:close="Close" v-on:accept="Accept">
+		<ConfirmDialog v-if="deleteDialog" :title="'Delete ' + project.title" message="Are you sure you want to delete this project ?" accept-msg="Delete" v-on:accept="Delete" v-on:cancel="deleteDialog = false" accept-color="error" />
 		<v-tabs fixed-tabs color="transparent">
 			<v-tab>
 				Project
@@ -9,6 +10,7 @@
 			</v-tab>
 			<v-tabs-items v-model="tabItem">
 				<v-tab-item>
+					<v-btn block color="error" v-if="enableDelete" @click="deleteDialog = true" style="border-radius:0;">delete</v-btn>
 					<v-card-title>
 						<v-text-field label="Title" v-model="title"></v-text-field>
 					</v-card-title>
@@ -20,7 +22,6 @@
 							</div>
 						</v-card>
 					</v-container>
-
 				</v-tab-item>
 				<v-tab-item>
 					<v-card class="ma-3 elevation-0 px-5 transparent">
@@ -44,7 +45,7 @@
 										<v-card v-for="i in 5" :key="i" height="20" class="ma-2 grey"> </v-card>
 									</v-card>
 								</v-flex>
-								<v-btn fab flat id="add-category-btn">
+								<v-btn fab flat id="add-category-btn" @click="FocusAddCategory">
 									<v-icon :color="color">
 										add
 									</v-icon>
@@ -52,7 +53,7 @@
 								<FloatingDiv activator-id="add-category-btn" v-on:action="" dark right release-key="Enter">
 									<v-card>
 										<v-toolbar class="px-2" color="secondary" height="55">
-											<v-text-field v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
+											<v-text-field ref="add_category" v-model="category" placeholder="Category" @keyup.enter.native="AddCategory" class="pt-2" autofocus></v-text-field>
 											<v-btn flat @click="AddCategory">
 												Add
 											</v-btn>
@@ -63,7 +64,7 @@
 						</v-layout>
 					</v-card>
 					<v-card class="px-4 pt-5 transparent">
-						<FolderInput v-model="customPath"></FolderInput>
+						<FolderInput :label="this.$lang.Get('projectDialogFolderLabel')" v-model="customPath"></FolderInput>
 					</v-card>
 				</v-tab-item>
 			</v-tabs-items>
@@ -71,14 +72,20 @@
 	</Dialog>
 </template>
 <script>
+import ConfirmDialog from './ConfirmDialog.vue'
 import Sortable from 'sortablejs'
 import Quill from 'quill'
+import { Utils } from '../../../core/Utils';
 let editor = null;
 
 export default {
 	name: 'ProjectDialogContent',
+	components: {
+		ConfirmDialog
+	},
 	props: {
-		project: Object
+		project: Object,
+		enableDelete: Boolean
 	},
 	data() {
 		return {
@@ -86,7 +93,8 @@ export default {
 			category: '',
 			categories: [],
 			customPath: '',
-			tabItem: null
+			tabItem: null,
+			deleteDialog: false,
 		}
 	},
 	computed: {
@@ -136,6 +144,23 @@ export default {
 				categories: categories,
 				customPath: this.customPath
 			});
+		},
+
+		/**
+		 * Delete the current project.
+		 * Returns to the project's page when deleted.
+		 */
+		Delete() {
+			this.deleteDialog = false;
+			// Delete the project from the database/
+			this.$store.commit('DeleteProject', this.project);
+			// When the project is deleted, the user is redirected to the projects page.
+			this.$store.commit('OpenProject', -1);
+		},
+
+
+		FocusAddCategory() {
+			Utils.FocusTextField(this.$refs.add_category.$el);
 		}
 	},
 	mounted() {

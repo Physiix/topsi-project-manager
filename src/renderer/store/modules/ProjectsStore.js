@@ -105,6 +105,21 @@ const mutations = {
 		Notifications.Success('Project updated', `Project ${data.title} has been updated !`);
 	},
 
+	/**
+	 * Delete a project from the database. 
+	 * Note, only the entry of the project is deleted, the project's file is NOT deleted.
+	 * @param {*State} state ProjectStore state.
+	 * @param {*Project} project Contains the data about the project to delete.
+	 */
+
+	DeleteProject(state, project) {
+		if (project.id == null) Notifications.Error('DeleteProject', 'Project ID required to delete a project.');
+
+		App.GetAppDB().Remove('projects', {
+			id: project.id
+		});
+	},
+
 	ToggleFoldCategory(state, data) {
 		if (data.projectId == null || data.category.tag == null || data.category.title == null) Notifications.Error('FoldCategory', `Cannot fold a category with invalid data ${data}`);
 

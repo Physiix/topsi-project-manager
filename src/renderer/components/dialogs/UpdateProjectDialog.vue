@@ -1,5 +1,5 @@
 <template>
-	<ProjectDialogContent :project="project" v-on:close="updateProject = false" v-on:accept="UpdateProject" />
+	<ProjectDialogContent enable-delete :project="project" v-on:close="updateProject = false" v-on:accept="UpdateProject" />
 </template>
 <script>
 import ProjectDialogContent from './ProjectDialogContent.vue'
