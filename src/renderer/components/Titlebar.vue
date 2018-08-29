@@ -3,7 +3,7 @@
 		<v-toolbar app :class="color" height="30" class="px-0" dark>
 			<v-icon>project</v-icon>
 			<v-spacer></v-spacer>
-			{{this.$lang.Get('projectName')}}
+			{{this.$lang.Get('projectName')}} {{projectName}}
 			<v-spacer></v-spacer>
 			<v-btn flat class="titlebar-btn mx-0" @click="minimize">
 				<svg width="9" height="9" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +41,16 @@ export default {
 			const baseColor = this.$store.getters.appColor;
 			return baseColor + ' darken-2';
 		},
+
+		/**
+		 * Get the name of the project if opened.
+		 * Empty string if not.
+		 */
+		projectName() {
+			const projectName = this.$store.getters.getProjectName;
+			if (projectName != null && projectName.length > 0) return ` | ${projectName}`;
+			return '';
+		}
 	},
 
 	methods: {

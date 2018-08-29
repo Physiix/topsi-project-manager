@@ -54,6 +54,9 @@ const state = {
 
 	// Flag set to true to show the helper page.
 	showHelper: false,
+
+	// Name of the currently opened project.
+	projectName: '',
 }
 
 const mutations = {
@@ -76,8 +79,14 @@ const mutations = {
 	OpenProject(state, id) {
 		state.openedProjectId = id;
 		// Set the default milestone when opening a project.
-		if (id >= 0) state.currentMilestoneId = App.GetDB(id).GetValue('info').opened_milestone_id;
-		state.searchContent = ''; // Clear the search content, searches are different from project to notes.
+		if (id >= 0) {
+			const info = App.GetDB(id).GetValue('info')
+			state.projectName = info.title;
+
+			state.currentMilestoneId = info.opened_milestone_id;
+		} else
+			state.projectName = '';
+		state.searchContent = ''; // Clear the search content, searches are different from project to notes.	
 	},
 
 	SetDarkMode(state, value) {
@@ -249,6 +258,10 @@ const getters = {
 
 	isShowHelper(state) {
 		return state.showHelper;
+	},
+
+	getProjectName(state) {
+		return state.projectName;
 	}
 }
 
