@@ -5,12 +5,12 @@
     "repository_token": "",
     "gist_id": ""
   },
-  "projects_id": 6,
+  "projects_id": 8,
   "projects": [
     {
-      "id": 3,
-      "title": "Test project",
-      "description": "<p>Simple test project.</p>",
+      "id": 7,
+      "title": "Test",
+      "description": "<p>Test</p>",
       "categories": [
         {
           "tag": "todo",
@@ -30,7 +30,7 @@
       ],
       "opened_milestone_id": 0,
       "customPath": "",
-      "timestamp": 1535286279580
+      "timestamp": 1535590598834
     }
   ],
   "current_project_id": 0,

@@ -71,6 +71,9 @@ const mutations = {
 			title: 'Default'
 		});
 
+		// Count the default milestone
+		projectDB.SetValue('milestones_id', 1);
+
 		// Create empty notes array
 		projectDB.SetValue('notes', [])
 
