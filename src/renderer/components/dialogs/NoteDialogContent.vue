@@ -58,10 +58,6 @@ export default {
 			return this.$store.getters.GetProjectById(id);
 		},
 
-		categories() {
-			return this.project.categories;
-		},
-
 		milestones() {
 			return this.$store.getters.GetMilestones;
 		},
@@ -106,7 +102,6 @@ export default {
 		},
 	},
 	mounted() {
-
 		const options = {
 			modules: {
 				toolbar: [
@@ -130,6 +125,7 @@ export default {
 		};
 		editor = new Quill('#editor', options);
 
+
 		// Setup the categories
 		this.categories.forEach(category => this.items.push({ text: category.title, tag: category.tag }))
 
@@ -139,8 +135,8 @@ export default {
 		// Populate the content
 		this.title = this.note.title;
 		document.getElementsByClassName("ql-editor")[0].innerHTML = this.note.description;
-		this.category = this.items.filter(i => i.tag == this.note.category)[0];
-		this.color = this.note.color;
+		this.category = this.items.filter(i => i.tag == this.note.category)[0] || this.items[0];
+		this.color = this.note.color || '';
 		this.milestone = this.milestoneItems.filter(m => m.id == this.note.milestone_id)[0];
 		this.note.tags.forEach(entry => this.selectedTags.push(entry.tag))
 	}

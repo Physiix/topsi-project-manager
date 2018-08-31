@@ -22,7 +22,7 @@
     ],
     "opened_milestone_id": 0,
     "customPath": "",
-    "timestamp": 1535590598834
+    "timestamp": 1535759651154
   },
   "milestones": [
     {
@@ -37,6 +37,20 @@
     }
   ],
   "milestones_id": 2,
-  "notes": [],
-  "tags": []
+  "notes": [
+    {
+      "id": 0,
+      "project_id": 7,
+      "title": "Simple note",
+      "description": "<p>Hello World !</p>",
+      "category": "todo",
+      "color": "",
+      "milestone_id": 0,
+      "tags": [],
+      "order": 0,
+      "timestamp": 1535759671655
+    }
+  ],
+  "tags": [],
+  "notes_id": 1
 }
