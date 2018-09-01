@@ -12,6 +12,7 @@ class Note {
 		this.milestone_id = milestone_id;
 		this.tags = tags || [];
 		this.order = 0;
+		this.tasks = [];
 	}
 }
 
@@ -204,6 +205,27 @@ const mutations = {
 		DBManager.GetDB(note.project_id).Remove('notes', {
 			id: note.id
 		});
+	},
+
+	/**
+	 * Add a task to the currently opened note.
+	 * @param {Object} state Current state of the Application.
+	 * @param {String} task 
+	 */
+	AddTask(state, data) {
+		if (state.openedNote == null || data.task == null || data.task.length <= 0 || data.projectId < 0 || data.projectId == null)
+			Notifications.Error('Add task', `Cannot add task ${data.task}`);
+
+		const projectDB = DBManager.GetDB(data.projectId);
+		state.openedNote.tasks = state.openedNote.tasks || [];
+		state.openedNote.tasks.push({
+			id: projectDB.GetId('tasks_id'),
+			content: data.task,
+			done: false
+		});
+		projectDB.Update('notes', {
+			id: state.openedNote.id
+		}, state.openedNote);
 	}
 }
 
@@ -256,6 +278,13 @@ const actions = {
 	VisualizeNote(context, note) {
 		context.commit('SetOpenedNote', note);
 		context.commit('OpenNoteDialog');
+	},
+
+	AddTask(context, task) {
+		context.commit('AddTask', {
+			projectId: context.getters.getOpenedProjectId,
+			task: task
+		});
 	}
 }
 
