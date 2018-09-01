@@ -29,7 +29,7 @@ export default {
 		},
 		openedNote: {
 			set(value) {
-				this.$store.commit('OpenNoteDialog');
+				this.$store.dispatch('ToggleDialog', 'visualizeDialog');
 			},
 			get() {
 				return this.$store.state.AppStore.dialogs.openedNote;
@@ -42,7 +42,7 @@ export default {
 		},
 
 		Delete() {
-			this.$store.commit('DeleteNote', this.note);
+			this.$store.dispatch('DeleteNote', this.note);
 		}
 	}
 }

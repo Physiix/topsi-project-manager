@@ -20,7 +20,7 @@
 			</v-card-title>
 			<v-container>
 				<div v-if="tags.length < 0"> No tags created yet. </div>
-				<v-chip label v-for="(entry, index) in tags" :key="index" small :class="entry.color" close v-on:input="test(index)">{{entry.tag}}</v-chip>
+				<v-chip label v-for="(entry, index) in tags" :key="index" small :class="entry.color" close v-on:input="RemoveTag(index)">{{entry.tag}}</v-chip>
 			</v-container>
 		</FloatingDiv>
 	</div>
@@ -38,18 +38,16 @@ export default {
 		}
 	},
 	methods: {
-		test(index) {
-			console.log(this.tags[index])
-			this.$store.commit('RemoveTag', this.tags[index]);
+		RemoveTag(index) {
+			this.$store.dispatch('RemoveTag', this.tags[index]);
 			this.UpdateTags();
 		},
 
 		AddTag() {
-			this.$store.commit('AddTag', {
+			this.$store.dispatch('AddTag', {
 				tag: this.tag,
 				color: this.color
 			});
-			this.UpdateTags();
 			this.tag = '';
 			this.color = ''
 		},

@@ -51,7 +51,7 @@ export default {
 			},
 			set(value) {
 				if (value == this.category.title) return;
-				this.$store.commit('UpdateCategory', {
+				this.$store.dispatch('UpdateCategory', {
 					category: this.category,
 					projectId: this.projectId,
 					newTitle: value
@@ -73,7 +73,7 @@ export default {
 	},
 	methods: {
 		Fold() {
-			this.$store.commit('ToggleFoldCategory', {
+			this.$store.dispatch('ToggleFoldCategory', {
 				projectId: this.projectId,
 				category: this.category
 			});
@@ -102,7 +102,7 @@ export default {
 				name: "Notes",
 			},
 			onEnd: (event) => {
-				this.$store.commit('UpdateNotesOrder', {
+				this.$store.dispatch('UpdateNotesOrder', {
 					notes: document.getElementsByClassName('note'),
 					note: event.item,
 					tag: event.to.id.substr(0, event.to.id.indexOf('-')),
@@ -115,7 +115,6 @@ export default {
 				// console.log(event.dragged)
 			},
 			animation: 100
-
 		});
 	}
 }

@@ -38,7 +38,7 @@ export default {
 	},
 	mounted() {
 		// Update the projects list.
-		this.$store.commit('UpdateProjects');
+		this.$store.dispatch('RetrieveProjects');
 		AppManager.SetupProjectsPage('container');
 	}
 }

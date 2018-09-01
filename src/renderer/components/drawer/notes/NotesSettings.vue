@@ -46,35 +46,35 @@ export default {
 					hint: 'Back to projects',
 					action: () => {
 						// Back to the main menu.
-						this.$store.commit('OpenProject', -1);
+						this.$store.dispatch('OpenProject', null);
 					}
 				},
 				{
 					icon: 'search',
 					title: 'Search',
 					hint: 'Search in notes (CTRL + F)',
-					action: () => { this.$store.commit('ToggleSearch'); }
+					action: () => { this.$store.dispatch('ToggleDialog', 'searchDialog'); }
 				},
 				{
 					icon: 'add',
 					title: 'New Note',
 					hint: 'Add a new Note',
 					style: 'margin-left:-2px;',
-					action: () => this.$store.commit('CreateNoteDialog')
+					action: () => this.$store.dispatch('ToggleDialog', 'createNote')
 				},
 				{
 					icon: 'fa-edit',
 					title: 'Edit Project',
 					class: 'pr-2',
 					hint: 'Edit Project',
-					action: () => this.$store.commit('ToggleUpdateProject')
+					action: () => this.$store.dispatch('ToggleDialog', 'updateProject')
 				},
 				{
 					icon: 'fa-list-ol',
 					title: 'Milestones',
 					style: 'margin-left:-2px;',
 					hint: 'Milestones',
-					action: () => this.$store.commit('ToggleMilestonesList')
+					action: () => this.$store.dispatch('ToggleDialog', 'milestonesList')
 				}
 			]
 		}

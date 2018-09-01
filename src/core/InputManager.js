@@ -7,13 +7,13 @@ class InputManager {
 		window.addEventListener('keypress', (event) => {
 			if (event.code === 'KeyF') {
 				if (event.ctrlKey)
-					context.$store.commit('ToggleSearch');
+					context.$store.dispatch('ToggleDialog', 'searchDialog');
 			} else if (event.code === 'KeyD') {
 				if (event.ctrlKey)
 					context.$store.commit('ToggleShowHelper');
 			} else if (event.code === 'KeyL') {
 				if (event.ctrlKey)
-					context.$store.commit('ToggleMilestonesList');
+					context.$store.dispatch('ToggleDialog', 'milestonesList');
 			} else if (event.code === 'KeyN') {
 				if (event.ctrlKey)
 					context.$store.commit('CreateNoteDialog');

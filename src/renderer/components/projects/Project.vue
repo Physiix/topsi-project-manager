@@ -22,14 +22,7 @@ export default {
 		 * Set the current project Id as the opened project.
 		 */
 		OpenProject() {
-			this.$store.commit('OpenProject', this.project.id);
-			this.$store.commit('UpdateNotes', {
-				projectId: this.project.id,
-				milestoneId: this.project.opened_milestone_id
-			});
-			this.$store.commit('UpdateMilestones', {
-				projectId: this.project.id
-			})
+			this.$store.dispatch('OpenProject', this.project);
 		}
 	},
 }

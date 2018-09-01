@@ -31,6 +31,14 @@ const getters = {
 
 const mutations = {
 	/**
+	 * Retrieve all the projects from the database.
+	 * @param {*State} state ProjectStore state.
+	 */
+	RetrieveProjects(state) {
+		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
+	},
+
+	/**
 	 * This function checks if the project's data in param is valid
 	 * and add store it in the database. 
 	 * @param {*State} state ProjectStore state.
@@ -66,13 +74,7 @@ const mutations = {
 		projectDB.SetValue('milestones_id', 1);
 
 		// Create empty notes array
-		projectDB.SetValue('notes', [])
-
-		// Update the state
-		state.projects = appDB.GetAll('projects', 'id');
-
-		// Send notification
-		Notifications.Success('Project created', `Project ${data.title} has been updated !`);
+		projectDB.SetValue('notes', []);
 	},
 
 	UpdateProject(state, data) {
@@ -88,15 +90,6 @@ const mutations = {
 		DBManager.GetAppDB().Update('projects', {
 			id: data.id
 		}, data);
-
-		// Update the state
-		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
-
-		// Update the layout
-		EventManager.Emit('update-notes-component');
-
-		// Send notification
-		Notifications.Success('Project updated', `Project ${data.title} has been updated !`);
 	},
 
 	/**
@@ -129,12 +122,6 @@ const mutations = {
 		DBManager.GetAppDB().Update('projects', {
 			id: projectInfo.id
 		}, projectInfo);
-
-		// Update the state
-		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
-
-		// Update the layout
-		EventManager.Emit('update-notes-component');
 	},
 
 	UpdateCategory(state, data) {
@@ -157,12 +144,6 @@ const mutations = {
 		DBManager.GetAppDB().Update('projects', {
 			id: projectInfo.id
 		}, projectInfo);
-
-		// Update the state
-		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
-
-		// Update the layout
-		EventManager.Emit('update-notes-component');
 	},
 
 	/**
@@ -173,8 +154,81 @@ const mutations = {
 	}
 }
 
+const actions = {
+	CreateProject(context, data) {
+		context.commit('CreateProject', data);
+
+		// Send notification
+		Notifications.Success('Project created', `Project ${data.title} has been updated !`);
+	},
+
+	DeleteProject(context, data) {
+		context.commit('DeleteProject', data);
+
+		// Close the dialog
+		context.dispatch('ToggleDialog', 'UpdateProjectDialog');
+
+		// When the project is deleted, the user is redirected to the projects page.
+		context.commit('OpenProject', -1);
+	},
+
+	UpdateProject(context, data) {
+		context.commit('UpdateProject', data);
+
+		// Update the layout
+		EventManager.Emit('update-notes-component');
+
+		// Send notification
+		Notifications.Success('Project updated', `Project ${data.title} has been updated !`);
+
+		// Retrieve all the projects.
+		context.commit('RetrieveProjects');
+	},
+
+	UpdateCategory(context, data) {
+		context.commit('UpdateCategory', data);
+
+		// Retrieve all the projects.
+		context.commit('RetrieveProjects');
+
+		// Update the layout
+		EventManager.Emit('update-notes-component');
+	},
+
+	ToggleFoldCategory(context, data) {
+		context.commit('ToggleFoldCategory', data);
+
+		// Retrieve all the projects.
+		context.commit('RetrieveProjects');
+
+		// Update the layout
+		EventManager.Emit('update-notes-component');
+	},
+
+	OpenProject(context, project) {
+		if (project == null) {
+			context.commit('OpenProject', -1);
+			return;
+		}
+
+		context.commit('OpenProject', project.id);
+		context.commit('UpdateNotes', {
+			projectId: project.id,
+			milestoneId: project.opened_milestone_id
+		});
+		context.commit('UpdateMilestones', {
+			projectId: project.id
+		})
+	},
+
+	RetrieveProjects(context) {
+		context.commit('UpdateProjects');
+	}
+}
+
 export default {
 	state,
 	getters,
-	mutations
+	mutations,
+	actions
 }

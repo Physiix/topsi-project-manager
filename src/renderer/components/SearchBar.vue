@@ -8,6 +8,7 @@
 	</div>
 </template>
 <script>
+import Utils from '../../core/Utils';
 
 export default {
 	name: 'SearchBar',
@@ -23,7 +24,7 @@ export default {
 	},
 	methods: {
 		Close() {
-			this.$store.commit('ToggleSearch');
+			this.$store.dispatch('ToggleDialog', 'searchDialog');
 		}
 	},
 	mounted() {
@@ -39,17 +40,9 @@ export default {
 		window.addEventListener('resize', () => card.style.left = window.innerWidth / 2 - 250 + 'px');
 		card.style.top = '100px';
 
-		const clickListener = (event) => {
-			const rect = card.getBoundingClientRect();
-			if (event.clientX > rect.left + rect.width ||
-				event.clientX < rect.left ||
-				event.clientY > rect.top + rect.height ||
-				event.clientY < rect.top) {
-				this.$store.commit('ToggleSearch')
-				window.removeEventListener('click', clickListener);
-			}
-		}
-		window.addEventListener('click', clickListener)
+		Utils.ClickOutside(card, () => {
+			this.$store.dispatch('ToggleDialog', 'searchDialog');
+		});
 	}
 }
 </script>

@@ -20,7 +20,7 @@ export default {
 	},
 	methods: {
 		Unfold() {
-			this.$store.commit('ToggleFoldCategory', {
+			this.$store.dispatch('ToggleFoldCategory', {
 				projectId: this.projectId,
 				category: this.category
 			});

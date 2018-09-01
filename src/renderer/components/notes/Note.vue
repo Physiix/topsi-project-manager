@@ -1,5 +1,5 @@
 <template>
-	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @contextmenu="show" @dblclick="Open" :dark="dark">
+	<v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @dblclick="Open" :dark="dark">
 		<v-card-title class="py-2 pt-3 pr-0">
 			<v-layout row>
 				<div class="blue--text pr-1">
@@ -31,34 +31,12 @@ export default {
 		note: Object
 	},
 	methods: {
-		show(e) {
-			e.preventDefault()
-			this.$nextTick(() => {
-				this.$store.commit('SetMenuData', {
-					show: true,
-					x: e.clientX,
-					y: e.clientY,
-					note: this.note
-				})
-			})
-		},
-
-		MoveRight() {
-			this.$store.commit('MoveNoteRight', this.note);
-		},
-
-		MoveLeft() {
-			this.$store.commit('MoveNoteLeft', this.note);
-		},
-
 		Edit() {
-			this.$store.commit('SetUpdatedNote', this.note);
-			this.$store.commit('UpdateNoteDialog');
+			this.$store.dispatch('EditNote', this.note);
 		},
 
 		Open() {
-			this.$store.commit('SetOpenedNote', this.note);
-			this.$store.commit('OpenNoteDialog');
+			this.$store.dispatch('VisualizeNote', this.note);
 		}
 	},
 	computed: {

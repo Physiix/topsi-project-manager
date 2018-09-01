@@ -40,12 +40,7 @@ export default {
 				return this.$store.getters.getCurrentMilestoneId;
 			},
 			set(value) {
-				this.$store.commit('UpdateProjectMilestoneId', {
-					projectId: this.$store.getters.getOpenedProjectId,
-					milestoneId: value
-				});
-				this.$store.commit('SetCurrentMilestoneId', value);
-				this.$store.commit('UpdateNotes', {
+				this.$store.dispatch('SetProjectMilestone', {
 					projectId: this.$store.getters.getOpenedProjectId,
 					milestoneId: value
 				})
@@ -72,7 +67,7 @@ export default {
 				element.style.visibility = 'hidden';
 				if (type == 'keyup') {
 					console.log(this.milestoneName)
-					this.$store.commit('CreateMilestone', {
+					this.$store.dispatch('CreateMilestone', {
 						projectId: this.$store.getters.getOpenedProjectId,
 						name: this.milestoneName
 					});

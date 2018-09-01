@@ -63,7 +63,7 @@ class ProjectManager {
 			const content = JSON.stringify(project, null, '\t')
 			fs.writeFileSync(p.join(db.dataPath, id + '.json'), content);
 			DBManager.Load(id);
-			vue.$store.commit('UpdateProjects');
+			vue.$store.dispatch('UpdateProjects');
 			Notifications.Success('Success', `Project ${project.info.title} has been successfully loaded`);
 		});
 	}

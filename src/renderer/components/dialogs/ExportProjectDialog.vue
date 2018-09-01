@@ -21,7 +21,7 @@ export default {
 	computed: {
 		exportProject: {
 			set(value) {
-				this.$store.commit('ExportProjDialog');
+				this.$store.dispatch('ToggleDialog', 'exportProject');
 			},
 			get() {
 				return this.$store.state.AppStore.dialogs.exportProject;

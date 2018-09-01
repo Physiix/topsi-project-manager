@@ -13,7 +13,7 @@ export default {
 	computed: {
 		createNote: {
 			set(value) {
-				this.$store.commit('CreateNoteDialog');
+				this.$store.dispatch('ToggleDialog', 'createNote');
 			},
 
 			get() {
@@ -39,7 +39,7 @@ export default {
 	methods: {
 		CreateNote(data) {
 			// Create the note
-			this.$store.commit('CreateNote', {
+			this.$store.dispatch('CreateNote', {
 				project_id: this.project.id,
 				title: data.title,
 				description: data.description,

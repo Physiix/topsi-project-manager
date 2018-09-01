@@ -11,7 +11,7 @@ export default {
 	name: 'AddNoteButton',
 	methods: {
 		AddNote() {
-			this.$store.commit('CreateNoteDialog');
+			this.$store.dispatch('ToggleDialog', 'createNote');
 		}
 	}
 }

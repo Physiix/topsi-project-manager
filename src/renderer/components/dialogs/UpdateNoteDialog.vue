@@ -15,7 +15,7 @@ export default {
 		},
 		updateNote: {
 			set(value) {
-				this.$store.commit('UpdateNoteDialog');
+				this.$store.dispatch('ToggleDialog', 'updateNote');
 			},
 			get() {
 				return this.$store.state.AppStore.dialogs.updateNote;
@@ -26,7 +26,7 @@ export default {
 	methods: {
 		UpdateNote(data) {
 			// Update the note
-			this.$store.commit('UpdateNote', {
+			this.$store.dispatch('UpdateNote', {
 				id: data.id,
 				project_id: data.projectId,
 				title: data.title,

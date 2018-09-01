@@ -70,12 +70,6 @@ const mutations = {
 
 		// Store the note in the database.
 		database.Write('notes', note);
-
-		// Update the state
-		mutations.UpdateNotes(state, {
-			projectId: data.project_id,
-			milestoneId: data.milestoneId
-		})
 	},
 
 	/**
@@ -124,12 +118,6 @@ const mutations = {
 
 		// Save the new order in the database.
 		db.SetValue('notes', projectNotes);
-
-		// Retrieve the new values as saved from the database. 
-		mutations.UpdateNotes(state, {
-			projectId: state.projectId,
-			milestoneId: state.milestoneId
-		})
 	},
 
 	/**
@@ -162,12 +150,6 @@ const mutations = {
 		database.Update('notes', {
 			id: data.id
 		}, data);
-
-		// Retrieve the new values as saved from the database. 
-		mutations.UpdateNotes(state, {
-			projectId: state.projectId,
-			milestoneId: state.milestoneId
-		})
 	},
 
 
@@ -222,17 +204,64 @@ const mutations = {
 		DBManager.GetDB(note.project_id).Remove('notes', {
 			id: note.id
 		});
+	}
+}
+
+const actions = {
+	CreateNote(context, data) {
+		context.commit('CreateNote', data);
+
+		// Update the state
+		context.commit('UpdateNotes', {
+			projectId: data.project_id,
+			milestoneId: data.milestoneId
+		});
+	},
+
+	UpdateNote(context, data) {
+		context.commit('UpdateNote', data);
 
 		// Retrieve the new values as saved from the database. 
-		mutations.UpdateNotes(state, {
+		context.commit('UpdateNotes', {
+			projectId: state.projectId,
+			milestoneId: state.milestoneId
+		});
+	},
+
+	DeleteNote(context, note) {
+		context.commit('DeleteNote', note);
+
+		// Retrieve the new values as saved from the database. 
+		context.commit('UpdateNotes', {
+			projectId: state.projectId,
+			milestoneId: state.milestoneId
+		});
+	},
+
+	UpdateNotesOrder(context, data) {
+		context.commit('UpdateNotesOrder', data);
+
+		// Retrieve the new values as saved from the database. 
+		context.commit('UpdateNotes', {
 			projectId: state.projectId,
 			milestoneId: state.milestoneId
 		})
+	},
+
+	EditNote(context, note) {
+		context.commit('SetUpdatedNote', note);
+		context.commit('UpdateNoteDialog');
+	},
+
+	VisualizeNote(context, note) {
+		context.commit('SetOpenedNote', note);
+		context.commit('OpenNoteDialog');
 	}
 }
 
 export default {
 	state,
 	getters,
-	mutations
+	mutations,
+	actions
 }

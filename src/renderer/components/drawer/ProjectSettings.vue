@@ -21,12 +21,12 @@ export default {
 				{
 					title: 'New project',
 					icon: 'add',
-					action: () => this.$store.commit('CreateProjDialog')
+					action: () => this.$store.dispatch('ToggleDialog', 'createProject')
 				},
 				{
 					title: 'Export Project',
 					icon: 'save',
-					action: () => { this.$store.commit('ExportProjDialog') }
+					action: () => { this.$store.dispatch('ToggleDialog', 'exportProject') }
 				},
 				{
 					title: 'Import Project',
@@ -46,7 +46,7 @@ export default {
 				{
 					title: 'Settings',
 					icon: 'settings',
-					action: () => this.$store.commit('ShowSettings', true)
+					action: () => this.$store.dispatch('ToggleDialog', 'showSettings')
 				},
 			]
 		}

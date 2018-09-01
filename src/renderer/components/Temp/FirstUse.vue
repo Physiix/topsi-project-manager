@@ -60,7 +60,7 @@ export default {
 		},
 
 		Done() {
-			this.$store.commit('SetupApplication', {
+			this.$store.dispatch('SetupApplication', {
 				defaultFolder: this.defaultFolder,
 			});
 			this.dialog = false;

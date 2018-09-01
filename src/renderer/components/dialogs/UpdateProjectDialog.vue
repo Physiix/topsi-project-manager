@@ -12,7 +12,7 @@ export default {
 	computed: {
 		updateProject: {
 			set(value) {
-				this.$store.commit('ToggleUpdateProject');
+				this.$store.dispatch('ToggleDialog', 'updateProject');
 			},
 			get() {
 				return this.$store.getters.isUpdateProject;
@@ -31,7 +31,7 @@ export default {
 		 */
 		UpdateProject(data) {
 			// Update the project.
-			this.$store.commit('UpdateProject', {
+			this.$store.dispatch('UpdateProject', {
 				id: this.project.id,
 				title: data.title,
 				description: data.description,

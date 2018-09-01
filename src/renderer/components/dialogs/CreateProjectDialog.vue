@@ -12,7 +12,7 @@ export default {
 	computed: {
 		createProject: {
 			set(value) {
-				this.$store.commit('CreateProjDialog');
+				this.$store.dispatch('ToggleDialog', 'createProject');
 			},
 			get() {
 				return this.$store.state.AppStore.dialogs.createProject;
@@ -36,7 +36,7 @@ export default {
 		 */
 		CreateProject(data) {
 			// Create the project.
-			this.$store.commit('CreateProject', {
+			this.$store.dispatch('CreateProject', {
 				title: data.title,
 				description: data.description,
 				categories: data.categories,

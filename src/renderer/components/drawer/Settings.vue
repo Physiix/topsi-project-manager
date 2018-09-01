@@ -37,7 +37,7 @@ export default {
 	computed: {
 		showSettings: {
 			set(value) {
-				this.$store.commit('ShowSettings', value);
+				this.$store.dispatch('ToggleDialog', 'showSettings');
 			},
 
 			get() {

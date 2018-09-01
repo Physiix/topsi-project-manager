@@ -153,9 +153,7 @@ export default {
 		Delete() {
 			this.deleteDialog = false;
 			// Delete the project from the database/
-			this.$store.commit('DeleteProject', this.project);
-			// When the project is deleted, the user is redirected to the projects page.
-			this.$store.commit('OpenProject', -1);
+			this.$store.dispatch('DeleteProject', this.project);
 		},
 
 

@@ -13,6 +13,7 @@ const state = {
 		exportProject: false,
 		updateProject: false,
 		milestonesList: false,
+		searchDialog: false,
 	},
 
 	// ID of the currently opened project.
@@ -35,9 +36,6 @@ const state = {
 
 	// Whether the application is opened for the first time.
 	firstTimeUse: DBManager.GetAppDB().GetValue('first_time_use', true),
-
-	// Flag set to true to enable to search toolbar
-	showSearch: false,
 
 	// Search content
 	searchContent: '',
@@ -124,7 +122,6 @@ const mutations = {
 	SetupApplication(state, data) {
 		if (data.defaultFolder == null) Notifications.Error('SetupApplication', 'A valid data parameter required :' + data);
 		DBManager.GetAppDB().SetValue('default_databases_folder', data.defaultFolder);
-		mutations.DisableFirstTimeUse(state);
 	},
 
 	AddTag(state, tag) {
@@ -152,10 +149,6 @@ const mutations = {
 		db.SetValue('tags', tags);
 	},
 
-	ToggleSearch(state) {
-		state.showSearch = !state.showSearch;
-	},
-
 	ToggleUpdateProject(state) {
 		mutations.OpenDialog(state, 'updateProject');
 	},
@@ -171,7 +164,6 @@ const mutations = {
 	ToggleShowHelper(state, value) {
 		if (value != null) state.showHelper = value;
 		else state.showHelper = !state.showHelper;
-		mutations.OpenDialog(state, 'test');
 	},
 
 	OpenDialog(state, dialog, value) {
@@ -206,12 +198,12 @@ const getters = {
 	},
 
 	getProjectTags(state) {
-		if (state.openedProjectId < 0) Notifications.Error('getProjecTags', 'A project must be opened to get its tags');
+		if (state.openedProjectId < 0) Notifications.Error('getProjectTags', 'A project must be opened to get its tags');
 		return DBManager.GetDB(state.openedProjectId).GetValue('tags', []);
 	},
 
 	isShowSearch(state) {
-		return state.showSearch;
+		return state.dialogs.searchDialog;
 	},
 
 	isUpdateProject(state) {
@@ -255,8 +247,38 @@ const getters = {
 	}
 }
 
+const actions = {
+	ToggleDialog(context, dialogName) {
+		context.commit('OpenDialog', dialogName);
+	},
+
+	RemoveTag(context, tag) {
+		context.commit('RemoveTag', tag);
+	},
+
+	AddTag(context, tag) {
+		context.commit('AddTag', tag);
+	},
+
+	SetProjectMilestone(context, data) {
+		context.commit('UpdateProjectMilestoneId', data);
+		context.commit('SetCurrentMilestoneId', data.milestoneId);
+		context.commit('UpdateNotes', data)
+	},
+
+	CreateMilestone(context, data) {
+		context.commit('CreateMilestone', data);
+	},
+
+	SetupApplication(context, data) {
+		context.commit('SetupApplication', data)
+		context.commit('DisableFirstTimeUse');
+	}
+}
+
 export default {
 	state,
 	getters,
-	mutations
+	mutations,
+	actions
 }
