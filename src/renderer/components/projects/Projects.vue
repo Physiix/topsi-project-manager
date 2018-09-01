@@ -13,7 +13,7 @@
 import CreateProjectDialog from '../dialogs/CreateProjectDialog.vue'
 import ExportProjectDialog from '../dialogs/ExportProjectDialog.vue'
 import Project from './Project'
-import { AppManager } from '../../../core/ApplicationManager';
+import AppManager from '../../../core/ApplicationManager';
 
 export default {
 	name: 'Projects',

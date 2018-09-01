@@ -54,7 +54,7 @@ class ApplicationManager {
 			const id = setInterval(() => {
 				value -= 16;
 				document.getElementById(containerId).style.gridTemplateColumns = value + 'px repeat(5, 1fr)';
-				if (value <= COMPACT_DRAWER_WIDTH){
+				if (value <= COMPACT_DRAWER_WIDTH) {
 					document.getElementById(containerId).style.gridTemplateColumns = COMPACT_DRAWER_WIDTH + 'px repeat(5, 1fr)';
 					clearInterval(id);
 				}
@@ -109,4 +109,4 @@ class ApplicationManager {
 	}
 }
 
-export const AppManager = new ApplicationManager();
+export default new ApplicationManager();

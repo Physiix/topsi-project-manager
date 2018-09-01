@@ -1,8 +1,8 @@
 {
   "info": {
-    "id": 7,
-    "title": "Test",
-    "description": "<p>Test</p>",
+    "id": 0,
+    "title": "Simple Project",
+    "description": "<p>Hello, World !</p>",
     "categories": [
       {
         "tag": "todo",
@@ -22,35 +22,41 @@
     ],
     "opened_milestone_id": 0,
     "customPath": "",
-    "timestamp": 1535759651154
+    "timestamp": 1535761480118
   },
   "milestones": [
     {
       "id": 0,
       "title": "Default",
-      "timestamp": 1535590598834
-    },
-    {
-      "id": 1,
-      "title": "Alpha",
-      "timestamp": 1535590607941
+      "timestamp": 1535761480119
     }
   ],
-  "milestones_id": 2,
+  "milestones_id": 1,
   "notes": [
     {
       "id": 0,
-      "project_id": 7,
+      "project_id": 0,
       "title": "Simple note",
-      "description": "<p>Hello World !</p>",
+      "description": "<p>Hello, World !</p>",
       "category": "todo",
       "color": "",
       "milestone_id": 0,
-      "tags": [],
+      "tags": [
+        {
+          "tag": "test",
+          "color": "green white--text"
+        }
+      ],
       "order": 0,
-      "timestamp": 1535759671655
+      "timestamp": 1535761498800,
+      "updated_timestamp": 1535761498800
     }
   ],
-  "tags": [],
+  "tags": [
+    {
+      "tag": "test",
+      "color": "green white--text"
+    }
+  ],
   "notes_id": 1
 }

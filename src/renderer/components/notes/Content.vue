@@ -26,7 +26,7 @@
 <script>
 import Note from './Note.vue'
 import Sortable from 'sortablejs'
-import { Utils } from '../../../core/Utils'
+import Utils from '../../../core/Utils'
 
 export default {
 	name: 'Content',

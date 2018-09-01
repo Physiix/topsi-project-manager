@@ -8,7 +8,7 @@
 	</Dialog>
 </template>
 <script>
-import { ProjectsManager } from '../../../core/ProjectManager'
+import ProjectManager from '../../../core/ProjectManager'
 
 export default {
 	name: 'ExportProjectDialog',
@@ -44,7 +44,7 @@ export default {
 			if (this.project == null) return;
 
 			// Save the project.
-			ProjectsManager.SaveProject(this.project);
+			ProjectManager.SaveProject(this.project);
 		}
 	},
 }

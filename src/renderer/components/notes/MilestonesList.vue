@@ -16,7 +16,7 @@
 	</v-navigation-drawer>
 </template>
 <script>
-import { Utils } from '../../../core/Utils';
+import Utils from '../../../core/Utils';
 
 export default {
 	name: 'MilestonesList',

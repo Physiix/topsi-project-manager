@@ -8,7 +8,6 @@
 	</div>
 </template>
 <script>
-import { EventsManager } from '../../core/EventManager';
 
 export default {
 	name: 'SearchBar',

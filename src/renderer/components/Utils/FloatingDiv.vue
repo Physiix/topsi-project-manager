@@ -8,7 +8,7 @@
 
 <script>
 import colors from 'vuetify/es5/util/colors'
-import { Utils } from '../../../core/Utils';
+import Utils from '../../../core/Utils';
 export default {
 	name: 'FloatingDiv',
 	props: {

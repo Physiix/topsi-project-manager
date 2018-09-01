@@ -11,7 +11,7 @@
 	</Dialog>
 </template>
 <script>
-import { Notifications } from '../../../core/Notification'
+import Notifications from '../../../core/Notifications'
 
 import NoteTags from '../notes/NoteTags.vue'
 

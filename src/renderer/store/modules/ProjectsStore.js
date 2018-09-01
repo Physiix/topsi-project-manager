@@ -1,15 +1,6 @@
-import {
-	App
-} from "../../../core/Application";
-import {
-	Notifications
-} from "../../../core/Notification";
-import {
-	AppManager
-} from '../../../core/ApplicationManager'
-import {
-	EventsManager
-} from '../../../core/EventManager.js'
+import DBManager from "../../../core/DBManager";
+import Notifications from "../../../core/Notifications";
+import EventManager from '../../../core/EventManager.js';
 
 
 class Project {
@@ -52,16 +43,16 @@ const mutations = {
 
 		// Create the new project to store.
 		let project = new Project(data.title, data.description, data.categories);
-		project.customPath = data.customPath || App.GetAppDB().GetValue('default_databases_folder');
+		project.customPath = data.customPath || DBManager.GetAppDB().GetValue('default_databases_folder');
 
 		// Create the database for the project.
-		project.id = App.CreateDB(data.customPath);
+		project.id = DBManager.CreateDB(data.customPath);
 
-		const appDB = App.GetAppDB();
+		const appDB = DBManager.GetAppDB();
 		// Store the project in the database.
 		appDB.Write('projects', project);
 
-		const projectDB = App.GetDB(project.id);
+		const projectDB = DBManager.GetDB(project.id);
 		// Store the project info in its own database
 		projectDB.SetValue('info', project);
 
@@ -90,19 +81,19 @@ const mutations = {
 			Notifications.Error('UpdateProject', "Cannot update a project with invalid data " + Object.values(data));
 
 		// Move to the new path.
-		App.Move(data.id, data.customPath);
+		DBManager.Move(data.id, data.customPath);
 
 		// Update the project
-		App.GetDB(data.id).SetValue('info', data)
-		App.GetAppDB().Update('projects', {
+		DBManager.GetDB(data.id).SetValue('info', data)
+		DBManager.GetAppDB().Update('projects', {
 			id: data.id
 		}, data);
 
 		// Update the state
-		state.projects = App.GetAppDB().GetAll('projects', 'id');
+		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
 
 		// Update the layout
-		EventsManager.Emit('update-notes-component');
+		EventManager.Emit('update-notes-component');
 
 		// Send notification
 		Notifications.Success('Project updated', `Project ${data.title} has been updated !`);
@@ -118,7 +109,7 @@ const mutations = {
 	DeleteProject(state, project) {
 		if (project.id == null) Notifications.Error('DeleteProject', 'Project ID required to delete a project.');
 
-		App.GetAppDB().Remove('projects', {
+		DBManager.GetAppDB().Remove('projects', {
 			id: project.id
 		});
 	},
@@ -126,7 +117,7 @@ const mutations = {
 	ToggleFoldCategory(state, data) {
 		if (data.projectId == null || data.category.tag == null || data.category.title == null) Notifications.Error('FoldCategory', `Cannot fold a category with invalid data ${data}`);
 
-		const projectDB = App.GetDB(data.projectId);
+		const projectDB = DBManager.GetDB(data.projectId);
 		const projectInfo = projectDB.GetValue('info');
 
 		// Update the categories
@@ -135,21 +126,21 @@ const mutations = {
 		})
 
 		projectDB.SetValue('info', projectInfo);
-		App.GetAppDB().Update('projects', {
+		DBManager.GetAppDB().Update('projects', {
 			id: projectInfo.id
 		}, projectInfo);
 
 		// Update the state
-		state.projects = App.GetAppDB().GetAll('projects', 'id');
+		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
 
 		// Update the layout
-		EventsManager.Emit('update-notes-component');
+		EventManager.Emit('update-notes-component');
 	},
 
 	UpdateCategory(state, data) {
 		if (data.projectId == null || data.category == null || data.newTitle == null) Notifications.Error('FoldCategory', `Cannot fold a category with invalid data ${data}`);
 
-		const projectDB = App.GetDB(data.projectId);
+		const projectDB = DBManager.GetDB(data.projectId);
 		const projectInfo = projectDB.GetValue('info');
 
 		// Update the categories
@@ -163,22 +154,22 @@ const mutations = {
 		})
 
 		projectDB.SetValue('info', projectInfo);
-		App.GetAppDB().Update('projects', {
+		DBManager.GetAppDB().Update('projects', {
 			id: projectInfo.id
 		}, projectInfo);
 
 		// Update the state
-		state.projects = App.GetAppDB().GetAll('projects', 'id');
+		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
 
 		// Update the layout
-		EventsManager.Emit('update-notes-component');
+		EventManager.Emit('update-notes-component');
 	},
 
 	/**
 	 * Update the content of the projets.
 	 */
 	UpdateProjects(state) {
-		state.projects = App.GetAppDB().GetAll('projects', 'id');
+		state.projects = DBManager.GetAppDB().GetAll('projects', 'id');
 	}
 }
 

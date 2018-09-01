@@ -1,6 +1,4 @@
-import {
-	App
-} from './Application';
+import DBManager from './DBManager';
 
 const p = require('path');
 
@@ -8,7 +6,7 @@ import store from '../renderer/store'
 import Vue from 'vue'
 import {
 	Notifications
-} from './Notification';
+} from './Notifications';
 const vue = new Vue({
 	store
 });
@@ -29,7 +27,7 @@ class ProjectManager {
 		if (savePath == null) return;
 
 		const fs = require('fs');
-		const content = JSON.stringify(App.GetDB(project.id).context.read().__wrapped__);
+		const content = JSON.stringify(DBManager.GetDB(project.id).context.read().__wrapped__);
 		fs.writeFile(savePath, content, error => {
 			if (error != null) {
 				Notifications.Error('Export project failed', error.message);
@@ -57,18 +55,18 @@ class ProjectManager {
 				throw new Error('Failed to open the file.\n' + error);
 			}
 			const project = JSON.parse(data);
-			const db = App.GetAppDB();
+			const db = DBManager.GetAppDB();
 			const id = db.GetId('projects_id');
 			project.info.id = id;
 			project.notes.forEach(note => note.project_id = id);
 			db.Write('projects', project.info)
 			const content = JSON.stringify(project, null, '\t')
 			fs.writeFileSync(p.join(db.dataPath, id + '.json'), content);
-			App.Load(id);
+			DBManager.Load(id);
 			vue.$store.commit('UpdateProjects');
 			Notifications.Success('Success', `Project ${project.info.title} has been successfully loaded`);
 		});
 	}
 }
 
-export const ProjectsManager = new ProjectManager();
+export default new ProjectManager();

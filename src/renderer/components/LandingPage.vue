@@ -18,8 +18,8 @@
 
 <script>
 import Helper from './Helper.vue'
-import { AppManager } from '../../core/ApplicationManager'
-import { Inputs } from '../../core/InputManager'
+import AppManager from '../../core/ApplicationManager'
+import InputManager from '../../core/InputManager'
 
 import Titlebar from './Titlebar.vue'
 import Notes from './notes/Notes.vue'
@@ -56,7 +56,7 @@ export default {
 			return this.$store.getters.isShowHelper;
 		},
 
-		macos(){
+		macos() {
 			return this.$store.getters.isMac;
 		}
 	},
@@ -66,8 +66,8 @@ export default {
 		}
 	},
 	mounted() {
-		AppManager.SetupLandingPage((this.macos?0:30), 'container', 'side', 'content');
-		Inputs.Initialize(this);
+		AppManager.SetupLandingPage((this.macos ? 0 : 30), 'container', 'side', 'content');
+		InputManager.Initialize(this);
 	}
 }
 </script>

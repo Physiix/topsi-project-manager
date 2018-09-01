@@ -1,10 +1,6 @@
-import {
-	App
-} from "../../../core/Application";
+import DBManager from "../../../core/DBManager";
 
-import {
-	Notifications
-} from '../../../core/Notification'
+import Notifications from '../../../core/Notifications'
 
 class Milestone {
 	constructor(id, title) {
@@ -39,7 +35,7 @@ const mutations = {
 		// Check if the data is valid.
 		if (data.projectId == null || data.name == null) Notifications.Error('CreateMilestone', 'A valid data attribute is required');
 
-		const projectDB = App.GetDB(data.projectId);
+		const projectDB = DBManager.GetDB(data.projectId);
 		// Create the new milestone object
 		const milestone = new Milestone(projectDB.GetId('milestones_id'), data.name);
 
@@ -54,13 +50,13 @@ const mutations = {
 		// Check if the data is valid.
 		if (data.projectId == null || data.milestoneId == null) Notifications.Error('UpdateProjectMilestoneId', 'Cannot set invalid milestone data to project.');
 
-		const projectDB = App.GetDB(data.projectId);
+		const projectDB = DBManager.GetDB(data.projectId);
 		const projectInfo = projectDB.GetValue('info');
 
 		projectInfo.opened_milestone_id = data.milestoneId;
 
 		projectDB.SetValue('info', projectInfo);
-		App.GetAppDB().Update('projects', {
+		DBManager.GetAppDB().Update('projects', {
 			id: projectInfo.id
 		}, projectInfo);
 	},
@@ -70,7 +66,7 @@ const mutations = {
 	 */
 	UpdateMilestones(state, data) {
 		if (data.projectId == null) throw new Error('UpdateMilestones: Project id required.');
-		state.milestones = App.GetDB(data.projectId).GetAll('milestones', 'id');
+		state.milestones = DBManager.GetDB(data.projectId).GetAll('milestones', 'id');
 	}
 }
 

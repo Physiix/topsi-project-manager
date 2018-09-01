@@ -12,12 +12,12 @@
 	</div>
 </template>
 <script>
+import EventManager from '../../../core/EventManager.js';
+import AppManager from '../../../core/ApplicationManager';
+
+
 import MilestonesList from './MilestonesList.vue'
 import FoldedContent from './FoldedContent.vue'
-import { EventsManager } from '../../../core/EventManager.js';
-import { AppManager } from '../../../core/ApplicationManager';
-
-
 import AddNoteButton from './AddNoteButton.vue'
 import CreateNoteDialog from '../dialogs/CreateNoteDialog.vue'
 import VisualizeNoteDialog from '../dialogs/VisualizeNoteDialog.vue'
@@ -78,7 +78,7 @@ export default {
 	},
 	mounted() {
 		AppManager.SetupNotesPage((this.macos ? 0 : 30), 'notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag));
-		EventsManager.Subscribe('update-notes-component', () => {
+		EventManager.Subscribe('update-notes-component', () => {
 			this.$nextTick(() => {
 				AppManager.SetupNotesPage((this.macos ? 0 : 30), 'notes_container', 'container', this.categories.filter(category => !category.folded).map(category => category.tag), this.categories.filter(category => category.folded).map(category => category.tag), false);
 			});

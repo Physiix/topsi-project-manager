@@ -6,7 +6,7 @@ export class NotificationEntry {
 		this.timeout = timeout;
 	}
 }
-class Notification {
+class Notifications {
 	/**
 	 * 	Display an info notification in the screen.
 	 * @param {String} title Title of the notification to display.
@@ -125,4 +125,4 @@ class Notification {
 }
 
 
-export const Notifications = new Notification();
+export default new Notifications();

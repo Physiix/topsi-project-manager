@@ -5,12 +5,12 @@
     "repository_token": "",
     "gist_id": ""
   },
-  "projects_id": 8,
+  "projects_id": 1,
   "projects": [
     {
-      "id": 7,
-      "title": "Test",
-      "description": "<p>Test</p>",
+      "id": 0,
+      "title": "Simple Project",
+      "description": "<p>Hello, World !</p>",
       "categories": [
         {
           "tag": "todo",
@@ -30,11 +30,11 @@
       ],
       "opened_milestone_id": 0,
       "customPath": "",
-      "timestamp": 1535759651154
+      "timestamp": 1535761480118
     }
   ],
   "current_project_id": 0,
-  "window_width": 1324,
+  "window_width": 1325,
   "window_height": 778,
   "application_color": "teal white--text",
   "first_time_use": false,

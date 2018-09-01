@@ -22,4 +22,4 @@ class InputManager {
 	}
 }
 
-export const Inputs = new InputManager();
+export default new InputManager();

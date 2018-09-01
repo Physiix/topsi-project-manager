@@ -1,9 +1,5 @@
-import {
-	App
-} from "../../../core/Application";
-import {
-	Notifications
-} from '../../../core/Notification'
+import DBManager from "../../../core/DBManager";
+import Notifications from '../../../core/Notifications'
 
 class Note {
 	constructor(project_id, title, description, category, color, milestone_id, tags) {
@@ -64,7 +60,7 @@ const mutations = {
 		// Create the new note to store.
 		let note = new Note(data.project_id, data.title, data.description, data.category, data.color, data.milestoneId, data.tags)
 
-		const database = App.GetDB(data.project_id);
+		const database = DBManager.GetDB(data.project_id);
 
 		// Set the order for the note.
 		note.order = state.notes.filter(note => note.category == data.category).length;
@@ -95,7 +91,7 @@ const mutations = {
 			return id.substr(id.indexOf('-') + 1, id.length - 1);
 		}
 
-		const db = App.GetDB(state.projectId);
+		const db = DBManager.GetDB(state.projectId);
 
 		// Setup the notes to work with.
 		const projectNotes = db.GetAll('notes');
@@ -160,7 +156,7 @@ const mutations = {
 		// Update the timestamp
 		data.updated_timestamp = Date.now();
 
-		const database = App.GetDB(data.project_id);
+		const database = DBManager.GetDB(data.project_id);
 
 		// Create the new note to store.
 		database.Update('notes', {
@@ -212,7 +208,7 @@ const mutations = {
 	UpdateNotes(state, data) {
 		state.projectId = data.projectId;
 		state.milestoneId = data.milestoneId;
-		state.notes = App.GetDB(data.projectId).GetAll('notes', 'order', [{
+		state.notes = DBManager.GetDB(data.projectId).GetAll('notes', 'order', [{
 			milestone_id: data.milestoneId
 		}]);
 	},
@@ -223,7 +219,7 @@ const mutations = {
 	 * @param {Object} note Note to delete.
 	 */
 	DeleteNote(state, note) {
-		App.GetDB(note.project_id).Remove('notes', {
+		DBManager.GetDB(note.project_id).Remove('notes', {
 			id: note.id
 		});
 

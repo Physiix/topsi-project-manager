@@ -6,7 +6,7 @@ export class KeyData {
 	}
 }
 
-class Utilities {
+class Utils {
 	/**
 	 * Check if a click is done outside an element, and execute a callback if so.
 	 * @param {HTMLElement} element Element to check if the click is outside of.
@@ -74,4 +74,4 @@ class Utilities {
 	}
 }
 
-export const Utils = new Utilities();
+export default new Utils();

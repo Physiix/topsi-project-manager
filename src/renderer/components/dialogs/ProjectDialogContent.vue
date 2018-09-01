@@ -75,7 +75,7 @@
 import ConfirmDialog from './ConfirmDialog.vue'
 import Sortable from 'sortablejs'
 import Quill from 'quill'
-import { Utils } from '../../../core/Utils';
+import Utils from '../../../core/Utils';
 let editor = null;
 
 export default {

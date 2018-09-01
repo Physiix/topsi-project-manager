@@ -3,7 +3,7 @@ import {
 } from './database'
 
 const EXTENSION = '.json';
-class Application {
+class DBManager {
 	constructor() {
 		this.appDB = new DBUtils('database.json');
 		this.databases = [];
@@ -54,4 +54,4 @@ class Application {
 	}
 }
 
-export const App = new Application();
+export default new DBManager();

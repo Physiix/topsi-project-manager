@@ -2,9 +2,7 @@ import {
 	app,
 	BrowserWindow
 } from 'electron'
-import {
-	App
-} from '../core/Application';
+import DBManager from '../core/DBManager';
 
 
 
@@ -21,7 +19,7 @@ const winURL = process.env.NODE_ENV === 'development' ?
 	`http://localhost:9080` :
 	`file://${__dirname}/index.html`
 
-const appDB = App.GetAppDB();
+const appDB = DBManager.GetAppDB();
 
 function createWindow() {
 	const isMac = process.platform == 'darwin';

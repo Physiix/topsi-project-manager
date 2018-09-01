@@ -8,4 +8,4 @@ class EventManager {
 	}
 }
 
-export const EventsManager = new EventManager();
+export default new EventManager();
