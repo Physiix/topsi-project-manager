@@ -107,6 +107,51 @@ class ApplicationManager {
 			}
 		}, 10)
 	}
+
+	SetupVisualizer(containerId, contentId, sideId) {
+		const container = document.getElementById(containerId);
+		const content = document.getElementById(contentId);
+		const side = document.getElementById(sideId);
+
+		container.style.display = 'grid';
+		container.style.gridTemplateColumns = '1fr';
+		container.style.gridTemplateRows = '0px 1fr';
+
+		content.style.gridColumn = '1 / 2';
+		content.style.gridRow = '2 / 3';
+
+		side.style.gridColumn = '1 / 2';
+		side.style.gridRow = '1 / 2';
+	}
+
+	CloseVisualizerSide(containerId, maxHeight) {
+		const container = document.getElementById(containerId);
+		let height = maxHeight;
+		const closeId = setInterval(() => {
+			height -= 32;
+			container.style.gridTemplateRows = `${height}px 1fr`;
+			if (height <= 0) {
+				container.style.gridTemplateRows = `0px 1fr`;
+				clearInterval(closeId);
+			}
+		}, 10);
+	}
+
+	OpenVisualizerSide(containerId, maxHeight, callback) {
+		const container = document.getElementById(containerId);
+
+		let height = 0;
+		container.style.gridTemplateColumns = '1fr';
+		const openId = setInterval(() => {
+			height += 32;
+			container.style.gridTemplateRows = `${height}px 1fr`;
+			if (height >= maxHeight) {
+				container.style.gridTemplateRows = `${maxHeight}px 1fr`;
+				clearInterval(openId);
+				callback();
+			}
+		}, 10);
+	}
 }
 
 export default new ApplicationManager();
