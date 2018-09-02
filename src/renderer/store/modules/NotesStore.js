@@ -37,12 +37,19 @@ const state = {
 	// Id of the currently opened project.
 	projectId: -1,
 
-	milestoneId: 0
+	milestoneId: 0,
+
+	// Whether to display the tasks or not.
+	displayTasks: DBManager.GetAppDB().GetValue('display_tasks', true),
 }
 
 const getters = {
 	GetNotes(state) {
 		return state.notes;
+	},
+
+	isDisplayTasks(state) {
+		return state.displayTasks;
 	}
 }
 
@@ -243,6 +250,11 @@ const mutations = {
 		projectDB.Update('notes', {
 			id: state.openedNote.id
 		}, state.openedNote);
+	},
+
+	ToggleDisplayTasks(state) {
+		state.displayTasks = !state.displayTasks;
+		DBManager.GetAppDB().SetValue('display_tasks', state.displayTasks);
 	}
 }
 
@@ -310,6 +322,10 @@ const actions = {
 			task: task
 		})
 	},
+
+	ToggleDisplayTasks(context) {
+		context.commit('ToggleDisplayTasks');
+	}
 }
 
 export default {

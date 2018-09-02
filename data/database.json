@@ -39,5 +39,6 @@
   "application_color": "indigo white--text",
   "first_time_use": false,
   "default_databases_folder": "",
-  "isMac": false
+  "isMac": false,
+  "display_tasks": true
 }
