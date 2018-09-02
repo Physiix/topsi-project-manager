@@ -1,5 +1,5 @@
 {
-  "dark_mode": true,
+  "dark_mode": false,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -35,8 +35,8 @@
   ],
   "current_project_id": 0,
   "window_width": 1325,
-  "window_height": 778,
-  "application_color": "teal white--text",
+  "window_height": 777,
+  "application_color": "indigo white--text",
   "first_time_use": false,
   "default_databases_folder": "",
   "isMac": false

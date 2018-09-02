@@ -210,7 +210,7 @@ const mutations = {
 	/**
 	 * Add a task to the currently opened note.
 	 * @param {Object} state Current state of the Application.
-	 * @param {String} task 
+	 * @param {String} task Content of the task to add.
 	 */
 	AddTask(state, data) {
 		if (state.openedNote == null || data.task == null || data.task.length <= 0 || data.projectId < 0 || data.projectId == null)
@@ -223,6 +223,23 @@ const mutations = {
 			content: data.task,
 			done: false
 		});
+		projectDB.Update('notes', {
+			id: state.openedNote.id
+		}, state.openedNote);
+	},
+
+	/**
+	 * Add a task to the currently opened note.
+	 * @param {Object} state Current state of the Application.
+	 * @param {Object} task Task to update. 
+	 */
+	ToggleTask(state, data) {
+		if (state.openedNote == null || data.task.id == null || data.projectId < 0 || data.projectId == null || state.openedNote.tasks == null)
+			Notifications.Error('Add task', `Cannot add task ${data.task}`);
+
+		const projectDB = DBManager.GetDB(data.projectId);
+		const task = state.openedNote.tasks.filter(task => task.id == data.task.id)[0];
+		task.done = !task.done;
 		projectDB.Update('notes', {
 			id: state.openedNote.id
 		}, state.openedNote);
@@ -285,7 +302,14 @@ const actions = {
 			projectId: context.getters.getOpenedProjectId,
 			task: task
 		});
-	}
+	},
+
+	ToggleTask(context, task) {
+		context.commit('ToggleTask', {
+			projectId: context.getters.getOpenedProjectId,
+			task: task
+		})
+	},
 }
 
 export default {
