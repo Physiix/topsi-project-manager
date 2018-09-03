@@ -4,7 +4,7 @@
 			<v-btn absolute top right style="margin-top:30px;z-index:5;" icon @click="ToggleLayout">
 				<Tooltip bottom content="Tasks">
 					<v-icon>
-						event_note
+						fa-tasks
 					</v-icon>
 				</Tooltip>
 			</v-btn>
