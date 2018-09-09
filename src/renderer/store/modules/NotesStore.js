@@ -255,6 +255,25 @@ const mutations = {
 	ToggleDisplayTasks(state) {
 		state.displayTasks = !state.displayTasks;
 		DBManager.GetAppDB().SetValue('display_tasks', state.displayTasks);
+	},
+
+	ReorderTasks(state, data) {
+		if (state.openedNote == null || data.newIndex == null || data.oldIndex < 0)
+			Notifications.Error('Redorder Task', `Cannot reorder task ${data.task}`);
+
+		const newIndex = data.newIndex;
+		const oldIndex = data.oldIndex;
+
+		const projectDB = DBManager.GetDB(state.projectId);
+		// const task = state.openedNote.tasks.filter(task => task.id == data.task.id)[0];
+		// task.done = !task.done;
+		const tmp = state.openedNote.tasks[oldIndex];
+		state.openedNote.tasks[oldIndex] = state.openedNote.tasks[newIndex];
+		state.openedNote.tasks[newIndex] = tmp;
+
+		projectDB.Update('notes', {
+			id: state.openedNote.id
+		}, state.openedNote);
 	}
 }
 
@@ -325,6 +344,10 @@ const actions = {
 
 	ToggleDisplayTasks(context) {
 		context.commit('ToggleDisplayTasks');
+	},
+
+	ReorderTasks(context, data) {
+		context.commit('ReorderTasks', data);
 	}
 }
 

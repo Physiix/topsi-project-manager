@@ -5,9 +5,9 @@
 			</div>
 			<div v-if="displayTasks">
 				<v-text-field label="New task" v-model="task" @keydown.enter="AddTask" solo append-icon="arrow_right" light="" />
-				<div style="max-height:200px;overflow-y:auto;">
+				<div ref="container" style="max-height:200px;overflow-y:auto;">
 					<div v-for="(task, index) in tasks" :key="index">
-						<v-checkbox @change="Toggle(task)" v-model="task.done" class="py-0 my-0" :label="task.content" :color="color" :class="(task.done)?'task-done':''"></v-checkbox>
+						<Task :task="task" />
 					</div>
 				</div>
 			</div>
@@ -15,11 +15,16 @@
 	</v-card>
 </template>
 <script>
+import Task from './Task.vue'
 
 import _ from 'lodash'
+import Sortable from 'sortablejs'
 
 export default {
 	name: 'Tasks',
+	components: {
+		Task
+	},
 	data() {
 		return {
 			task: '',
@@ -29,10 +34,6 @@ export default {
 	computed: {
 		note() {
 			return this.$store.state.NotesStore.openedNote;
-		},
-
-		color() {
-			return this.$store.getters.appColor;
 		},
 
 		bgColor() {
@@ -53,10 +54,6 @@ export default {
 			this.RetrieveTasks();
 		},
 
-		Toggle(task) {
-			this.$store.dispatch('ToggleTask', task);
-		},
-
 		RetrieveTasks() {
 			this.tasks = (this.note.tasks) ? this.note.tasks.map(task => JSON.parse(JSON.stringify(task))) : [];
 		},
@@ -65,6 +62,23 @@ export default {
 			this.$store.dispatch('ToggleDisplayTasks');
 		}
 	},
+
+	mounted() {
+		const element = this.$refs.container;
+		const sortable = Sortable.create(element, {
+			group: {
+				name: "Tasks",
+			},
+			onEnd: (event) => {
+				this.$store.dispatch('ReorderTasks', {
+					oldIndex: event.oldIndex,
+					newIndex: event.newIndex
+				});
+			},
+			animation: 100
+		});
+	},
+
 	created() {
 		this.RetrieveTasks();
 	}
