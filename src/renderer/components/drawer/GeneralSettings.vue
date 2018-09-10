@@ -1,8 +1,10 @@
 <template>
 	<v-card>
 		<v-container>
-			<v-checkbox label="Dark Mode" v-model="darkMode"></v-checkbox>
-			<ColorPicker width="450" padding="10" class="" v-on:color-selected="SelectColor"></ColorPicker>
+			<v-checkbox class="px-1" style="padding-left:13px;" label="Dark Mode" v-model="darkMode"></v-checkbox>
+			<ColorPicker width="450" padding="7" class="" v-on:color-selected="SelectColor"></ColorPicker>
+			<LanguageSelection class="px-2" />
+
 		</v-container>
 	</v-card>
 </template>
