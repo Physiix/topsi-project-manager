@@ -25,9 +25,30 @@ export default {
 		"done": "Done",
 		"close": "Close",
 	},
-	"": {
-
-	}
+	"zh": {
+		"projectName": "Topsi 项目管理",
+		"firstUseWelcome": "欢迎使用 Topsi 项目管理",
+		"firstUseContent": `<strong>任何时候按下 CTRL+D 可以显示帮助页面.</strong> <br /> 由于这是你第一次使用这个应用，请设置应用程序要使用的默认值 <br/> <br/> 所有设置在任何时候都可以<strong>修改 </strong>.`,
+		"firstUseSetupFolder": "设置默认的文件夹去保存你的项目.",
+		"firstUseSetupColor": "设置项目默认颜色",
+		"aboutContent": "Topsi项目管理是一个简单的基于 electron 和 vuejs 的看板软件。它支持所有的第三方平台 (Windows, Linux 和 OSX). 它是基于 AGPL V3 协议免费开源的.<br /><br /><br /> <strong>github: </strong> <a>https://github.com/Physiix/topsi-project-manager</a>",
+		"searchLabel": "搜索标题、标签、项目... ...",
+		"helperTitle": "帮助/快捷键",
+		"newMilestoneLabel": "里程碑名称",
+		"category": "类别",
+		"milestone": "里程碑",
+		"noTagFound": "没有找到标签。标签需要在使用之前创建。",
+		"projectDialogFolderLabel": "项目保存路径",
+		"export": "导出",
+		"general": "一般",
+		"about": "关于",
+		"edit": "编辑",
+		"save": "保存",
+		"cancel": "取消",
+		"browse": "浏览",
+		"done": "完成",
+		"close": "关闭",
+	},
 }
 
 //
