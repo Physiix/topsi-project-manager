@@ -25,9 +25,31 @@ export default {
 		"done": "Done",
 		"close": "Close",
 	},
-	"": {
-
-	}
+	"pt": {
+       	"projectName": "Gerenciador de Projeto Topsi",
+       	"firstUseWelcome": "Bem Vindo ao Gerenciador de Projeto Topsi",
+       	"firstUseContent": `<strong>Pressione CTRL + D para exibir a página de ajuda.</strong> <br /> Como esta é a primeira vez que você está usando este aplicativo, por favor, configure os próximos valores padrão a serem usados pelo aplicativo. <br/> <br/> Todas as configurações podem ser
+       	<strong> modificadas </strong> a qualquer momento.`,
+       	"firstUseSetupFolder": "Configure a pasta padrão para armazenar seus projetos.",
+       	"firstUseSetupColor": "Configurar a cor do aplicativo padrão",
+       	"aboutContent": "O Gerenciador de Projeto Topsi é um software de quadro kanban simples, construído com electron e vuejs. Suporta todas as três principais plataformas (Windows, Linux e OSX). É grátis e Open Source sob a cláusula AGPL V3.<br /><br /><br /> <strong>github: </strong> <a>https://github.com/Physiix/topsi-project-manager</a>",
+       	"searchLabel": "Pesquise por título, tags, projeto ...",
+       	"helperTitle": "Ajuda/Atalhos",
+       	"newMilestoneLabel": "Nome da Milestone ",
+       	"category": "Categoria",
+       	"milestone": "Milestone",
+       	"noTagFound": "Nenhuma tag encontrada. As tags precisam ser criadas antes de serem usadas.",
+       	"projectDialogFolderLabel": "Diretório de salvamento do projeto",
+       	"export": "Exportar",
+       	"general": "Geral",
+       	"about": "Sobre",
+       	"edit": "Editar",
+       	"save": "Salvar",
+       	"cancel": "Cancelar",
+       	"browse": "Browse",
+       	"done": "Feito",
+       	"close": "Fechar",
+    },
 }
 
 //
