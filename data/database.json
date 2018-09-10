@@ -1,5 +1,5 @@
 {
-  "dark_mode": false,
+  "dark_mode": true,
   "git_user_info": {
     "username": "",
     "repository_token": "",
@@ -40,5 +40,6 @@
   "first_time_use": false,
   "default_databases_folder": "",
   "isMac": false,
-  "display_tasks": true
+  "display_tasks": true,
+  "lang": "en"
 }

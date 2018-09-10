@@ -15,6 +15,21 @@ export default {
 		"milestone": "Milestone",
 		"noTagFound": "No tag found. Tags needs to be created before being used.",
 		"projectDialogFolderLabel": "Project's save directory",
+		"newProject": "New project",
+		"exportProject": "Export Project",
+		"importProject": "Import Project",
+		"settings": "Settings",
+		"layoutAndOptions": "Layout & Options",
+		"project": "Project",
+		"title": "Title",
+		"tags": "Tags",
+		"backToProjects": "Back to projects",
+		"searchInNotes": "Search in notes (CTRL + F)",
+		"addNewNote": "Add a new Note",
+		"editProject": "Edit Project",
+		"milestones": "Milestones",
+		"noTagsCreated": "No tags created yet. ",
+		"confirmDeleteMessage": "Are you sure you want to delete this project ?",
 		"export": "Export",
 		"general": "General",
 		"about": "About",
@@ -24,10 +39,8 @@ export default {
 		"browse": "Browse",
 		"done": "Done",
 		"close": "Close",
+		"delete": "Delete",
 	},
-	"": {
-
-	}
 }
 
 //

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Tooltip top content="Tags">
+		<Tooltip top :content="$lang.Get('tags')">
 			<v-list-tile id="tags-button" @click="">
 				<v-list-tile-action>
 					<v-icon style="margin-left:-2px">
@@ -19,7 +19,7 @@
 				<v-chip small label :class="color">{{tag}}</v-chip>
 			</v-card-title>
 			<v-container>
-				<div v-if="tags.length < 0"> No tags created yet. </div>
+				<div v-if="tags.length < 0"> {{$lang.Get('noTagsCreated')}}</div>
 				<v-chip label v-for="(entry, index) in tags" :key="index" small :class="entry.color" close v-on:input="RemoveTag(index)">{{entry.tag}}</v-chip>
 			</v-container>
 		</FloatingDiv>

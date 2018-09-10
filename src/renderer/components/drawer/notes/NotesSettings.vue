@@ -43,7 +43,7 @@ export default {
 				{
 					icon: 'arrow_back',
 					title: '',
-					hint: 'Back to projects',
+					hint: this.$lang.Get('backToProjects'),
 					action: () => {
 						// Back to the main menu.
 						this.$store.dispatch('OpenProject', null);
@@ -52,13 +52,13 @@ export default {
 				{
 					icon: 'search',
 					title: 'Search',
-					hint: 'Search in notes (CTRL + F)',
+					hint: this.$lang.Get('searchInNotes'),
 					action: () => { this.$store.dispatch('ToggleDialog', 'searchDialog'); }
 				},
 				{
 					icon: 'add',
 					title: 'New Note',
-					hint: 'Add a new Note',
+					hint: this.$lang.Get('addNewNote'),
 					style: 'margin-left:-2px;',
 					action: () => this.$store.dispatch('ToggleDialog', 'createNote')
 				},
@@ -66,14 +66,14 @@ export default {
 					icon: 'fa-edit',
 					title: 'Edit Project',
 					class: 'pr-2',
-					hint: 'Edit Project',
+					hint: this.$lang.Get('editProject'),
 					action: () => this.$store.dispatch('ToggleDialog', 'updateProject')
 				},
 				{
 					icon: 'fa-list-ol',
 					title: 'Milestones',
 					style: 'margin-left:-2px;',
-					hint: 'Milestones',
+					hint: this.$lang.Get('milestones'),
 					action: () => this.$store.dispatch('ToggleDialog', 'milestonesList')
 				}
 			]
