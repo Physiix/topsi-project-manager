@@ -12,14 +12,14 @@ const FileSync = require('lowdb/adapters/FileSync');
 export class DBUtils {
 	constructor(name, defaultPath) {
 		// Paths
-		const dir = process.platform == 'darwin' ? path.join(os.homedir(), '.topsi') : path.resolve('.');
+		const dir = process.platform == 'darwin' ? path.join(os.homedir(), '.topsi') : process.platform == 'linux' ? path.join(os.homedir(), '.topsi') : path.resolve('.');
 		if (defaultPath == null || defaultPath.length <= 0) this.dataPath = path.join(dir, 'data/');
 		else this.dataPath = defaultPath;
 		const dbFilePath = path.join(this.dataPath, name);
 
 		// Make sure the 'data' folder exists
 		if (!fs.existsSync(this.dataPath)){
-			if(process.platform == 'darwin' && !fs.existsSync(dir)) fs.mkdirSync(dir);
+			if(process.platform == 'darwin' || process.platform == 'linux' && !fs.existsSync(dir)) fs.mkdirSync(dir);
 			fs.mkdirSync(this.dataPath);
 		}
 		const adapter = new FileSync(dbFilePath);
