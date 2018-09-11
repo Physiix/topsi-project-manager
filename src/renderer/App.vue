@@ -18,6 +18,9 @@ export default {
 		darkMode() {
 			return this.$store.state.AppStore.darkMode;
 		}
+	},
+	created() {
+		this.$lang.SetCurrentLang(this.$store.getters.getSelectedLanguage);
 	}
 }
 </script>

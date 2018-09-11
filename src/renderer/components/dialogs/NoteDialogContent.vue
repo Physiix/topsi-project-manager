@@ -1,7 +1,7 @@
 <template>
 	<Dialog v-on:accept="Accept" v-on:close="Close" width="500">
 		<v-card-title class="py-0">
-			<v-text-field autofocus label="Title" v-model="title"></v-text-field>
+			<v-text-field autofocus :label="$lang.Get('title')" v-model="title"></v-text-field>
 		</v-card-title>
 		<ColorPicker width="500" padding="20" v-on:color-selected="ColorSelected"></ColorPicker>
 		<v-container class="pa-0 px-3 pb-5">
@@ -9,8 +9,8 @@
 				<div id="toolbar"></div>
 				<div id="editor" style="height:200px;"></div>
 			</v-card>
-			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips flat hide-details chips label="Tags?" solo color="primary" multiple :no-data-text="this.$lang.Get('noTagFound')"></v-autocomplete>
-			<v-select class="px-2" auto v-bind:items="milestoneItems" v-model="milestone" label="Milestone" title="Milestone" single-line return-object required></v-select>
+			<v-autocomplete :items="tagItems" :search-input.sync="tagSearch" v-model="selectedTags" cache-items class="pt-2" value="Feature" small-chips flat hide-details chips :label="$lang.Get('tags')" solo color="primary" multiple no-data-text="No tag found. Tags needs to be created before being used."></v-autocomplete>
+			<v-select class="px-2" auto v-bind:items="milestoneItems" v-model="milestone" single-line return-object required></v-select>
 			<v-select class="px-2" auto v-bind:items="items" v-model="category" label="Category" single-line return-object required></v-select>
 		</v-container>
 	</Dialog>

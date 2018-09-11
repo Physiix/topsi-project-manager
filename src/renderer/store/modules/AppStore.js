@@ -45,6 +45,9 @@ const state = {
 
 	// Name of the currently opened project.
 	projectName: '',
+
+	// The currently selected language.
+	selectedLanguage: DBManager.GetAppDB().GetValue('lang', 'en'),
 }
 
 const mutations = {
@@ -169,6 +172,12 @@ const mutations = {
 	OpenDialog(state, dialog, value) {
 		for (let property in state.dialogs)
 			(property == dialog) ? state.dialogs[property] = value || !state.dialogs[property] : state.dialogs[property] = false;
+	},
+
+	SetCurrentLanguage(state, language) {
+		if (language == null || language.length <= 0) Notifications.Error('Set Language', 'Cannot set language with invalid data');
+		DBManager.GetAppDB().SetValue('lang', language);
+		state.selectedLanguage = language;
 	}
 }
 
@@ -244,6 +253,10 @@ const getters = {
 
 	getProjectName(state) {
 		return state.projectName;
+	},
+
+	getSelectedLanguage(state) {
+		return state.selectedLanguage;
 	}
 }
 
@@ -273,6 +286,10 @@ const actions = {
 	SetupApplication(context, data) {
 		context.commit('SetupApplication', data)
 		context.commit('DisableFirstTimeUse');
+	},
+
+	SetCurrentLanguage(context, language) {
+		context.commit('SetCurrentLanguage', language);
 	}
 }
 

@@ -19,17 +19,17 @@ export default {
 		return {
 			items: [
 				{
-					title: 'New project',
+					title: this.$lang.Get('newProject'),
 					icon: 'add',
 					action: () => this.$store.dispatch('ToggleDialog', 'createProject')
 				},
 				{
-					title: 'Export Project',
+					title: this.$lang.Get('exportProject'),
 					icon: 'save',
 					action: () => { this.$store.dispatch('ToggleDialog', 'exportProject') }
 				},
 				{
-					title: 'Import Project',
+					title: this.$lang.Get('importProject'),
 					icon: 'insert_drive_file',
 					action: () => { ProjectManager.LoadProject(); }
 				},
@@ -44,7 +44,7 @@ export default {
 				// 	action: () => this.$store.dispatch('DownloadGist')
 				// },
 				{
-					title: 'Settings',
+					title: this.$lang.Get('settings'),
 					icon: 'settings',
 					action: () => this.$store.dispatch('ToggleDialog', 'showSettings')
 				},

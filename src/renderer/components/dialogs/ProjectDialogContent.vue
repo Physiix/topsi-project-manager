@@ -1,18 +1,18 @@
 <template>
 	<Dialog width="600" height="500" v-on:close="Close" v-on:accept="Accept">
-		<ConfirmDialog v-if="deleteDialog" :title="'Delete ' + project.title" message="Are you sure you want to delete this project ?" accept-msg="Delete" v-on:accept="Delete" v-on:cancel="deleteDialog = false" accept-color="error" />
+		<ConfirmDialog v-if="deleteDialog" :title="$lang.Get('delete') + ' ' + project.title" :message="$lang.Get('confirmDeleteMessage')" :accept-msg="$lang.Get('delete')" v-on:accept="Delete" v-on:cancel="deleteDialog = false" accept-color="error" />
 		<v-tabs fixed-tabs color="transparent">
 			<v-tab>
-				Project
+				{{$lang.Get('project')}}
 			</v-tab>
 			<v-tab>
-				Layout & Options
+				{{$lang.Get('layoutAndOptions')}}
 			</v-tab>
 			<v-tabs-items v-model="tabItem">
 				<v-tab-item>
-					<v-btn block color="error" v-if="enableDelete" @click="deleteDialog = true" style="border-radius:0;">delete</v-btn>
+					<v-btn block color="error" v-if="enableDelete" @click="deleteDialog = true" style="border-radius:0;">{{$lang.Get('delete')}}</v-btn>
 					<v-card-title>
-						<v-text-field label="Title" v-model="title"></v-text-field>
+						<v-text-field :label="$lang.Get('title')" v-model="title"></v-text-field>
 					</v-card-title>
 					<v-container class="pa-0 px-3">
 						<v-card light class="elevation-2" style="border-radius:0;">

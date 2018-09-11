@@ -6,8 +6,8 @@
 				<v-card-text>{{message}}</v-card-text>
 				<v-card-actions>
 					<v-spacer></v-spacer>
-					<v-btn flat @click.native="Cancel">{{cancelMsg?cancelMsg:'Cancel'}}</v-btn>
-					<v-btn :color="acceptColor?acceptColor:'primary'" style="border-radius:0;" @click.native="Accept">{{acceptMsg?acceptMsg:'Accept'}}</v-btn>
+					<v-btn flat @click.native="Cancel">{{cancelMsg?cancelMsg:$lang.Get('cancel')}}</v-btn>
+					<v-btn :color="acceptColor?acceptColor:'primary'" style="border-radius:0;" @click.native="Accept">{{acceptMsg?acceptMsg:$lang.Get('accept')}}</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-dialog>
