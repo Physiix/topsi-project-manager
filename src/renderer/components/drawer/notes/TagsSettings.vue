@@ -12,7 +12,7 @@
 		<FloatingDiv activator-id="tags-button" v-on:action="" width="500" dark left v-on:opened="Opened">
 			<v-toolbar color="secondary" dark class="px-2 elevation-0">
 				<v-text-field ref="tag_input" v-model="tag" :color="color" autofocus @keyup.enter.native="AddTag"></v-text-field>
-				<v-btn color="primary" style="border-radius:0;" @click="AddTag">Add</v-btn>
+				<v-btn color="primary" style="border-radius:0;" @click="AddTag">{{$lang.Get('add')}}</v-btn>
 			</v-toolbar>
 			<ColorPicker width="500" padding="20" v-model="color"></ColorPicker>
 			<v-card-title v-if="tag.length > 0" class="justify-center">

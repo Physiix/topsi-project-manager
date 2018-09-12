@@ -1,10 +1,10 @@
 <template>
 	<v-card style="border-radius:0;" class="elevation-0" :color="bgColor" height="350">
 		<v-container>
-			<div class="headline pl-0 ml-0 pb-2">Tasks
+			<div class="headline pl-0 ml-0 pb-2">{{$lang.Get('tasks')}}
 			</div>
 			<div v-if="displayTasks">
-				<v-text-field label="New task" v-model="task" @keydown.enter="AddTask" solo append-icon="arrow_right" light="" />
+				<v-text-field :label="$lang.Get('newTask')" v-model="task" @keydown.enter="AddTask" solo append-icon="arrow_right" light="" />
 				<div ref="container" style="max-height:200px;overflow-y:auto;">
 					<div v-for="(task, index) in tasks" :key="index">
 						<Task :task="task" />

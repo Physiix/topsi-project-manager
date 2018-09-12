@@ -1,5 +1,5 @@
 <template>
-	<Dialog v-if="showSettings" width="500" v-on:close="showSettings = false" disable-accept cancel-text="Close">
+	<Dialog v-if="showSettings" width="500" v-on:close="showSettings = false" disable-accept :cancel-text="$lang.Get('close')">
 		<v-tabs v-model="active" fixed centered>
 			<v-tab v-for="(tab, index) in tabs" :key="index" ripple>
 				{{tab}}

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-select :value="selected" @change="Select" :items="langs" label="Language"></v-select>
+		<v-select :value="selected" @change="Select" :items="langs" :label="$lang.Get('language')"></v-select>
 	</div>
 </template>
 <script>
