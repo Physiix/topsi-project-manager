@@ -207,7 +207,7 @@ export default {
 	},
 
 	created() {
-		this.customPath = this.project.customPath || this.$store.getters.getDefaultPath;
+		this.customPath = this.project.customPath || this.$store.getters.defaultPath;
 	}
 }
 </script>

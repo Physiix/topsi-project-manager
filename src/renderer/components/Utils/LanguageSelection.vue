@@ -15,7 +15,7 @@ export default {
 	},
 	methods: {
 		Select(language) {
-			if (language == this.$store.getters.getSelectedLanguage) return;
+			if (language == this.$store.getters.selectedLanguage) return;
 			this.$store.dispatch('SetCurrentLanguage', language);
 			this.$lang.SetCurrentLang(language);
 			location.reload();
@@ -24,7 +24,7 @@ export default {
 	mounted() {
 		// this.$lang.SetCurrentLang('en')
 		this.langs = this.$lang.GetLanguages();
-		this.selected = this.$store.getters.getSelectedLanguage;
+		this.selected = this.$store.getters.selectedLanguage;
 	}
 }
 </script>

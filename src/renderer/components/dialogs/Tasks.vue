@@ -37,7 +37,7 @@ export default {
 		},
 
 		bgColor() {
-			return (!this.$store.getters.IsDarkMode) ? 'grey lighten-2' : '';
+			return (!this.$store.getters.isDarkMode) ? 'grey lighten-2' : '';
 		},
 
 		displayTasks: {

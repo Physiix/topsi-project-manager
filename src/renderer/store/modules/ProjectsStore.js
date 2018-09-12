@@ -20,7 +20,7 @@ const state = {
 }
 
 const getters = {
-	GetProjectById(state) {
+	getProjectById(state) {
 		return (id) => state.projects.filter(project => project.id == id)[0];
 	},
 

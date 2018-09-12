@@ -19,7 +19,7 @@ const getters = {
 	 * Get all the milestones associated with a project.
 	 * @param id ID of the project to retrieve the milestones for.
 	 */
-	GetMilestones(state) {
+	milestones(state) {
 		return state.milestones;
 	}
 }

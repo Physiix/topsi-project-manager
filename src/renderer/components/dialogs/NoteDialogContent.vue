@@ -39,12 +39,12 @@ export default {
 	computed: {
 
 		tagItems() {
-			return this.$store.getters.getProjectTags.map(tag => tag.tag);
+			return this.$store.getters.projectTags.map(tag => tag.tag);
 		},
 
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
-			return this.$store.getters.GetProjectById(id);
+			return this.$store.getters.getProjectById(id);
 		},
 
 		categories() {
@@ -55,19 +55,19 @@ export default {
 		},
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
-			return this.$store.getters.GetProjectById(id);
+			return this.$store.getters.getProjectById(id);
 		},
 
 		milestones() {
-			return this.$store.getters.GetMilestones;
+			return this.$store.getters.milestones;
 		},
 
 		tagItems() {
-			return this.$store.getters.getProjectTags.map(tag => tag.tag);
+			return this.$store.getters.projectTags.map(tag => tag.tag);
 		},
 
 		tags() {
-			return this.$store.getters.getProjectTags;
+			return this.$store.getters.projectTags;
 		},
 	},
 	methods: {

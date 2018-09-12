@@ -20,7 +20,7 @@ export default {
 		},
 
 		project() {
-			const project = Object.assign({}, this.$store.getters.getCurrentProject(this));
+			const project = Object.assign({}, this.$store.getters.currentProject(this));
 			project.categories = project.categories.map(category => category.title);
 			return project;
 		}

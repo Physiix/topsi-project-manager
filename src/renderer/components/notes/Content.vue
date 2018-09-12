@@ -60,7 +60,7 @@ export default {
 		},
 
 		notes() {
-			return this.$store.getters.GetNotes.filter(note => {
+			return this.$store.getters.notes.filter(note => {
 				if (note.category != this.category.tag) return false;
 				const searchContent = this.searchContent;
 				return note.title.toLowerCase().includes(searchContent) || note.tags.some(tag => tag.tag.toLowerCase().includes(searchContent));
@@ -68,7 +68,7 @@ export default {
 		},
 
 		searchContent() {
-			return this.$store.getters.getSearchContent.toLowerCase();
+			return this.$store.getters.searchContent.toLowerCase();
 		}
 	},
 	methods: {

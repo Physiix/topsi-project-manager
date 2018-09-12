@@ -27,7 +27,7 @@ export default {
 			return this.$store.state.ProjectsStore.projects;
 		},
 		color() {
-			if (this.$store.getters.IsDarkMode)
+			if (this.$store.getters.isDarkMode)
 				return '';
 			else return 'grey lighten-2'
 		},

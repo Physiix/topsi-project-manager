@@ -37,17 +37,17 @@ export default {
 
 		selected: {
 			get() {
-				return this.$store.getters.getCurrentMilestoneId;
+				return this.$store.getters.currentMilestoneId;
 			},
 			set(value) {
 				this.$store.dispatch('SetProjectMilestone', {
-					projectId: this.$store.getters.getOpenedProjectId,
+					projectId: this.$store.getters.openedProjectId,
 					milestoneId: value
 				})
 			}
 		},
 		milestones() {
-			return this.$store.getters.GetMilestones;
+			return this.$store.getters.milestones;
 		}
 	},
 	methods: {
@@ -68,7 +68,7 @@ export default {
 				if (type == 'keyup') {
 					console.log(this.milestoneName)
 					this.$store.dispatch('CreateMilestone', {
-						projectId: this.$store.getters.getOpenedProjectId,
+						projectId: this.$store.getters.openedProjectId,
 						name: this.milestoneName
 					});
 					this.milestoneName = '';

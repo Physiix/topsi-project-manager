@@ -23,7 +23,7 @@ export default {
 
 		project() {
 			const id = this.$store.state.AppStore.openedProjectId;
-			return this.$store.getters.GetProjectById(id);
+			return this.$store.getters.getProjectById(id);
 		},
 
 		note() {

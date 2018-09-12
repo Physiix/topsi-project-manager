@@ -20,7 +20,7 @@ export default {
 		}
 	},
 	created() {
-		this.$lang.SetCurrentLang(this.$store.getters.getSelectedLanguage);
+		this.$lang.SetCurrentLang(this.$store.getters.selectedLanguage);
 	}
 }
 </script>

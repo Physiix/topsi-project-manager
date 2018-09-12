@@ -41,11 +41,11 @@ export default {
 	},
 	computed: {
 		displayProjects() {
-			return !this.$store.getters.IsProjectOpened;
+			return !this.$store.getters.isProjectOpened;
 		},
 
 		firstTimeUse() {
-			return this.$store.getters.firstTimeUse;
+			return this.$store.getters.isFirstTimeUse;
 		},
 
 		showSearch() {

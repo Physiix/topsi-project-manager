@@ -43,7 +43,7 @@ export default {
 
 		project() {
 			const id = this.projectId;
-			return this.$store.getters.GetProjectById(id);
+			return this.$store.getters.getProjectById(id);
 		},
 
 		categories() {
@@ -67,7 +67,7 @@ export default {
 		},
 
 		color() {
-			if (this.$store.getters.IsDarkMode)
+			if (this.$store.getters.isDarkMode)
 				return '';
 			else return 'grey lighten-2'
 		},

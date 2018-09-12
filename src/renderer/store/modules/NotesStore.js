@@ -44,7 +44,7 @@ const state = {
 }
 
 const getters = {
-	GetNotes(state) {
+	notes(state) {
 		return state.notes;
 	},
 
@@ -330,14 +330,14 @@ const actions = {
 
 	AddTask(context, task) {
 		context.commit('AddTask', {
-			projectId: context.getters.getOpenedProjectId,
+			projectId: context.getters.openedProjectId,
 			task: task
 		});
 	},
 
 	ToggleTask(context, task) {
 		context.commit('ToggleTask', {
-			projectId: context.getters.getOpenedProjectId,
+			projectId: context.getters.openedProjectId,
 			task: task
 		})
 	},

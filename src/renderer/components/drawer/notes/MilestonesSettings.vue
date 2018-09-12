@@ -114,7 +114,7 @@ export default {
 	},
 	computed: {
 		milestoneId() {
-			return this.$store.getters.getCurrentMilestoneId;
+			return this.$store.getters.currentMilestoneId;
 		}
 	},
 	watch: {
@@ -133,7 +133,7 @@ export default {
 		},
 
 		getNotes() {
-			return this.$store.getters.GetNotes;
+			return this.$store.getters.notes;
 		},
 
 		Select(index) {
@@ -185,7 +185,7 @@ export default {
 		},
 
 		Update() {
-			const categories = this.$store.getters.getCurrentProject(this).categories;
+			const categories = this.$store.getters.currentProject(this).categories;
 			this.finishingCategory = categories[categories.length - 1].tag;
 			this.notes.all = this.getNotes();
 			this.notes.done = this.notes.all.filter(n => n.category == this.finishingCategory);

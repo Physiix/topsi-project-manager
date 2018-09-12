@@ -53,7 +53,7 @@ export default {
 		},
 
 		UpdateTags() {
-			this.tags = this.$store.getters.getProjectTags;
+			this.tags = this.$store.getters.projectTags;
 		},
 
 		Opened() {

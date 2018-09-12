@@ -186,7 +186,7 @@ const getters = {
 		return DBManager.GetAppDB().GetValue('isMac', false);
 	},
 
-	IsProjectOpened(state) {
+	isProjectOpened(state) {
 		return state.openedProjectId != -1;
 	},
 
@@ -194,7 +194,7 @@ const getters = {
 		return state.baseColor;
 	},
 
-	IsDarkMode(state) {
+	isDarkMode(state) {
 		return state.darkMode;
 	},
 
@@ -202,12 +202,12 @@ const getters = {
 		return state.drawerWidth;
 	},
 
-	firstTimeUse(state) {
+	isFirstTimeUse(state) {
 		return state.firstTimeUse;
 	},
 
-	getProjectTags(state) {
-		if (state.openedProjectId < 0) Notifications.Error('getProjectTags', 'A project must be opened to get its tags');
+	projectTags(state) {
+		if (state.openedProjectId < 0) Notifications.Error('projectTags', 'A project must be opened to get its tags');
 		return DBManager.GetDB(state.openedProjectId).GetValue('tags', []);
 	},
 
@@ -219,19 +219,19 @@ const getters = {
 		return state.dialogs.updateProject;
 	},
 
-	getCurrentProject(state) {
-		return (context) => context.$store.getters.GetProjectById(state.openedProjectId);
+	currentProject(state) {
+		return (context) => context.$store.getters.getProjectById(state.openedProjectId);
 	},
 
-	getSearchContent(state) {
+	searchContent(state) {
 		return state.searchContent;
 	},
 
-	getOpenedProjectId(state) {
+	openedProjectId(state) {
 		return state.openedProjectId;
 	},
 
-	getDefaultPath(state) {
+	defaultPath(state) {
 		return DBManager.GetAppDB().GetValue('default_databases_folder', '');
 	},
 
@@ -239,11 +239,11 @@ const getters = {
 		return state.dialogs.milestonesList;
 	},
 
-	getCurrentProjectMilestones(state) {
+	currentProjectMilestones(state) {
 		return () => DBManager.GetDB(state.openedProjectId).GetAll('milestones', 'id');
 	},
 
-	getCurrentMilestoneId(state) {
+	currentMilestoneId(state) {
 		return state.currentMilestoneId;
 	},
 
@@ -251,11 +251,11 @@ const getters = {
 		return state.showHelper;
 	},
 
-	getProjectName(state) {
+	projectName(state) {
 		return state.projectName;
 	},
 
-	getSelectedLanguage(state) {
+	selectedLanguage(state) {
 		return state.selectedLanguage;
 	}
 }

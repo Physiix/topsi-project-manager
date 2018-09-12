@@ -15,7 +15,7 @@ export default {
 	computed: {
 		search: {
 			get() {
-				return this.$store.getters.getSearchContent;
+				return this.$store.getters.searchContent;
 			},
 			set(value) {
 				return this.$store.commit('SetSearchContent', value);

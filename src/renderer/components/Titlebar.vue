@@ -47,7 +47,7 @@ export default {
 		 * Empty string if not.
 		 */
 		projectName() {
-			const projectName = this.$store.getters.getProjectName;
+			const projectName = this.$store.getters.projectName;
 			if (projectName != null && projectName.length > 0) return ` | ${projectName}`;
 			return '';
 		}
