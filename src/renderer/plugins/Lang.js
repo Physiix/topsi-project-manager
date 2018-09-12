@@ -124,7 +124,7 @@ export default {
 		"general": "Geral",
 		"about": "Sobre",
 		"darkMode": "Tema Escuro",
-		"language": "Linguagem",
+		"language": "Idioma",
 		"tasks": "Tarefas",
 		"newTask": "Nova Tarefa",
 		"edit": "Editar",
