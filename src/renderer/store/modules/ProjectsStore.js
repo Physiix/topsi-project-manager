@@ -186,6 +186,10 @@ const actions = {
 	},
 
 	UpdateCategory(context, data) {
+		// Update the notes with the category.
+		context.commit('UpdateNotesCategory', data);
+
+		// Update the cateogry.
 		context.commit('UpdateCategory', data);
 
 		// Retrieve all the projects.

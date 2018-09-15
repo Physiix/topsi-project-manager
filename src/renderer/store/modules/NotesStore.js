@@ -274,6 +274,21 @@ const mutations = {
 		projectDB.Update('notes', {
 			id: state.openedNote.id
 		}, state.openedNote);
+	},
+
+	UpdateNotesCategory(state, data) {
+		if (data.projectId == null || data.category == null || data.newTitle == null) Notifications.Error('UpdateNotesCategory', `Cannot update note's category. ${data}`);
+
+		const projectDB = DBManager.GetDB(data.projectId);
+
+		const category = data.newTitle.replace(/ /g, '_').toLowerCase();
+
+		// Update the categories
+		state.notes.forEach(note => {
+			if (note.category == data.category.tag) note.category = category;
+		})
+
+		projectDB.SetValue('notes', state.notes);
 	}
 }
 
