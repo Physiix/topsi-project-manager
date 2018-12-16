@@ -49,7 +49,7 @@ It's free and open source under the AGPLv3 license.
 
 ## Roadmap
 
-The developpement is done in the `master` branch, once a build is stable enough (Still alpha), a snapshot will be created and the release page will be updated with the executables.
+The development is done in the `master` branch, once a build is stable enough (Still alpha), a snapshot will be created and the release page will be updated with the executables.
 These are the features that will be implemented next:
 
 - Support for other languages than English (translations)
