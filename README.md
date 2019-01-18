@@ -37,6 +37,10 @@ It's free and open source under the AGPLv3 license.
 
 ![Image attachment](https://user-images.githubusercontent.com/2964165/44611858-de09fc80-a7d1-11e8-90a1-f0b3a695e108.gif)
 
+### Customize layout
+
+![Customize layout](https://user-images.githubusercontent.com/17223557/51411085-e0953600-1b66-11e9-932a-3817a7def88e.gif)
+
 ### Export and import projects (in JSON format)
 
 ![Export and import projects (in JSON format)](https://user-images.githubusercontent.com/2964165/44611163-b87af400-a7cd-11e8-8364-1424e3d24682.png)
