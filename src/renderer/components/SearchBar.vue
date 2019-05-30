@@ -44,7 +44,6 @@ export default {
         card.style.top = "100px";
 
         Utils.ClickOutside(card, () => {
-            console.log("SEARCH");
             this.$store.dispatch("ToggleDialog", "searchDialog");
         });
     }
