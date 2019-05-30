@@ -31,6 +31,9 @@ const state = {
 	// Base color of the application.
 	baseColor: DBManager.GetAppDB().GetValue('application_color', 'indigo'),
 
+	// Darken the toolbar or not
+	darkenToolbar: DBManager.GetAppDB().GetValue('darken_toolbar', false),
+
 	// Information about the github profile
 	gitUserInfo: DBManager.GetAppDB().GetValue('git_user_info', {}),
 
@@ -113,6 +116,11 @@ const mutations = {
 		DBManager.GetAppDB().SetValue('application_color', color);
 	},
 
+	ToggleDarkenToolbar(state) {
+		state.darkenToolbar = !state.darkenToolbar;
+		DBManager.GetAppDB().SetValue('darken_toolbar', state.darkenToolbar);
+	},
+
 	ExportProjDialog(state) {
 		mutations.OpenDialog(state, 'exportProject');
 	},
@@ -192,6 +200,10 @@ const getters = {
 
 	appColor(state) {
 		return state.baseColor;
+	},
+
+	darkenToolbar(state) {
+		return state.darkenToolbar;
 	},
 
 	isDarkMode(state) {
