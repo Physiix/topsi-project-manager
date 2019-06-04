@@ -158,6 +158,9 @@ const actions = {
 	CreateProject(context, data) {
 		context.commit('CreateProject', data);
 
+		// Retrieve all the projects.
+		context.commit('RetrieveProjects');
+
 		// Send notification
 		Notifications.Success('Project created', `Project ${data.title} has been updated !`);
 	},
