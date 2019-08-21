@@ -50,17 +50,13 @@ export default {
          */
         RollUp(callback) {
             const element = document.getElementById("project-dialog");
-            const height = element.getBoundingClientRect().height;
-            let top = this.top;
-            const id = setInterval(() => {
-                top -= 360;
-                element.style.top = top + "px";
-                if (top <= -height) {
-                    element.style.top = -height + "px";
-                    callback();
-                    clearInterval(id);
-                }
-            }, 100);
+			const height = element.getBoundingClientRect().height;
+			
+			element.classList.remove('dialog--reveal__animation');
+			element.classList.add('dialog--hide__animation');
+
+			// Callback 10ms before the end of the animation to avoir flickering
+			setTimeout(callback, 190);
         }
     },
     computed: {
@@ -78,9 +74,7 @@ export default {
         const height = element.getBoundingClientRect().height;
         const minHeight = height;
         const maxHeight = window.innerHeight * maxHeightRatio;
-        let top = -height;
         element.style.position = "fixed";
-        element.style.top = top + "px";
         element.style.left = window.innerWidth / 2 - width / 2 + "px";
         element.style.maxHeight = maxHeight + "px";
 
@@ -98,16 +92,10 @@ export default {
             const maxHeight = window.innerHeight * maxHeightRatio;
             element.style.left = window.innerWidth / 2 - width / 2 + "px";
             element.style.maxHeight = maxHeight + "px";
-        });
+		});
 
-        const id = setInterval(() => {
-            top += 520;
-            element.style.top = top + "px";
-            if (top >= offsetTop) {
-                element.style.top = this.top + "px";
-                clearInterval(id);
-            }
-        }, 100);
+		element.classList.remove('dialog--hide__animation');
+		element.classList.add('dialog--reveal__animation');
 
         // Adjust the top if it's mac
         if (this.$store.getters.isMac) this.top = 0;
@@ -115,7 +103,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #project-dialog {
     position: fixed;
     border-radius: 0;
@@ -124,5 +112,32 @@ export default {
 
 #project-dialog button {
     border-radius: 0;
+}
+
+.dialog--reveal__animation{
+	animation: 200ms ease reveal;
+}
+
+.dialog--hide__animation{
+	animation: 200ms ease hide;
+}
+
+@keyframes reveal {
+	0%{
+		top: - 100%;
+	}
+	100%{
+		top: 0;
+	}
+}
+
+@keyframes hide {
+	0%{
+		top: 0;
+	}
+
+	100%{
+		top: - 100%;
+	}
 }
 </style>

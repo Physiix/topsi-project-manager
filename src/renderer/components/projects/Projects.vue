@@ -1,5 +1,5 @@
 <template>
-	<div :class="color" style="height:100%">
+	<div :class="color" >
 		<CreateProjectDialog v-if="createProjectDialog" />
 		<ExportProjectDialog />
 		<v-layout row wrap>
