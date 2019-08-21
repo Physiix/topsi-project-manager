@@ -55,7 +55,7 @@ export default {
 			element.classList.remove('dialog--reveal__animation');
 			element.classList.add('dialog--hide__animation');
 
-			// Callback 10ms before the end of the animation to avoir flickering
+			// Callback 10ms before the end of the animation to avoid flickering
 			setTimeout(callback, 190);
         }
     },
