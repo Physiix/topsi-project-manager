@@ -1,106 +1,43 @@
 {
-	"name": "topsi_project_manager",
-	"version": "0.0.0",
-	"author": "Physix <yanis.m.1992@gmail.com>",
-	"description": "An electron-vue project",
-	"license": "AGPL-3.0",
-	"main": "./dist/electron/main.js",
-	"scripts": {
-		"build": "node .electron-vue/build.js && electron-builder",
-		"build:dir": "node .electron-vue/build.js && electron-builder --dir",
-		"build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
-		"build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
-		"dev": "node .electron-vue/dev-runner.js",
-		"pack": "npm run pack:main && npm run pack:renderer",
-		"pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
-		"pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-		"postinstall": ""
-	},
-	"build": {
-		"productName": "Topsi",
-		"appId": "org.simulatedgreg.electron-vue",
-		"directories": {
-			"output": "build"
-		},
-		"files": [
-			"dist/electron/**/*"
-		],
-		"dmg": {
-			"contents": [
-				{
-					"x": 410,
-					"y": 150,
-					"type": "link",
-					"path": "/Applications"
-				},
-				{
-					"x": 130,
-					"y": 150,
-					"type": "file"
-				}
-			]
-		},
-		"mac": {
-			"icon": "build/icons/icon.icns"
-		},
-		"win": {
-			"icon": "build/icons/icon.ico"
-		},
-		"linux": {
-			"icon": "build/icons"
-		}
-	},
-	"dependencies": {
-		"@types/github": "^7.1.0",
-		"@types/lowdb": "^1.0.9",
-		"@types/vue": "^2.0.0",
-		"axios": ">=0.19.0",
-		"font-awesome": "^4.7.0",
-		"github": "^13.1.1",
-		"lowdb": "^1.0.0",
-		"node-sass": "^4.12.0",
-		"path": "^0.12.7",
-		"quill": "^1.3.7",
-		"sass-loader": "^7.3.1",
-		"sortablejs": "^1.10.1",
-		"vue": "^2.6.10",
-		"vue-electron": "^1.0.6",
-		"vue-router": "^2.5.3",
-		"vuetify": "^1.5.19",
-		"vuex": "^2.3.1"
-	},
-	"devDependencies": {
-		"babel-core": "^6.25.0",
-		"babel-loader": "^7.1.1",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.0",
-		"babel-preset-stage-0": "^6.24.1",
-		"babel-register": "^6.24.1",
-		"babili-webpack-plugin": "^0.1.2",
-		"cfonts": "^1.1.3",
-		"chalk": "^2.4.2",
-		"copy-webpack-plugin": "^4.6.0",
-		"cross-env": "^5.2.1",
-		"css-loader": "^2.1.1",
-		"del": "^3.0.0",
-		"devtron": "^1.4.0",
-		"electron": "^1.8.8",
-		"electron-builder": "^20.44.4",
-		"electron-debug": "^1.4.0",
-		"electron-devtools-installer": "^2.2.0",
-		"extract-text-webpack-plugin": "^3.0.0",
-		"file-loader": "^0.11.2",
-		"html-webpack-plugin": "^2.30.1",
-		"multispinner": "^0.2.1",
-		"node-loader": "^0.6.0",
-		"style-loader": "^0.18.2",
-		"url-loader": "^1.1.2",
-		"vue-html-loader": "^1.2.4",
-		"vue-loader": "^13.7.3",
-		"vue-style-loader": "^3.0.1",
-		"vue-template-compiler": "^2.6.10",
-		"webpack": "^3.5.2",
-		"webpack-dev-server": "^2.11.5",
-		"webpack-hot-middleware": "^2.25.0"
-	}
+    "name": "topsi",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "electron:build": "vue-cli-service electron:build",
+        "electron:serve": "vue-cli-service electron:serve",
+        "postinstall": "electron-builder install-app-deps",
+        "postuninstall": "electron-builder install-app-deps"
+    },
+    "main": "background.js",
+    "dependencies": {
+        "@mdi/js": "^5.0.45",
+        "core-js": "^3.6.4",
+        "quill": "^1.3.7",
+        "sortablejs": "^1.10.2",
+        "vue": "^2.6.11",
+        "vue-class-component": "^7.2.3",
+        "vue-property-decorator": "^8.4.1",
+        "vue-router": "^3.1.6",
+        "vuetify": "^2.2.11",
+        "vuex": "^3.1.3"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.3.0",
+        "@vue/cli-plugin-router": "~4.3.0",
+        "@vue/cli-plugin-typescript": "~4.3.0",
+        "@vue/cli-plugin-vuex": "~4.3.0",
+        "@vue/cli-service": "~4.3.0",
+        "electron": "^6.0.0",
+        "node-sass": "^4.12.0",
+        "sass": "^1.19.0",
+        "sass-loader": "^8.0.2",
+        "typescript": "~3.8.3",
+        "vue-cli-plugin-electron-builder": "~1.4.6",
+        "vue-cli-plugin-vuetify": "~2.0.5",
+        "vue-template-compiler": "^2.6.11",
+        "vuetify-loader": "^1.3.0"
+    }
 }
