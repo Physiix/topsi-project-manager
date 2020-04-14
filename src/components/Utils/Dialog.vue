@@ -1,7 +1,7 @@
 <template>
   <v-card id="project-dialog" class="elevation-20" :class="color" :height="height">
     <slot></slot>
-    <v-card-actions ref="card_actions" style="bottom:0px;right:0px;">
+    <v-card-actions v-if="!noAction" ref="card_actions" style="bottom:0px;right:0px;">
       <v-spacer></v-spacer>
       <v-btn
         v-if="!disableCancel"
@@ -36,7 +36,8 @@ export default {
     acceptColor: String,
     cancelColor: String,
     acceptRaised: Boolean,
-    cancelRaised: Boolean
+    cancelRaised: Boolean,
+    noAction: Boolean
   },
   data() {
     return {
@@ -95,22 +96,24 @@ export default {
     element.style.width = `${width}px`;
     element.style.zIndex = 1;
 
-    if (height >= maxHeight) this.$refs.card_actions.style.position = "relative";
-    else this.$refs.card_actions.style.position = "absolute";
+    if (!this.noAction) {
+      if (height >= maxHeight) this.$refs.card_actions.style.position = "relative";
+      else this.$refs.card_actions.style.position = "absolute";
 
-    if (minHeight < window.innerHeight) element.style.minHeight = `${minHeight}px`;
+      if (minHeight < window.innerHeight) element.style.minHeight = `${minHeight}px`;
 
-    window.addEventListener("resize", () => {
-      const maxHeight = window.innerHeight * maxHeightRatio;
-      element.style.left = `${window.innerWidth / 2 - width / 2}px`;
-      element.style.maxHeight = `${maxHeight}px`;
-    });
+      window.addEventListener("resize", () => {
+        const maxHeight = window.innerHeight * maxHeightRatio;
+        element.style.left = `${window.innerWidth / 2 - width / 2}px`;
+        element.style.maxHeight = `${maxHeight}px`;
+      });
 
-    element.classList.remove("dialog--hide__animation");
-    element.classList.add("dialog--reveal__animation");
+      element.classList.remove("dialog--hide__animation");
+      element.classList.add("dialog--reveal__animation");
 
-    // Adjust the top if it's mac
-    if (this.$store.getters.isMac) this.top = 0;
+      // Adjust the top if it's mac
+      if (this.$store.getters.isMac) this.top = 0;
+    }
   }
 };
 </script>

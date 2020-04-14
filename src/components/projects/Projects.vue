@@ -1,5 +1,5 @@
 <template>
-  <div :class="color">
+  <div class="app-projects">
     <CreateProjectDialog v-if="createProjectDialog" />
     <ExportProjectDialog />
     <v-layout row wrap>
@@ -43,4 +43,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+$grey-lighten-3: #eeeeee;
+.app-projects {
+  width: 100%;
+  height: 100%;
+  background: $grey-lighten-3;
+}
+</style>

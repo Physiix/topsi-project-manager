@@ -7,6 +7,8 @@
 <script lang="ts">
 import Vue from "vue";
 import LandingPageVue from "./components/LandingPage.vue";
+require("@/../node_modules/quill/dist/quill.core.css");
+require("@/../node_modules/quill/dist/quill.snow.css");
 
 export default Vue.extend({
   name: "App",
