@@ -33,7 +33,6 @@ export class DBUtils {
 
   private initializeContent() {
     const content = this.context.read();
-    console.dir(content);
     if (content === "") {
       this.content = {};
     } else {

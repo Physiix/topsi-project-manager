@@ -1,8 +1,8 @@
 <template>
   <Dialog
-    v-if="exportProject"
+    v-if="exportedProject"
     width="300"
-    v-on:close="exportProject = false"
+    v-on:close="exportedProject = false"
     v-on:accept="exportProject"
     :accept-text="this.$lang.Get('export')"
   >
@@ -31,7 +31,7 @@ export default {
     };
   },
   computed: {
-    exportProject: {
+    exportedProject: {
       set(value) {
         this.$store.dispatch("ToggleDialog", "exportProject");
       },

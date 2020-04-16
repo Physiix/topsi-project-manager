@@ -7,7 +7,7 @@
     :cancel-text="$lang.Get('close')"
   >
     <v-tabs v-model="active" centered>
-      <v-tab v-for="(tab, index) in tabs" :key="index" :href="`#tab-${index}`" ripple="false">
+      <v-tab v-for="(tab, index) in tabs" :key="index" :href="`#tab-${index}`" :ripple="false">
         {{ tab }}
       </v-tab>
     </v-tabs>

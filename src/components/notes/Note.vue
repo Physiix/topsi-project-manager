@@ -52,47 +52,41 @@ export default {
 };
 </script>
 
-<style>
-.color_btn {
-  border-radius: 0;
-  min-width: 10px !important;
-  max-height: 10px !important;
-  margin: 0;
-}
-
+<style lang="scss" scoped>
 .note {
   cursor: pointer;
   transition: 0.1s;
-
   animation: show-note 200ms ease-in-out;
-}
+  user-select: none;
 
-@keyframes show-note {
-  0% {
-    transform: translateY(30%);
+  &__button {
+    border-radius: 0;
+    min-width: 10px !important;
+    max-height: 10px !important;
+    margin: 0;
   }
 
-  100% {
-    transform: translateY(0);
+  &:hover {
+    opacity: 0.8;
   }
-}
 
-.note:hover {
-  opacity: 0.8;
-}
+  @keyframes show-note {
+    0% {
+      transform: translateY(30%);
+    }
 
-.note-btn {
-  min-width: 20px !important;
-  max-width: 20px !important;
-  height: 20px;
-}
+    100% {
+      transform: translateY(0);
+    }
+  }
 
-.v-card__text img {
-  width: 100%;
-}
+  .v-card__text img {
+    width: 100%;
+  }
 
-.tag {
-  border-radius: 5% !important;
-  z-index: 0;
+  .tag {
+    border-radius: 5% !important;
+    z-index: 0;
+  }
 }
 </style>

@@ -104,9 +104,13 @@ const mutations = {
       const info = DBManager.getDB(id).getValue("info");
       state.projectName = info.title;
 
-      state.currentMilestoneId = info.opened_milestone_id;
-    } else state.projectName = "";
-    state.searchContent = ""; // Clear the search content, searches are different from project to notes.
+      state.currentMilestoneId = info.selectedMilestoneId;
+    } else {
+      state.projectName = "";
+    }
+
+    // Clear the search content, searches are different from project to notes.
+    state.searchContent = "";
   },
 
   SetDarkMode(state: State, value: boolean) {

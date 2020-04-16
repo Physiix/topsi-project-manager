@@ -53,7 +53,7 @@ const mutations = {
     const projectDB = DBManager.getDB(data.projectId);
     const projectInfo = projectDB.getValue("info");
 
-    projectInfo.opened_milestone_id = data.milestoneId;
+    projectInfo.selectedMilestoneId = data.milestoneId;
 
     projectDB.setValue("info", projectInfo);
     DBManager.getAppDB().update("projects", projectInfo.id, projectInfo);

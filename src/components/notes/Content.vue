@@ -3,10 +3,10 @@
     <div class="top pa-3 title">
       <div class="content-category-title">
         <v-toolbar height="30" color="transparent" flat>
-          <div v-show="!editTitle" @dblclick="editTitle">
+          <div v-show="!editedTitle" @dblclick="editTitle">
             {{ title }}
           </div>
-          <div v-show="editTitle" ref="edit" class="pt-3 mt-1" style="width:100px">
+          <div v-show="editedTitle" ref="edit" class="pt-3 mt-1" style="width:100px">
             <v-text-field
               v-model="editedTitle"
               :value="title"
@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      editTitle: false,
+      editedTitle: false,
       editedTitle: ""
     };
   },

@@ -32,7 +32,7 @@ export default {
         description: data.description,
         category: data.category,
         color: data.color,
-        milestone_id: data.milestoneId,
+        milestoneId: data.milestoneId,
         tags: data.tags
       });
 

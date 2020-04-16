@@ -31,7 +31,6 @@ class ProjectManager {
         // Notifications.Error("Export project failed", error.message);
         throw new Error(`Failed to save the file.\n${error}`);
       }
-      console.log("file save successfuly");
     });
   }
 

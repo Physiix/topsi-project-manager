@@ -27,7 +27,6 @@ const mutations = {
    * @param {*State} state ProjectStore state.
    */
   RetrieveProjects(state: State) {
-    console.log("Retrieving");
     state.projects = DBManager.getAppDB()
       .getAll<Project>("projects")
       .sort((a, b) => a.id - b.id);

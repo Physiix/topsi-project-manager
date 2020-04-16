@@ -21,7 +21,7 @@ export default {
      * Set the current project Id as the opened project.
      */
     openProject() {
-      this.$store.dispatch("openProject", this.project);
+      this.$store.dispatch("OpenProject", this.project);
     }
   }
 };

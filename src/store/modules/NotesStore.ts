@@ -107,20 +107,20 @@ const mutations = {
 
     // Function to sanitize the HTMLElement ID of a note.
     const SanitizeNoteId = (id: string) => {
-      return id.substr(id.indexOf("-") + 1, id.length - 1);
+      return parseInt(id.substr(id.indexOf("-") + 1, id.length - 1));
     };
 
     const db = DBManager.getDB(state.projectId);
 
     // Setup the notes to work with.
-    const projectNotes = db.getAll("notes");
-    const currentNotes = projectNotes.filter(note => note.milestone_id == state.milestoneId);
+    const projectNotes = db.getAll<Note>("notes");
+    const currentNotes = projectNotes.filter(note => note.milestoneId === state.milestoneId);
 
     // Getting the note that has been moved.
-    const note = currentNotes.filter(n => n.id == SanitizeNoteId(data.note.id))[0];
+    const note = currentNotes.filter(n => n.id === SanitizeNoteId(data.note.id))[0];
 
     // Removing the note from the last category.
-    const sourceNotes = currentNotes.filter(n => n.category == note.category);
+    const sourceNotes = currentNotes.filter(n => n.category === note.category);
     sourceNotes.splice(data.oldIndex, 1);
 
     // Adding the note to the new category/
@@ -166,7 +166,7 @@ const mutations = {
       data.title == null ||
       data.description == null ||
       data.category == null ||
-      data.milestone_id == null
+      data.milestoneId == null
     ) {
       throw new Error(`Cannot update a note with invalid data ${data}`);
     }
@@ -221,7 +221,8 @@ const mutations = {
     state.milestoneId = data.milestoneId;
     state.notes = DBManager.getDB(data.projectId)
       .getAll<Note>("notes")
-      .filter(note => note.milestoneId === data.milestoneId);
+      .filter(note => note.milestoneId === data.milestoneId)
+      .sort((a, b) => a.order - b.order);
   },
 
   /**

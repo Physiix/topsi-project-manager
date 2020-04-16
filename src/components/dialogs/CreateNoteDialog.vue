@@ -10,7 +10,7 @@ export default {
     NoteDialogContent
   },
   computed: {
-    createNote: {
+    createdNote: {
       set(value) {
         this.$store.dispatch("ToggleDialog", "createNote");
       },
@@ -31,7 +31,7 @@ export default {
         description: "",
         category: { text: "TODO", tag: "todo" },
         tags: [],
-        milestone_id: this.project.opened_milestone_id
+        milestoneId: this.project.selectedMilestoneId
       };
     }
   },
@@ -47,11 +47,11 @@ export default {
         milestoneId: data.milestoneId,
         tags: data.tags
       });
-      this.createNote = false;
+      this.createdNote = false;
     },
 
     close() {
-      this.createNote = false;
+      this.createdNote = false;
     }
   }
 };

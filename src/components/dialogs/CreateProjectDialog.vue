@@ -1,7 +1,7 @@
 <template>
   <ProjectDialogContent
     :project="project"
-    v-on:close="createProject = false"
+    v-on:close="createdProject = false"
     v-on:accept="createProject"
   />
 </template>
@@ -14,7 +14,7 @@ export default {
     ProjectDialogContent
   },
   computed: {
-    createProject: {
+    createdProject: {
       set(value) {
         this.$store.dispatch("ToggleDialog", "createProject");
       },

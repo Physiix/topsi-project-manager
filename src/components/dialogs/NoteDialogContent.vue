@@ -172,7 +172,7 @@ export default {
     document.getElementsByClassName("ql-editor")[0].innerHTML = this.note.description;
     this.category = this.items.filter(i => i.tag == this.note.category)[0] || this.items[0];
     this.color = this.note.color || "";
-    this.milestone = this.milestoneItems.filter(m => m.id == this.note.milestone_id)[0];
+    this.milestone = this.milestoneItems.filter(m => m.id == this.note.milestoneId)[0];
     this.note.tags.forEach(entry => this.selectedTags.push(entry.tag));
   }
 };
