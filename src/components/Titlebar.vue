@@ -1,11 +1,16 @@
 <template>
   <div id="titlebar">
-    <v-app-bar :class="color" height="30" class="elevation-0 px-0" dark>
+    <div
+      style="display: flex; height: 30px; flex-direction: row;"
+      :class="color"
+      height="30"
+      class="elevation-0 px-0"
+      dark
+    >
       <v-icon>mdi-project</v-icon>
-      <v-spacer></v-spacer>
-      {{ this.$lang.Get("projectName") }} {{ projectName }}
-      <v-spacer></v-spacer>
-      <v-btn text class="titlebar-btn mx-0" @click="minimize">
+      <div style="width: 100%"></div>
+      <div style="width: 100%;">{{ this.$lang.Get("projectName") }} {{ projectName }}</div>
+      <v-btn text height="30" class="titlebar-btn mx-0" @click="minimize">
         <svg
           width="9"
           height="9"
@@ -16,7 +21,7 @@
           <path d="M11 4.399V5.5H0V4.399h11z" fill="#fff"></path>
         </svg>
       </v-btn>
-      <v-btn text class="titlebar-btn mx-0" @click="maximise">
+      <v-btn text height="30" class="titlebar-btn mx-0" @click="maximise">
         <svg
           v-if="!maximized"
           width="9"
@@ -41,7 +46,7 @@
           ></path>
         </svg>
       </v-btn>
-      <v-btn text class="titlebar-btn mx-0 close-btn" @click="close">
+      <v-btn height="30" text class="titlebar-btn mx-0 close-btn" @click="close">
         <svg
           width="9"
           height="9"
@@ -55,7 +60,7 @@
           ></path>
         </svg>
       </v-btn>
-    </v-app-bar>
+    </div>
   </div>
 </template>
 <script>

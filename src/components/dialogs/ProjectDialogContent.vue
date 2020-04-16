@@ -53,7 +53,7 @@
         </v-stepper-content>
 
         <v-stepper-content step="2">
-          <div key="options">
+          <div key="options" class="pa-1">
             <v-card class="ma-2 transparent" elevation="5" style="border-radius: 0">
               <div
                 :class="color"
@@ -134,12 +134,16 @@
                 </div>
               </div>
             </v-card>
+
+            <div class="pa-2">
+              <v-btn block :color="color" @click="selectFolder">PROJECT FOLDER</v-btn>
+            </div>
           </div>
 
-          <div style="height: 100px"></div>
+          <div style="height: 60px"></div>
 
           <div style="width: 100%; display: flex; flex-direction: row-reverse;">
-            <v-btn :color="color" @click="Accept">
+            <v-btn :color="color" @click="Accept" :disabled="!canCreate">
               Create
             </v-btn>
 
@@ -153,6 +157,8 @@
 <script>
 import Sortable from "sortablejs";
 import Quill from "quill";
+import os from "os";
+
 import ConfirmDialog from "./ConfirmDialog.vue";
 import Utils from "@/core/Utils";
 
@@ -175,12 +181,17 @@ export default {
       customPath: "",
       tabItem: null,
       deleteDialog: false,
-      stepperId: 1
+      stepperId: 1,
+      selectedFolder: ""
     };
   },
   computed: {
     color() {
       return this.$store.getters.appColor;
+    },
+
+    canCreate() {
+      return this.selectedFolder.length > 0 && this.title.length > 0;
     }
   },
   methods: {
@@ -201,11 +212,27 @@ export default {
       this.categories.splice(index, 1);
     },
 
+    selectFolder() {
+      const electron = require("electron");
+      this.selectedFolder = electron.remote.dialog.showOpenDialogSync(
+        electron.remote.getCurrentWindow(),
+        {
+          title: "Project destination",
+          defaultPath: os.homedir(),
+          properties: ["openDirectory"]
+        }
+      )[0];
+      console.log(this.selectedFolder);
+    },
+
     Close() {
       this.$emit("close");
     },
 
     Accept() {
+      if (this.title.length <= 0) {
+        return;
+      }
       // Format the categories.
       const categories = [];
       this.categories.forEach(category => {
@@ -223,7 +250,7 @@ export default {
         title: this.title,
         description: document.getElementsByClassName("ql-editor")[0].innerHTML,
         categories,
-        customPath: this.customPath
+        customPath: this.selectedFolder
       });
     },
 

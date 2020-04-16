@@ -21,9 +21,11 @@ export class DBUtils {
     this.dbFilePath = path.join(this.dataPath, this.name);
 
     // Make sure the 'data' folder exists
+    console.log(`Here ${defaultPath} ${this.dataPath}`);
     if (!fs.existsSync(this.dataPath)) {
-      if (process.platform == "darwin" && !fs.existsSync(dir)) fs.mkdirSync(dir);
-      fs.mkdirSync(this.dataPath);
+      throw new Error("Path not found");
+      // if (process.platform == "darwin" && !fs.existsSync(dir)) fs.mkdirSync(dir);
+      // fs.mkdirSync(this.dataPath);
     }
     this.context = new DBFile(this.dbFilePath);
 

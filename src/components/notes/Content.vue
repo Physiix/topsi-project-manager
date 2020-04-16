@@ -14,9 +14,9 @@
               autofocus
             ></v-text-field>
           </div>
-          <v-btn icon fab small style="width:20px;height:20px;" class="ml-1 mt-2" @click="Fold">
+          <v-btn icon fab small style="width:30px;height:30px;" @click="Fold">
             <v-icon>
-              unfold_less
+              mdi-unfold-less-horizontal
             </v-icon>
           </v-btn>
         </v-toolbar>

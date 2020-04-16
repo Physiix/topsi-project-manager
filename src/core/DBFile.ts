@@ -2,6 +2,7 @@ import fs from "fs";
 
 export class DBFile {
   constructor(public readonly path: string) {
+    console.log(path);
     if (!fs.existsSync(path)) {
       fs.writeFileSync(path, "{}");
     }

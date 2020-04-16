@@ -1,13 +1,13 @@
 <template>
   <div>
     <Tooltip top :content="$lang.Get('tags')">
-      <v-list-tile id="tags-button" @click="() => {}">
-        <v-list-tile-action>
+      <v-list-item id="tags-button" @click="() => {}">
+        <v-list-item-action>
           <v-icon style="margin-left:-2px">
-            fa-tags
+            mdi-tag-plus
           </v-icon>
-        </v-list-tile-action>
-      </v-list-tile>
+        </v-list-item-action>
+      </v-list-item>
     </Tooltip>
     <FloatingDiv
       activator-id="tags-button"

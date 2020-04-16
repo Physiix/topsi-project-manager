@@ -26,7 +26,11 @@ class DBManager {
    * @param {Number} id Id of the database's project.
    */
   Load(id: string, defaultFolder: string | null = null) {
-    this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION, defaultFolder);
+    try {
+      this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION, defaultFolder);
+    } catch (e) {
+      // Notify the user that the project's path was not found
+    }
   }
 
   Move(id: string, path: string) {

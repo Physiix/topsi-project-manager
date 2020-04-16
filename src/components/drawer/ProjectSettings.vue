@@ -12,7 +12,7 @@
 </template>
 <script>
 import ProjectManager from "@/core/ProjectManager";
-import { mdiPlus, mdiCloudCheck, mdiImport, mdiSettingsHelper, mdiEyeSettings } from "@mdi/js";
+import { mdiPlus, mdiDatabaseExport, mdiDatabaseImport, mdiCog } from "@mdi/js";
 
 export default {
   name: "ProjectSettings",
@@ -26,14 +26,14 @@ export default {
         },
         {
           title: this.$lang.Get("exportProject"),
-          icon: mdiCloudCheck,
+          icon: mdiDatabaseExport,
           action: () => {
             this.$store.dispatch("ToggleDialog", "exportProject");
           }
         },
         {
           title: this.$lang.Get("importProject"),
-          icon: mdiImport,
+          icon: mdiDatabaseImport,
           action: () => {
             ProjectManager.LoadProject();
           }
@@ -50,7 +50,7 @@ export default {
         // },
         {
           title: this.$lang.Get("settings"),
-          icon: "settings",
+          icon: mdiCog,
           action: () => {
             console.log("settings");
             this.$store.dispatch("ToggleDialog", "showSettings");
