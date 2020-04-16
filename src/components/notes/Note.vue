@@ -3,7 +3,7 @@
     :id="'note-' + note.id"
     class="note ma-2"
     :class="note.color"
-    @dblclick="Open"
+    @dblclick="open"
     :dark="dark"
   >
     <v-card-title class="py-2 pt-3 pr-0">
@@ -13,7 +13,7 @@
         </div>
         <h4>{{ note.title }}</h4>
         <v-spacer></v-spacer>
-        <v-btn small class="pr-6" icon @click="Edit">
+        <v-btn small class="pr-6" icon @click="edit">
           <v-icon size="18">mdi-pencil</v-icon>
         </v-btn>
       </v-layout>
@@ -35,11 +35,11 @@ export default {
     note: Object
   },
   methods: {
-    Edit() {
+    edit() {
       this.$store.dispatch("EditNote", this.note);
     },
 
-    Open() {
+    open() {
       this.$store.dispatch("VisualizeNote", this.note);
     }
   },

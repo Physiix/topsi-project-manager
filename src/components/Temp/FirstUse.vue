@@ -20,12 +20,12 @@
         </v-card-title>
         <v-card-title class="pa-0">
           <v-card-text class="ma-0 ml-4">{{ this.$lang.Get("firstUseSetupColor") }}</v-card-text>
-          <ColorPicker width="600" padding="10" v-on:color-selected="SelectColor"></ColorPicker>
+          <ColorPicker width="600" padding="10" v-on:color-selected="selectColor"></ColorPicker>
         </v-card-title>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="Done">
+          <v-btn color="primary" text @click="done">
             {{ this.$lang.Get("done") }}
           </v-btn>
         </v-card-actions>
@@ -46,11 +46,11 @@ export default {
     };
   },
   methods: {
-    SelectColor(color) {
+    selectColor(color) {
       this.$store.commit("SetAppColor", color);
     },
 
-    OpenDialog() {
+    openDialog() {
       const { dialog } = electron.remote;
       // Get the selected folder by the user.
       this.defaultFolder = dialog.showOpenDialog(electron.remote.getCurrentWindow(), {
@@ -61,7 +61,7 @@ export default {
       this.defaultFolder += path.sep;
     },
 
-    Done() {
+    done() {
       this.$store.dispatch("SetupApplication", {
         defaultFolder: this.defaultFolder
       });

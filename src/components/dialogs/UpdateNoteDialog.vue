@@ -1,13 +1,13 @@
 <template>
-	<NoteDialogContent :note="note" v-on:close="Close" v-on:accept="UpdateNote" />
+  <NoteDialogContent :note="note" v-on:close="close" v-on:accept="updateNote" />
 </template>
 <script>
-import NoteDialogContent from './NoteDialogContent.vue';
+import NoteDialogContent from "./NoteDialogContent.vue";
 
 export default {
-  name: 'UpdateNoteDialog',
+  name: "UpdateNoteDialog",
   components: {
-    NoteDialogContent,
+    NoteDialogContent
   },
   computed: {
     note() {
@@ -15,18 +15,17 @@ export default {
     },
     updateNote: {
       set(value) {
-        this.$store.dispatch('ToggleDialog', 'updateNote');
+        this.$store.dispatch("ToggleDialog", "updateNote");
       },
       get() {
         return this.$store.state.AppStore.dialogs.updateNote;
-      },
-    },
-
+      }
+    }
   },
   methods: {
-    UpdateNote(data) {
+    updateNote(data) {
       // Update the note
-      this.$store.dispatch('UpdateNote', {
+      this.$store.dispatch("UpdateNote", {
         id: data.id,
         project_id: data.projectId,
         title: data.title,
@@ -34,22 +33,20 @@ export default {
         category: data.category,
         color: data.color,
         milestone_id: data.milestoneId,
-        tags: data.tags,
+        tags: data.tags
       });
 
       // Cleaning up
-      this.category = { text: 'TODO', tag: 'todo' };
+      this.category = { text: "TODO", tag: "todo" };
       this.title = this.description = null;
       this.updateNote = false;
     },
 
-    Close() {
+    close() {
       this.updateNote = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

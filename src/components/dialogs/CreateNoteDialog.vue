@@ -1,24 +1,23 @@
 <template>
-	<NoteDialogContent :note="note" v-on:close="Close" v-on:accept="CreateNote" />
+  <NoteDialogContent :note="note" v-on:close="close" v-on:accept="createNote" />
 </template>
 <script>
-import NoteDialogContent from './NoteDialogContent.vue';
-
+import NoteDialogContent from "./NoteDialogContent.vue";
 
 export default {
-  name: 'CreateNoteDialog',
+  name: "CreateNoteDialog",
   components: {
-    NoteDialogContent,
+    NoteDialogContent
   },
   computed: {
     createNote: {
       set(value) {
-        this.$store.dispatch('ToggleDialog', 'createNote');
+        this.$store.dispatch("ToggleDialog", "createNote");
       },
 
       get() {
         return this.$store.state.AppStore.dialogs.createNote;
-      },
+      }
     },
 
     project() {
@@ -28,43 +27,42 @@ export default {
 
     note() {
       return {
-        title: '',
-        description: '',
-        category: { text: 'TODO', tag: 'todo' },
+        title: "",
+        description: "",
+        category: { text: "TODO", tag: "todo" },
         tags: [],
-        milestone_id: this.project.opened_milestone_id,
+        milestone_id: this.project.opened_milestone_id
       };
-    },
+    }
   },
   methods: {
-    CreateNote(data) {
+    createNote(data) {
       // Create the note
-      this.$store.dispatch('CreateNote', {
+      this.$store.dispatch("CreateNote", {
         project_id: this.project.id,
         title: data.title,
         description: data.description,
         category: data.category,
         color: data.color,
         milestoneId: data.milestoneId,
-        tags: data.tags,
+        tags: data.tags
       });
       this.createNote = false;
     },
 
-    Close() {
+    close() {
       this.createNote = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-
-.color_item{
-	min-width: 40px !important;
-	max-width: 40px !important;
-	max-height: 15px !important;
-	border-radius: 0;
-	margin: 0 0 0 0;
+.color_item {
+  min-width: 40px !important;
+  max-width: 40px !important;
+  max-height: 15px !important;
+  border-radius: 0;
+  margin: 0 0 0 0;
 }
 </style>

@@ -1,31 +1,38 @@
 <template>
-    <v-checkbox @change="Toggle" v-model="task.done" class="py-0 my-0" :label="!edit?task.content:''" :color="color" :class="(task.done)?'task-done':''" @dbclick.native="Edit"></v-checkbox>
+  <v-checkbox
+    @change="toggle"
+    v-model="task.done"
+    class="py-0 my-0"
+    :label="!edit ? task.content : ''"
+    :color="color"
+    :class="task.done ? 'task-done' : ''"
+    @dbclick.native="edit"
+  ></v-checkbox>
 </template>
 <script>
 export default {
-  name: 'Task',
+  name: "Task",
   props: {
-    task: Object,
+    task: Object
   },
   data() {
     return {
-      edit: false,
+      edit: false
     };
   },
   computed: {
     color() {
       return this.$store.getters.appColor;
-    },
+    }
   },
   methods: {
-    Toggle() {
-      this.$store.dispatch('ToggleTask', this.task);
+    toggle() {
+      this.$store.dispatch("ToggleTask", this.task);
     },
 
-    Edit() {},
-  },
+    edit() {}
+  }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

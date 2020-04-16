@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn fab small bottom right fixed color="primary" @click="AddNote" class="elevation-10">
+    <v-btn fab small bottom right fixed color="primary" @click="addNote" class="elevation-10">
       <v-icon>mdi-add</v-icon>
     </v-btn>
   </div>
@@ -9,7 +9,7 @@
 export default {
   name: "AddNoteButton",
   methods: {
-    AddNote() {
+    addNote() {
       this.$store.dispatch("ToggleDialog", "createNote");
     }
   }

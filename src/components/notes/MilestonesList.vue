@@ -16,7 +16,7 @@
         class="mx-1 py-3  milestone text-xs-center"
         dark
         :class="selected == i ? 'milestone-selected' : ''"
-        @click.native="Select(i)"
+        @click.native="select(i)"
       >
         {{ milestone.title }}
       </v-card>
@@ -24,7 +24,7 @@
         id="add-milestone-card"
         color="transparent"
         class="mx-1 py-3 milestone text-xs-center elevation-0"
-        @click.native="AddMilestone"
+        @click.native="addMilestone"
       >
         <v-icon color="primary">add</v-icon>
       </v-card>
@@ -35,7 +35,7 @@
             v-model="milestoneName"
             autofocus
             :placeholder="this.$lang.Get('newMilestoneLabel')"
-            @keyup.esc.native="Hide"
+            @keyup.esc.native="hide"
           ></v-text-field>
         </v-card-title>
       </v-card>
@@ -78,11 +78,11 @@ export default {
     }
   },
   methods: {
-    Select(index) {
+    select(index) {
       this.selected = index;
     },
 
-    AddMilestone() {
+    addMilestone() {
       const element = this.$refs.flash_input.$el;
       element.style.position = "fixed";
       element.style.visibility = "visible";
@@ -106,7 +106,7 @@ export default {
       );
     },
 
-    Hide() {
+    hide() {
       this.milestoneName = "";
       this.$refs.flash_input.$el.style.visibility = "hidden";
     }

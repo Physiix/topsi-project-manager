@@ -18,7 +18,7 @@
               :class="i == selectedId ? 'milestone-selected' : ''"
             >
               <v-card class="milestone-pointer grey elevation-0"></v-card>
-              <v-card fab class="mx-2 primary milestone-entry" @click.native="Select(i)">
+              <v-card fab class="mx-2 primary milestone-entry" @click.native="select(i)">
                 <div style="font-size:8px;">Milestone {{ i }}</div>
               </v-card>
             </div>
@@ -28,12 +28,12 @@
           <v-container class="pt-0">
             <v-toolbar height="20" class="ma-0 transparent elevation-0">
               <v-spacer></v-spacer>
-              <v-btn v-if="!listOpened" icon @click="Open">
+              <v-btn v-if="!listOpened" icon @click="open">
                 <v-icon>
                   keyboard_arrow_down
                 </v-icon>
               </v-btn>
-              <v-btn v-else icon @click="Close">
+              <v-btn v-else icon @click="close">
                 <v-icon>
                   keyboard_arrow_up
                 </v-icon>
@@ -43,7 +43,7 @@
             <v-toolbar class="px-2" color="transparent" flat>
               <v-text-field solo light v-model="title"></v-text-field>
               <v-btn text>
-                Update
+                update
               </v-btn>
             </v-toolbar>
 
@@ -139,7 +139,7 @@ export default {
     title(value) {},
 
     milestoneId(value) {
-      this.Update();
+      this.update();
     }
   },
   methods: {
@@ -152,11 +152,11 @@ export default {
       return this.$store.getters.notes;
     },
 
-    Select(index) {
+    select(index) {
       this.selectedId = index;
     },
 
-    Open() {
+    open() {
       const container = document.getElementById("milestone-container");
       const list = document.getElementById("milestone-list");
 
@@ -173,7 +173,7 @@ export default {
       }, 10);
     },
 
-    Close() {
+    close() {
       const container = document.getElementById("milestone-container");
       const list = document.getElementById("milestone-list");
       list.style.overflowX = "hidden";
@@ -190,7 +190,7 @@ export default {
       }, 10);
     },
 
-    Base() {
+    base() {
       const container = document.getElementById("milestone-container");
       const list = document.getElementById("milestone-list");
 
@@ -200,7 +200,7 @@ export default {
       this.listOpened = false;
     },
 
-    Update() {
+    update() {
       const { categories } = this.$store.getters.currentProject(this);
       this.finishingCategory = categories[categories.length - 1].tag;
       this.notes.all = this.getNotes();
@@ -209,8 +209,8 @@ export default {
     }
   },
   mounted() {
-    this.Base();
-    this.Update();
+    this.base();
+    this.update();
   }
 };
 </script>

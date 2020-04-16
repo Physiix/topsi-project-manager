@@ -14,7 +14,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="Close">
+          <v-btn color="primary" text @click="close">
             {{ this.$lang.Get("close") }}
           </v-btn>
         </v-card-actions>
@@ -50,7 +50,7 @@ export default {
     };
   },
   methods: {
-    Close() {
+    close() {
       this.$store.commit("ToggleShowHelper");
     }
   }

@@ -60,7 +60,7 @@ export default {
     }
   },
   methods: {
-    KeyUp(event) {}
+    keyUp(event) {}
   },
   mounted() {
     AppManager.SetupLandingPage(this.macos ? 0 : 30, "container", "side", "content");

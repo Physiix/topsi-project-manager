@@ -5,8 +5,8 @@
       width="500"
       class="elevation-24"
       dark
-      @keyup.esc.native="Close"
-      @keyup.enter.native="Close"
+      @keyup.esc.native="close"
+      @keyup.enter.native="close"
     >
       <v-card-title class="py-0">
         <v-text-field
@@ -34,7 +34,7 @@ export default {
     }
   },
   methods: {
-    Close() {
+    close() {
       this.$store.dispatch("ToggleDialog", "searchDialog");
     }
   },

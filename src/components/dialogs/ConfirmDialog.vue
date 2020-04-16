@@ -6,13 +6,13 @@
         <v-card-text>{{ message }}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text @click.native="Cancel">{{
-            cancelMsg ? cancelMsg : $lang.Get("cancel")
-          }}</v-btn>
+          <v-btn text @click.native="cancel">
+            {{ cancelMsg ? cancelMsg : $lang.Get("cancel") }}
+          </v-btn>
           <v-btn
             :color="acceptColor ? acceptColor : 'primary'"
             style="border-radius:0;"
-            @click.native="Accept"
+            @click.native="accept"
             >{{ acceptMsg ? acceptMsg : $lang.Get("accept") }}</v-btn
           >
         </v-card-actions>
@@ -20,8 +20,10 @@
     </v-dialog>
   </v-layout>
 </template>
-<script>
-export default {
+
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
   name: "ConfirmDialog",
   props: {
     title: String,
@@ -31,15 +33,15 @@ export default {
     acceptColor: String
   },
   methods: {
-    Cancel() {
+    cancel() {
       this.$emit("cancel");
     },
 
-    Accept() {
+    accept() {
       this.$emit("accept");
     }
   }
-};
+});
 </script>
 
 <style scoped></style>

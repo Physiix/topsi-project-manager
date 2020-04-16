@@ -15,7 +15,7 @@
       width="500"
       dark
       left
-      v-on:opened="Opened"
+      v-on:opened="opened"
     >
       <v-toolbar color="secondary" dark class="px-2 elevation-0">
         <v-text-field
@@ -23,9 +23,9 @@
           v-model="tag"
           :color="color"
           autofocus
-          @keyup.enter.native="AddTag"
+          @keyup.enter.native="addTag"
         ></v-text-field>
-        <v-btn color="primary" style="border-radius:0;" @click="AddTag">{{
+        <v-btn color="primary" style="border-radius:0;" @click="addTag">{{
           $lang.Get("add")
         }}</v-btn>
       </v-toolbar>
@@ -42,7 +42,7 @@
           small
           :class="entry.color"
           close
-          v-on:input="RemoveTag(index)"
+          v-on:input="removeTag(index)"
           >{{ entry.tag }}</v-chip
         >
       </v-container>
@@ -62,13 +62,13 @@ export default {
     };
   },
   methods: {
-    RemoveTag(index) {
-      this.$store.dispatch("RemoveTag", this.tags[index]);
-      this.UpdateTags();
+    removeTag(index) {
+      this.$store.dispatch("removeTag", this.tags[index]);
+      this.updateTags();
     },
 
-    AddTag() {
-      this.$store.dispatch("AddTag", {
+    addTag() {
+      this.$store.dispatch("addTag", {
         tag: this.tag,
         color: this.color
       });
@@ -76,16 +76,16 @@ export default {
       this.color = "";
     },
 
-    UpdateTags() {
+    updateTags() {
       this.tags = this.$store.getters.projectTags;
     },
 
-    Opened() {
+    opened() {
       Utils.FocusTextField(this.$refs.tag_input.$el);
     }
   },
   mounted() {
-    this.UpdateTags();
+    this.updateTags();
   }
 };
 </script>

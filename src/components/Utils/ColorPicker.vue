@@ -6,7 +6,7 @@
       :class="color + ' ' + (color == selected ? 'elevation-5' : '')"
       :key="'color' + i"
       v-text="color.length == 0 ? 'default' : ''"
-      @click="Select(color, i)"
+      @click="select(color, i)"
       :flat="selected != i"
     >
     </v-card>
@@ -51,7 +51,7 @@ export default {
      * Iterate trough all the buttons, and apply visual changes to the selected button.
      * Emits an event with the selected color.
      */
-    Select(color, index) {
+    select(color, index) {
       // Emit an event with the selected color.
       this.$emit("color-selected", color);
       this.$emit("input", color);

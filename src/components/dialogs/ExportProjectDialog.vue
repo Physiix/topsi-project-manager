@@ -3,7 +3,7 @@
     v-if="exportProject"
     width="300"
     v-on:close="exportProject = false"
-    v-on:accept="ExportProject"
+    v-on:accept="exportProject"
     :accept-text="this.$lang.Get('export')"
   >
     <v-container>
@@ -48,7 +48,7 @@ export default {
     /**
      * Handle the 'Save' button click.
      */
-    ExportProject() {
+    exportProject() {
       // Close the dialog.
       this.exportProject = false;
 

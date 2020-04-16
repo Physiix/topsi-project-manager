@@ -8,7 +8,7 @@
         :text="!cancelRaised"
         class="ma-0"
         :color="cancelColor ? cancelColor : ''"
-        @click="Close"
+        @click="close"
         >{{ cancelText ? cancelText : this.$lang.Get("cancel") }}</v-btn
       >
 
@@ -17,7 +17,7 @@
         :text="!acceptRaised"
         class="ma-0"
         :color="acceptColor ? acceptColor : 'primary'"
-        @click="Accept"
+        @click="accept"
         >{{ acceptText ? acceptText : this.$lang.Get("save") }}</v-btn
       >
     </v-card-actions>
@@ -47,23 +47,23 @@ export default {
   },
   methods: {
     /**
-     * When the users clicks on the Close button
+     * When the users clicks on the close button
      */
-    Close(event) {
-      this.RollUp(() => this.$emit("close", event));
+    close(event) {
+      this.rollUp(() => this.$emit("close", event));
     },
 
     /**
      * When the user clicks on the accept button.
      */
-    Accept(event) {
-      this.RollUp(() => this.$emit("accept", event));
+    accept(event) {
+      this.rollUp(() => this.$emit("accept", event));
     },
 
     /**
      * Roll-up the dialog, but does not close it.
      */
-    RollUp(callback) {
+    rollUp(callback) {
       const element = document.getElementById("project-dialog");
       const { height } = element.getBoundingClientRect();
 

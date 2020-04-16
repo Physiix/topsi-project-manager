@@ -3,18 +3,18 @@
     <div class="top pa-3 title">
       <div class="content-category-title">
         <v-toolbar height="30" color="transparent" flat>
-          <div v-show="!editTitle" @dblclick="EditTitle">
+          <div v-show="!editTitle" @dblclick="editTitle">
             {{ title }}
           </div>
           <div v-show="editTitle" ref="edit" class="pt-3 mt-1" style="width:100px">
             <v-text-field
               v-model="editedTitle"
               :value="title"
-              @keyup.enter.native="UpdateTitle"
+              @keyup.enter.native="updateTitle"
               autofocus
             ></v-text-field>
           </div>
-          <v-btn icon fab small style="width:30px;height:30px;" @click="Fold">
+          <v-btn icon fab small style="width:30px;height:30px;" @click="fold">
             <v-icon>
               mdi-unfold-less-horizontal
             </v-icon>
@@ -80,14 +80,14 @@ export default {
     }
   },
   methods: {
-    Fold() {
+    fold() {
       this.$store.dispatch("ToggleFoldCategory", {
         projectId: this.projectId,
         category: this.category
       });
     },
 
-    EditTitle() {
+    editTitle() {
       this.editTitle = true;
       this.editedTitle = this.title;
       Utils.ClickOutsideOrKeyPress(
@@ -102,7 +102,7 @@ export default {
       );
     },
 
-    UpdateTitle() {
+    updateTitle() {
       this.editTitle = false;
       this.title = this.editedTitle;
     }

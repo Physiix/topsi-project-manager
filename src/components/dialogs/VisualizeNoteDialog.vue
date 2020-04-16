@@ -1,7 +1,7 @@
 <template>
   <Dialog
-    v-on:close="Delete"
-    v-on:accept="Close"
+    v-on:close="remove"
+    v-on:accept="close"
     width="800"
     :accept-text="$lang.Get('close')"
     :cancel-text="$lang.Get('delete')"
@@ -10,7 +10,7 @@
     accept-color=" "
   >
     <div id="visualizer-dialog">
-      <v-btn absolute top right style="margin-top:30px;z-index:5;" icon @click="ToggleLayout">
+      <v-btn absolute top right style="margin-top:30px;z-index:5;" icon @click="toggleLayout">
         <Tooltip bottom content="Tasks">
           <v-icon>
             fa-tasks
@@ -67,15 +67,15 @@ export default {
     }
   },
   methods: {
-    Close() {
+    close() {
       this.openedNote = false;
     },
 
-    Delete() {
+    remove() {
       this.$store.dispatch("DeleteNote", this.note);
     },
 
-    ToggleLayout() {
+    toggleLayout() {
       if (this.opened) {
         ApplicationManager.CloseVisualizerSide("visualizer-dialog", this.height);
         this.opened = false;
