@@ -12,15 +12,11 @@
 
     <v-stepper v-model="stepperId" style="height: 100%">
       <v-stepper-header class="elevation-0">
-        <v-stepper-step :color="color" editable :complete="stepperId > 1" step="1"
-          >Information</v-stepper-step
-        >
+        <v-stepper-step :color="color" editable :complete="stepperId > 1" step="1">Information</v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :color="color" editable :complete="stepperId > 2" step="2"
-          >Preview & Save</v-stepper-step
-        >
+        <v-stepper-step :color="color" editable :complete="stepperId > 2" step="2">Preview & Save</v-stepper-step>
       </v-stepper-header>
 
       <v-stepper-items>
@@ -32,8 +28,7 @@
               v-if="enableDelete"
               @click="deleteDialog = true"
               style="border-radius:0;"
-              >{{ $lang.Get("delete") }}</v-btn
-            >
+            >{{ $lang.Get("delete") }}</v-btn>
             <v-card-title>
               <v-text-field :label="$lang.Get('title')" v-model="title"></v-text-field>
             </v-card-title>
@@ -46,9 +41,7 @@
           </div>
 
           <div style="width: 100%; display: flex; flex-direction: row-reverse;">
-            <v-btn text :color="color" @click="stepperId = 2">
-              Preview
-            </v-btn>
+            <v-btn text :color="color" @click="stepperId = 2">Preview</v-btn>
           </div>
         </v-stepper-content>
 
@@ -60,9 +53,7 @@
                 dense
                 height="10"
                 style="font-size:0.7em; width: 100%; text-align: center;"
-              >
-                {{ this.$lang.Get("projectName") }}
-              </div>
+              >{{ this.$lang.Get("projectName") }}</div>
               <div style="display: flex; " class="white py-0 elevation-2">
                 <v-navigation-drawer
                   :class="color"
@@ -80,8 +71,7 @@
                     class="mb-1"
                     style="border-radius:0"
                     light
-                  >
-                  </v-card>
+                  ></v-card>
                 </v-navigation-drawer>
                 <div
                   style="width: 100%; display: flex; justify-content: center; align-items:center"
@@ -100,13 +90,11 @@
                       <v-icon id="sheet-icon" dark>mdi-close</v-icon>
                     </div>
                     <p style="font-size:8px;">{{ categ }}</p>
-                    <v-card v-for="i in 5" :key="i" height="20" class="ma-2 grey"> </v-card>
+                    <v-card v-for="i in 5" :key="i" height="20" class="ma-2 grey"></v-card>
                   </v-card>
                   <v-spacer></v-spacer>
                   <v-btn fab text id="add-category-btn" @click="FocusAddCategory">
-                    <v-icon :color="color">
-                      mdi-plus
-                    </v-icon>
+                    <v-icon :color="color">mdi-plus</v-icon>
                   </v-btn>
                   <FloatingDiv
                     activator-id="add-category-btn"
@@ -125,9 +113,7 @@
                           class="pt-2"
                           autofocus
                         ></v-text-field>
-                        <v-btn text @click="AddCategory">
-                          Add
-                        </v-btn>
+                        <v-btn text @click="AddCategory">Add</v-btn>
                       </v-toolbar>
                     </v-card>
                   </FloatingDiv>
@@ -143,9 +129,7 @@
           <div style="height: 60px"></div>
 
           <div style="width: 100%; display: flex; flex-direction: row-reverse;">
-            <v-btn :color="color" @click="Accept" :disabled="!canCreate">
-              Create
-            </v-btn>
+            <v-btn :color="color" @click="Accept" :disabled="!canCreate">Create</v-btn>
 
             <v-btn text @click="Close">Cancel</v-btn>
           </div>
@@ -222,7 +206,6 @@ export default {
           properties: ["openDirectory"]
         }
       )[0];
-      console.log(this.selectedFolder);
     },
 
     Close() {
@@ -270,7 +253,8 @@ export default {
   },
 
   created() {
-    this.customPath = this.project.customPath || this.$store.getters.defaultPath;
+    this.customPath =
+      this.project.customPath || this.$store.getters.defaultPath;
   },
 
   mounted() {
@@ -285,7 +269,10 @@ export default {
           name: "Categories"
         },
         onEnd: event => {
-          const newIndex = event.oldIndex < event.newIndex ? event.newIndex + 1 : event.newIndex;
+          const newIndex =
+            event.oldIndex < event.newIndex
+              ? event.newIndex + 1
+              : event.newIndex;
           const tmp = this.categories[event.oldIndex];
           this.categories.splice(event.oldIndex, 1);
           this.categories.splice(newIndex, 0, tmp);
@@ -313,7 +300,9 @@ export default {
         theme: "snow" // or 'bubble'
       };
       editor = new Quill("#editor", options);
-      document.getElementsByClassName("ql-editor")[0].innerHTML = this.project.description;
+      document.getElementsByClassName(
+        "ql-editor"
+      )[0].innerHTML = this.project.description;
     }
   }
 };

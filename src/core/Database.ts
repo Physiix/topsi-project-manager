@@ -21,7 +21,6 @@ export class DBUtils {
     this.dbFilePath = path.join(this.dataPath, this.name);
 
     // Make sure the 'data' folder exists
-    console.log(`Here ${defaultPath} ${this.dataPath}`);
     if (!fs.existsSync(this.dataPath)) {
       throw new Error("Path not found");
       // if (process.platform == "darwin" && !fs.existsSync(dir)) fs.mkdirSync(dir);
@@ -33,9 +32,7 @@ export class DBUtils {
   }
 
   private initializeContent() {
-    console.log("DEBUG");
     const content = this.context.read();
-    console.log("DEBUG");
     console.dir(content);
     if (content === "") {
       this.content = {};
@@ -81,7 +78,10 @@ export class DBUtils {
   // @object Object to store.
   Write(table: string, object: any) {
     // Create table if not set
-    if (this.content[table] == null) this.setValue(table, []);
+    if (this.content[table] == null) {
+      this.setValue(table, []);
+      this.Write(table, object);
+    }
 
     // Adding timestamp.
     object.timestamp = Date.now();
@@ -121,8 +121,7 @@ export class DBUtils {
   // Get all the entries from a table.
   // @param table Table to retrieve the entries from.
   // @orderBy [optional] Member data to order the list with.
-  GetAll(table: string) {
-    console.log("GET ALL " + table);
+  GetAll<T = any>(table: string): T[] {
     return this.GetValue(table, []);
   }
 
@@ -143,7 +142,7 @@ export class DBUtils {
    * @param {*int} id Id of the object(s) to update.
    * @param {*object} data Contains the new data to store within the object.
    */
-  Update(table: string, id: string, data: any) {
+  Update(table: string, id: string | number, data: any) {
     // Adding timestamp.
     data.timestamp = Date.now();
 

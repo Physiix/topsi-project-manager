@@ -52,53 +52,10 @@ export default {
      * Emits an event with the selected color.
      */
     Select(color, index) {
-      this.selected = color;
-      const btns = document.getElementsByClassName("color-picker-btn");
-      for (let i = 0; i < btns.length; i++) {
-        // Default values for each buttons
-        let height = 10;
-        let top = 0;
-
-        const el = btns.item(i);
-
-        // Change the default values for the selected button
-        if (index == i) {
-          height = 14;
-          top = -2;
-        }
-
-        // Apply transform to the selected button
-        el.style.top = `${top}px`;
-        el.style.height = `${height}px`;
-        el.style.maxHeight = `${height}px`;
-        el.style.minHeight = `${height}px`;
-      }
-
       // Emit an event with the selected color.
       this.$emit("color-selected", color);
       this.$emit("input", color);
     }
-  },
-  mounted() {
-    // Width is required.
-    if (!this.width) throw new Error("Width is required for the TimePicker component");
-
-    // Get the buttons, where each button represents a color.
-    const btns = document.getElementsByClassName("color-picker-btn");
-
-    // Calculate the padding and width.
-    const padding = this.padding ? this.padding : 0;
-    const width = this.width - padding * 2;
-
-    // Iterate trough all the buttons/colors, and apply the width
-    for (let i = 0; i < btns.length; i++) {
-      btns.item(i).style.width = `${width / this.colors.length}px`;
-      btns.item(i).style.maxWidth = `${width / this.colors.length}px`;
-      btns.item(i).style.minWidth = `${width / this.colors.length}px`;
-    }
-
-    // Apply the padding to the buttons's parent.
-    this.$refs.layout.style.paddingLeft = `${padding}px`;
   }
 };
 </script>

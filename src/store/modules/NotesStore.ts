@@ -1,54 +1,54 @@
 import DBManager from "@/core/DBManager";
-import Notifications from "@/core/Notifications";
+import { Note, Task } from "@/core/Data";
 
-class Note {
-  constructor(project_id, title, description, category, color, milestone_id, tags) {
-    this.id = -1;
-    this.project_id = project_id;
-    this.title = title;
-    this.description = description;
-    this.category = category;
-    this.color = color;
-    this.milestone_id = milestone_id;
-    this.tags = tags || [];
-    this.order = 0;
-    this.tasks = [];
-  }
-}
-
-const state = {
+type State = {
   // Flag to show or hide a menu for items
+  menu: {
+    show: boolean;
+    x: number;
+    y: number;
+    note?: Note;
+  };
+
+  // Note to Update.
+  updatedNote?: Note;
+
+  // Note to visualize
+  openedNote?: Note;
+
+  // Contains all the notes for the currently opened project.
+  notes: Note[];
+
+  // Id of the currently opened project.
+  projectId: number;
+
+  milestoneId: number;
+
+  // Whether to display the tasks or not.
+  displayTasks: boolean;
+};
+
+const state: State = {
   menu: {
     show: false,
     x: 0,
     y: 0,
-    note: null
+    note: undefined
   },
-
-  // Note to Update.
-  updatedNote: null,
-
-  // Note to visualize
-  openedNote: null,
-
-  // Contains all the notes for the currently opened project.
-  notes: null,
-
-  // Id of the currently opened project.
+  updatedNote: undefined,
+  openedNote: undefined,
+  notes: [],
   projectId: -1,
-
   milestoneId: 0,
-
-  // Whether to display the tasks or not.
   displayTasks: DBManager.GetAppDB().GetValue("display_tasks", true)
 };
 
 const getters = {
-  notes(state) {
+  notes(state: State) {
     return state.notes;
   },
 
-  isDisplayTasks(state) {
+  isDisplayTasks(state: State) {
     return state.displayTasks;
   }
 };
@@ -60,7 +60,7 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note's project id, title, description and category.
    */
-  CreateNote(state, data) {
+  CreateNote(state: State, data: any) {
     // Make sure the note's data is valid.
     if (
       data.project_id == null ||
@@ -68,8 +68,9 @@ const mutations = {
       data.description == null ||
       data.category == null ||
       data.milestoneId == null
-    )
-      Notifications.Error("CreateNote", "Cannot create a note with invalid data " + data);
+    ) {
+      throw new Error(`Cannot create a note with invalid data ${data}`);
+    }
 
     // Create the new note to store.
     let note = new Note(
@@ -99,12 +100,13 @@ const mutations = {
    * @param {*} data Contains the HTMLElement of the note in @param data.note, the receiving tag in * @param data.tag and the old and new indices in @param data.newIndex and @param data.oldIndex
    * respectively.
    */
-  UpdateNotesOrder(state, data) {
-    if (data.note == null || data.tag == null || data.oldIndex == null || data.newIndex == null)
+  UpdateNotesOrder(state: State, data: any) {
+    if (data.note == null || data.tag == null || data.oldIndex == null || data.newIndex == null) {
       throw new Error("UpdateNotesOrder: All or some data attributes missing.");
+    }
 
     // Function to sanitize the HTMLElement ID of a note.
-    const SanitizeNoteId = id => {
+    const SanitizeNoteId = (id: string) => {
       return id.substr(id.indexOf("-") + 1, id.length - 1);
     };
 
@@ -145,7 +147,7 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note to update.
    */
-  SetUpdatedNote(state, note) {
+  SetUpdatedNote(state: State, note: Note) {
     if (note == null) throw new Error("SetUpdatedNote: note parameter required.");
     state.updatedNote = note;
   },
@@ -156,7 +158,7 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note's project id, title, description and category.
    */
-  UpdateNote(state, data) {
+  UpdateNote(state: State, data: any) {
     // Make sure the note's data is valid.
     if (
       data.id == null ||
@@ -165,8 +167,9 @@ const mutations = {
       data.description == null ||
       data.category == null ||
       data.milestone_id == null
-    )
-      throw new Error("Cannot update a note with invalid data ", data);
+    ) {
+      throw new Error(`Cannot update a note with invalid data ${data}`);
+    }
 
     // Update the timestamp
     data.updated_timestamp = Date.now();
@@ -174,13 +177,7 @@ const mutations = {
     const database = DBManager.GetDB(data.project_id);
 
     // Create the new note to store.
-    database.Update(
-      "notes",
-      {
-        id: data.id
-      },
-      data
-    );
+    database.Update("notes", data.id, data);
   },
 
   /**
@@ -188,24 +185,26 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note to visualize.
    */
-  SetOpenedNote(state, note) {
-    if (note == null) throw new Error("SetOpenedNote: note parameter required.");
+  SetOpenedNote(state: State, note: Note) {
+    if (note == null) {
+      throw new Error("SetOpenedNote: note parameter required.");
+    }
     state.openedNote = note;
   },
 
-  SetShowMenu(state, value) {
+  SetShowMenu(state: State, value: boolean) {
     state.menu.show = value;
   },
 
-  SetMenuX(state, value) {
+  SetMenuX(state: State, value: number) {
     state.menu.x = value;
   },
 
-  SetMenuY(state, value) {
+  SetMenuY(state: State, value: number) {
     state.menu.y = value;
   },
 
-  SetMenuData(state, data) {
+  SetMenuData(state: State, data: any) {
     state.menu.show = data.show;
     state.menu.x = data.x;
     state.menu.y = data.y;
@@ -217,14 +216,12 @@ const mutations = {
    * @param {Object} state Current state of the Application.
    * @param {Object} data Contains the data about the project to retrieve the notes for.
    */
-  UpdateNotes(state, data) {
+  UpdateNotes(state: State, data: any) {
     state.projectId = data.projectId;
     state.milestoneId = data.milestoneId;
-    state.notes = DBManager.GetDB(data.projectId).GetAll("notes", "order", [
-      {
-        milestone_id: data.milestoneId
-      }
-    ]);
+    state.notes = DBManager.GetDB(data.projectId)
+      .GetAll<Note>("notes")
+      .filter(note => note.milestoneId === data.milestoneId);
   },
 
   /**
@@ -232,8 +229,8 @@ const mutations = {
    * @param {Object} state Current state of the Application.
    * @param {Object} note Note to delete.
    */
-  DeleteNote(state, note) {
-    DBManager.GetDB(note.project_id).Remove("notes", {
+  DeleteNote(state: State, note: Note) {
+    DBManager.GetDB(note.projectId).Remove("notes", {
       id: note.id
     });
   },
@@ -243,30 +240,21 @@ const mutations = {
    * @param {Object} state Current state of the Application.
    * @param {String} task Content of the task to add.
    */
-  AddTask(state, data) {
+  AddTask(state: State, data: any) {
     if (
       state.openedNote == null ||
       data.task == null ||
       data.task.length <= 0 ||
       data.projectId < 0 ||
       data.projectId == null
-    )
-      Notifications.Error("Add task", `Cannot add task ${data.task}`);
+    ) {
+      throw new Error(`Cannot add task ${data.task}`);
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
     state.openedNote.tasks = state.openedNote.tasks || [];
-    state.openedNote.tasks.push({
-      id: projectDB.GetId("tasks_id"),
-      content: data.task,
-      done: false
-    });
-    projectDB.Update(
-      "notes",
-      {
-        id: state.openedNote.id
-      },
-      state.openedNote
-    );
+    state.openedNote.tasks.push(new Task(projectDB.GetId("tasks_id"), data.task, false));
+    projectDB.Update("notes", state.openedNote.id, state.openedNote);
   },
 
   /**
@@ -274,36 +262,32 @@ const mutations = {
    * @param {Object} state Current state of the Application.
    * @param {Object} task Task to update.
    */
-  ToggleTask(state, data) {
+  ToggleTask(state: State, data: any) {
     if (
       state.openedNote == null ||
       data.task.id == null ||
       data.projectId < 0 ||
       data.projectId == null ||
       state.openedNote.tasks == null
-    )
-      Notifications.Error("Add task", `Cannot add task ${data.task}`);
+    ) {
+      throw new Error(`Cannot add task ${data.task}`);
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
     const task = state.openedNote.tasks.filter(task => task.id == data.task.id)[0];
     task.done = !task.done;
-    projectDB.Update(
-      "notes",
-      {
-        id: state.openedNote.id
-      },
-      state.openedNote
-    );
+    projectDB.Update("notes", state.openedNote.id, state.openedNote);
   },
 
-  ToggleDisplayTasks(state) {
+  ToggleDisplayTasks(state: State) {
     state.displayTasks = !state.displayTasks;
     DBManager.GetAppDB().setValue("display_tasks", state.displayTasks);
   },
 
-  ReorderTasks(state, data) {
-    if (state.openedNote == null || data.newIndex == null || data.oldIndex < 0)
-      Notifications.Error("Redorder Task", `Cannot reorder task ${data.task}`);
+  ReorderTasks(state: State, data: any) {
+    if (state.openedNote == null || data.newIndex == null || data.oldIndex < 0) {
+      throw new Error(`Cannot reorder task ${data.task}`);
+    }
 
     const newIndex = data.newIndex;
     const oldIndex = data.oldIndex;
@@ -315,18 +299,13 @@ const mutations = {
     state.openedNote.tasks[oldIndex] = state.openedNote.tasks[newIndex];
     state.openedNote.tasks[newIndex] = tmp;
 
-    projectDB.Update(
-      "notes",
-      {
-        id: state.openedNote.id
-      },
-      state.openedNote
-    );
+    projectDB.Update("notes", state.openedNote.id, state.openedNote);
   },
 
-  UpdateNotesCategory(state, data) {
-    if (data.projectId == null || data.category == null || data.newTitle == null)
-      Notifications.Error("UpdateNotesCategory", `Cannot update note's category. ${data}`);
+  UpdateNotesCategory(state: State, data: any) {
+    if (data.projectId == null || data.category == null || data.newTitle == null) {
+      throw new Error(`Cannot update note's category. ${data}`);
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
 
@@ -342,7 +321,7 @@ const mutations = {
 };
 
 const actions = {
-  CreateNote(context, data) {
+  CreateNote(context: any, data: any) {
     context.commit("CreateNote", data);
 
     // Update the state
@@ -352,7 +331,7 @@ const actions = {
     });
   },
 
-  UpdateNote(context, data) {
+  UpdateNote(context: any, data: any) {
     context.commit("UpdateNote", data);
 
     // Retrieve the new values as saved from the database.
@@ -362,7 +341,7 @@ const actions = {
     });
   },
 
-  DeleteNote(context, note) {
+  DeleteNote(context: any, note: any) {
     context.commit("DeleteNote", note);
 
     // Retrieve the new values as saved from the database.
@@ -372,7 +351,7 @@ const actions = {
     });
   },
 
-  UpdateNotesOrder(context, data) {
+  UpdateNotesOrder(context: any, data: any) {
     context.commit("UpdateNotesOrder", data);
 
     // Retrieve the new values as saved from the database.
@@ -382,35 +361,35 @@ const actions = {
     });
   },
 
-  EditNote(context, note) {
+  EditNote(context: any, note: Note) {
     context.commit("SetUpdatedNote", note);
     context.commit("UpdateNoteDialog");
   },
 
-  VisualizeNote(context, note) {
+  VisualizeNote(context: any, note: Note) {
     context.commit("SetOpenedNote", note);
     context.commit("OpenNoteDialog");
   },
 
-  AddTask(context, task) {
+  AddTask(context: any, task: Note) {
     context.commit("AddTask", {
       projectId: context.getters.openedProjectId,
       task: task
     });
   },
 
-  ToggleTask(context, task) {
+  ToggleTask(context: any, task: Note) {
     context.commit("ToggleTask", {
       projectId: context.getters.openedProjectId,
       task: task
     });
   },
 
-  ToggleDisplayTasks(context) {
+  ToggleDisplayTasks(context: any) {
     context.commit("ToggleDisplayTasks");
   },
 
-  ReorderTasks(context, data) {
+  ReorderTasks(context: any, data: any) {
     context.commit("ReorderTasks", data);
   }
 };

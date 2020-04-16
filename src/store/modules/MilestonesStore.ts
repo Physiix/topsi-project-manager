@@ -1,17 +1,13 @@
 import DBManager from "@/core/DBManager";
+import { Milestone } from "@/core/Data";
 
-import Notifications from "@/core/Notifications";
-
-class Milestone {
-  constructor(id, title) {
-    this.id = id;
-    this.title = title;
-  }
-}
-
-const state = {
+type State = {
   // Retrieve all the milestones by their ID.
-  milestones: null
+  milestones: Milestone[];
+};
+
+const state: State = {
+  milestones: []
 };
 
 const getters = {
@@ -19,7 +15,7 @@ const getters = {
    * Get all the milestones associated with a project.
    * @param id ID of the project to retrieve the milestones for.
    */
-  milestones(state) {
+  milestones(state: State) {
     return state.milestones;
   }
 };
@@ -31,10 +27,11 @@ const mutations = {
    * @param {*State} state State of MilestoneStore
    * @param {*Milestone} data Contains the data about the milestone to create.
    */
-  CreateMilestone(state, data) {
+  CreateMilestone(state: State, data: any) {
     // Check if the data is valid.
-    if (data.projectId == null || data.name == null)
-      Notifications.Error("CreateMilestone", "A valid data attribute is required");
+    if (data.projectId == null || data.name == null) {
+      throw new Error("A valid data attribute is required");
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
     // Create the new milestone object
@@ -47,13 +44,11 @@ const mutations = {
     mutations.UpdateMilestones(state, data);
   },
 
-  UpdateProjectMilestoneId(state, data) {
+  UpdateProjectMilestoneId(state: State, data: any) {
     // Check if the data is valid.
-    if (data.projectId == null || data.milestoneId == null)
-      Notifications.Error(
-        "UpdateProjectMilestoneId",
-        "Cannot set invalid milestone data to project."
-      );
+    if (data.projectId == null || data.milestoneId == null) {
+      throw new Error("Cannot set invalid milestone data to project.");
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
     const projectInfo = projectDB.GetValue("info");
@@ -61,21 +56,17 @@ const mutations = {
     projectInfo.opened_milestone_id = data.milestoneId;
 
     projectDB.setValue("info", projectInfo);
-    DBManager.GetAppDB().Update(
-      "projects",
-      {
-        id: projectInfo.id
-      },
-      projectInfo
-    );
+    DBManager.GetAppDB().Update("projects", projectInfo.id, projectInfo);
   },
 
   /**
    * Get all the milestones from the current project's database.
    */
-  UpdateMilestones(state, data) {
-    if (data.projectId == null) throw new Error("UpdateMilestones: Project id required.");
-    state.milestones = DBManager.GetDB(data.projectId).GetAll("milestones", "id");
+  UpdateMilestones(state: State, data: any) {
+    if (data.projectId == null) {
+      throw new Error("UpdateMilestones: Project id required.");
+    }
+    state.milestones = DBManager.GetDB(data.projectId).GetAll("milestones");
   }
 };
 

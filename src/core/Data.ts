@@ -1,4 +1,4 @@
-class Project {
+export class Project {
   public id: number = -1;
   public selectedMilestoneId: number = 0;
   public customPath: string = "";
@@ -10,26 +10,30 @@ class Project {
   ) {}
 }
 
-class Category {
-  constructor(public readonly tag: string, public readonly title: string, public folded: boolean) {}
+export class Category {
+  constructor(public tag: string, public title: string, public folded: boolean) {}
 }
 
-class Note {
+export class Task {
+  constructor(public readonly id: string, public content: string, public done: boolean) {}
+}
+
+export class Note {
   public id: number = -1;
   public order: number = 0;
-  public tasks: string[] = [];
+  public tasks: Task[] = [];
 
   constructor(
     public readonly projectId: number,
     public readonly title: string,
     public readonly description: string,
-    public readonly category: string,
+    public category: string,
     public readonly color: string,
     public readonly milestoneId: number,
     public readonly tags: string[] = []
   ) {}
 }
 
-class Milestone {
+export class Milestone {
   constructor(public readonly id: number, public readonly title: string) {}
 }

@@ -1,14 +1,20 @@
 <template>
-  <v-card :id="'note-'+note.id" class="note ma-2" :class="note.color" @dblclick="Open" :dark="dark">
+  <v-card
+    :id="'note-' + note.id"
+    class="note ma-2"
+    :class="note.color"
+    @dblclick="Open"
+    :dark="dark"
+  >
     <v-card-title class="py-2 pt-3 pr-0">
       <v-layout row>
         <div class="blue--text pr-1">
-          <strong>#{{note.id}}</strong>
+          <strong>#{{ note.id }}</strong>
         </div>
-        <h4>{{note.title}}</h4>
+        <h4>{{ note.title }}</h4>
         <v-spacer></v-spacer>
-        <v-btn small icon class="ma-0" @click="Edit">
-          <v-icon style="font-size:16px;">edit</v-icon>
+        <v-btn small class="pr-6" icon @click="Edit">
+          <v-icon size="18">mdi-pencil</v-icon>
         </v-btn>
       </v-layout>
     </v-card-title>
@@ -18,33 +24,31 @@
   </v-card>
 </template>
 <script>
-import NoteTags from './NoteTags.vue';
+import NoteTags from "./NoteTags.vue";
 
 export default {
-  name: 'Note',
+  name: "Note",
   components: {
-    NoteTags,
+    NoteTags
   },
   props: {
-    note: Object,
+    note: Object
   },
   methods: {
     Edit() {
-      this.$store.dispatch('EditNote', this.note);
+      this.$store.dispatch("EditNote", this.note);
     },
 
     Open() {
-      this.$store.dispatch('VisualizeNote', this.note);
-    },
+      this.$store.dispatch("VisualizeNote", this.note);
+    }
   },
   computed: {
     dark() {
-      const darkMode = this.$store.state.AppStore.darkMode && this.note.color == '';
-      return darkMode
-        ? true
-        : !!this.note.color.includes('white--text');
-    },
-  },
+      const darkMode = this.$store.state.AppStore.darkMode && this.note.color == "";
+      return darkMode ? true : !!this.note.color.includes("white--text");
+    }
+  }
 };
 </script>
 

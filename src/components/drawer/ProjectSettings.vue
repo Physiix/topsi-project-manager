@@ -52,7 +52,6 @@ export default {
           title: this.$lang.Get("settings"),
           icon: mdiCog,
           action: () => {
-            console.log("settings");
             this.$store.dispatch("ToggleDialog", "showSettings");
           }
         }

@@ -16,7 +16,8 @@ import Vuetify, {
   VListItemAction,
   VListItemActionText,
   VListItemTitle,
-  VAppBar
+  VAppBar,
+  VTooltip
 } from "vuetify/lib";
 
 Vue.use(Vuetify, {
@@ -34,6 +35,7 @@ Vue.use(Vuetify, {
     VTextarea,
     VList,
     VAppBar,
+    VTooltip,
     VListItem,
     VListItemAction,
     VListItemActionText,

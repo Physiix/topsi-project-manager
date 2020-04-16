@@ -43,7 +43,7 @@ class DBManager {
    * Get the database registered for the project with @param id
    * @param {String} id ID of the project.
    */
-  GetDB(id: string) {
+  GetDB(id: string | number) {
     return this.databases[id + EXTENSION];
   }
 

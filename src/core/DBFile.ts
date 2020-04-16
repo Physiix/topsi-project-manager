@@ -2,7 +2,6 @@ import fs from "fs";
 
 export class DBFile {
   constructor(public readonly path: string) {
-    console.log(path);
     if (!fs.existsSync(path)) {
       fs.writeFileSync(path, "{}");
     }
@@ -10,12 +9,14 @@ export class DBFile {
 
   public write(content: any) {
     fs.writeFile(this.path, content, err => {
-      throw err;
+      if (err != null) {
+        throw err;
+      }
     });
   }
 
   public async append(content: any) {
-    const data = this.read + content;
+    const data = this.read() + content;
     this.write(data);
   }
 

@@ -1,29 +1,22 @@
 import DBManager from "@/core/DBManager";
-import Notifications from "@/core/Notifications";
 import EventManager from "@/core/EventManager";
+import { Project, Category } from "@/core/Data";
 
-class Project {
-  constructor(title, description, categories) {
-    this.id = -1;
-    this.title = title;
-    this.description = description;
-    this.categories = categories;
-    this.opened_milestone_id = 0;
-    this.customPath = "";
-  }
-}
+type State = {
+  projects: Project[];
+};
 
-const state = {
+const state: State = {
   // Contains all the projects created in the application.
-  projects: null
+  projects: []
 };
 
 const getters = {
-  getProjectById(state) {
-    return id => state.projects.filter(project => project.id == id)[0];
+  getProjectById(state: State) {
+    return (id: number | string) => state.projects.filter(project => project.id === id)[0];
   },
 
-  projects(state) {
+  projects(state: State) {
     return state.projects;
   }
 };
@@ -33,8 +26,11 @@ const mutations = {
    * Retrieve all the projects from the database.
    * @param {*State} state ProjectStore state.
    */
-  RetrieveProjects(state) {
-    state.projects = DBManager.GetAppDB().GetAll("projects", "id");
+  RetrieveProjects(state: State) {
+    console.log("Retrieving");
+    state.projects = DBManager.GetAppDB()
+      .GetAll<Project>("projects")
+      .sort((a, b) => a.id - b.id);
   },
 
   /**
@@ -43,15 +39,16 @@ const mutations = {
    * @param {*State} state ProjectStore state.
    * @param {*Project} data Contains the project's title and description.
    */
-  CreateProject(state, data) {
+  CreateProject(state: State, data: any) {
     // Make sure the project's data is valid.
     if (
       data.title == null ||
       data.description == null ||
       data.categories == null ||
       data.categories.length <= 0
-    )
-      Notifications.Error("CreateProject", "Cannot create a project with invalid data " + data);
+    ) {
+      throw new Error(`Cannot create a project with invalid data: ${data}`);
+    }
 
     // Create the new project to store.
     let project = new Project(data.title, data.description, data.categories);
@@ -82,7 +79,7 @@ const mutations = {
     projectDB.setValue("notes", []);
   },
 
-  UpdateProject(state, data) {
+  UpdateProject(state: State, data: any) {
     // Make sure the project's data is valid.
     if (
       data.id == null ||
@@ -90,24 +87,16 @@ const mutations = {
       data.description == null ||
       data.categories == null ||
       data.categories.length <= 0
-    )
-      Notifications.Error(
-        "UpdateProject",
-        "Cannot update a project with invalid data " + Object.values(data)
-      );
+    ) {
+      throw new Error(`Cannot update a project with invalid data ${Object.values(data)}`);
+    }
 
     // Move to the new path.
     DBManager.Move(data.id, data.customPath);
 
     // Update the project
     DBManager.GetDB(data.id).setValue("info", data);
-    DBManager.GetAppDB().Update(
-      "projects",
-      {
-        id: data.id
-      },
-      data
-    );
+    DBManager.GetAppDB().Update("projects", data.id, data);
   },
 
   /**
@@ -117,47 +106,44 @@ const mutations = {
    * @param {*Project} project Contains the data about the project to delete.
    */
 
-  DeleteProject(state, project) {
-    if (project.id == null)
-      Notifications.Error("DeleteProject", "Project ID required to delete a project.");
+  DeleteProject(state: State, project: Project) {
+    if (project.id == null) {
+      throw new Error("Project ID required to delete a project.");
+    }
 
     DBManager.GetAppDB().Remove("projects", {
       id: project.id
     });
   },
 
-  ToggleFoldCategory(state, data) {
-    if (data.projectId == null || data.category.tag == null || data.category.title == null)
-      Notifications.Error("FoldCategory", `Cannot fold a category with invalid data ${data}`);
+  ToggleFoldCategory(state: State, data: any) {
+    if (data.projectId == null || data.category.tag == null || data.category.title == null) {
+      throw new Error(`Cannot fold a category with invalid data ${data}`);
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
     const projectInfo = projectDB.GetValue("info");
 
     // Update the categories
-    projectInfo.categories.forEach(category => {
+    projectInfo.categories.forEach((category: Category) => {
       if (category.tag == data.category.tag && category.title == data.category.title)
         category.folded = !category.folded;
     });
 
     projectDB.setValue("info", projectInfo);
-    DBManager.GetAppDB().Update(
-      "projects",
-      {
-        id: projectInfo.id
-      },
-      projectInfo
-    );
+    DBManager.GetAppDB().Update("projects", projectInfo.id, projectInfo);
   },
 
-  UpdateCategory(state, data) {
-    if (data.projectId == null || data.category == null || data.newTitle == null)
-      Notifications.Error("FoldCategory", `Cannot fold a category with invalid data ${data}`);
+  UpdateCategory(state: State, data: any) {
+    if (data.projectId == null || data.category == null || data.newTitle == null) {
+      throw new Error(`Cannot fold a category with invalid data ${data}`);
+    }
 
     const projectDB = DBManager.GetDB(data.projectId);
     const projectInfo = projectDB.GetValue("info");
 
     // Update the categories
-    projectInfo.categories.forEach(category => {
+    projectInfo.categories.forEach((category: Category) => {
       if (category.tag == data.category.tag && category.title == data.category.title) {
         let categ = data.newTitle.replace(/ /g, "_");
         categ = categ.toLowerCase();
@@ -167,35 +153,28 @@ const mutations = {
     });
 
     projectDB.setValue("info", projectInfo);
-    DBManager.GetAppDB().Update(
-      "projects",
-      {
-        id: projectInfo.id
-      },
-      projectInfo
-    );
+    DBManager.GetAppDB().Update("projects", projectInfo.id, projectInfo);
   },
 
   /**
    * Update the content of the projets.
    */
-  UpdateProjects(state) {
-    state.projects = DBManager.GetAppDB().GetAll("projects", "id");
+  UpdateProjects(state: State) {
+    state.projects = DBManager.GetAppDB()
+      .GetAll<Project>("projects")
+      .sort((a, b) => a.id - b.id);
   }
 };
 
 const actions = {
-  CreateProject(context, data) {
+  CreateProject(context: any, data: any) {
     context.commit("CreateProject", data);
 
     // Retrieve all the projects.
     context.commit("RetrieveProjects");
-
-    // Send notification
-    Notifications.Success("Project created", `Project ${data.title} has been updated !`);
   },
 
-  DeleteProject(context, data) {
+  DeleteProject(context: any, data: any) {
     context.commit("DeleteProject", data);
 
     // Close the dialog
@@ -205,20 +184,17 @@ const actions = {
     context.commit("OpenProject", -1);
   },
 
-  UpdateProject(context, data) {
+  UpdateProject(context: any, data: any) {
     context.commit("UpdateProject", data);
 
     // Update the layout
     EventManager.Emit("update-notes-component");
 
-    // Send notification
-    Notifications.Success("Project updated", `Project ${data.title} has been updated !`);
-
     // Retrieve all the projects.
     context.commit("RetrieveProjects");
   },
 
-  UpdateCategory(context, data) {
+  UpdateCategory(context: any, data: any) {
     // Update the notes with the category.
     context.commit("UpdateNotesCategory", data);
 
@@ -232,7 +208,7 @@ const actions = {
     EventManager.Emit("update-notes-component");
   },
 
-  ToggleFoldCategory(context, data) {
+  ToggleFoldCategory(context: any, data: any) {
     context.commit("ToggleFoldCategory", data);
 
     // Retrieve all the projects.
@@ -242,7 +218,7 @@ const actions = {
     EventManager.Emit("update-notes-component");
   },
 
-  OpenProject(context, project) {
+  OpenProject(context: any, project: Project) {
     if (project == null) {
       context.commit("OpenProject", -1);
       return;
@@ -251,14 +227,14 @@ const actions = {
     context.commit("OpenProject", project.id);
     context.commit("UpdateNotes", {
       projectId: project.id,
-      milestoneId: project.opened_milestone_id
+      milestoneId: project.selectedMilestoneId
     });
     context.commit("UpdateMilestones", {
       projectId: project.id
     });
   },
 
-  RetrieveProjects(context) {
+  RetrieveProjects(context: any) {
     context.commit("UpdateProjects");
   }
 };
