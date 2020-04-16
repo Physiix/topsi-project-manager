@@ -54,11 +54,11 @@ export class DBUtils {
   // Get a value form the database.
   // @param key Key of the value to fetch.
   // @param defaultValue [optional] Default value to set if the value is not found.
-  GetValue(key: string, defaultValue: any = ""): any {
+  getValue(key: string, defaultValue: any = ""): any {
     const value = this.content[key];
     if (value == null) {
       this.setValue(key, defaultValue);
-      return this.GetValue(key, defaultValue);
+      return this.getValue(key, defaultValue);
     }
     return value;
   }
@@ -67,8 +67,8 @@ export class DBUtils {
    * Retrieve and Id from the database and increment its value.
    * @param {*string} key Key of the id to retrieve
    */
-  GetId(key: string) {
-    const id = this.GetValue(key, 0);
+  getId(key: string) {
+    const id = this.getValue(key, 0);
     this.setValue(key, id + 1);
     return id;
   }
@@ -76,11 +76,11 @@ export class DBUtils {
   // Write and object in the Database and save it.
   // @param table Table to store the object into.
   // @object Object to store.
-  Write(table: string, object: any) {
+  write(table: string, object: any) {
     // Create table if not set
     if (this.content[table] == null) {
       this.setValue(table, []);
-      this.Write(table, object);
+      this.write(table, object);
     }
 
     // Adding timestamp.
@@ -96,7 +96,7 @@ export class DBUtils {
    * @param {*string} table Table of the entries to delete.
    * @param {*object} condition Condition to test each entry with before deleting.
    */
-  Remove(table: string, condition: any) {
+  remove(table: string, condition: any) {
     const values = this.content[table];
     if (values == null) {
       throw new Error(`Table ${table} is not defined in the database.`);
@@ -121,14 +121,14 @@ export class DBUtils {
   // Get all the entries from a table.
   // @param table Table to retrieve the entries from.
   // @orderBy [optional] Member data to order the list with.
-  GetAll<T = any>(table: string): T[] {
-    return this.GetValue(table, []);
+  getAll<T = any>(table: string): T[] {
+    return this.getValue(table, []);
   }
 
   // Retrieve a single entry form the Database.
   // @param table Table to retrieve the data from.
   // @param id Id of the entry to retrieve.
-  GetById(table: string, id: string) {
+  getById(table: string, id: string) {
     const values = this.content[table];
     if (values == null) {
       throw new Error(`Table ${table} is not defined in the database.`);
@@ -142,7 +142,7 @@ export class DBUtils {
    * @param {*int} id Id of the object(s) to update.
    * @param {*object} data Contains the new data to store within the object.
    */
-  Update(table: string, id: string | number, data: any) {
+  update(table: string, id: string | number, data: any) {
     // Adding timestamp.
     data.timestamp = Date.now();
 
@@ -166,7 +166,7 @@ export class DBUtils {
    * Retrieve the absolute path of the file storing the database.
    * @return {*string} Path to the database.
    */
-  GetPath() {
+  getPath() {
     return this.dbFilePath;
   }
 

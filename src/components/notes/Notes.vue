@@ -85,16 +85,16 @@ export default {
     }
   },
   mounted() {
-    AppManager.SetupNotesPage(
+    AppManager.setupNotesPage(
       this.macos ? 0 : 30,
       "notes_container",
       "container",
       this.categories.filter(category => !category.folded).map(category => category.tag),
       this.categories.filter(category => category.folded).map(category => category.tag)
     );
-    EventManager.Subscribe("update-notes-component", () => {
+    EventManager.subscribe("update-notes-component", () => {
       this.$nextTick(() => {
-        AppManager.SetupNotesPage(
+        AppManager.setupNotesPage(
           this.macos ? 0 : 30,
           "notes_container",
           "container",

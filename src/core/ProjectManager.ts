@@ -10,7 +10,7 @@ const vue = new Vue({
 });
 
 class ProjectManager {
-  SaveProject(project: any) {
+  saveProject(project: any) {
     const electron = require("electron");
     const { dialog } = electron.remote;
 
@@ -25,7 +25,7 @@ class ProjectManager {
     if (savePath == null) return;
 
     const fs = require("fs");
-    const content = JSON.stringify(DBManager.GetDB(project.id).getContent());
+    const content = JSON.stringify(DBManager.getDB(project.id).getContent());
     fs.writeFile(savePath, content, (error: any) => {
       if (error != null) {
         // Notifications.Error("Export project failed", error.message);
@@ -35,7 +35,7 @@ class ProjectManager {
     });
   }
 
-  async LoadProject() {
+  async loadProject() {
     const electron = require("electron");
     const { dialog } = electron.remote;
 
@@ -51,14 +51,14 @@ class ProjectManager {
         throw new Error(`Failed to open the file.\n${error}`);
       }
       const project = JSON.parse(data);
-      const db = DBManager.GetAppDB();
-      const id = db.GetId("projects_id");
+      const db = DBManager.getAppDB();
+      const id = db.getId("projects_id");
       project.info.id = id;
       project.notes.forEach((note: any) => (note.project_id = id));
-      db.Write("projects", project.info);
+      db.write("projects", project.info);
       const content = JSON.stringify(project, null, "\t");
       fs.writeFileSync(p.join(db.getDataPath(), `${id}.json`), content);
-      DBManager.Load(id);
+      DBManager.load(id);
       vue.$store.dispatch("UpdateProjects");
       //   Notifications.Success(
       //     "Success",

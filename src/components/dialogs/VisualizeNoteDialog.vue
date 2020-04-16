@@ -33,7 +33,6 @@
 </template>
 <script>
 import ApplicationManager from "@/core/ApplicationManager";
-import Notifications from "@/core/Notifications";
 
 import NoteTags from "../notes/NoteTags.vue";
 import Tasks from "./Tasks.vue";
@@ -77,10 +76,10 @@ export default {
 
     toggleLayout() {
       if (this.opened) {
-        ApplicationManager.CloseVisualizerSide("visualizer-dialog", this.height);
+        ApplicationManager.closeVisualizerSide("visualizer-dialog", this.height);
         this.opened = false;
       } else
-        ApplicationManager.OpenVisualizerSide(
+        ApplicationManager.openVisualizerSide(
           "visualizer-dialog",
           this.height,
           () => (this.opened = true)
@@ -88,7 +87,7 @@ export default {
     }
   },
   mounted() {
-    ApplicationManager.SetupVisualizer(
+    ApplicationManager.setupVisualizer(
       "visualizer-dialog",
       "visualizer-content",
       "visualizer-side"

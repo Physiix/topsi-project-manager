@@ -35,7 +35,7 @@ export default {
           title: this.$lang.Get("importProject"),
           icon: mdiDatabaseImport,
           action: () => {
-            ProjectManager.LoadProject();
+            ProjectManager.loadProject();
           }
         },
         // {

@@ -1,9 +1,9 @@
 class EventManager {
-  Subscribe(event: any, callback: () => {}) {
+  subscribe(event: any, callback: () => {}) {
     document.querySelector("body")!.addEventListener(event, callback);
   }
 
-  Emit(event: any) {
+  emit(event: any) {
     document.querySelector("body")!.dispatchEvent(new Event(event));
   }
 }

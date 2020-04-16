@@ -1,19 +1,16 @@
 import Vue from "vue";
 import store from "@/store";
+import { Category } from "./Data";
 
 const COMPACT_DRAWER_WIDTH = 50;
 class ApplicationManager {
-  constructor() {
-    this.mainContainerId = null;
-    this.vue = new Vue({
-      store
-    });
-  }
+  private mainContainerId?: string;
+  private vue = new Vue({ store });
 
-  SetupLandingPage(titlebar, containerId, sideId, contentId) {
-    const container = document.getElementById(containerId);
-    const side = document.getElementById(sideId);
-    const content = document.getElementById(contentId);
+  setupLandingPage(titlebar: string, containerId: string, sideId: string, contentId: string) {
+    const container = document.getElementById(containerId)!;
+    const side = document.getElementById(sideId)!;
+    const content = document.getElementById(contentId)!;
 
     const resize = () => {
       container.style.width = `${window.innerWidth}px`;
@@ -36,15 +33,15 @@ class ApplicationManager {
     this.mainContainerId = containerId;
   }
 
-  SetupNotesPage(
-    titlebar,
-    categoryContainerId,
-    containerId,
-    categories,
+  setupNotesPage(
+    titlebar: number,
+    categoryContainerId: string,
+    containerId: string,
+    categories: Category[],
     foldedCategories = [],
     foldDrawer = true
   ) {
-    const container = document.getElementById(categoryContainerId);
+    const container = document.getElementById(categoryContainerId)!;
 
     const resize = () => {
       const offset = 5;
@@ -52,9 +49,9 @@ class ApplicationManager {
       container.style.height = `${window.innerHeight - titlebar}px`;
 
       foldedCategories.forEach(category => {
-        document.getElementById(
-          `${category}-container`
-        ).childNodes[0].style.height = `${window.innerHeight - titlebar}px`;
+        const el = document.getElementById(`${category}-container`)!.childNodes[0] as HTMLElement;
+
+        el.style.height = `${window.innerHeight - titlebar}px`;
       });
     };
 
@@ -62,13 +59,11 @@ class ApplicationManager {
       let value = this.vue.$store.getters.drawerWidth;
       const id = setInterval(() => {
         value -= 16;
-        document.getElementById(
-          containerId
-        ).style.gridTemplateColumns = `${value}px repeat(5, 1fr)`;
+        const el = document.getElementById(containerId) as HTMLElement;
+        el.style.gridTemplateColumns = `${value}px repeat(5, 1fr)`;
         if (value <= COMPACT_DRAWER_WIDTH) {
-          document.getElementById(
-            containerId
-          ).style.gridTemplateColumns = `${COMPACT_DRAWER_WIDTH}px repeat(5, 1fr)`;
+          const el1 = document.getElementById(containerId) as HTMLElement;
+          el1.style.gridTemplateColumns = `${COMPACT_DRAWER_WIDTH}px repeat(5, 1fr)`;
           clearInterval(id);
         }
       }, 10);
@@ -88,7 +83,7 @@ class ApplicationManager {
 
     let index = 1;
     categories.forEach(category => {
-      const parcel = document.getElementById(`${category}-container`);
+      const parcel = document.getElementById(`${category}-container`)!;
       parcel.removeAttribute("style");
       parcel.style.gridColumn = `${index}/${index + 1}`;
       parcel.style.gridRow = "1 / 2";
@@ -96,7 +91,7 @@ class ApplicationManager {
     });
 
     foldedCategories.forEach(category => {
-      const parcel = document.getElementById(`${category}-container`);
+      const parcel = document.getElementById(`${category}-container`)!;
       parcel.removeAttribute("style");
       parcel.style.gridColumn = `${index}/${index + 1}`;
       parcel.style.gridRow = "1 / 2";
@@ -108,25 +103,25 @@ class ApplicationManager {
     window.addEventListener("resize", resize);
   }
 
-  SetupProjectsPage(containerId) {
+  setupProjectsPage(containerId: string) {
     let value = COMPACT_DRAWER_WIDTH;
     const width = this.vue.$store.getters.drawerWidth;
     const id = setInterval(() => {
       value += 16;
-      document.getElementById(containerId).style.gridTemplateColumns = `${value}px repeat(5, 1fr)`;
+      const el = document.getElementById(containerId) as HTMLElement;
+      el.style.gridTemplateColumns = `${value}px repeat(5, 1fr)`;
       if (value >= width) {
-        document.getElementById(
-          containerId
-        ).style.gridTemplateColumns = `${width}px repeat(5, 1fr)`;
+        const el1 = document.getElementById(containerId) as HTMLElement;
+        el1.style.gridTemplateColumns = `${width}px repeat(5, 1fr)`;
         clearInterval(id);
       }
     }, 10);
   }
 
-  SetupVisualizer(containerId, contentId, sideId) {
-    const container = document.getElementById(containerId);
-    const content = document.getElementById(contentId);
-    const side = document.getElementById(sideId);
+  setupVisualizer(containerId: string, contentId: string, sideId: string) {
+    const container = document.getElementById(containerId)!;
+    const content = document.getElementById(contentId)!;
+    const side = document.getElementById(sideId)!;
 
     container.style.display = "grid";
     container.style.gridTemplateColumns = "1fr";
@@ -139,8 +134,8 @@ class ApplicationManager {
     side.style.gridRow = "1 / 2";
   }
 
-  CloseVisualizerSide(containerId, maxHeight) {
-    const container = document.getElementById(containerId);
+  closeVisualizerSide(containerId: string, maxHeight: number) {
+    const container = document.getElementById(containerId)!;
     let height = maxHeight;
     const closeId = setInterval(() => {
       height -= 32;
@@ -152,8 +147,8 @@ class ApplicationManager {
     }, 10);
   }
 
-  OpenVisualizerSide(containerId, maxHeight, callback) {
-    const container = document.getElementById(containerId);
+  openVisualizerSide(containerId: string, maxHeight: number, callback: () => {}) {
+    const container = document.getElementById(containerId)!;
 
     let height = 0;
     container.style.gridTemplateColumns = "1fr";

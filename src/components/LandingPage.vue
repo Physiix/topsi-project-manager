@@ -63,8 +63,8 @@ export default {
     keyUp(event) {}
   },
   mounted() {
-    AppManager.SetupLandingPage(this.macos ? 0 : 30, "container", "side", "content");
-    InputManager.Initialize(this);
+    AppManager.setupLandingPage(this.macos ? 0 : 30, "container", "side", "content");
+    InputManager.initialize(this);
   }
 };
 </script>

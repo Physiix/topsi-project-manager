@@ -28,8 +28,8 @@ const mutations = {
    */
   RetrieveProjects(state: State) {
     console.log("Retrieving");
-    state.projects = DBManager.GetAppDB()
-      .GetAll<Project>("projects")
+    state.projects = DBManager.getAppDB()
+      .getAll<Project>("projects")
       .sort((a, b) => a.id - b.id);
   },
 
@@ -53,21 +53,21 @@ const mutations = {
     // Create the new project to store.
     let project = new Project(data.title, data.description, data.categories);
     project.customPath =
-      data.customPath || DBManager.GetAppDB().GetValue("default_databases_folder");
+      data.customPath || DBManager.getAppDB().getValue("default_databases_folder");
 
     // Create the database for the project.
-    project.id = DBManager.CreateDB(data.customPath);
+    project.id = DBManager.createDB(data.customPath);
 
-    const appDB = DBManager.GetAppDB();
+    const appDB = DBManager.getAppDB();
     // Store the project in the database.
-    appDB.Write("projects", project);
+    appDB.write("projects", project);
 
-    const projectDB = DBManager.GetDB(project.id);
+    const projectDB = DBManager.getDB(project.id);
     // Store the project info in its own database
     projectDB.setValue("info", project);
 
     // Create first milestone.
-    projectDB.Write("milestones", {
+    projectDB.write("milestones", {
       id: 0,
       title: "Default"
     });
@@ -92,11 +92,11 @@ const mutations = {
     }
 
     // Move to the new path.
-    DBManager.Move(data.id, data.customPath);
+    DBManager.move(data.id, data.customPath);
 
     // Update the project
-    DBManager.GetDB(data.id).setValue("info", data);
-    DBManager.GetAppDB().Update("projects", data.id, data);
+    DBManager.getDB(data.id).setValue("info", data);
+    DBManager.getAppDB().update("projects", data.id, data);
   },
 
   /**
@@ -111,7 +111,7 @@ const mutations = {
       throw new Error("Project ID required to delete a project.");
     }
 
-    DBManager.GetAppDB().Remove("projects", {
+    DBManager.getAppDB().remove("projects", {
       id: project.id
     });
   },
@@ -121,8 +121,8 @@ const mutations = {
       throw new Error(`Cannot fold a category with invalid data ${data}`);
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
-    const projectInfo = projectDB.GetValue("info");
+    const projectDB = DBManager.getDB(data.projectId);
+    const projectInfo = projectDB.getValue("info");
 
     // Update the categories
     projectInfo.categories.forEach((category: Category) => {
@@ -131,7 +131,7 @@ const mutations = {
     });
 
     projectDB.setValue("info", projectInfo);
-    DBManager.GetAppDB().Update("projects", projectInfo.id, projectInfo);
+    DBManager.getAppDB().update("projects", projectInfo.id, projectInfo);
   },
 
   UpdateCategory(state: State, data: any) {
@@ -139,8 +139,8 @@ const mutations = {
       throw new Error(`Cannot fold a category with invalid data ${data}`);
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
-    const projectInfo = projectDB.GetValue("info");
+    const projectDB = DBManager.getDB(data.projectId);
+    const projectInfo = projectDB.getValue("info");
 
     // Update the categories
     projectInfo.categories.forEach((category: Category) => {
@@ -153,15 +153,15 @@ const mutations = {
     });
 
     projectDB.setValue("info", projectInfo);
-    DBManager.GetAppDB().Update("projects", projectInfo.id, projectInfo);
+    DBManager.getAppDB().update("projects", projectInfo.id, projectInfo);
   },
 
   /**
    * Update the content of the projets.
    */
   UpdateProjects(state: State) {
-    state.projects = DBManager.GetAppDB()
-      .GetAll<Project>("projects")
+    state.projects = DBManager.getAppDB()
+      .getAll<Project>("projects")
       .sort((a, b) => a.id - b.id);
   }
 };
@@ -188,7 +188,7 @@ const actions = {
     context.commit("UpdateProject", data);
 
     // Update the layout
-    EventManager.Emit("update-notes-component");
+    EventManager.emit("update-notes-component");
 
     // Retrieve all the projects.
     context.commit("RetrieveProjects");
@@ -205,7 +205,7 @@ const actions = {
     context.commit("RetrieveProjects");
 
     // Update the layout
-    EventManager.Emit("update-notes-component");
+    EventManager.emit("update-notes-component");
   },
 
   ToggleFoldCategory(context: any, data: any) {
@@ -215,7 +215,7 @@ const actions = {
     context.commit("RetrieveProjects");
 
     // Update the layout
-    EventManager.Emit("update-notes-component");
+    EventManager.emit("update-notes-component");
   },
 
   OpenProject(context: any, project: Project) {

@@ -56,7 +56,7 @@ export default {
       if (this.project == null) return;
 
       // Save the project.
-      ProjectManager.SaveProject(this.project);
+      ProjectManager.saveProject(this.project);
     }
   }
 };

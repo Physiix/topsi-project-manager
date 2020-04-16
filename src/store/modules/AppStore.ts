@@ -69,15 +69,15 @@ const state: State = {
   openedProjectId: -1,
   currentMilestoneId: 0,
   drawerWidth: 200,
-  darkMode: DBManager.GetAppDB().GetValue("dark_mode", false),
-  baseColor: DBManager.GetAppDB().GetValue("application_color", "indigo"),
-  darkenToolbar: DBManager.GetAppDB().GetValue("darken_toolbar", false),
-  gitUserInfo: DBManager.GetAppDB().GetValue("git_user_info", {}),
-  firstTimeUse: DBManager.GetAppDB().GetValue("first_time_use", true),
+  darkMode: DBManager.getAppDB().getValue("dark_mode", false),
+  baseColor: DBManager.getAppDB().getValue("application_color", "indigo"),
+  darkenToolbar: DBManager.getAppDB().getValue("darken_toolbar", false),
+  gitUserInfo: DBManager.getAppDB().getValue("git_user_info", {}),
+  firstTimeUse: DBManager.getAppDB().getValue("first_time_use", true),
   searchContent: "",
   showHelper: false,
   projectName: "",
-  selectedLanguage: DBManager.GetAppDB().GetValue("lang", "en")
+  selectedLanguage: DBManager.getAppDB().getValue("lang", "en")
 };
 
 const mutations = {
@@ -101,7 +101,7 @@ const mutations = {
     state.openedProjectId = id;
     // Set the default milestone when opening a project.
     if (id >= 0) {
-      const info = DBManager.GetDB(id).GetValue("info");
+      const info = DBManager.getDB(id).getValue("info");
       state.projectName = info.title;
 
       state.currentMilestoneId = info.opened_milestone_id;
@@ -111,7 +111,7 @@ const mutations = {
 
   SetDarkMode(state: State, value: boolean) {
     state.darkMode = value;
-    DBManager.GetAppDB().setValue("dark_mode", value);
+    DBManager.getAppDB().setValue("dark_mode", value);
   },
 
   ShowSettings(state: State, value: boolean) {
@@ -124,12 +124,12 @@ const mutations = {
 
   SetAppColor(state: State, color: string) {
     state.baseColor = color;
-    DBManager.GetAppDB().setValue("application_color", color);
+    DBManager.getAppDB().setValue("application_color", color);
   },
 
   ToggleDarkenToolbar(state: State) {
     state.darkenToolbar = !state.darkenToolbar;
-    DBManager.GetAppDB().setValue("darken_toolbar", state.darkenToolbar);
+    DBManager.getAppDB().setValue("darken_toolbar", state.darkenToolbar);
   },
 
   ExportProjDialog(state: State) {
@@ -137,7 +137,7 @@ const mutations = {
   },
 
   DisableFirstTimeUse(state: State) {
-    DBManager.GetAppDB().setValue("first_time_use", false);
+    DBManager.getAppDB().setValue("first_time_use", false);
     state.firstTimeUse = false;
   },
 
@@ -145,7 +145,7 @@ const mutations = {
     if (data.defaultFolder == null) {
       throw new Error(`A valid data parameter required :${data}`);
     }
-    DBManager.GetAppDB().setValue("default_databases_folder", data.defaultFolder);
+    DBManager.getAppDB().setValue("default_databases_folder", data.defaultFolder);
   },
 
   AddTag(state: State, tag: any) {
@@ -155,8 +155,8 @@ const mutations = {
     if (state.openedProjectId < 0) {
       throw new Error("A project must be opened to add a tag");
     }
-    const db = DBManager.GetDB(state.openedProjectId);
-    const tags = db.GetValue("tags", []);
+    const db = DBManager.getDB(state.openedProjectId);
+    const tags = db.getValue("tags", []);
     tags.push(tag);
     db.setValue("tags", tags);
   },
@@ -168,8 +168,8 @@ const mutations = {
     if (state.openedProjectId < 0) {
       throw new Error("A project must be opened to add a tag");
     }
-    const db = DBManager.GetDB(state.openedProjectId);
-    let tags = db.GetValue("tags", []);
+    const db = DBManager.getDB(state.openedProjectId);
+    let tags = db.getValue("tags", []);
     let index = -1;
     for (let i = 0; i < tags.length; i++)
       if (tags[i].tag == tag.tag) {
@@ -214,14 +214,14 @@ const mutations = {
     if (language == null || language.length <= 0) {
       throw new Error("Cannot set language with invalid data");
     }
-    DBManager.GetAppDB().setValue("lang", language);
+    DBManager.getAppDB().setValue("lang", language);
     state.selectedLanguage = language;
   }
 };
 
 const getters = {
   isMac() {
-    return DBManager.GetAppDB().GetValue("isMac", false);
+    return DBManager.getAppDB().getValue("isMac", false);
   },
 
   isProjectOpened(state: State) {
@@ -252,7 +252,7 @@ const getters = {
     if (state.openedProjectId < 0) {
       throw new Error("A project must be opened to get its tags");
     }
-    return DBManager.GetDB(state.openedProjectId).GetValue("tags", []);
+    return DBManager.getDB(state.openedProjectId).getValue("tags", []);
   },
 
   isShowSearch(state: State) {
@@ -276,7 +276,7 @@ const getters = {
   },
 
   defaultPath(state: State) {
-    return DBManager.GetAppDB().GetValue("default_databases_folder", "");
+    return DBManager.getAppDB().getValue("default_databases_folder", "");
   },
 
   isMilestonesList(state: State) {
@@ -284,7 +284,7 @@ const getters = {
   },
 
   currentProjectMilestones(state: State) {
-    return () => DBManager.GetDB(state.openedProjectId).GetAll<Milestone>("milestones");
+    return () => DBManager.getDB(state.openedProjectId).getAll<Milestone>("milestones");
   },
 
   currentMilestoneId(state: State) {

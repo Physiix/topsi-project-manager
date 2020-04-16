@@ -3,7 +3,7 @@ class InputManager {
    * Setup all the input to listen to and their callbacks.
    * @param {Vue} context Vue context.
    */
-  Initialize(context: any) {
+  initialize(context: any) {
     window.addEventListener("keypress", event => {
       if (event.code === "KeyF") {
         if (event.ctrlKey) context.$store.dispatch("ToggleDialog", "searchDialog");

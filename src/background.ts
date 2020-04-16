@@ -7,7 +7,7 @@ import {
 import DBManager from "@/core/DBManager";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-const appDB = DBManager.GetAppDB();
+const appDB = DBManager.getAppDB();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -22,8 +22,8 @@ function createWindow() {
   const isMac = process.platform == "darwin";
   // Create the browser window.
   win = new BrowserWindow({
-    width: appDB.GetValue("window_width", 800),
-    height: appDB.GetValue("window_height", 600),
+    width: appDB.getValue("window_width", 800),
+    height: appDB.getValue("window_height", 600),
     useContentSize: true,
     webPreferences: {
       nodeIntegration: true

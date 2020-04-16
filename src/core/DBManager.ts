@@ -7,17 +7,17 @@ class DBManager {
   private defaultFolder: string;
 
   constructor() {
-    this.defaultFolder = this.appDB.GetValue("default_databases_folder", "") || null;
+    this.defaultFolder = this.appDB.getValue("default_databases_folder", "") || null;
 
     this.appDB
-      .GetAll("projects")
-      .forEach((project: any) => this.Load(project.id, project.customPath || this.defaultFolder));
+      .getAll("projects")
+      .forEach((project: any) => this.load(project.id, project.customPath || this.defaultFolder));
   }
 
   /**
    * Get the main Database used by the application.
    */
-  GetAppDB() {
+  getAppDB() {
     return this.appDB;
   }
 
@@ -25,7 +25,7 @@ class DBManager {
    * Load a database into memory.
    * @param {Number} id Id of the database's project.
    */
-  Load(id: string, defaultFolder: string | null = null) {
+  load(id: string, defaultFolder: string | null = null) {
     try {
       this.databases[id + EXTENSION] = new DBUtils(id + EXTENSION, defaultFolder);
     } catch (e) {
@@ -33,9 +33,9 @@ class DBManager {
     }
   }
 
-  Move(id: string, path: string) {
-    const state = this.GetDB(id).getContent();
-    this.Load(id, path);
+  move(id: string, path: string) {
+    const state = this.getDB(id).getContent();
+    this.load(id, path);
     // this.GetDB(id).context.setState(state);
   }
 
@@ -43,7 +43,7 @@ class DBManager {
    * Get the database registered for the project with @param id
    * @param {String} id ID of the project.
    */
-  GetDB(id: string | number) {
+  getDB(id: string | number) {
     return this.databases[id + EXTENSION];
   }
 
@@ -52,8 +52,8 @@ class DBManager {
    * @param path Path where to store the database.
    * @return ID of the project to create the Database for.
    */
-  CreateDB(path: string) {
-    const id = this.appDB.GetId("projects_id");
+  createDB(path: string) {
+    const id = this.appDB.getId("projects_id");
     const dbName = id + EXTENSION;
     this.databases[dbName] = new DBUtils(dbName, path);
     return id;

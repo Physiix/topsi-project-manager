@@ -40,7 +40,7 @@ const state: State = {
   notes: [],
   projectId: -1,
   milestoneId: 0,
-  displayTasks: DBManager.GetAppDB().GetValue("display_tasks", true)
+  displayTasks: DBManager.getAppDB().getValue("display_tasks", true)
 };
 
 const getters = {
@@ -83,16 +83,16 @@ const mutations = {
       data.tags
     );
 
-    const database = DBManager.GetDB(data.project_id);
+    const database = DBManager.getDB(data.project_id);
 
     // Set the order for the note.
     note.order = state.notes.filter(note => note.category == data.category).length;
 
     // Getting the new ID for the note.
-    note.id = database.GetId("notes_id");
+    note.id = database.getId("notes_id");
 
     // Store the note in the database.
-    database.Write("notes", note);
+    database.write("notes", note);
   },
 
   /**
@@ -110,10 +110,10 @@ const mutations = {
       return id.substr(id.indexOf("-") + 1, id.length - 1);
     };
 
-    const db = DBManager.GetDB(state.projectId);
+    const db = DBManager.getDB(state.projectId);
 
     // Setup the notes to work with.
-    const projectNotes = db.GetAll("notes");
+    const projectNotes = db.getAll("notes");
     const currentNotes = projectNotes.filter(note => note.milestone_id == state.milestoneId);
 
     // Getting the note that has been moved.
@@ -174,10 +174,10 @@ const mutations = {
     // Update the timestamp
     data.updated_timestamp = Date.now();
 
-    const database = DBManager.GetDB(data.project_id);
+    const database = DBManager.getDB(data.project_id);
 
     // Create the new note to store.
-    database.Update("notes", data.id, data);
+    database.update("notes", data.id, data);
   },
 
   /**
@@ -219,8 +219,8 @@ const mutations = {
   UpdateNotes(state: State, data: any) {
     state.projectId = data.projectId;
     state.milestoneId = data.milestoneId;
-    state.notes = DBManager.GetDB(data.projectId)
-      .GetAll<Note>("notes")
+    state.notes = DBManager.getDB(data.projectId)
+      .getAll<Note>("notes")
       .filter(note => note.milestoneId === data.milestoneId);
   },
 
@@ -230,7 +230,7 @@ const mutations = {
    * @param {Object} note Note to delete.
    */
   DeleteNote(state: State, note: Note) {
-    DBManager.GetDB(note.projectId).Remove("notes", {
+    DBManager.getDB(note.projectId).remove("notes", {
       id: note.id
     });
   },
@@ -251,10 +251,10 @@ const mutations = {
       throw new Error(`Cannot add task ${data.task}`);
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
+    const projectDB = DBManager.getDB(data.projectId);
     state.openedNote.tasks = state.openedNote.tasks || [];
-    state.openedNote.tasks.push(new Task(projectDB.GetId("tasks_id"), data.task, false));
-    projectDB.Update("notes", state.openedNote.id, state.openedNote);
+    state.openedNote.tasks.push(new Task(projectDB.getId("tasks_id"), data.task, false));
+    projectDB.update("notes", state.openedNote.id, state.openedNote);
   },
 
   /**
@@ -273,15 +273,15 @@ const mutations = {
       throw new Error(`Cannot add task ${data.task}`);
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
+    const projectDB = DBManager.getDB(data.projectId);
     const task = state.openedNote.tasks.filter(task => task.id == data.task.id)[0];
     task.done = !task.done;
-    projectDB.Update("notes", state.openedNote.id, state.openedNote);
+    projectDB.update("notes", state.openedNote.id, state.openedNote);
   },
 
   ToggleDisplayTasks(state: State) {
     state.displayTasks = !state.displayTasks;
-    DBManager.GetAppDB().setValue("display_tasks", state.displayTasks);
+    DBManager.getAppDB().setValue("display_tasks", state.displayTasks);
   },
 
   ReorderTasks(state: State, data: any) {
@@ -292,14 +292,14 @@ const mutations = {
     const newIndex = data.newIndex;
     const oldIndex = data.oldIndex;
 
-    const projectDB = DBManager.GetDB(state.projectId);
+    const projectDB = DBManager.getDB(state.projectId);
     // const task = state.openedNote.tasks.filter(task => task.id == data.task.id)[0];
     // task.done = !task.done;
     const tmp = state.openedNote.tasks[oldIndex];
     state.openedNote.tasks[oldIndex] = state.openedNote.tasks[newIndex];
     state.openedNote.tasks[newIndex] = tmp;
 
-    projectDB.Update("notes", state.openedNote.id, state.openedNote);
+    projectDB.update("notes", state.openedNote.id, state.openedNote);
   },
 
   UpdateNotesCategory(state: State, data: any) {
@@ -307,7 +307,7 @@ const mutations = {
       throw new Error(`Cannot update note's category. ${data}`);
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
+    const projectDB = DBManager.getDB(data.projectId);
 
     const category = data.newTitle.replace(/ /g, "_").toLowerCase();
 

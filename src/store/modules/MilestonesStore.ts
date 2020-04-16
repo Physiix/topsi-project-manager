@@ -33,12 +33,12 @@ const mutations = {
       throw new Error("A valid data attribute is required");
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
+    const projectDB = DBManager.getDB(data.projectId);
     // Create the new milestone object
-    const milestone = new Milestone(projectDB.GetId("milestones_id"), data.name);
+    const milestone = new Milestone(projectDB.getId("milestones_id"), data.name);
 
     // Store the new milestone object in the database.
-    projectDB.Write("milestones", milestone);
+    projectDB.write("milestones", milestone);
 
     // Update the milestones
     mutations.UpdateMilestones(state, data);
@@ -50,13 +50,13 @@ const mutations = {
       throw new Error("Cannot set invalid milestone data to project.");
     }
 
-    const projectDB = DBManager.GetDB(data.projectId);
-    const projectInfo = projectDB.GetValue("info");
+    const projectDB = DBManager.getDB(data.projectId);
+    const projectInfo = projectDB.getValue("info");
 
     projectInfo.opened_milestone_id = data.milestoneId;
 
     projectDB.setValue("info", projectInfo);
-    DBManager.GetAppDB().Update("projects", projectInfo.id, projectInfo);
+    DBManager.getAppDB().update("projects", projectInfo.id, projectInfo);
   },
 
   /**
@@ -66,7 +66,7 @@ const mutations = {
     if (data.projectId == null) {
       throw new Error("UpdateMilestones: Project id required.");
     }
-    state.milestones = DBManager.GetDB(data.projectId).GetAll("milestones");
+    state.milestones = DBManager.getDB(data.projectId).getAll("milestones");
   }
 };
 
