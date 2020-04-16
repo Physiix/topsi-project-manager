@@ -17,6 +17,7 @@ import Vuetify, {
   VListItemActionText,
   VListItemTitle,
   VAppBar,
+  VDialog,
   VTooltip
 } from "vuetify/lib";
 
@@ -39,6 +40,7 @@ Vue.use(Vuetify, {
     VListItem,
     VListItemAction,
     VListItemActionText,
+    VDialog,
     VListItemTitle
   },
   icons: {

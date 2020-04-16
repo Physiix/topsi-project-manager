@@ -1,27 +1,37 @@
 <template>
-  <v-card id="project-dialog" class="elevation-20" :class="color" :height="height">
+  <v-dialog
+    v-model="opened"
+    id="project-dialog"
+    class="elevation-20"
+    :class="color"
+    :height="height"
+    max-width="800px"
+    persistent
+  >
     <slot></slot>
-    <v-card-actions v-if="!noAction" ref="card_actions" style="bottom:0px;right:0px;">
-      <v-spacer></v-spacer>
-      <v-btn
-        v-if="!disableCancel"
-        :text="!cancelRaised"
-        class="ma-0"
-        :color="cancelColor ? cancelColor : ''"
-        @click="close"
-        >{{ cancelText ? cancelText : this.$lang.Get("cancel") }}</v-btn
-      >
+    <v-card class="pt-5">
+      <v-card-actions v-if="!noAction" ref="card_actions" style="bottom:0px;right:0px;">
+        <v-spacer></v-spacer>
+        <v-btn
+          v-if="!disableCancel"
+          :text="!cancelRaised"
+          class="ma-0"
+          :color="cancelColor ? cancelColor : ''"
+          @click="close"
+          >{{ cancelText ? cancelText : this.$lang.Get("cancel") }}</v-btn
+        >
 
-      <v-btn
-        v-if="!disableAccept"
-        :text="!acceptRaised"
-        class="ma-0"
-        :color="acceptColor ? acceptColor : 'primary'"
-        @click="accept"
-        >{{ acceptText ? acceptText : this.$lang.Get("save") }}</v-btn
-      >
-    </v-card-actions>
-  </v-card>
+        <v-btn
+          v-if="!disableAccept"
+          :text="!acceptRaised"
+          class="ma-0"
+          :color="acceptColor ? acceptColor : 'primary'"
+          @click="accept"
+          >{{ acceptText ? acceptText : this.$lang.Get("save") }}</v-btn
+        >
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 <script>
 export default {
@@ -39,12 +49,11 @@ export default {
     cancelRaised: Boolean,
     noAction: Boolean
   },
-  data() {
-    return {
-      // / Height of the tilebar
-      top: 30
-    };
-  },
+  data: () => ({
+    opened: true,
+    // / Height of the tilebar
+    top: 30
+  }),
   methods: {
     /**
      * When the users clicks on the close button

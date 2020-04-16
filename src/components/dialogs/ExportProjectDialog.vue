@@ -6,17 +6,19 @@
     v-on:accept="exportProject"
     :accept-text="this.$lang.Get('export')"
   >
-    <v-container>
-      <v-radio-group v-model="project" column color="primary">
-        <v-radio
-          v-for="(project, i) in projects"
-          :key="project.title + i"
-          :label="project.title"
-          :value="project"
-          color="primary"
-        ></v-radio>
-      </v-radio-group>
-    </v-container>
+    <v-card>
+      <v-container>
+        <v-radio-group v-model="project" column color="primary">
+          <v-radio
+            v-for="(project, i) in projects"
+            :key="project.title + i"
+            :label="project.title"
+            :value="project"
+            color="primary"
+          ></v-radio>
+        </v-radio-group>
+      </v-container>
+    </v-card>
   </Dialog>
 </template>
 <script>

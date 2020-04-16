@@ -81,7 +81,7 @@ export default {
     },
 
     opened() {
-      Utils.FocusTextField(this.$refs.tag_input.$el);
+      // Utils.FocusTextField(this.$refs.tag_input.$el);
     }
   },
   mounted() {
