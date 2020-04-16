@@ -1,5 +1,7 @@
 # Topsi Project Manager
 
+## Master branch is broken right now, a stable branch will be created as soon as it's ready.
+
 Topsi Project Manager is a **simple** Kanban board software built with Electron
 and Vue.js. It supports all three major platforms (Windows, Linux and macOS).
 
