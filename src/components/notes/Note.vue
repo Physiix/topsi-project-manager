@@ -1,69 +1,137 @@
-<template>
-  <v-card
-    :id="'note-' + note.id"
-    class="note ma-2"
-    :class="note.color"
-    @dblclick="open"
-    :dark="dark"
-  >
-    <v-card-title class="py-2 pt-3 pr-0">
-      <v-layout row>
-        <div class="blue--text pr-1">
-          <strong>#{{ note.id }}</strong>
-        </div>
-        <h4>{{ note.title }}</h4>
-        <v-spacer></v-spacer>
-        <v-btn small class="pr-6" icon @click="edit">
-          <v-icon size="18">mdi-pencil</v-icon>
-        </v-btn>
-      </v-layout>
-    </v-card-title>
-    <v-divider></v-divider>
-    <NoteTags class="px-2" :note-color="note.color" :tags="note.tags" />
-    <v-card-text v-html="note.description"></v-card-text>
-  </v-card>
-</template>
-<script>
-import NoteTags from "./NoteTags.vue";
+<script lang="ts">
+import Vue, { CreateElement } from "vue";
+import Component from "vue-class-component";
 
-export default {
+import NoteTags from "./NoteTags.vue";
+import { Note } from "@/core/Data";
+
+@Component({
   name: "Note",
   components: {
     NoteTags
   },
   props: {
-    note: Object
-  },
-  methods: {
-    edit() {
-      this.$store.dispatch("EditNote", this.note);
-    },
-
-    open() {
-      this.$store.dispatch("VisualizeNote", this.note);
-    }
-  },
-  computed: {
-    dark() {
-      const darkMode = this.$store.state.AppStore.darkMode && this.note.color == "";
-      return darkMode ? true : !!this.note.color.includes("white--text");
+    note: {
+      type: Object,
+      required: true
     }
   }
-};
+})
+export default class extends Vue {
+  private note!: Note;
+
+  private edit() {
+    this.$store.dispatch("EditNote", this.note);
+  }
+
+  open() {
+    this.$store.dispatch("VisualizeNote", this.note);
+  }
+
+  get dark() {
+    const darkMode =
+      this.$store.state.AppStore.darkMode && this.note.color == "";
+    return darkMode ? true : !!this.note.color.includes("white--text");
+  }
+  render(h: CreateElement) {
+    console.log(this.note.description);
+    return h(
+      "v-card",
+      {
+        props: {
+          color: this.note.color,
+          minHeight: 100,
+          id: "note-" + this.note.id,
+          dark: this.dark
+        },
+        on: { dblclick: this.open },
+        class: "note"
+      },
+      [
+        h("v-card-title", { class: "py-2 pt-3 pr-0" }, [
+          h("div", { class: "note__top" }, [
+            h("div", { class: "note__top__id" }, `#${this.note.id}`),
+            h("div", { class: "note__top__title" }, this.note.title),
+            h(
+              "v-btn",
+              {
+                props: { small: true, icon: true },
+                on: { click: this.edit },
+                class: "mr-2"
+              },
+              [h("v-icon", { props: { size: 18 } }, "mdi-pencil")]
+            )
+          ])
+        ]),
+        h("div", { class: "note__separator" }),
+        h("NoteTags", {
+          props: { "note-color": this.note.color, tags: this.note.tags },
+          class: "note__tags"
+        }),
+
+        h("div", {
+          class: "note__bottom",
+          domProps: { innerHTML: this.note.description }
+        })
+      ]
+    );
+  }
+}
 </script>
 
 <style lang="scss" scoped>
+$id-color: #2196f3;
+$separator-color: #e6e6e6;
+
 .note {
   cursor: pointer;
   transition: 0.1s;
   animation: show-note 200ms ease-in-out;
   user-select: none;
+  margin: 10px;
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &__id {
+      font-size: 0.6em;
+      color: $id-color;
+    }
+
+    &__title {
+      font-size: 0.7em;
+    }
+  }
+
+  &__separator {
+    width: 100%;
+    height: 10px;
+    padding: 5px;
+
+    &::after {
+      content: "";
+      background: $separator-color;
+      display: block;
+      min-width: 100%;
+      min-height: 1px;
+    }
+  }
+
+  &__tags {
+    padding: 0 10px 0 10px;
+  }
 
   &__button {
     border-radius: 0;
     min-width: 10px !important;
     max-height: 10px !important;
     margin: 0;
+  }
+
+  &__bottom {
+    padding: 5px;
   }
 
   &:hover {

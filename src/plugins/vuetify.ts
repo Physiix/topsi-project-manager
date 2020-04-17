@@ -18,7 +18,8 @@ import Vuetify, {
   VListItemTitle,
   VAppBar,
   VDialog,
-  VTooltip
+  VTooltip,
+  VDivider
 } from "vuetify/lib";
 
 Vue.use(Vuetify, {
@@ -41,7 +42,8 @@ Vue.use(Vuetify, {
     VListItemAction,
     VListItemActionText,
     VDialog,
-    VListItemTitle
+    VListItemTitle,
+    VDivider
   },
   icons: {
     iconfont: "mdiSvg"
