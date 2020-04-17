@@ -1,33 +1,33 @@
 <script lang="ts">
 import Vue, { CreateElement, VNode } from "vue";
-export default Vue.extend({
-  name: "Helper",
-  data: () => ({
-    dialog: true,
-    shortcuts: [
-      {
-        key: "CTRL+D",
-        description: "Show/Hide the helper page."
-      },
-      {
-        key: "CTRL+F",
-        description: "Show/Hide the search bar."
-      },
-      {
-        key: "CTRL+L",
-        description: "Show the milestones list."
-      },
-      {
-        key: "CTRL+N",
-        description: "Create a new Note."
-      }
-    ]
-  }),
-  methods: {
-    close() {
-      this.$store.commit("ToggleShowHelper");
+import Component from "vue-class-component";
+
+@Component({
+  name: "Helper"
+})
+export default class extends Vue {
+  private dialog: boolean = true;
+  private shortcuts = [
+    {
+      key: "CTRL+D",
+      description: "Show/Hide the helper page."
+    },
+    {
+      key: "CTRL+F",
+      description: "Show/Hide the search bar."
+    },
+    {
+      key: "CTRL+L",
+      description: "Show the milestones list."
+    },
+    {
+      key: "CTRL+N",
+      description: "Create a new Note."
     }
-  },
+  ];
+  close() {
+    this.$store.commit("ToggleShowHelper");
+  }
   render(h: CreateElement) {
     const shortcutsLoop = (h: CreateElement) => {
       const children: VNode[] = [];
@@ -61,23 +61,18 @@ export default Vue.extend({
                 props: { dark: true, "primary-title": true },
                 class: "headline justify-center "
               },
-              //@ts-ignore
-              this.$lang.Get("helperTitle")
+              (<any>this).$lang.Get("helperTitle")
             ),
-            h("v-card-text", { class: "text-xs-left " }, [
-              h("div", shortcutsLoop(h))
-            ]),
+            h("v-card-text", { class: "text-xs-left " }, [h("div", shortcutsLoop(h))]),
             h("v-card-actions", {}, [
               h("v-spacer", {}),
               h(
                 "v-btn",
                 {
                   props: { color: "primary", text: true },
-                  //@ts-ignore
                   on: { click: this.close }
                 },
-                //@ts-ignore
-                this.$lang.Get("close")
+                (<any>this).$lang.Get("close")
               )
             ])
           ])
@@ -85,7 +80,7 @@ export default Vue.extend({
       )
     ]);
   }
-});
+}
 </script>
 
 <style lang="scss" scoped>

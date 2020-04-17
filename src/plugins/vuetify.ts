@@ -3,6 +3,7 @@ import Vuetify, {
   VCard,
   VCardTitle,
   VCardText,
+  VCardActions,
   VToolbar,
   VBtn,
   VToolbarItems,
@@ -26,6 +27,7 @@ Vue.use(Vuetify, {
   components: {
     VCard,
     VCardTitle,
+    VCardActions,
     VCardText,
     VToolbar,
     VToolbarItems,
