@@ -156,11 +156,11 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note's project id, title, description and category.
    */
-  UpdateNote(state: State, data: any) {
+  UpdateNote(state: State, data: Note) {
     // Make sure the note's data is valid.
     if (
       data.id == null ||
-      data.project_id == null ||
+      data.projectId == null ||
       data.title == null ||
       data.description == null ||
       data.category == null ||
@@ -170,9 +170,10 @@ const mutations = {
     }
 
     // Update the timestamp
-    data.updated_timestamp = Date.now();
+    //@ts-ignore
+    data["updated_timestamp"] = Date.now();
 
-    const database = DBManager.getDB(data.project_id);
+    const database = DBManager.getDB(data.projectId);
 
     // Create the new note to store.
     database.update("notes", data.id, data);

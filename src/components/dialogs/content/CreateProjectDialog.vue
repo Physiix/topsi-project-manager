@@ -77,7 +77,7 @@ export default class extends Vue {
       "CreateProject",
       new Project(
         this.input.title,
-        this.input.description,
+        document.getElementsByClassName("ql-editor")[0].innerHTML,
         categories,
         this.input.selectedFolder
       )
@@ -212,9 +212,7 @@ export default class extends Vue {
         h(
           "div",
           { class: "create-project__folder-input__desc " },
-          this.input.selectedFolder
-            ? this.input.selectedFolder
-            : "No folder selected yet."
+          this.input.selectedFolder ? this.input.selectedFolder : "No folder selected yet."
         )
       ]);
 
