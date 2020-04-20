@@ -27,6 +27,7 @@ class Input {
   categories: InputCategory[] = [];
   selectedCategory!: InputCategory;
   noteColor: string = "";
+  noteTextColor: string = "";
 }
 
 @Component({
@@ -96,6 +97,7 @@ export default class extends Vue {
         document.getElementsByClassName("ql-editor")[0].innerHTML,
         this.input.selectedCategory.tag,
         this.input.noteColor,
+        this.input.noteTextColor,
         this.input.selectedMilestone.id,
         tags
       )
@@ -178,7 +180,17 @@ export default class extends Vue {
     // Pick color for the note
     const colorPicker = h("ColorPicker", {
       attrs: { width: "500", padding: "20" },
-      on: { "color-selected": this.colorSelected }
+      props: {
+        value: this.input.noteColor
+      },
+      on: {
+        input: (event: string) => {
+          this.colorSelected(event);
+        },
+        "text-color-selected": (event: string) => {
+          this.input.noteTextColor = event;
+        }
+      }
     });
 
     // Quill Editor
@@ -267,7 +279,11 @@ export default class extends Vue {
         },
         ["Create"]
       ),
-      h("v-btn", { attrs: { text: true }, on: { click: this.cancel } }, "Cancel")
+      h(
+        "v-btn",
+        { attrs: { text: true }, on: { click: this.cancel } },
+        "Cancel"
+      )
     ]);
     return h("v-card", { staticClass: "create-note" }, [
       titleInfo,

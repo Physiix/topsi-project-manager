@@ -2,7 +2,7 @@
   <div id="titlebar">
     <div
       style="display: flex; height: 30px; flex-direction: row;"
-      :class="color"
+      :style="{ backgroundColor: color, color: textColor }"
       height="30"
       class="elevation-0 px-0"
       dark
@@ -74,9 +74,11 @@ export default {
   },
   computed: {
     color() {
-      const baseColor = this.$store.getters.appColor;
-      const { darkenToolbar } = this.$store.getters;
-      return baseColor + (darkenToolbar ? " darken-2" : "");
+      return this.$store.getters.appColor;
+    },
+
+    textColor() {
+      return this.$store.getters.textColor;
     },
 
     /**

@@ -4,7 +4,7 @@
     <div class="landing-page__dialogs">
       <component v-if="dialogEnabled" :is="currentDialog" />
     </div>
-    <div id="side" :class="this.$store.getters.appColor">
+    <div id="side" :style="{ backgroundColor: color, color: textColor }">
       <Drawer />
     </div>
     <div id="content">
@@ -51,6 +51,14 @@ export default {
 
     firstTimeUse() {
       return this.$store.getters.isFirstTimeUse;
+    },
+
+    color() {
+      return this.$store.getters.appColor;
+    },
+
+    textColor() {
+      return this.$store.getters.textColor;
     },
 
     showSearch() {

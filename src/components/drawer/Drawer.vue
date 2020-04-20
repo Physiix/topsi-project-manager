@@ -1,17 +1,19 @@
 <template>
-	<Content />
+  <Content />
 </template>
-<script>
-import Content from './Content.vue';
 
-export default {
-  name: 'Drawer',
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+import Content from "./Content.vue";
+
+@Component({
   components: {
-    Content,
-  },
-};
+    Content
+  }
+})
+export default class extends Vue {}
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
 </style>

@@ -29,6 +29,7 @@ export class Note {
     public readonly description: string,
     public category: string,
     public readonly color: string,
+    public readonly textColor: string,
     public readonly milestoneId: number,
     public readonly tags: string[] = []
   ) {}

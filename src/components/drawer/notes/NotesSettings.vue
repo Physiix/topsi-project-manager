@@ -1,19 +1,16 @@
 <template>
-  <div>
+  <div class="note-settings">
     <v-list dense class="pt-0 transparent" dark>
-      <div v-for="item in items" :key="item.title">
-        <Tooltip :content="item.hint" right>
-          <v-list-item @click="item.action()">
-            <v-list-item-action>
-              <v-icon :class="item.class ? item.class : ''" :style="item.style ? item.style : ''">
-                {{
-                item.icon
-                }}
-              </v-icon>
-            </v-list-item-action>
-          </v-list-item>
-        </Tooltip>
-      </div>
+      <v-list-item
+        class="note-settings__item"
+        v-for="item in items"
+        :key="item.title"
+        @click="item.action()"
+      >
+        <v-icon>
+          {{ item.icon }}
+        </v-icon>
+      </v-list-item>
       <!-- Note yet ready	 -->
       <!-- <MilestonesSettings /> -->
       <TagsSettings />
@@ -95,4 +92,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.note-settings {
+  &__item {
+    margin-left: -3px;
+  }
+}
+</style>

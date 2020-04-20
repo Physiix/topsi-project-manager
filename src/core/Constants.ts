@@ -6,3 +6,6 @@ export const Dialogs = {
   VisualizeNote: "visualize-note-dialog",
   EditNote: "edit-note-dialog"
 };
+
+export const WHITE_TEXT = "#FFF";
+export const BLACK_TEXT = "#000";

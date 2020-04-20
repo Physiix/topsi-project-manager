@@ -1,5 +1,5 @@
 <template>
-  <v-list dense class="pt-0 transparent" dark>
+  <v-list dense class="pt-0 transparent" :dark="textColor === '#FFF'">
     <v-list-item v-for="item in items" :key="item.title" @click="item.action()">
       <v-list-item-action>
         <v-icon>{{ item.icon }}</v-icon>
@@ -24,7 +24,8 @@ export default Vue.extend({
         {
           title: (<any>this).$lang.Get("newProject"),
           icon: mdiPlus,
-          action: () => this.$store.dispatch("ToggleDialog", Dialogs.CreateProject)
+          action: () =>
+            this.$store.dispatch("ToggleDialog", Dialogs.CreateProject)
         },
         {
           title: (<any>this).$lang.Get("exportProject"),
@@ -49,6 +50,11 @@ export default Vue.extend({
         }
       ]
     };
+  },
+  computed: {
+    textColor() {
+      return this.$store.getters.textColor;
+    }
   }
 });
 </script>

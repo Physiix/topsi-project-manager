@@ -13,44 +13,49 @@
         :label="$lang.Get('darkenToolbar')"
         v-model="darkenToolbar"
       ></v-checkbox>
-      <ColorPicker width="450" padding="7" class @color-selected="selectColor"></ColorPicker>
+      <ColorPicker v-model="color" @text-color-selected="setTextColor"></ColorPicker>
       <LanguageSelection class="px-2" />
     </v-container>
   </v-card>
 </template>
-<script>
-export default {
-  name: "GeneralSettings",
-  data() {
-    return {};
-  },
-  computed: {
-    darkMode: {
-      set(value) {
-        this.$store.commit("SetDarkMode", value);
-      },
 
-      get() {
-        return this.$store.state.AppStore.darkMode;
-      }
-    },
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+import { Watch } from "vue-property-decorator";
 
-    darkenToolbar: {
-      set(value) {
-        this.$store.commit("ToggleDarkenToolbar");
-      },
+@Component({})
+export default class extends Vue {
+  private color: string = this.$store.getters.appColor;
 
-      get() {
-        return this.$store.state.AppStore.darkenToolbar;
-      }
-    }
-  },
-  methods: {
-    selectColor(color) {
-      this.$store.commit("SetAppColor", color);
-    }
+  set darkMode(value) {
+    this.$store.commit("SetDarkMode", value);
   }
-};
+
+  get darkMode() {
+    return this.$store.state.AppStore.darkMode;
+  }
+
+  set darkenToolbar(value) {
+    this.$store.commit("ToggleDarkenToolbar");
+  }
+
+  get darkenToolbar() {
+    return this.$store.state.AppStore.darkenToolbar;
+  }
+
+  private setTextColor(color: string) {
+    console.log(color);
+    this.$store.commit("SetTextColor", color);
+  }
+
+  @Watch("color")
+  private colorUpdated() {
+    this.$store.commit("SetAppColor", this.color);
+  }
+}
 </script>
+
+<style lang="scss" scoped></style>
 
 <style scoped></style>

@@ -22,8 +22,11 @@ type State = {
   // Whether dark mode is enabled or not.
   darkMode: boolean;
 
-  // Base color of the application.
+  // Base color of the application. (HEXA)
   baseColor: string;
+
+  // Text Color of the application. (HEXA)
+  textColor: string;
 
   // Darken the toolbar or not
   darkenToolbar: boolean;
@@ -56,7 +59,8 @@ const state: State = {
   currentMilestoneId: 0,
   drawerWidth: 200,
   darkMode: DBManager.getAppDB().getValue("dark_mode", false),
-  baseColor: DBManager.getAppDB().getValue("application_color", "indigo"),
+  baseColor: DBManager.getAppDB().getValue("application_color", "#9c27b0"),
+  textColor: DBManager.getAppDB().getValue("application_text_color", "#fff"),
   darkenToolbar: DBManager.getAppDB().getValue("darken_toolbar", false),
   gitUserInfo: DBManager.getAppDB().getValue("git_user_info", {}),
   firstTimeUse: DBManager.getAppDB().getValue("first_time_use", true),
@@ -115,6 +119,11 @@ const mutations = {
   SetAppColor(state: State, color: string) {
     state.baseColor = color;
     DBManager.getAppDB().setValue("application_color", color);
+  },
+
+  SetTextColor(state: State, color: string) {
+    state.textColor = color;
+    DBManager.getAppDB().setValue("application_text_color", color);
   },
 
   ToggleDarkenToolbar(state: State) {
@@ -219,6 +228,10 @@ const getters = {
 
   appColor(state: State) {
     return state.baseColor;
+  },
+
+  textColor(state: State) {
+    return state.textColor;
   },
 
   darkenToolbar(state: State) {

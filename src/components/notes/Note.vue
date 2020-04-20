@@ -4,6 +4,7 @@ import Component from "vue-class-component";
 
 import NoteTags from "./NoteTags.vue";
 import { Note } from "@/core/Data";
+import { WHITE_TEXT } from "../../core/Constants";
 
 @Component({
   name: "Note",
@@ -29,8 +30,7 @@ export default class extends Vue {
   }
 
   get dark() {
-    const darkMode = this.$store.state.AppStore.darkMode && this.note.color == "";
-    return darkMode ? true : !!this.note.color.includes("white--text");
+    return this.note.textColor === WHITE_TEXT;
   }
   render(h: CreateElement) {
     return h(
