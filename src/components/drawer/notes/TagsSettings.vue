@@ -15,7 +15,7 @@
       width="500"
       dark
       left
-      v-on:opened="opened"
+      @opened="opened"
     >
       <v-toolbar color="secondary" dark class="px-2 elevation-0">
         <v-text-field
@@ -42,7 +42,7 @@
           small
           :class="entry.color"
           close
-          v-on:input="removeTag(index)"
+          @input="removeTag(index)"
           >{{ entry.tag }}</v-chip
         >
       </v-container>
@@ -68,7 +68,7 @@ export default {
     },
 
     addTag() {
-      this.$store.dispatch("addTag", {
+      this.$store.dispatch("AddTag", {
         tag: this.tag,
         color: this.color
       });

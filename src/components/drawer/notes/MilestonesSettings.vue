@@ -7,7 +7,7 @@
         </v-list-item-action>
       </v-list-item>
     </Tooltip>
-    <FloatingDiv activator-id="milestone-button" v-on:action="" width="500" dark left height="500">
+    <FloatingDiv activator-id="milestone-button" @action="" width="500" dark left height="500">
       <div id="milestone-container">
         <div id="milestone-list">
           <v-layout row class="pt-2">

@@ -20,7 +20,16 @@ import Vuetify, {
   VAppBar,
   VDialog,
   VTooltip,
-  VDivider
+  VRadioGroup,
+  VRadio,
+  VChip,
+  VDivider,
+  VSelect,
+  VAutocomplete,
+  VTabs,
+  VTab,
+  VTabsItems,
+  VTabItem
 } from "vuetify/lib";
 
 Vue.use(Vuetify, {
@@ -45,7 +54,16 @@ Vue.use(Vuetify, {
     VListItemActionText,
     VDialog,
     VListItemTitle,
-    VDivider
+    VRadioGroup,
+    VRadio,
+    VChip,
+    VDivider,
+    VSelect,
+    VAutocomplete,
+    VTabs,
+    VTab,
+    VTabsItems,
+    VTabItem
   },
   icons: {
     iconfont: "mdiSvg"

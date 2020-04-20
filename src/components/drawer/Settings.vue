@@ -2,22 +2,24 @@
   <Dialog
     v-if="showSettings"
     width="500"
-    v-on:close="showSettings = false"
+    @close="showSettings = false"
     disable-accept
     :cancel-text="$lang.Get('close')"
   >
     <v-tabs v-model="active" centered>
-      <v-tab v-for="(tab, index) in tabs" :key="index" :href="`#tab-${index}`" :ripple="false">
-        {{ tab }}
-      </v-tab>
+      <v-tab
+        v-for="(tab, index) in tabs"
+        :key="index"
+        :href="`#tab-${index}`"
+        :ripple="false"
+      >{{ tab }}</v-tab>
     </v-tabs>
     <v-tabs-items v-model="active">
       <v-tab-item v-for="(tab, index) in tabs" :key="index" :value="`tab-${index}`">
-        <GeneralSettings v-if="tab == $lang.Get('general')" class="item " />
+        <GeneralSettings v-if="tab == $lang.Get('general')" class="item" />
         <div v-if="tab == $lang.Get('about')" class="item">
           <v-card class="elevation-0">
-            <v-card-text class="justify-center text-xs-center" v-html="$lang.Get('aboutContent')">
-            </v-card-text>
+            <v-card-text class="justify-center text-xs-center" v-html="$lang.Get('aboutContent')"></v-card-text>
           </v-card>
         </div>
       </v-tab-item>
@@ -45,7 +47,7 @@ export default {
       },
 
       get() {
-        return this.$store.state.AppStore.dialogs.showSettings;
+        return false;
       }
     }
   }

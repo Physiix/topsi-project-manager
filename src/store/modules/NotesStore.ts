@@ -1,5 +1,6 @@
 import DBManager from "@/core/DBManager";
 import { Note, Task } from "@/core/Data";
+import { Dialogs } from "@/core/Constants";
 
 type State = {
   // Flag to show or hide a menu for items
@@ -11,7 +12,7 @@ type State = {
   };
 
   // Note to Update.
-  updatedNote?: Note;
+  editedNote?: Note;
 
   // Note to visualize
   openedNote?: Note;
@@ -35,7 +36,7 @@ const state: State = {
     y: 0,
     note: undefined
   },
-  updatedNote: undefined,
+  editedNote: undefined,
   openedNote: undefined,
   notes: [],
   projectId: -1,
@@ -50,6 +51,14 @@ const getters = {
 
   isDisplayTasks(state: State) {
     return state.displayTasks;
+  },
+
+  openedNote(state: State) {
+    return state.openedNote;
+  },
+
+  editedNote(state: State) {
+    return state.editedNote;
   }
 };
 
@@ -60,33 +69,21 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note's project id, title, description and category.
    */
-  CreateNote(state: State, data: any) {
+  CreateNote(state: State, note: Note) {
     // Make sure the note's data is valid.
     if (
-      data.project_id == null ||
-      data.title == null ||
-      data.description == null ||
-      data.category == null ||
-      data.milestoneId == null
+      note.projectId == null ||
+      note.title == null ||
+      note.description == null ||
+      note.category == null ||
+      note.milestoneId == null
     ) {
-      throw new Error(`Cannot create a note with invalid data ${data}`);
+      throw new Error(`Cannot create a note with invalid data ${note}`);
     }
-
-    // Create the new note to store.
-    let note = new Note(
-      data.project_id,
-      data.title,
-      data.description,
-      data.category,
-      data.color,
-      data.milestoneId,
-      data.tags
-    );
-
-    const database = DBManager.getDB(data.project_id);
+    const database = DBManager.getDB(note.projectId);
 
     // Set the order for the note.
-    note.order = state.notes.filter(note => note.category == data.category).length;
+    note.order = state.notes.filter(note => note.category == note.category).length;
 
     // Getting the new ID for the note.
     note.id = database.getId("notes_id");
@@ -119,6 +116,7 @@ const mutations = {
     // Getting the note that has been moved.
     const note = currentNotes.filter(n => n.id === SanitizeNoteId(data.note.id))[0];
 
+    console.log(data.note.id);
     // Removing the note from the last category.
     const sourceNotes = currentNotes.filter(n => n.category === note.category);
     sourceNotes.splice(data.oldIndex, 1);
@@ -147,9 +145,9 @@ const mutations = {
    * @param {*State} state NotesStore state.
    * @param {*Note} data Contains the note to update.
    */
-  SetUpdatedNote(state: State, note: Note) {
-    if (note == null) throw new Error("SetUpdatedNote: note parameter required.");
-    state.updatedNote = note;
+  SetEditedNote(state: State, note: Note) {
+    if (note == null) throw new Error("SetEditedNote: note parameter required.");
+    state.editedNote = note;
   },
 
   /**
@@ -322,17 +320,17 @@ const mutations = {
 };
 
 const actions = {
-  CreateNote(context: any, data: any) {
+  CreateNote(context: any, data: Note) {
     context.commit("CreateNote", data);
 
     // Update the state
     context.commit("UpdateNotes", {
-      projectId: data.project_id,
+      projectId: data.projectId,
       milestoneId: data.milestoneId
     });
   },
 
-  UpdateNote(context: any, data: any) {
+  UpdateNote(context: any, data: Note) {
     context.commit("UpdateNote", data);
 
     // Retrieve the new values as saved from the database.
@@ -342,7 +340,7 @@ const actions = {
     });
   },
 
-  DeleteNote(context: any, note: any) {
+  DeleteNote(context: any, note: Note) {
     context.commit("DeleteNote", note);
 
     // Retrieve the new values as saved from the database.
@@ -363,13 +361,13 @@ const actions = {
   },
 
   EditNote(context: any, note: Note) {
-    context.commit("SetUpdatedNote", note);
-    context.commit("UpdateNoteDialog");
+    context.commit("SetEditedNote", note);
+    context.commit("OpenDialog", Dialogs.EditNote);
   },
 
   VisualizeNote(context: any, note: Note) {
     context.commit("SetOpenedNote", note);
-    context.commit("OpenNoteDialog");
+    context.commit("OpenDialog", Dialogs.VisualizeNote);
   },
 
   AddTask(context: any, task: Note) {

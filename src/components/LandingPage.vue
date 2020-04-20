@@ -1,5 +1,9 @@
 <template>
   <div id="container">
+    <content-dialog-vue />
+    <div class="landing-page__dialogs">
+      <component v-if="dialogEnabled" :is="currentDialog" />
+    </div>
     <div id="side" :class="this.$store.getters.appColor">
       <Drawer />
     </div>
@@ -26,6 +30,7 @@ import Drawer from "./drawer/Drawer.vue";
 import Projects from "./projects/Projects.vue";
 import FirstUse from "./Temp/FirstUse.vue";
 import SearchBar from "./SearchBar.vue";
+import ContentDialogVue from "./dialogs/ContentDialog.vue";
 
 export default {
   name: "landing-page",
@@ -36,7 +41,8 @@ export default {
     Notes,
     Drawer,
     SearchBar,
-    Helper
+    Helper,
+    ContentDialogVue
   },
   computed: {
     displayProjects() {
@@ -57,19 +63,40 @@ export default {
 
     macos() {
       return this.$store.getters.isMac;
+    },
+
+    dialogEnabled() {
+      return false;
+    },
+
+    currentDialog() {
+      return "dialog-create-project";
     }
   },
   methods: {
     keyUp(event) {}
   },
   mounted() {
-    AppManager.setupLandingPage(this.macos ? 0 : 30, "container", "side", "content");
+    AppManager.setupLandingPage(
+      this.macos ? 0 : 30,
+      "container",
+      "side",
+      "content"
+    );
     InputManager.initialize(this);
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.landing-page {
+  &__dialogs {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
 #side {
   overflow-y: auto;
   overflow-x: hidden;

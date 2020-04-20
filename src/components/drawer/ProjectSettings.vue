@@ -10,55 +10,47 @@
     </v-list-item>
   </v-list>
 </template>
-<script>
+<script lang="ts">
 import ProjectManager from "@/core/ProjectManager";
 import { mdiPlus, mdiDatabaseExport, mdiDatabaseImport, mdiCog } from "@mdi/js";
+import { Dialogs } from "../../core/Constants";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   name: "ProjectSettings",
   data() {
     return {
       items: [
         {
-          title: this.$lang.Get("newProject"),
+          title: (<any>this).$lang.Get("newProject"),
           icon: mdiPlus,
-          action: () => this.$store.dispatch("ToggleDialog", "createProject")
+          action: () => this.$store.dispatch("ToggleDialog", Dialogs.CreateProject)
         },
         {
-          title: this.$lang.Get("exportProject"),
+          title: (<any>this).$lang.Get("exportProject"),
           icon: mdiDatabaseExport,
           action: () => {
-            this.$store.dispatch("ToggleDialog", "exportProject");
+            this.$store.dispatch("ToggleDialog", Dialogs.ExportProject);
           }
         },
         {
-          title: this.$lang.Get("importProject"),
+          title: (<any>this).$lang.Get("importProject"),
           icon: mdiDatabaseImport,
           action: () => {
             ProjectManager.loadProject();
           }
         },
-        // {
-        // 	title: 'Upload Database',
-        // 	icon: 'sync',
-        // 	action: () => this.$store.dispatch('UploadGist')
-        // },
-        // {
-        // 	title: 'Download Database',
-        // 	icon: 'cloud_download',
-        // 	action: () => this.$store.dispatch('DownloadGist')
-        // },
         {
-          title: this.$lang.Get("settings"),
+          title: (<any>this).$lang.Get("settings"),
           icon: mdiCog,
           action: () => {
-            this.$store.dispatch("ToggleDialog", "showSettings");
+            this.$store.dispatch("ToggleDialog", Dialogs.AppSettings);
           }
         }
       ]
     };
   }
-};
+});
 </script>
 
 <style scoped></style>

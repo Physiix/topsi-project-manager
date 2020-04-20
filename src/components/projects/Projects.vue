@@ -1,7 +1,5 @@
 <template>
   <div class="app-projects">
-    <CreateProjectDialog v-if="createProjectDialog" />
-    <ExportProjectDialog />
     <v-layout row wrap>
       <v-flex offset-xs2 xs8 v-for="(project, i) in projects" :key="i">
         <Project :project="project" />
@@ -10,16 +8,12 @@
   </div>
 </template>
 <script>
-import CreateProjectDialog from "../dialogs/CreateProjectDialog.vue";
-import ExportProjectDialog from "../dialogs/ExportProjectDialog.vue";
 import Project from "./Project";
 import AppManager from "@/core/ApplicationManager";
 
 export default {
   name: "Projects",
   components: {
-    CreateProjectDialog,
-    ExportProjectDialog,
     Project
   },
   computed: {

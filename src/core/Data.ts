@@ -1,12 +1,12 @@
 export class Project {
   public id: number = -1;
   public selectedMilestoneId: number = 0;
-  public customPath: string = "";
 
   constructor(
-    private readonly title: string,
+    public readonly title: string,
     public readonly description: string,
-    private readonly categories: Category[]
+    public readonly categories: Category[],
+    public customPath: string = ""
   ) {}
 }
 

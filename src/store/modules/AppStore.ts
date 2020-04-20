@@ -1,21 +1,14 @@
 import DBManager from "@/core/DBManager";
 import { Milestone } from "@/core/Data";
 
-type Dialogs = {
-  createProject: boolean;
-  createNote: boolean;
-  showSettings: boolean;
-  updateNote: boolean;
-  visualizeDialog: boolean;
-  exportProject: boolean;
-  updateProject: boolean;
-  milestonesList: boolean;
-  searchDialog: boolean;
+type Dialog = {
+  opened: boolean;
+  name: string;
 };
 
 type State = {
   // Contains all the flags about dialogs.
-  dialogs: Dialogs | any;
+  dialog: Dialog;
 
   // ID of the currently opened project.
   openedProjectId: string | number;
@@ -55,16 +48,9 @@ type State = {
 };
 
 const state: State = {
-  dialogs: {
-    createProject: false,
-    createNote: false,
-    showSettings: false,
-    updateNote: false,
-    visualizeDialog: false,
-    exportProject: false,
-    updateProject: false,
-    milestonesList: false,
-    searchDialog: false
+  dialog: {
+    name: "",
+    opened: false
   },
   openedProjectId: -1,
   currentMilestoneId: 0,
@@ -137,7 +123,7 @@ const mutations = {
   },
 
   ExportProjDialog(state: State) {
-    mutations.OpenDialog(state, "exportProject");
+    mutations.OpenDialog(state, "export-project-dialog");
   },
 
   DisableFirstTimeUse(state: State) {
@@ -196,7 +182,7 @@ const mutations = {
   },
 
   ToggleMilestonesList(state: State, value: boolean) {
-    mutations.OpenDialog(state, "milestonesList", value);
+    mutations.OpenDialog(state, "milestonesList");
   },
 
   ToggleShowHelper(state: State, value: boolean) {
@@ -204,14 +190,13 @@ const mutations = {
     else state.showHelper = !state.showHelper;
   },
 
-  OpenDialog(state: State, dialog: string, value?: boolean) {
-    for (let property in state.dialogs) {
-      if (property === dialog) {
-        state.dialogs[property] = value || !state.dialogs[property];
-      } else {
-        state.dialogs[property] = false;
-      }
-    }
+  OpenDialog(state: State, dialogName: string) {
+    state.dialog.opened = true;
+    state.dialog.name = dialogName;
+  },
+
+  CloseDialog(state: State) {
+    state.dialog.opened = false;
   },
 
   SetCurrentLanguage(state: State, language: string) {
@@ -259,14 +244,6 @@ const getters = {
     return DBManager.getDB(state.openedProjectId).getValue("tags", []);
   },
 
-  isShowSearch(state: State) {
-    return state.dialogs.searchDialog;
-  },
-
-  isUpdateProject(state: State) {
-    return state.dialogs.updateProject;
-  },
-
   currentProject(state: State) {
     return (context: any) => context.$store.getters.getProjectById(state.openedProjectId);
   },
@@ -281,10 +258,6 @@ const getters = {
 
   defaultPath(state: State) {
     return DBManager.getAppDB().getValue("default_databases_folder", "");
-  },
-
-  isMilestonesList(state: State) {
-    return state.dialogs.milestonesList;
   },
 
   currentProjectMilestones(state: State) {
@@ -305,12 +278,24 @@ const getters = {
 
   selectedLanguage(state: State) {
     return state.selectedLanguage;
+  },
+
+  isDialogOpened(state: State) {
+    return state.dialog.opened;
+  },
+
+  dialogComponent(state: State) {
+    return state.dialog.name;
   }
 };
 
 const actions = {
   ToggleDialog(context: any, dialogName: string) {
     context.commit("OpenDialog", dialogName);
+  },
+
+  CloseDialog(context: any) {
+    context.commit("CloseDialog");
   },
 
   RemoveTag(context: any, tag: any) {

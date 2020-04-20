@@ -1,14 +1,10 @@
 <template>
-  <div id="notes_container" :class="color" class="pa-0">
-    <CreateNoteDialog v-if="createDialog" />
-    <VisualizeNoteDialog v-if="visualizeDialog"></VisualizeNoteDialog>
-    <UpdateNoteDialog v-if="updateDialog" />
-    <UpdateProjectDialog v-if="updateProject" />
+  <div class="notes" id="notes_container" :class="color">
     <div
       v-for="(category, index) in categories"
       :key="category + index"
       :id="category.tag + '-container'"
-      class="category-container"
+      class="notes__container"
     >
       <Content
         :projectId="projectId"
@@ -28,19 +24,12 @@ import AppManager from "@/core/ApplicationManager";
 import MilestonesList from "./MilestonesList.vue";
 import FoldedContent from "./FoldedContent.vue";
 import AddNoteButton from "./AddNoteButton.vue";
-import CreateNoteDialog from "../dialogs/CreateNoteDialog.vue";
-import VisualizeNoteDialog from "../dialogs/VisualizeNoteDialog.vue";
-import UpdateNoteDialog from "../dialogs/UpdateNoteDialog.vue";
-import UpdateProjectDialog from "../dialogs/UpdateProjectDialog.vue";
 import Content from "./Content.vue";
+import { Dialogs } from "../../core/Constants";
 
 export default {
   name: "Notes",
   components: {
-    CreateNoteDialog,
-    UpdateNoteDialog,
-    VisualizeNoteDialog,
-    UpdateProjectDialog,
     Content,
     FoldedContent,
     MilestonesList
@@ -59,22 +48,6 @@ export default {
       return this.project.categories;
     },
 
-    createDialog() {
-      return this.$store.state.AppStore.dialogs.createNote;
-    },
-
-    updateDialog() {
-      return this.$store.state.AppStore.dialogs.updateNote;
-    },
-
-    visualizeDialog() {
-      return this.$store.state.AppStore.dialogs.visualizeDialog;
-    },
-
-    updateProject() {
-      return this.$store.getters.isUpdateProject;
-    },
-
     color() {
       if (this.$store.getters.isDarkMode) return "";
       return "grey lighten-2";
@@ -89,8 +62,12 @@ export default {
       this.macos ? 0 : 30,
       "notes_container",
       "container",
-      this.categories.filter(category => !category.folded).map(category => category.tag),
-      this.categories.filter(category => category.folded).map(category => category.tag)
+      this.categories
+        .filter(category => !category.folded)
+        .map(category => category.tag),
+      this.categories
+        .filter(category => category.folded)
+        .map(category => category.tag)
     );
     EventManager.subscribe("update-notes-component", () => {
       this.$nextTick(() => {
@@ -98,8 +75,12 @@ export default {
           this.macos ? 0 : 30,
           "notes_container",
           "container",
-          this.categories.filter(category => !category.folded).map(category => category.tag),
-          this.categories.filter(category => category.folded).map(category => category.tag),
+          this.categories
+            .filter(category => !category.folded)
+            .map(category => category.tag),
+          this.categories
+            .filter(category => category.folded)
+            .map(category => category.tag),
           false
         );
       });
@@ -108,8 +89,11 @@ export default {
 };
 </script>
 
-<style>
-.category-container {
-  overflow-y: auto;
+<style lang="scss" scoped>
+.notes {
+  padding: 0;
+  &__container {
+    overflow-y: auto;
+  }
 }
 </style>

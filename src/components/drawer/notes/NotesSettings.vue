@@ -5,9 +5,11 @@
         <Tooltip :content="item.hint" right>
           <v-list-item @click="item.action()">
             <v-list-item-action>
-              <v-icon :class="item.class ? item.class : ''" :style="item.style ? item.style : ''">{{
+              <v-icon :class="item.class ? item.class : ''" :style="item.style ? item.style : ''">
+                {{
                 item.icon
-              }}</v-icon>
+                }}
+              </v-icon>
             </v-list-item-action>
           </v-list-item>
         </Tooltip>
@@ -35,6 +37,7 @@ import {
   mdiCircleEditOutline,
   mdiFormatListNumberedRtl
 } from "@mdi/js";
+import { Dialogs } from "../../../core/Constants";
 
 export default {
   name: "NotesSettings",
@@ -68,7 +71,7 @@ export default {
           title: "New Note",
           hint: this.$lang.Get("addNewNote"),
           style: "margin-left:-2px;",
-          action: () => this.$store.dispatch("ToggleDialog", "createNote")
+          action: () => this.$store.dispatch("ToggleDialog", Dialogs.CreateNote)
         },
         {
           icon: mdiCircleEditOutline,

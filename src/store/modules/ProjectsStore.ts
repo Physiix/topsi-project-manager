@@ -38,7 +38,7 @@ const mutations = {
    * @param {*State} state ProjectStore state.
    * @param {*Project} data Contains the project's title and description.
    */
-  CreateProject(state: State, data: any) {
+  CreateProject(state: State, data: Project) {
     // Make sure the project's data is valid.
     if (
       data.title == null ||

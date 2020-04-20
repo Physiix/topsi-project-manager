@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card flat>
     <v-container>
       <v-checkbox
         class="px-1"
@@ -13,7 +13,7 @@
         :label="$lang.Get('darkenToolbar')"
         v-model="darkenToolbar"
       ></v-checkbox>
-      <ColorPicker width="450" padding="7" class v-on:color-selected="selectColor"></ColorPicker>
+      <ColorPicker width="450" padding="7" class @color-selected="selectColor"></ColorPicker>
       <LanguageSelection class="px-2" />
     </v-container>
   </v-card>

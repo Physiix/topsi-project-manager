@@ -29,20 +29,20 @@ export default class extends Vue {
   }
 
   get dark() {
-    const darkMode =
-      this.$store.state.AppStore.darkMode && this.note.color == "";
+    const darkMode = this.$store.state.AppStore.darkMode && this.note.color == "";
     return darkMode ? true : !!this.note.color.includes("white--text");
   }
   render(h: CreateElement) {
-    console.log(this.note.description);
     return h(
       "v-card",
       {
         props: {
           color: this.note.color,
           minHeight: 100,
-          id: "note-" + this.note.id,
           dark: this.dark
+        },
+        attrs: {
+          id: "note-" + this.note.id
         },
         on: { dblclick: this.open },
         class: "note"
@@ -63,7 +63,7 @@ export default class extends Vue {
             )
           ])
         ]),
-        h("div", { class: "note__separator" }),
+        h("v-divider"),
         h("NoteTags", {
           props: { "note-color": this.note.color, tags: this.note.tags },
           class: "note__tags"
