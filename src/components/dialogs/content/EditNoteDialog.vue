@@ -1,17 +1,16 @@
 <template>
   <v-card class="edit-note">
     <Title content="Edit Note" />
-
     <div class="edit-note__container">
-      <v-text-field v-model="input.title" :value="note.title"></v-text-field>
-
+      <v-btn block color="error" @click="deleteNote">DELETE</v-btn>
+      <v-text-field v-model="input.title"></v-text-field>
       <v-card>
         <div id="toolbar"></div>
         <div id="editor" style="min-height: 180px;"></div>
       </v-card>
-
       <div class="edit-note__actions">
         <v-btn text :color="color" @click="save">Update</v-btn>
+        <v-btn text @click="close">Close</v-btn>
       </div>
     </div>
   </v-card>
@@ -19,6 +18,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { Watch } from "vue-property-decorator";
 import Quill from "quill";
 import Component from "vue-class-component";
 import Title from "@/components/dialogs/utils/Title.vue";
@@ -31,32 +31,41 @@ class Input {
 @Component({
   components: {
     Title
-  },
-  watch: {
-    note() {
-      this.$forceUpdate();
-    }
   }
 })
 export default class extends Vue {
   private editor: any = null;
   private input: Input = new Input();
 
-  private get note(): Note {
+  get note(): Note {
     return this.$store.getters.editedNote;
   }
 
-  private get color(): string {
+  get color(): string {
     return this.$store.getters.appColor;
   }
 
-  private fillInputs() {
-    this.input.title = this.note.title;
+  @Watch("$store.getters.editedNote")
+  update() {
+    this.fillInputs();
+  }
 
-    const descEl = document.getElementsByClassName("ql-editor")[0];
-    if (descEl) {
-      descEl.innerHTML = this.note.description;
+  private deleteNote() {
+    this.$store.dispatch("DeleteNote", this.note);
+    this.$store.dispatch("CloseDialog");
+  }
+
+  private fillInputs() {
+    if (this.note != null) {
+      this.input.title = this.note.title;
+
+      document.getElementsByClassName("ql-editor")[0].innerHTML = this.note.description;
     }
+  }
+
+  private close() {
+    this.$store.commit("SetEditedNote", null);
+    this.$store.commit("CloseDialog");
   }
 
   private save() {
@@ -72,16 +81,10 @@ export default class extends Vue {
     updatedNote.id = this.note.id;
 
     this.$store.dispatch("UpdateNote", updatedNote);
-    this.$store.dispatch("CloseDialog");
-  }
-
-  private updated() {
-    this.fillInputs();
+    this.close();
   }
 
   private mounted() {
-    this.fillInputs();
-
     if (document.querySelector("#editor")) {
       // Setup QUILL
       const options = {
@@ -102,6 +105,7 @@ export default class extends Vue {
       };
       this.editor = new Quill("#editor", options);
     }
+    this.fillInputs();
   }
 }
 </script>

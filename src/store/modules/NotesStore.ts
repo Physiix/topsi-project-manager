@@ -116,7 +116,6 @@ const mutations = {
     // Getting the note that has been moved.
     const note = currentNotes.filter(n => n.id === SanitizeNoteId(data.note.id))[0];
 
-    console.log(data.note.id);
     // Removing the note from the last category.
     const sourceNotes = currentNotes.filter(n => n.category === note.category);
     sourceNotes.splice(data.oldIndex, 1);
@@ -146,7 +145,6 @@ const mutations = {
    * @param {*Note} data Contains the note to update.
    */
   SetEditedNote(state: State, note: Note) {
-    if (note == null) throw new Error("SetEditedNote: note parameter required.");
     state.editedNote = note;
   },
 
