@@ -33,7 +33,7 @@
         "@vue/cli-plugin-typescript": "~4.3.0",
         "@vue/cli-plugin-vuex": "~4.3.0",
         "@vue/cli-service": "~4.3.0",
-        "electron": "^6.0.0",
+        "electron": "^7.2.4",
         "node-sass": "^4.12.0",
         "sass": "^1.19.0",
         "sass-loader": "^8.0.2",
