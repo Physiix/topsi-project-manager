@@ -1,3 +1,5 @@
+# This project is no longer maintained 
+
 # Topsi Project Manager
 
 ## Master branch is broken right now, a stable branch will be created as soon as it's ready.
